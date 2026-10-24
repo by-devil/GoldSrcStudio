@@ -18,7 +18,7 @@
   const LOCALE = L('tr-TR', 'en-US');
 
   const PLUGIN_BASE = 'https://bydevil.com/plugins/#';
-  // Eklenti ekran görüntüleri: assets/plugins/ (.github/scripts/fetch_plugin_images.py ile bydevil.com'dan indirilir)
+  // Eklenti ekran görüntüleri: assets/plugins/
   const seq = (dir, pre, n) => Array.from({ length: n }, (_, i) => `${dir}/${pre}-${String(i + 1).padStart(2, '0')}.jpg`);
   const shots = (files, tr, en) => files.map((f, i) => ({ src: '/assets/plugins/' + f, label: L(tr[i], en[i]) }));
   const SHOTS = {
