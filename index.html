@@ -125,7 +125,8 @@
                    filter: drop-shadow(0 13px 21px rgba(0,0,0,.73)); transition: transform .45s cubic-bezier(.2,.7,.2,1); }
     .app:hover .app-art img { transform: scale(1.055); }
     .app-art::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(transparent 65%, rgba(16,22,23,.57)); }
-    .app-art .num { position: absolute; z-index: 1; top: 14px; left: 16px; font: 400 15px/1 var(--display); color: rgba(241,241,236,.75); letter-spacing: .06em; }
+    .app-art .num { position: absolute; z-index: 2; top: 0; left: 0; padding: 9px 13px 8px; background: var(--orange); color: #15120f;
+                    font: 400 16px/1 var(--display); letter-spacing: .06em; }
     .app-info { padding: 24px 1px 21px; border-bottom: 1px solid var(--line-2); }
     .app-meta { color: var(--orange); font-size: 10px; }
     .app-meta span { color: #686e70; padding: 0 6px; }
@@ -376,7 +377,7 @@
               ${t.image ? `<img src="${esc(t.image)}" alt="${esc(t.name)} ekran görüntüsü" loading="lazy">` : ''}
             </a>
             <div class="app-info">
-              <div class="app-meta caps">${esc(t.category || '')}<span>—</span>${esc(t.version || '')}<span>/</span>${esc(t.platform || '')}</div>
+              <div class="app-meta caps">${esc(t.category || '')}<span>—</span>${esc(t.version || '')}<span>/</span><b lang="en" style="font-weight:inherit">${esc(t.platform || '')}</b></div>
               <div class="app-title">
                 <h3 class="display" lang="en">${esc(t.name)}</h3>
                 <svg><use href="#i-ext"/></svg>
