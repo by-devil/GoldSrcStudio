@@ -32,6 +32,8 @@ BSP haritalarını 3D görüntüle; NAV alanları ve PWF waypoint verileriyle ç
 
 <sub>SHA-256: `641d8df5fdac0b47471254c691f442d17e3d9af9844c6e75147bd7a783e83a97`</sub>
 
+> ℹ️ Kurulum dosyası eski bir sürüm adını taşısa da uygulama ilk açılışta kendini otomatik olarak son sürüme günceller.
+
 Diğer bağlantılar: [GameBanana](https://gamebanana.com/tools/24109)
 
 > Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.

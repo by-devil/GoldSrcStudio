@@ -32,6 +32,8 @@ View BSP maps in 3D and work with NAV areas and PWF waypoint data. Simulate bot 
 
 <sub>SHA-256: `641d8df5fdac0b47471254c691f442d17e3d9af9844c6e75147bd7a783e83a97`</sub>
 
+> ℹ️ The installer may carry an older version name, but the app updates itself to the latest version on first launch.
+
 Other links: [GameBanana](https://gamebanana.com/tools/24109)
 
 > The tools are in beta. We recommend backing up your files before editing them.

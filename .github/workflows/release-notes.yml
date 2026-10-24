@@ -1,0 +1,19 @@
+name: Sync release notes
+
+on:
+  push:
+    branches: [main]
+    paths: [tools/tools.json, .github/scripts/release_notes.py]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 .github/scripts/release_notes.py --apply
+        env:
+          GH_TOKEN: ${{ github.token }}

@@ -1,0 +1,26 @@
+name: Feature request / Öneri
+description: An idea for a tool, a feature or the website. / Bir araç, özellik ya da site için fikir.
+labels: [enhancement]
+body:
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Tool / Araç
+      options:
+        - Map Optimization
+        - Studio Paint
+        - Studio Nav
+        - Skin Studio
+        - Studio Modeler
+        - tools.bydevil.com (website / web sitesi)
+        - AMXX plugin / AMXX eklentisi
+        - Other / Diğer
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea / Fikrin
+      description: What would you like, and what problem does it solve? / Ne istiyorsun, hangi sorunu çözer?
+    validations:
+      required: true

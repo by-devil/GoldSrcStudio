@@ -57,6 +57,7 @@
     box: '<path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3zM4 7.5l8 4.5 8-4.5M12 12v9"/>',
     alert: '<path d="M12 3 2 20h20L12 3zM12 10v4M12 17v.5"/>',
     copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
+    sync: '<path d="M20 11a8 8 0 0 0-14.9-3M4 13a8 8 0 0 0 14.9 3M4 4v4h4M20 20v-4h-4"/>',
     file: '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5zM14 3v5h5"/>',
     theme: '<path d="M12 3a9 9 0 1 0 0 18c1 0 1.5-.8 1.5-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5H16a5 5 0 0 0 5-5c0-4.3-4-7.8-9-7.8z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10.5" cy="7" r="1.2"/><circle cx="15.5" cy="7.5" r="1.2"/>',
   };
@@ -420,8 +421,7 @@
                   <a class="btn sm" style="flex:1" href="${esc(t.github)}" ${ext}>${GH} GitHub</a>
                 </div>
                 ${t.repo ? `<a class="btn sm" style="margin-top:8px" href="${esc(t.repo)}" ${ext}>${GH} ${L('Ayrı repo', 'Separate repo')}: ${esc(t.repo.split('/').pop())}</a>` : ''}
-                <div hidden>
-                </div>
+                ${t.note ? `<p class="dl-note">${icon('sync')}<span>${esc(t.note)}</span></p>` : ''}
               </div>
               <div class="panel"><h3>${L('Bilgiler', 'Details')}</h3>
                 <dl class="facts">

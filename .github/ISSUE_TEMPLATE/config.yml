@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contact / İletişim (Steam, Discord)
+    url: https://tools.bydevil.com/contact/
+    about: Questions, plugin orders or just to say hi. / Sorular, eklenti siparişi ya da sadece selam için.
+  - name: Website / Web sitesi
+    url: https://tools.bydevil.com/
+    about: Tools, maps, skyboxes and AMXX plugins. / Araçlar, haritalar, skyboxlar ve AMXX eklentileri.

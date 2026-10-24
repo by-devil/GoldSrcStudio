@@ -112,8 +112,10 @@
         "Automatic navigation generation",
         "Bot route simulation",
         "RES and ZIP package creation"
-      ]
-    }
+      ],
+      "note": "The installer may carry an older version name, but the app updates itself to the latest version on first launch."
+    },
+    "note": "Kurulum dosyası eski bir sürüm adını taşısa da uygulama ilk açılışta kendini otomatik olarak son sürüme günceller."
   },
   {
     "slug": "skin-studio",

@@ -311,7 +311,7 @@ for t in tools:
 **[⬇ {file}]({t['download']})** · {size}
 
 <sub>SHA-256: `{sha}`</sub>
-
+{f'{chr(10)}> ℹ️ {t["note"]}{chr(10)}' if t.get('note') else ''}
 {L('Diğer bağlantılar', 'Other links')}: {' · '.join(links)}
 {manual}
 > {L('Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.', 'The tools are in beta. We recommend backing up your files before editing them.')}

@@ -1,0 +1,55 @@
+name: Bug report / Hata bildirimi
+description: Something does not work as expected. / Bir şey beklendiği gibi çalışmıyor.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this. Turkish or English is fine.
+        Bildirdiğin için teşekkürler. Türkçe ya da İngilizce yazabilirsin.
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Tool / Araç
+      options:
+        - Map Optimization
+        - Studio Paint
+        - Studio Nav
+        - Skin Studio
+        - Studio Modeler
+        - tools.bydevil.com (website / web sitesi)
+        - AMXX plugin / AMXX eklentisi
+        - Other / Diğer
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version / Sürüm
+      description: Shown in the app's title bar or About window. / Uygulamanın başlık çubuğunda ya da Hakkında penceresinde yazar.
+      placeholder: v0.30.0
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened? / Ne oldu?
+      description: What did you expect, and what happened instead? / Ne bekliyordun, ne oldu?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / Nasıl tekrarlanır?
+      placeholder: |
+        1. Open ... / ... dosyasını aç
+        2. Click ... / ... düğmesine bas
+        3. ...
+  - type: textarea
+    id: files
+    attributes:
+      label: Screenshots or files / Ekran görüntüsü veya dosya
+      description: Drag images, logs or the .bsp/.mdl file here (zip it if it is large). / Resim, log ya da .bsp/.mdl dosyasını buraya sürükle (büyükse zip'le).
+  - type: input
+    id: os
+    attributes:
+      label: Windows version / Windows sürümü
+      placeholder: Windows 11 23H2
