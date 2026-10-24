@@ -16,12 +16,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python scripts/update_works.py
+      - run: python .github/scripts/update_works.py
       - name: Değişiklik varsa kaydet
         run: |
-          if git diff --quiet -- data/works.json; then exit 0; fi
+          if git diff --quiet -- maps skies; then exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898729+github-actions[bot]@users.noreply.github.com"
-          git add data/works.json
+          git add maps skies
           git commit -m "Harita ve skybox verilerini güncelle"
           git push

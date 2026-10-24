@@ -50,12 +50,20 @@
     .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--orange);
                     transform: scaleX(0); transition: transform .25s; }
     .nav a:hover::after { transform: scaleX(1); }
-    .gh-btn { margin-left: auto; display: inline-flex; align-items: center; gap: 12px; height: 42px; padding: 0 16px;
+    .brand-links { margin-left: auto; display: flex; gap: 8px; }
+    .brand-pill { display: inline-flex; align-items: center; gap: 10px; height: 42px; padding: 0 14px 0 7px; border-radius: 8px;
+                  background: #1c2022; color: #f1f1ec; font-size: 14px; font-weight: 700; white-space: nowrap; transition: background .2s, transform .2s; }
+    .brand-pill:hover { background: #262b2e; transform: translateY(-1px); }
+    .brand-pill img { width: 28px; height: 28px; border-radius: 5px; object-fit: contain; }
+    .gh-btn { margin-left: 8px; display: inline-flex; align-items: center; gap: 12px; height: 42px; padding: 0 16px; border-radius: 8px;
               background: #252a2c; transition: background .2s, color .2s; }
     .gh-btn:hover { background: var(--orange); color: #101010; }
     .gh-btn svg { width: 17px; height: 17px; fill: currentColor; }
     .nav a { white-space: nowrap; }
-    @media (max-width: 1280px) { .nav { gap: 26px; margin-left: 40px; } .nav .ext { display: none; } }
+    @media (max-width: 1280px) { .nav { gap: 24px; margin-left: 36px; } }
+    @media (max-width: 1100px) { .brand-pill span { display: none; } .brand-pill { padding: 0 7px; } }
+    @media (max-width: 850px) { .brand-links { gap: 6px; } }
+    @media (max-width: 390px) { .brand-links { display: none; } .gh-btn { margin-left: auto; } }
     @media (max-width: 850px) { .nav { display: none; } .site-header { height: 72px; } }
     @media (max-width: 390px) { .logo img { width: 36px; height: 36px; } .gh-btn span { display: none; } }
 
@@ -263,9 +271,11 @@
         <a href="#yakindan">Yakından bak</a>
         <a href="#calismalar">Çalışmalar</a>
         <a href="#github" lang="en">GitHub</a>
-        <a class="ext" href="https://www.goldsrcstudio.com/" lang="en">GoldSrcStudio.com</a>
-        <a class="ext" href="https://bydevil.com/" lang="en">Bydevil.com</a>
       </nav>
+      <div class="brand-links">
+        <a class="brand-pill" href="https://www.goldsrcstudio.com/"><img src="assets/goldsrc-mark.png" alt="" width="28" height="28"><span lang="en">GoldSrc Studio</span></a>
+        <a class="brand-pill" href="https://bydevil.com/"><img src="assets/bydevil-mark.png" alt="" width="28" height="28"><span lang="en">By Devil</span></a>
+      </div>
       <a class="gh-btn caps" href="https://github.com/by-devil/GoldSrcStudio" target="_blank" rel="noopener">
         <svg><use href="#i-gh"/></svg><span lang="en">GitHub</span>
       </a>
@@ -409,7 +419,7 @@
     const ext = (url, label, icon, cls = '') =>
       `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener"><svg><use href="#i-${icon}"/></svg>${label}</a>`;
 
-    fetch('tools.json', { cache: 'no-cache' })
+    fetch('tools/tools.json', { cache: 'no-cache' })
       .then(r => r.json())
       .then(tools => {
         const n = pad(tools.length);
@@ -499,9 +509,11 @@
         ${m.image ? `<img src="${esc(m.image)}" alt="" loading="lazy" onerror="this.remove()">` : ''}
         <span><strong lang="en">${esc(m.name)}</strong><small class="caps">↓ ${fmt(m.downloads)}${m.category && m.category !== 'Skybox' ? ` · <span lang="en" style="position:static">${esc(m.category)}</span>` : ''}</small></span>
       </a>`;
-    fetch('data/works.json', { cache: 'no-cache' })
-      .then(r => r.json())
-      .then(w => {
+    const PLUGINS = { status: 'Yakında', items: ['Pro Public TOP15', 'Royal Pass', 'Team System', 'GunGame TOP15', 'Zombie Plague TOP15', 'Public Battle Pass', 'Zombie Plague Battle Pass'] };
+    const getJSON = url => fetch(url, { cache: 'no-cache' }).then(r => r.json());
+    Promise.all([getJSON('maps/maps.json'), getJSON('skies/skies.json')])
+      .then(([maps, skies]) => {
+        const w = { maps, skies, plugins: PLUGINS };
         document.getElementById('works').innerHTML = `
           <article class="work work-maps">
             <div class="work-head">
