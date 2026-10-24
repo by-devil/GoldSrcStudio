@@ -16,7 +16,8 @@
       "HTML rapor dışa aktarımı"
     ],
     "image": "assets/map-optimization.jpg",
-    "gamebanana": "https://gamebanana.com/tools/24466"
+    "gamebanana": "https://gamebanana.com/tools/24466",
+    "download": "tools/map-optimization/GoldSrcOptimization_Setup_beta.exe"
   },
   {
     "name": "Studio Paint",
@@ -35,7 +36,8 @@
       "Yeni _skin.mdl olarak dışa aktarma"
     ],
     "image": "assets/studio-paint.jpg",
-    "gamebanana": "https://gamebanana.com/tools/24470"
+    "gamebanana": "https://gamebanana.com/tools/24470",
+    "download": "tools/studio-paint/GoldSrcStudioPaint_v0.1_test.zip"
   },
   {
     "name": "Studio Nav",
@@ -54,7 +56,8 @@
       "RES ve ZIP paket oluşturma"
     ],
     "image": "assets/studio-nav.jpg",
-    "gamebanana": "https://gamebanana.com/tools/24109"
+    "gamebanana": "https://gamebanana.com/tools/24109",
+    "download": "tools/studio-nav/GoldSrcStudioNav_Setup_v0.24.0.exe"
   },
   {
     "name": "Skin Studio",
@@ -74,7 +77,7 @@
     ],
     "image": "assets/skin-studio.jpg",
     "gamebanana": "https://gamebanana.com/tools/24053",
-    "download": "https://github.com/sodej33-lang/CS16-Skin-Studio/releases",
+    "download": "tools/skin-studio/SkinStudio_Setup_v1.20.1.exe",
     "github": "https://github.com/sodej33-lang/CS16-Skin-Studio"
   },
   {
@@ -94,6 +97,7 @@
       "Doğrudan .mdl dışa aktarma"
     ],
     "image": "assets/studio-modeler.jpg",
-    "gamebanana": "https://gamebanana.com/tools/24469"
+    "gamebanana": "https://gamebanana.com/tools/24469",
+    "download": "tools/studio-modeler/GoldSrcStudioModeler_v0.1_test.zip"
   }
 ]
