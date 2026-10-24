@@ -28,7 +28,7 @@ Select brushes from Hammer, J.A.C.K. or Jackhammer maps and convert them into Go
 
 ## Download
 
-**[⬇ GoldSrcStudioModeler_v0.1_test.zip](GoldSrcStudioModeler_v0.1_test.zip?raw=1)** · 1.3 MB
+**[⬇ GoldSrcStudioModeler_v0.1_test.zip](https://github.com/by-devil/GoldSrcStudio/releases/download/studio-modeler-beta-test/GoldSrcStudioModeler_v0.1_test.zip)** · 1.3 MB
 
 <sub>SHA-256: `fb26d664cd645f8a56dd52e16ac4e9217825a5361bfa6639f8bd66562d0a1844`</sub>
 

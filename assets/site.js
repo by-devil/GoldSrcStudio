@@ -520,11 +520,13 @@
   function guard() {
     if (window.top !== window.self) { try { window.top.location = window.self.location; } catch { document.documentElement.hidden = true; } }
     const field = el => el.closest?.('input, textarea, select, [contenteditable]');
-    document.addEventListener('contextmenu', e => { if (!field(e.target)) e.preventDefault(); });
-    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG' || e.target.tagName === 'CANVAS') e.preventDefault(); });
+    // Only images are protected: links and text keep the normal right-click menu ("open in new tab" etc.).
+    const media = el => el.tagName === 'IMG' || el.tagName === 'CANVAS';
+    document.addEventListener('contextmenu', e => { if (media(e.target)) e.preventDefault(); });
+    document.addEventListener('dragstart', e => { if (media(e.target)) e.preventDefault(); });
     document.addEventListener('keydown', e => {
-      const k = e.key.toLowerCase(), mod = e.ctrlKey || e.metaKey;
-      if (e.key === 'F12' || (mod && (k === 'u' || k === 's' || k === 'p')) || (mod && e.shiftKey && 'ijc'.includes(k))) e.preventDefault();
+      const k = e.key.toLowerCase();
+      if ((e.ctrlKey || e.metaKey) && (k === 's' || k === 'u')) e.preventDefault(); // save page / view source
     });
     document.addEventListener('copy', e => {
       const sel = String(window.getSelection() || '');

@@ -28,7 +28,7 @@ Open GoldSrc .mdl models in 3D, select surfaces and paint them layer by layer wi
 
 ## Download
 
-**[⬇ GoldSrcStudioPaint_v0.1_test.zip](GoldSrcStudioPaint_v0.1_test.zip?raw=1)** · 1.5 MB
+**[⬇ GoldSrcStudioPaint_v0.1_test.zip](https://github.com/by-devil/GoldSrcStudio/releases/download/studio-paint-beta-test/GoldSrcStudioPaint_v0.1_test.zip)** · 1.5 MB
 
 <sub>SHA-256: `1cabbe9e1f1e82fbe7ba12a1cecd5544163d7ee6a9085bdd96904fd07c26ae97`</sub>
 

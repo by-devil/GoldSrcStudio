@@ -9,6 +9,10 @@ Pages: every text is written in both languages. T('tr', 'en') emits two
 The choice is kept in localStorage as "gs-lang"; ?lang=en / ?lang=tr also works.
 
 READMEs: README.md (English) and README.tr.md (Turkish) in every folder.
+
+Tool installers live in GitHub Releases, not in the repository. For a new
+version: create a release on GitHub with the installer attached, then set
+"download", "size" (bytes) and "sha256" for the tool in tools/tools.json.
 """
 import hashlib
 import json
@@ -42,8 +46,18 @@ ICON = {
     'plug': IC('<path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0V8zM12 17v4"/>'),
 }
 
+SITE = 'https://tools.bydevil.com'
+
+def page_url(path):
+    return '/' + path[:-len('index.html')] if path.endswith('index.html') else '/' + path
+
 def shell(path, page, title, desc, body, slug=None, image='/assets/map-optimization.jpg'):
     """title and desc are (tr, en) pairs."""
+    url = SITE + page_url(path)
+    alt = '' if page == 'notfound' else f'''
+  <link rel="alternate" hreflang="tr" href="{url}?lang=tr">
+  <link rel="alternate" hreflang="en" href="{url}?lang=en">
+  <link rel="alternate" hreflang="x-default" href="{url}">'''
     html = f'''<!doctype html>
 <!-- © GoldSrc Studio · by Devil. Tasarım ve içerik izinsiz kopyalanamaz / Design and content may not be copied without permission. -->
 <html lang="tr" data-theme="original" data-lang="tr">
@@ -59,7 +73,7 @@ def shell(path, page, title, desc, body, slug=None, image='/assets/map-optimizat
   <meta property="og:title" content="{title[0]}">
   <meta property="og:description" content="{desc[0]}">
   <meta property="og:image" content="https://tools.bydevil.com{image}">
-  <link rel="icon" type="image/png" href="/assets/goldsrc-mark.png">
+  <link rel="icon" type="image/png" href="/assets/goldsrc-mark.png">{alt}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
@@ -206,8 +220,10 @@ shell('contact/index.html', 'contact', ('İletişim — GoldSrc Studio', 'Contac
       </div>
     </div></section>''')
 
+LEGACY = json.dumps({t['legacyDownload']: t['download'] for t in tools if t.get('legacyDownload')})
 shell('404.html', 'notfound', ('Sayfa bulunamadı — GoldSrc Studio', 'Page not found — GoldSrc Studio'),
-  ('Aradığın sayfa bulunamadı.', 'The page you are looking for could not be found.'), f'''    <section class="section"><div class="wrap" style="text-align:center;padding:60px 0">
+  ('Aradığın sayfa bulunamadı.', 'The page you are looking for could not be found.'), f'''    <script>(function(m){{var u=m[location.pathname];if(u)location.replace(u)}})({LEGACY})</script>
+    <section class="section"><div class="wrap" style="text-align:center;padding:60px 0">
       <span class="eyebrow"><i></i>404</span>
       <h1 style="margin:18px 0 10px;font-size:40px;font-weight:800;letter-spacing:-.03em">{T('Bu sayfa bulunamadı.', 'This page could not be found.')}</h1>
       <p style="color:var(--text-2)">{T('Aradığın şey taşınmış olabilir. Hızlı arama için <span class="kbd">/</span> tuşuna bas.', 'It may have moved. Press <span class="kbd">/</span> for quick search.')}</p>
@@ -243,19 +259,21 @@ def plugin_cell(p, lang, L, base=''):
             f'<b><a href="{base}{p["slug"]}">{p["name"]}</a></b> · <sub>{len(p["shots"])} {L("ekran görüntüsü", "screenshots")}</sub><br>{p["text"]}</td>')
 
 def tool_file(t):
-    path = 'tools/' + t['download'].split('/tools/', 1)[1]
-    data = open(path, 'rb').read()
-    return os.path.basename(path), f'{len(data) / 1048576:.1f} MB', hashlib.sha256(data).hexdigest()
+    return t['download'].split('/')[-1], f'{t["size"] / 1048576:.1f} MB', t['sha256']
+
+def low(text):
+    """Lower-cases the first letter of a list item joined mid-sentence (keeps acronyms like NAV)."""
+    return text if text[1:2].isupper() else ('i' if text[0] == 'İ' else text[0].lower()) + text[1:]
 
 def tool_cell(t, lang, L):
     t = loc(t, lang)
     file = tool_file(t)[0]
-    links = [f'<a href="tools/{t["slug"]}/{file}?raw=1"><b>⬇ {L("İndir", "Download")}</b></a>', f'<a href="{t["gamebanana"]}">GameBanana →</a>']
+    links = [f'<a href="{t["download"]}"><b>⬇ {L("İndir", "Download")}</b></a>', f'<a href="{t["gamebanana"]}">GameBanana →</a>']
     if t.get('repo'):
         links.append(f'<a href="{t["repo"]}">GitHub →</a>')
     return (f'<td width="50%" valign="top"><img src="{t["image"][1:]}" alt="{t["name"]}"><br>'
             f'<b><a href="tools/{t["slug"]}">{t["name"]}</a></b> · <sub>{t["version"]} · {t["platform"]}</sub><br>'
-            f'{t["summary"]} {", ".join(t["features"][:3])}.<br>{" · ".join(links)}</td>')
+            f'{t["summary"]} {", ".join(low(f) if i else f for i, f in enumerate(t["features"][:3]))}.<br>{" · ".join(links)}</td>')
 
 for t in tools:
     def tool_readme(lang, L, t=t):
@@ -290,7 +308,7 @@ for t in tools:
 
 ## {L('İndir', 'Download')}
 
-**[⬇ {file}]({file}?raw=1)** · {size}
+**[⬇ {file}]({t['download']})** · {size}
 
 <sub>SHA-256: `{sha}`</sub>
 
@@ -401,4 +419,31 @@ readme('.', lambda lang, L: f"""<p align="center">
 
 <sub>{L('GoldSrc Studio bağımsız bir projedir; Valve Corporation veya Steam ile bağlantılı değildir.', 'GoldSrc Studio is an independent project and is not affiliated with Valve Corporation or Steam.')}</sub>
 """)
+# ---------- sitemap.xml + robots.txt ----------
+# Images are drawn into <canvas> on the site, so they are listed here for Google Images.
+def absu(u):
+    return u if u.startswith('http') else SITE + u
+
+def entry(path, images):
+    url = SITE + path
+    imgs = ''.join(f'<image:image><image:loc>{absu(i)}</image:loc></image:image>' for i in dict.fromkeys(i for i in images if i))
+    langs = ''.join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{url}?lang={l}"/>' for l in ('tr', 'en'))
+    return f'<url><loc>{url}</loc>{langs}<xhtml:link rel="alternate" hreflang="x-default" href="{url}"/>{imgs}</url>'
+
+plugin_imgs = [f'/plugins/{p["slug"]}/{x["file"]}' for p in plugins for x in p['shots']]
+urls = [
+    entry('/', ['/assets/map-optimization.jpg'] + [t['image'] for t in tools] + [m['image'] for m in maps['featured'] + skies['featured']]
+          + [f'/plugins/{p["slug"]}/{p["shots"][p["cover"]]["file"]}' for p in plugins]),
+    entry('/tools/', [t['image'] for t in tools]),
+    *[entry(f'/tools/{t["slug"]}/', [t['image']]) for t in tools],
+    entry('/maps/', [m['image'] for m in maps['items']]),
+    entry('/skies/', [m['image'] for m in skies['items']]),
+    entry('/plugins/', plugin_imgs),
+    entry('/contact/', []),
+]
+open('sitemap.xml', 'w', encoding='utf-8').write(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+    'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+    + '\n'.join(urls) + '\n</urlset>\n')
+open('robots.txt', 'w', encoding='utf-8').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
 print('ok')

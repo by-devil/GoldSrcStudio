@@ -28,7 +28,7 @@ Analyse compiled BSP maps and inspect high-wpoly areas, large lightmaps and prob
 
 ## Download
 
-**[⬇ GoldSrcOptimization_Setup_beta.exe](GoldSrcOptimization_Setup_beta.exe?raw=1)** · 5.6 MB
+**[⬇ GoldSrcOptimization_Setup_beta.exe](https://github.com/by-devil/GoldSrcStudio/releases/download/map-optimization-beta/GoldSrcOptimization_Setup_beta.exe)** · 5.6 MB
 
 <sub>SHA-256: `f88f266d3e865168aabd8b985482b3e8d4146101cd445e4062c2b6b5bf518d66`</sub>
 

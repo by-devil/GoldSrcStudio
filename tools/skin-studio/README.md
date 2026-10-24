@@ -28,7 +28,7 @@ Open GoldSrc .mdl files, edit embedded textures, add PNG/JPG images and create s
 
 ## Download
 
-**[⬇ SkinStudio_Setup_v1.20.1.exe](SkinStudio_Setup_v1.20.1.exe?raw=1)** · 6.7 MB
+**[⬇ SkinStudio_Setup_v1.20.1.exe](https://github.com/by-devil/GoldSrcStudio/releases/download/skin-studio-v1.20.1/SkinStudio_Setup_v1.20.1.exe)** · 6.7 MB
 
 <sub>SHA-256: `44eafbc3be85f4da2e6a72f2d6101b868932f713ec2eca02f51e09293314a25b`</sub>
 

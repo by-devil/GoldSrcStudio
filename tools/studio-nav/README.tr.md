@@ -28,7 +28,7 @@ BSP haritalarını 3D görüntüle; NAV alanları ve PWF waypoint verileriyle ç
 
 ## İndir
 
-**[⬇ GoldSrcStudioNav_Setup_v0.24.0.exe](GoldSrcStudioNav_Setup_v0.24.0.exe?raw=1)** · 4.2 MB
+**[⬇ GoldSrcStudioNav_Setup_v0.24.0.exe](https://github.com/by-devil/GoldSrcStudio/releases/download/studio-nav-v0.30.0-beta/GoldSrcStudioNav_Setup_v0.24.0.exe)** · 4.2 MB
 
 <sub>SHA-256: `641d8df5fdac0b47471254c691f442d17e3d9af9844c6e75147bd7a783e83a97`</sub>
 
