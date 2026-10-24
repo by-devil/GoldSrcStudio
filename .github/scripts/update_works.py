@@ -41,6 +41,30 @@ def by_downloads(items):
     return sorted(items, key=lambda x: x.get("downloads", 0), reverse=True)
 
 
+IMG_TIMEOUT = 30
+
+
+def local_image(item, folder):
+    """Kapak resmini <folder>/img/<id>.jpg olarak saklar; başarısız olursa uzak adresi döndürür."""
+    url = item.get("image")
+    if not url or not item.get("id"):
+        return url
+    path = ROOT / folder / "img" / f"{item['id']}.jpg"
+    if not path.exists():
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "GoldSrcStudio-works-updater", "Referer": "https://bydevil.com/"})
+            with urllib.request.urlopen(req, timeout=IMG_TIMEOUT) as r:
+                body = r.read()
+            if len(body) < 500:
+                return url
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(body)
+        except Exception as e:  # ağ hatası: uzak adres kullanılır, bir sonraki çalışmada yeniden denenir
+            print(f"Resim alınamadı ({item['id']}): {e}")
+            return url
+    return f"/{folder}/img/{item['id']}.jpg"
+
+
 def card(item):
     return {k: item.get(k) for k in ("name", "category", "downloads", "likes", "image", "url")}
 
@@ -62,9 +86,14 @@ def md_name(name):
     return name.replace("|", "\\|")
 
 
+def rel(src):
+    """README içinde yerel resimleri klasöre göre göreli yap."""
+    return src.split("/", 2)[2] if src and src.startswith(("/maps/", "/skies/")) else src
+
+
 def gallery(items):
     cells = [
-        f'<td width="33%" valign="top"><a href="{m["url"]}"><img src="{m["image"]}" alt=""></a><br>'
+        f'<td width="33%" valign="top"><a href="{m["url"]}"><img src="{rel(m["image"])}" alt=""></a><br>'
         f'<b>{m["name"]}</b><br><sub>⬇ {fmt(m.get("downloads", 0))}</sub></td>'
         for m in items
     ]
@@ -163,6 +192,10 @@ def main():
     page = load_page(sys.argv[1] if len(sys.argv) > 1 else None)
     maps = embedded_object(page, '"mapCount":')["maps"]
     skies = embedded_object(page, '"skies":[')["skies"]
+    for m in maps:
+        m["image"] = local_image(m, "maps")
+    for s in skies:
+        s["image"] = local_image(s, "skies")
     if len(maps) < 10 or len(skies) < 10:
         raise SystemExit(f"Beklenmeyen veri: {len(maps)} harita, {len(skies)} skybox")
     changed = maps_files(maps) | skies_files(skies)
