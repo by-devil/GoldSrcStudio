@@ -1,55 +1,57 @@
+**English** · [Türkçe](README.tr.md)
+
 # Public Battle Pass
 
-**AMX Mod X eklentisi · Counter-Strike 1.6**
+**AMX Mod X plugin · Counter-Strike 1.6**
 
 ![Public Battle Pass](img/bpp-01.jpg)
 
-Public sunucular için sezonluk battle pass: ücretsiz ve premium seviye ödülleri, kasalar, çark ve efekt envanteri.
+Seasonal battle pass for public servers: free and premium tier rewards, cases, a prize wheel and an effects inventory.
 
-`Seviyeler` · `Kasalar` · `Çark` · `Envanter`
+`Tiers` · `Cases` · `Wheel` · `Inventory`
 
-Fiyat, kurulum ve canlı ayrıntılar: **[bydevil.com](https://bydevil.com/plugins/#battlepass)** · [İletişim](https://tools.bydevil.com/contact/)
+Pricing, installation and live details: **[bydevil.com](https://bydevil.com/plugins/#battlepass)** · [Contact](https://tools.bydevil.com/contact/)
 
-## Ekran görüntüleri
+## Screenshots
 
-### 1. Seviye ödülleri
+### 1. Tier rewards
 
-![Seviye ödülleri](img/bpp-01.jpg)
+![Tier rewards](img/bpp-01.jpg)
 
-### 2. Günlük ve haftalık görevler
+### 2. Daily and weekly missions
 
-![Günlük ve haftalık görevler](img/bpp-02.jpg)
+![Daily and weekly missions](img/bpp-02.jpg)
 
-### 3. Kasalar
+### 3. Cases
 
-![Kasalar](img/bpp-03.jpg)
+![Cases](img/bpp-03.jpg)
 
-### 4. Kasa açılışı
+### 4. Case opening
 
-![Kasa açılışı](img/bpp-04.jpg)
+![Case opening](img/bpp-04.jpg)
 
-### 5. Çark
+### 5. Prize wheel
 
-![Çark](img/bpp-05.jpg)
+![Prize wheel](img/bpp-05.jpg)
 
-### 6. Envanter
+### 6. Inventory
 
-![Envanter](img/bpp-06.jpg)
+![Inventory](img/bpp-06.jpg)
 
-### 7. Sezon sıralaması
+### 7. Season ranking
 
-![Sezon sıralaması](img/bpp-07.jpg)
+![Season ranking](img/bpp-07.jpg)
 
-### 8. Oyuncu profili
+### 8. Player profile
 
-![Oyuncu profili](img/bpp-08.jpg)
+![Player profile](img/bpp-08.jpg)
 
-### 9. Profil özelleştirme
+### 9. Profile customisation
 
-![Profil özelleştirme](img/bpp-09.jpg)
+![Profile customisation](img/bpp-09.jpg)
 
-### 10. Nasıl çalışır?
+### 10. How it works
 
-![Nasıl çalışır?](img/bpp-10.jpg)
+![How it works](img/bpp-10.jpg)
 
-[← Tüm eklentiler](../README.md)
+[← All plugins](../README.md)

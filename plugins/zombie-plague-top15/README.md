@@ -1,63 +1,65 @@
+**English** · [Türkçe](README.tr.md)
+
 # Zombie Plague TOP15
 
-**AMX Mod X eklentisi · Counter-Strike 1.6**
+**AMX Mod X plugin · Counter-Strike 1.6**
 
 ![Zombie Plague TOP15](img/zp-01.jpg)
 
-Zombie Plague için sıralama: liderle kıyaslayan profiller, rütbe yolu, özelleştirilebilir kart, sezon arşivi ve haftalık VIP ödülleri.
+Rankings for Zombie Plague: profiles compared with the leader, a rank path, a customisable card, season archive and weekly VIP rewards.
 
-`Genel` · `Süre` · `Profil` · `Haftalık ödül`
+`Overall` · `Playtime` · `Profile` · `Weekly reward`
 
-Fiyat, kurulum ve canlı ayrıntılar: **[bydevil.com](https://bydevil.com/plugins/#zombieplague)** · [İletişim](https://tools.bydevil.com/contact/)
+Pricing, installation and live details: **[bydevil.com](https://bydevil.com/plugins/#zombieplague)** · [Contact](https://tools.bydevil.com/contact/)
 
-## Ekran görüntüleri
+## Screenshots
 
-### 1. Genel sıralama
+### 1. Overall ranking
 
-![Genel sıralama](img/zp-01.jpg)
+![Overall ranking](img/zp-01.jpg)
 
-### 2. Oyuncu profili
+### 2. Player profile
 
-![Oyuncu profili](img/zp-02.jpg)
+![Player profile](img/zp-02.jpg)
 
-### 3. Kendi profilin
+### 3. Your own profile
 
-![Kendi profilin](img/zp-03.jpg)
+![Your own profile](img/zp-03.jpg)
 
-### 4. Özelleştir: rütbe avatarları
+### 4. Customise: rank avatars
 
-![Özelleştir: rütbe avatarları](img/zp-04.jpg)
+![Customise: rank avatars](img/zp-04.jpg)
 
-### 5. Özelleştir: kart arka planı
+### 5. Customise: card background
 
-![Özelleştir: kart arka planı](img/zp-05.jpg)
+![Customise: card background](img/zp-05.jpg)
 
-### 6. Özelleştir: isim rengi
+### 6. Customise: name colour
 
-![Özelleştir: isim rengi](img/zp-06.jpg)
+![Customise: name colour](img/zp-06.jpg)
 
-### 7. Özelleştir: takım rozeti
+### 7. Customise: team badge
 
-![Özelleştir: takım rozeti](img/zp-07.jpg)
+![Customise: team badge](img/zp-07.jpg)
 
-### 8. Süre sıralaması
+### 8. Playtime ranking
 
-![Süre sıralaması](img/zp-08.jpg)
+![Playtime ranking](img/zp-08.jpg)
 
-### 9. Süre profili
+### 9. Playtime profile
 
-![Süre profili](img/zp-09.jpg)
+![Playtime profile](img/zp-09.jpg)
 
-### 10. Sezon arşivi
+### 10. Season archive
 
-![Sezon arşivi](img/zp-10.jpg)
+![Season archive](img/zp-10.jpg)
 
-### 11. Geçmiş sezon sıralaması
+### 11. Past season ranking
 
-![Geçmiş sezon sıralaması](img/zp-11.jpg)
+![Past season ranking](img/zp-11.jpg)
 
-### 12. Haftalık ödüller
+### 12. Weekly rewards
 
-![Haftalık ödüller](img/zp-12.jpg)
+![Weekly rewards](img/zp-12.jpg)
 
-[← Tüm eklentiler](../README.md)
+[← All plugins](../README.md)

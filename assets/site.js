@@ -1,4 +1,4 @@
-/* GoldSrc Studio — ortak menü, altbilgi, hızlı arama ve sayfa içerikleri */
+/* GoldSrc Studio — shared header, footer, quick search and page content */
 (() => {
   'use strict';
 
@@ -12,14 +12,14 @@
     bydevil: 'https://bydevil.com/',
     discord: 'serhatondes',
   };
-  /* ---------- dil ---------- */
+  /* ---------- language ---------- */
   const LANG = document.documentElement.dataset.lang === 'en' ? 'en' : 'tr';
   const L = (tr, en) => LANG === 'en' ? en : tr;
   const LOCALE = L('tr-TR', 'en-US');
 
-  let PLUGINS = []; // plugins/plugins.json, init() içinde yüklenir
+  let PLUGINS = []; // plugins/plugins.json, loaded in init()
 
-  /* ---------- yardımcılar ---------- */
+  /* ---------- helpers ---------- */
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -68,7 +68,7 @@
   const page = document.body.dataset.page;
   const imgFallback = 'onerror="this.remove()"';
 
-  /* ---------- menü ---------- */
+  /* ---------- header ---------- */
   function header(tools) {
     const groups = { tools: ['tools', 'tool'], maps: ['maps', 'skies'] };
     const cur = p => (groups[p] || [p]).includes(page) ? ' aria-current="page"' : '';
@@ -171,7 +171,7 @@
     });
   }
 
-  /* ---------- tema ---------- */
+  /* ---------- theme ---------- */
   const THEMES = [
     ['original', 'Original', L('Katmanlı maviler', 'Layered blues'), '#1a2634', '#5ab0ec'],
     ['dust', 'Dust', L('Sıcak kum', 'Warm sand'), '#15130f', '#e9a23b'],
@@ -185,7 +185,7 @@
     const current = () => document.documentElement.dataset.theme || 'original';
     const set = t => {
       document.documentElement.dataset.theme = t;
-      try { localStorage.setItem('gs-theme', t); } catch { /* gizli pencere vb. */ }
+      try { localStorage.setItem('gs-theme', t); } catch { /* private window etc. */ }
       $$('.swatch', menu).forEach(b => b.setAttribute('aria-checked', b.dataset.t === t));
     };
     btn.addEventListener('click', e => {
@@ -207,7 +207,7 @@
     });
   }
 
-  /* ---------- hızlı arama ---------- */
+  /* ---------- quick search ---------- */
   function palette() {
     let el, list, input, results = [], sel = 0;
     const norm = s => s.toLocaleLowerCase(LOCALE).normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -276,7 +276,7 @@
     $$('[data-palette]').forEach(b => b.addEventListener('click', open));
   }
 
-  /* ---------- parçalar ---------- */
+  /* ---------- components ---------- */
   const toolCard = t => `
     <article class="card tool-card hover fade">
       <a class="card-media contain" href="/tools/${t.slug}/"><span class="badge">${esc(t.version)}</span><img src="${esc(t.image)}" alt="${esc(t.name)} ${L('ekran görüntüsü', 'screenshot')}" loading="lazy"></a>
@@ -320,7 +320,7 @@
     </article>`;
   };
 
-  /* ---------- eklenti galerisi ---------- */
+  /* ---------- plugin gallery ---------- */
   function gallery(p, start = 0) {
     const n = p.shots.length;
     let i = 0;
@@ -363,7 +363,7 @@
   });
   const statTile = (ic, value, label) => `<div class="hstat"><b>${value}</b><span>${icon(ic)}${label}</span></div>`;
 
-  /* ---------- sayfalar ---------- */
+  /* ---------- pages ---------- */
   const pages = {
     async home(main) {
       const [tools, maps, skies] = await Promise.all([data.tools(), data.maps(), data.skies()]);
@@ -495,8 +495,8 @@
     draw();
   }
 
-  /* ---------- dil seçimi ---------- */
-  // Sabit metinler sayfada iki dilde durur (data-l, site.css gösterir); öznitelikler ve başlık burada çevrilir.
+  /* ---------- language switch ---------- */
+  // Static texts are in the page in both languages (data-l, shown by site.css); attributes and the title are translated here.
   function applyLang() {
     if (LANG !== 'en') return;
     const b = document.body;
@@ -508,15 +508,15 @@
   }
   function wireLang(hdr) {
     $('[data-lang-btn]', hdr).addEventListener('click', () => {
-      try { localStorage.setItem('gs-lang', LANG === 'en' ? 'tr' : 'en'); } catch { /* gizli pencere vb. */ }
+      try { localStorage.setItem('gs-lang', LANG === 'en' ? 'tr' : 'en'); } catch { /* private window etc. */ }
       const u = new URL(location.href);
       u.searchParams.set('lang', LANG === 'en' ? 'tr' : 'en');
       location.replace(u);
     });
   }
 
-  /* ---------- kopyalamaya karşı caydırıcılar ---------- */
-  // Tarayıcıya gelen her şey görülebilir; bunlar yalnızca hızlı kopyalamayı zorlaştırır.
+  /* ---------- copy deterrents ---------- */
+  // Anything sent to the browser can be seen; these only make quick copying harder.
   function guard() {
     if (window.top !== window.self) { try { window.top.location = window.self.location; } catch { document.documentElement.hidden = true; } }
     const field = el => el.closest?.('input, textarea, select, [contenteditable]');
@@ -532,8 +532,8 @@
       e.preventDefault();
       e.clipboardData.setData('text/plain', `${sel}\n\n${L('Kaynak', 'Source')}: ${location.href} · © GoldSrc Studio`);
     });
-    // Resimler sayfada <img> olarak kalmaz: hemen <canvas> ile değiştirilir, dosya sayfa dışında yüklenip
-    // canvas'a çizilir. "Resim indirici" eklentileri sayfadaki <img> etiketlerini tarar, canvas'ı bulamaz.
+    // Images never stay in the page as <img>: each is swapped for a <canvas> at once, the file is loaded
+    // off-page and drawn into it. Image downloader extensions scan <img> tags and can't see the canvas.
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { io.unobserve(e.target); e.target._load(); } }), { rootMargin: '400px' });
     const shield = img => {
       const src = img.getAttribute('src');
@@ -569,14 +569,14 @@
       'The design and content of this site belong to GoldSrc Studio / by Devil. Do not copy without permission.'));
   }
 
-  /* ---------- başlat ---------- */
+  /* ---------- start ---------- */
   async function init() {
     guard();
     applyLang();
     const hdr = $('#hdr'), ftr = $('#ftr'), main = $('main');
     let tools = [];
-    try { tools = await data.tools(); } catch { /* menü araçsız da çalışır */ }
-    try { PLUGINS = await data.plugins(); } catch { /* eklenti bölümleri boş kalır */ }
+    try { tools = await data.tools(); } catch { /* the menu works without tools */ }
+    try { PLUGINS = await data.plugins(); } catch { /* plugin sections stay empty */ }
     hdr.className = 'hdr'; hdr.innerHTML = header(tools); wireHeader(hdr); wireTheme(hdr); wireLang(hdr);
     ftr.className = 'ftr'; ftr.innerHTML = footer(tools);
     palette();

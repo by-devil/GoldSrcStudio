@@ -1,8 +1,11 @@
-"""bydevil.com'a gömülü GameBanana verisinden maps/ ve skies/ klasörlerini günceller.
+"""Updates maps/ and skies/ from the GameBanana data embedded in bydevil.com.
 
-Kullanım:
-  python .github/scripts/update_works.py               # https://bydevil.com/ adresinden indirir
-  python .github/scripts/update_works.py kayit.html    # kaydedilmiş bir sayfadan okur
+Writes maps.json / skies.json for the site and README.md (English) +
+README.tr.md (Turkish) for GitHub.
+
+Usage:
+  python .github/scripts/update_works.py               # downloads https://bydevil.com/
+  python .github/scripts/update_works.py saved.html    # reads a saved copy of the page
 """
 import json
 import sys
@@ -24,7 +27,7 @@ def load_page(arg):
 
 
 def embedded_object(page, marker):
-    """marker'ı içeren en dıştaki JSON nesnesini döndürür."""
+    """Returns the outermost JSON object that contains marker."""
     i = page.index(marker)
     start = i
     while True:
@@ -45,7 +48,7 @@ IMG_TIMEOUT = 30
 
 
 def local_image(item, folder):
-    """Kapak resmini <folder>/img/<id>.jpg olarak saklar; başarısız olursa uzak adresi döndürür."""
+    """Stores the cover as <folder>/img/<id>.jpg; falls back to the remote URL on failure."""
     url = item.get("image")
     if not url or not item.get("id"):
         return url
@@ -59,8 +62,8 @@ def local_image(item, folder):
                 return url
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(body)
-        except Exception as e:  # ağ hatası: uzak adres kullanılır, bir sonraki çalışmada yeniden denenir
-            print(f"Resim alınamadı ({item['id']}): {e}")
+        except Exception as e:  # network error: keep the remote URL, retried on the next run
+            print(f"Could not fetch image ({item['id']}): {e}")
             return url
     return f"/{folder}/img/{item['id']}.jpg"
 
@@ -70,16 +73,23 @@ def card(item):
 
 
 def entry(item):
-    """Liste sayfaları için kısa kayıt."""
+    """Short record for the list pages."""
     return card(item) | {"date": item.get("date"), "updated": item.get("updated")}
 
 
-def fmt(n):
-    return f"{n:,}".replace(",", ".")
+def fmt(n, lang="tr"):
+    return f"{n:,}" if lang == "en" else f"{n:,}".replace(",", ".")
 
 
-def day(ts):
-    return datetime.fromtimestamp(ts, timezone.utc).strftime("%d.%m.%Y") if ts else "—"
+def day(ts, lang="tr"):
+    return datetime.fromtimestamp(ts, timezone.utc).strftime("%Y-%m-%d" if lang == "en" else "%d.%m.%Y") if ts else "—"
+
+
+LANGS = {"en": "README.md", "tr": "README.tr.md"}
+
+
+def switch(lang):
+    return "**English** · [Türkçe](README.tr.md)" if lang == "en" else "[English](README.md) · **Türkçe**"
 
 
 def md_name(name):
@@ -87,24 +97,25 @@ def md_name(name):
 
 
 def rel(src):
-    """README içinde yerel resimleri klasöre göre göreli yap."""
+    """Makes local images relative to the folder inside the README."""
     return src.split("/", 2)[2] if src and src.startswith(("/maps/", "/skies/")) else src
 
 
-def gallery(items):
+def gallery(items, lang):
     cells = [
         f'<td width="33%" valign="top"><a href="{m["url"]}"><img src="{rel(m["image"])}" alt=""></a><br>'
-        f'<b>{m["name"]}</b><br><sub>⬇ {fmt(m.get("downloads", 0))}</sub></td>'
+        f'<b>{m["name"]}</b><br><sub>⬇ {fmt(m.get("downloads", 0), lang)}</sub></td>'
         for m in items
     ]
     rows = ["<tr>" + "".join(cells[i:i + 3]) + "</tr>" for i in range(0, len(cells), 3)]
     return "<table>\n" + "\n".join(rows) + "\n</table>"
 
 
-def table(items):
-    lines = ["| Ad | İndirme | Beğeni | Tarih |", "| --- | ---: | ---: | --- |"]
+def table(items, lang):
+    head = "| Name | Downloads | Likes | Date |" if lang == "en" else "| Ad | İndirme | Beğeni | Tarih |"
+    lines = [head, "| --- | ---: | ---: | --- |"]
     lines += [
-        f'| [{md_name(m["name"])}]({m["url"]}) | {fmt(m.get("downloads", 0))} | {m.get("likes", 0)} | {day(m.get("date"))} |'
+        f'| [{md_name(m["name"])}]({m["url"]}) | {fmt(m.get("downloads", 0), lang)} | {m.get("likes", 0)} | {day(m.get("date"), lang)} |'
         for m in by_downloads(items)
     ]
     return "\n".join(lines)
@@ -119,7 +130,7 @@ def write(path, text):
 
 
 def maps_files(maps):
-    cats = Counter(m.get("category") or "Diğer" for m in maps)
+    cats = Counter(m.get("category") or "Other" for m in maps)
     total = sum(m.get("downloads", 0) for m in maps)
     data = {
         "count": len(maps),
@@ -130,20 +141,22 @@ def maps_files(maps):
     }
     groups = defaultdict(list)
     for m in maps:
-        groups[m.get("category") or "Diğer"].append(m)
-    sections = "\n\n".join(
-        f"### {name} ({cats[name]})\n\n{table(groups[name])}" for name, _ in cats.most_common()
-    )
-    readme = f"""# Haritalar
+        groups[m.get("category") or "Other"].append(m)
+    def readme(lang):
+        L = lambda tr, en: en if lang == "en" else tr
+        sections = "\n\n".join(f"### {name} ({cats[name]})\n\n{table(groups[name], lang)}" for name, _ in cats.most_common())
+        return f"""{switch(lang)}
 
-Counter-Strike 1.6 için **{len(maps)} harita** · toplam **{fmt(total)}** indirme.
-Tüm haritalar ücretsizdir ve GameBanana üzerinden indirilir. → [bydevil.com/maps](https://bydevil.com/maps/)
+# {L("Haritalar", "Maps")}
 
-## En çok indirilenler
+{L(f"Counter-Strike 1.6 için **{len(maps)} harita** · toplam **{fmt(total)}** indirme.", f"**{len(maps)} maps** for Counter-Strike 1.6 · **{fmt(total, lang)}** downloads in total.")}
+{L("Tüm haritalar ücretsizdir ve GameBanana üzerinden indirilir.", "All maps are free and download from GameBanana.")} → [bydevil.com/maps](https://bydevil.com/maps/)
 
-{gallery(data["featured"])}
+## {L("En çok indirilenler", "Most downloaded")}
 
-## Oyun modları
+{gallery(data["featured"], lang)}
+
+## {L("Oyun modları", "Game modes")}
 
 {" · ".join(f"[{n}](#{n.lower().replace('/', '').replace(' ', '-')}-{c}) **{c}**" for n, c in cats.most_common())}
 
@@ -151,11 +164,12 @@ Tüm haritalar ücretsizdir ve GameBanana üzerinden indirilir. → [bydevil.com
 
 ---
 
-<sub>Bu sayfa her gün GameBanana verileriyle otomatik güncellenir.</sub>
+<sub>{L("Bu sayfa her gün GameBanana verileriyle otomatik güncellenir.", "This page is updated automatically every day from GameBanana data.")}</sub>
 """
-    a = write(ROOT / "maps" / "maps.json", json.dumps(data, ensure_ascii=False, indent=2) + "\n")
-    b = write(ROOT / "maps" / "README.md", readme)
-    return a or b
+    changed = write(ROOT / "maps" / "maps.json", json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+    for lang, name in LANGS.items():
+        changed |= write(ROOT / "maps" / name, readme(lang))
+    return changed
 
 
 def skies_files(skies):
@@ -166,26 +180,31 @@ def skies_files(skies):
         "featured": [card(s) | {"category": None} for s in by_downloads(skies)[:4]],
         "items": [entry(s) | {"category": None} for s in by_downloads(skies)],
     }
-    readme = f"""# Skyboxlar
+    def readme(lang):
+        L = lambda tr, en: en if lang == "en" else tr
+        return f"""{switch(lang)}
 
-Counter-Strike 1.6 ve GoldSrc için **{len(skies)} skybox** · toplam **{fmt(total)}** indirme.
-Tüm skyboxlar ücretsizdir ve GameBanana üzerinden indirilir. → [bydevil.com/skies](https://bydevil.com/skies/)
+# {L("Skyboxlar", "Skyboxes")}
 
-## En çok indirilenler
+{L(f"Counter-Strike 1.6 ve GoldSrc için **{len(skies)} skybox** · toplam **{fmt(total)}** indirme.", f"**{len(skies)} skyboxes** for Counter-Strike 1.6 and GoldSrc · **{fmt(total, lang)}** downloads in total.")}
+{L("Tüm skyboxlar ücretsizdir ve GameBanana üzerinden indirilir.", "All skyboxes are free and download from GameBanana.")} → [bydevil.com/skies](https://bydevil.com/skies/)
 
-{gallery([card(s) for s in by_downloads(skies)[:6]])}
+## {L("En çok indirilenler", "Most downloaded")}
 
-## Tüm skyboxlar
+{gallery([card(s) for s in by_downloads(skies)[:6]], lang)}
 
-{table(skies)}
+## {L("Tüm skyboxlar", "All skyboxes")}
+
+{table(skies, lang)}
 
 ---
 
-<sub>Bu sayfa her gün GameBanana verileriyle otomatik güncellenir.</sub>
+<sub>{L("Bu sayfa her gün GameBanana verileriyle otomatik güncellenir.", "This page is updated automatically every day from GameBanana data.")}</sub>
 """
-    a = write(ROOT / "skies" / "skies.json", json.dumps(data, ensure_ascii=False, indent=2) + "\n")
-    b = write(ROOT / "skies" / "README.md", readme)
-    return a or b
+    changed = write(ROOT / "skies" / "skies.json", json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+    for lang, name in LANGS.items():
+        changed |= write(ROOT / "skies" / name, readme(lang))
+    return changed
 
 
 def main():
@@ -197,9 +216,9 @@ def main():
     for s in skies:
         s["image"] = local_image(s, "skies")
     if len(maps) < 10 or len(skies) < 10:
-        raise SystemExit(f"Beklenmeyen veri: {len(maps)} harita, {len(skies)} skybox")
+        raise SystemExit(f"Unexpected data: {len(maps)} maps, {len(skies)} skyboxes")
     changed = maps_files(maps) | skies_files(skies)
-    print(f"{'Güncellendi' if changed else 'Değişiklik yok'}: {len(maps)} harita, {len(skies)} skybox")
+    print(f"{'Updated' if changed else 'No changes'}: {len(maps)} maps, {len(skies)} skyboxes")
 
 
 if __name__ == "__main__":

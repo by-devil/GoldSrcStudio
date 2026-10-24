@@ -1,99 +1,102 @@
+**English** · [Türkçe](README.tr.md)
+
 # Studio Paint
 
-**Modelinin sadece istediğin parçasını boya.**
+**Paint only the part of your model you want.**
 
 ![Studio Paint](../../assets/studio-paint.jpg)
 
-GoldSrc .mdl modellerini 3D olarak aç, yüzey seç ve renk, degrade, desen veya kendi görselinle katman katman boya. Orijinal dosyana dokunmadan yeni bir .mdl olarak dışa aktar.
+Open GoldSrc .mdl models in 3D, select surfaces and paint them layer by layer with colours, gradients, patterns or your own images. Export as a new .mdl without touching your original file.
 
-## Öne çıkan özellikler
+## Key features
 
-- 3D yüzey ve UV seçimi
-- Katmanlı ve tahribatsız boyama
-- Degrade, desen ve 3D fırça
-- Görsel içe aktarma
-- Yeni _skin.mdl olarak dışa aktarma
+- 3D surface and UV selection
+- Layered, non-destructive painting
+- Gradients, patterns and a 3D brush
+- Image import
+- Export as a new _skin.mdl
 
-## Bilgiler
+## Details
 
 | | |
 | --- | --- |
-| Kategori | Model boyama |
-| Sürüm | Beta / Test |
+| Category | Model painting |
+| Version | Beta / Test |
 | Platform | Windows |
-| Dosya türleri | `.MDL / .GSP` |
-| Son güncelleme | 11 Ekim 2026 |
+| File types | `.MDL / .GSP` |
+| Last updated | Oct 11, 2026 |
 
-## İndir
+## Download
 
 **[⬇ GoldSrcStudioPaint_v0.1_test.zip](GoldSrcStudioPaint_v0.1_test.zip?raw=1)** · 1.5 MB
 
 <sub>SHA-256: `1cabbe9e1f1e82fbe7ba12a1cecd5544163d7ee6a9085bdd96904fd07c26ae97`</sub>
 
-Diğer bağlantılar: [GameBanana](https://gamebanana.com/tools/24470)
+Other links: [GameBanana](https://gamebanana.com/tools/24470)
 
 <details>
-<summary><b>Kullanım kılavuzu (OKU-BENI.txt)</b></summary>
+<summary><b>User manual</b></summary>
 
 ```
-GoldSrc Studio Paint  v0.1 (TEST SURUMU)
-=========================================
+GoldSrc Studio Paint  v0.1 (TEST BUILD)
+=======================================
 
-Ne yapar?
-  Mevcut bir GoldSrc .mdl modelini (silah, bicak, eldiven, oyuncu...) acar ve
-  SADECE sectigin bolgeleri boyamani saglar: sarjor, dipcik, namlu, bicagin
-  yuzeyi... Sonucu yine ayni .mdl olarak kaydeder.
+What does it do?
+  Opens an existing GoldSrc .mdl model (weapon, knife, gloves, player...) and
+  lets you paint ONLY the areas you select: magazine, stock, barrel, the knife
+  blade... The result is saved as the same .mdl again.
 
-Onemli: model icindeki texture'lar YERINDE degistirilir. Geometri, kemikler,
-  animasyonlar, hitbox'lar BAYT BAYT AYNI kalir. Ek bir derleyiciye
-  (studiomdl) gerek yok. Orijinal dosyana dokunulmaz (_skin.mdl olarak kaydeder).
+Important: textures inside the model are changed IN PLACE. Geometry, bones,
+  animations and hitboxes stay BYTE FOR BYTE THE SAME. No extra compiler
+  (studiomdl) is needed. Your original file is not touched (saved as _skin.mdl).
 
-Kullanim
-  1) .mdl'yi pencereye surukle (veya Open / O).
-  2) Sol panel, "Select" araci:
-       Surf   : tikladigin yuzeyi, keskin koseye kadar secer (Angle limit ile ayarla)
-       Island : UV adasini secer (texture uzerinde bagli parca)
-       Tri    : tek ucgen; surukleyerek ucgen ucgen ekler
-       Tik = degistir, Shift = ekle, Ctrl = cikar. Grow/Shrink/Invert/All/Clear.
-       "Save current selection" ile secimi isimle sakla (sarjor, dipcik...).
-  3) Sag panel: "Fill / Grad / Patt / Paint" ile katman ekle. Katman SECILI bolgeye
-       uygulanir (maske). Her katmanin: opaklik, karisim modu, renkler, olcek,
-       dondurme, kayma, tekrar, tohum...
-       Desen: hazir (camo, noise, stripes, checker, dots, waves, flames) veya
-       "+Pattern" ile kendi PNG/JPG/BMP/TGA resmin/logon.
-       Projection: UV (texture uzayi) veya X/Y/Z ekseni (3D'den duz izdusum -
-       UV dikislerinden bagimsiz, desen kesintisiz gorunur).
-  4) "Paint" araci (2 tusu): modelin uzerine fircayla boya. Ctrl = sil. Secim
-       varsa boya secimin disina cikmaz.
-  5) Altta texture listesi + UV paneli: UV select (dikdortgenle ucgen sec),
-       UV mask (secili katmana elle maske ekle, Ctrl ile cikar), UV paint.
-  6) "Save MDL" (Ctrl+E) = oyunda kullanilacak model. "BMP" = degisen texture'lari
-       256 renkli BMP olarak kaydeder. "Save project" (Ctrl+S) = .gsp: katmanlar,
-       desenler, secimler; tekrar acinca devam edersin (model dosyasi yaninda olmali).
+Usage
+  1) Drag the .mdl onto the window (or Open / O).
+  2) Left panel, "Select" tool:
+       Surf   : selects the clicked surface up to sharp edges (tune with Angle limit)
+       Island : selects a UV island (a connected piece on the texture)
+       Tri    : a single triangle; drag to add triangle by triangle
+       Click = toggle, Shift = add, Ctrl = remove. Grow/Shrink/Invert/All/Clear.
+       "Save current selection" stores the selection by name (magazine, stock...).
+  3) Right panel: add a layer with "Fill / Grad / Patt / Paint". The layer is
+       applied to the SELECTED area (mask). Each layer has: opacity, blend mode,
+       colours, scale, rotation, offset, repeat, seed...
+       Pattern: built-in (camo, noise, stripes, checker, dots, waves, flames) or
+       your own PNG/JPG/BMP/TGA image/logo with "+Pattern".
+       Projection: UV (texture space) or X/Y/Z axis (flat projection from 3D -
+       independent of UV seams, the pattern looks seamless).
+  4) "Paint" tool (key 2): paint on the model with a brush. Ctrl = erase. If
+       there is a selection, paint stays inside it.
+  5) Texture list + UV panel at the bottom: UV select (select triangles with a
+       rectangle), UV mask (add a mask to the selected layer by hand, Ctrl to
+       remove), UV paint.
+  6) "Save MDL" (Ctrl+E) = the model to use in game. "BMP" = saves changed
+       textures as 256-colour BMPs. "Save project" (Ctrl+S) = .gsp: layers,
+       patterns, selections; reopen it to continue (the model file must be next to it).
 
-GoldSrc kisitlari
-  Katmanlar RGBA olarak calisir; kayit sirasinda 256 renge indirilir. Dokunulmayan
-  pikseller ORIJINAL renklerini korur, yeni boya palette kalan yeri kullanir.
+GoldSrc limits
+  Layers work in RGBA; they are reduced to 256 colours when saving. Untouched
+  pixels keep their ORIGINAL colours, new paint uses the remaining palette slots.
 
-UYARI: ust uste binen / aynali UV
-  Bazi modellerde iki farkli parca texture'in AYNI piksellerini paylasir (ornegin
-  sag-sol aynali parcalar). Birini boyarsan oburu de boyanir. Program bunu secimde
-  kirmizi uyariyla gosterir ("N baska ucgen ayni pikselleri kullaniyor"); cozum
-  UV duzenlemesi gerektirir (sonraki surum).
+WARNING: overlapping / mirrored UVs
+  In some models two different parts share the SAME pixels of the texture (for
+  example mirrored left/right parts). Painting one also paints the other. The
+  program shows this with a red warning in the selection ("N other triangles
+  use the same pixels"); fixing it needs UV editing (next version).
 
-Bilinen eksikler (sonraki surumler)
-  - Geometri duzenleme (kose tasima, yuz silme...) henuz yok.
-  - Animasyon oynatma yok; model ilk idle karesinde gosterilir.
-  - Skin family / bodygroup secimi yok (ilk alt model gosterilir).
-  - "T" yardimci modeller (texture ayri dosyada) acilmaz, ana modeli ac.
-  - Gercek oyunda henuz denenmedi; yapi Valve modelleriyle dogrulandi.
+Known gaps (next versions)
+  - No geometry editing (moving vertices, deleting faces...) yet.
+  - No animation playback; the model is shown in its first idle frame.
+  - No skin family / bodygroup selection (the first submodel is shown).
+  - "T" helper models (textures in a separate file) cannot be opened, open the main model.
+  - Not tested in the real game yet; the structure was verified with Valve models.
 
-Klavye: O ac | 1/2 arac | G buyut | H kucult | I ters | A hepsi | Esc temizle |
-        F odakla | W tel | Ctrl+Z / Ctrl+Y | Ctrl+S proje | Ctrl+E MDL | L dil
+Keys: O open | 1/2 tool | G grow | H shrink | I invert | A all | Esc clear |
+      F focus | W wire | Ctrl+Z / Ctrl+Y | Ctrl+S project | Ctrl+E MDL | L language
 ```
 
 </details>
 
-> Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.
+> The tools are in beta. We recommend backing up your files before editing them.
 
-[← Tüm araçlar](../../README.md)
+[← All tools](../../README.md)

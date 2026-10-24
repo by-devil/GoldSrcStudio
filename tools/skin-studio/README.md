@@ -1,37 +1,39 @@
+**English** · [Türkçe](README.tr.md)
+
 # Skin Studio
 
-**Silah skinlerini ve texture'ları tek yerden yönet.**
+**Manage weapon skins and textures in one place.**
 
 ![Skin Studio](../../assets/skin-studio.jpg)
 
-GoldSrc .mdl dosyalarını aç, gömülü texture'ları düzenle, PNG/JPG görseller ekle ve sprite efektleri oluştur. Skin üreticileri, modcular ve sunucu sahipleri için tek arayüzde model ve texture düzenleme.
+Open GoldSrc .mdl files, edit embedded textures, add PNG/JPG images and create sprite effects. Model and texture editing in a single interface for skin makers, modders and server owners.
 
-## Öne çıkan özellikler
+## Key features
 
-- Gömülü model texture düzenleme
-- PNG/JPG içe aktarma ve konumlama
-- 3D model önizleme
-- Glow ve muzzle-flash sprite oluşturma
-- wts_actions.ini çıktısı
+- Embedded model texture editing
+- PNG/JPG import and positioning
+- 3D model preview
+- Glow and muzzle-flash sprite creation
+- wts_actions.ini output
 
-## Bilgiler
+## Details
 
 | | |
 | --- | --- |
-| Kategori | Skin & texture |
-| Sürüm | v1.20.1 |
+| Category | Skins & textures |
+| Version | v1.20.1 |
 | Platform | Windows |
-| Dosya türleri | `.MDL / .SPR` |
-| Son güncelleme | 11 Eylül 2026 |
+| File types | `.MDL / .SPR` |
+| Last updated | Sep 11, 2026 |
 
-## İndir
+## Download
 
 **[⬇ SkinStudio_Setup_v1.20.1.exe](SkinStudio_Setup_v1.20.1.exe?raw=1)** · 6.7 MB
 
 <sub>SHA-256: `44eafbc3be85f4da2e6a72f2d6101b868932f713ec2eca02f51e09293314a25b`</sub>
 
-Diğer bağlantılar: [GameBanana](https://gamebanana.com/tools/24053) · [GitHub](https://github.com/serhat-ondes/CS16-Skin-Studio)
+Other links: [GameBanana](https://gamebanana.com/tools/24053) · [GitHub](https://github.com/serhat-ondes/CS16-Skin-Studio)
 
-> Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.
+> The tools are in beta. We recommend backing up your files before editing them.
 
-[← Tüm araçlar](../../README.md)
+[← All tools](../../README.md)

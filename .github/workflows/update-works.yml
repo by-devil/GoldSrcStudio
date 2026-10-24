@@ -1,8 +1,8 @@
-name: Harita ve skybox verilerini güncelle
+name: Update maps and skyboxes
 
 on:
   schedule:
-    - cron: "17 4 * * *"   # her gün 04:17 UTC (07:17 TR)
+    - cron: "17 4 * * *"   # every day at 04:17 UTC (07:17 Turkey time)
   workflow_dispatch:
 
 permissions:
@@ -17,11 +17,12 @@ jobs:
         with:
           python-version: "3.12"
       - run: python .github/scripts/update_works.py
-      - name: Değişiklik varsa kaydet
+      - run: python .github/scripts/build_pages.py   # refreshes the counts in the root README
+      - name: Commit if anything changed
         run: |
-          if git diff --quiet -- maps skies; then exit 0; fi
+          git add -A
+          if git diff --cached --quiet; then exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898729+github-actions[bot]@users.noreply.github.com"
-          git add maps skies
-          git commit -m "Harita ve skybox verilerini güncelle"
+          git commit -m "Update maps and skyboxes"
           git push

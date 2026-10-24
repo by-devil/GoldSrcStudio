@@ -1,37 +1,39 @@
+**English** · [Türkçe](README.tr.md)
+
 # Map Optimization
 
-**Haritanda performansın nereye gittiğini gör.**
+**See where your map's performance is going.**
 
 ![Map Optimization](../../assets/map-optimization.jpg)
 
-Derlenmiş BSP haritalarını analiz et; yüksek wpoly bölgelerini, büyük lightmap'leri ve sorunlu yüzeyleri 3D görünümde incele. Kaynak .map dosyanla optimizasyon denemeleri yap ve sonuçları karşılaştır.
+Analyse compiled BSP maps and inspect high-wpoly areas, large lightmaps and problem faces in a 3D view. Run optimization experiments with your source .map file and compare the results.
 
-## Öne çıkan özellikler
+## Key features
 
-- wpoly ve visleaf analizi
-- 3D yoğunluk ve hata katmanları
-- HINT / info_portal optimizasyon denemeleri
-- SDHLT ile yeniden derleme
-- HTML rapor dışa aktarımı
+- wpoly and visleaf analysis
+- 3D density and error layers
+- HINT / info_portal optimization experiments
+- Recompiling with SDHLT
+- HTML report export
 
-## Bilgiler
+## Details
 
 | | |
 | --- | --- |
-| Kategori | Harita optimizasyonu |
-| Sürüm | Beta |
+| Category | Map optimization |
+| Version | Beta |
 | Platform | Windows |
-| Dosya türleri | `.BSP / .MAP` |
-| Son güncelleme | 11 Ekim 2026 |
+| File types | `.BSP / .MAP` |
+| Last updated | Oct 11, 2026 |
 
-## İndir
+## Download
 
 **[⬇ GoldSrcOptimization_Setup_beta.exe](GoldSrcOptimization_Setup_beta.exe?raw=1)** · 5.6 MB
 
 <sub>SHA-256: `f88f266d3e865168aabd8b985482b3e8d4146101cd445e4062c2b6b5bf518d66`</sub>
 
-Diğer bağlantılar: [GameBanana](https://gamebanana.com/tools/24466)
+Other links: [GameBanana](https://gamebanana.com/tools/24466)
 
-> Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.
+> The tools are in beta. We recommend backing up your files before editing them.
 
-[← Tüm araçlar](../../README.md)
+[← All tools](../../README.md)

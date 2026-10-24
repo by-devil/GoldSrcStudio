@@ -1,37 +1,39 @@
+**English** · [Türkçe](README.tr.md)
+
 # Studio Nav
 
-**Botların yolunu oyunu açmadan test et.**
+**Test bot routes without launching the game.**
 
 ![Studio Nav](../../assets/studio-nav.jpg)
 
-BSP haritalarını 3D görüntüle; NAV alanları ve PWF waypoint verileriyle çalış. Bot rotalarını simüle et, harita kaynaklarını topla ve paylaşım için RES dosyası veya ZIP paketi oluştur.
+View BSP maps in 3D and work with NAV areas and PWF waypoint data. Simulate bot routes, collect map resources and build a RES file or ZIP package for sharing.
 
-## Öne çıkan özellikler
+## Key features
 
-- Dahili 3D BSP görüntüleyici
-- NAV ve PWF düzenleme
-- Otomatik navigasyon oluşturma
-- Bot rota simülasyonu
-- RES ve ZIP paket oluşturma
+- Built-in 3D BSP viewer
+- NAV and PWF editing
+- Automatic navigation generation
+- Bot route simulation
+- RES and ZIP package creation
 
-## Bilgiler
+## Details
 
 | | |
 | --- | --- |
-| Kategori | Navigasyon & botlar |
-| Sürüm | v0.30.0 Beta |
+| Category | Navigation & bots |
+| Version | v0.30.0 Beta |
 | Platform | Windows |
-| Dosya türleri | `.BSP / .NAV / .PWF` |
-| Son güncelleme | 14 Eylül 2026 |
+| File types | `.BSP / .NAV / .PWF` |
+| Last updated | Sep 14, 2026 |
 
-## İndir
+## Download
 
 **[⬇ GoldSrcStudioNav_Setup_v0.24.0.exe](GoldSrcStudioNav_Setup_v0.24.0.exe?raw=1)** · 4.2 MB
 
 <sub>SHA-256: `641d8df5fdac0b47471254c691f442d17e3d9af9844c6e75147bd7a783e83a97`</sub>
 
-Diğer bağlantılar: [GameBanana](https://gamebanana.com/tools/24109)
+Other links: [GameBanana](https://gamebanana.com/tools/24109)
 
-> Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.
+> The tools are in beta. We recommend backing up your files before editing them.
 
-[← Tüm araçlar](../../README.md)
+[← All tools](../../README.md)

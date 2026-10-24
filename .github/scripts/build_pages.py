@@ -1,12 +1,14 @@
-"""Sitenin HTML sayfalarını tek şablondan üretir (Türkçe + İngilizce).
+"""Builds the site's HTML pages and the repository READMEs (Turkish + English).
 
-Kullanım: python .github/scripts/build_pages.py
-site.css / site.js değişince de çalıştırılmalı: dosya adreslerine içerik
-özetinden bir sürüm eklenir, böylece tarayıcılar eski kopyayı kullanmaz.
+Usage: python .github/scripts/build_pages.py
+Run it again whenever site.css / site.js, tools/tools.json or plugins/plugins.json
+change: asset URLs get a content hash so browsers never use a stale copy.
 
-Dil: her metin iki dilde yazılır. T('tr', 'en') iki <span data-l> üretir,
-site.css seçili dili (html[data-lang]) gösterir. Seçim localStorage'da
-"gs-lang" olarak saklanır; ?lang=en / ?lang=tr adresle de seçilebilir.
+Pages: every text is written in both languages. T('tr', 'en') emits two
+<span data-l> elements and site.css shows the selected one (html[data-lang]).
+The choice is kept in localStorage as "gs-lang"; ?lang=en / ?lang=tr also works.
+
+READMEs: README.md (English) and README.tr.md (Turkish) in every folder.
 """
 import hashlib
 import json
@@ -22,7 +24,7 @@ STEAM = re.search(r"const STEAM = '(<svg.*?</svg>)';", _js).group(1)
 DISCORD = re.search(r"const DISCORD = '(<svg.*?</svg>)';", _js).group(1)
 VER = hashlib.sha1(open('assets/site.css', 'rb').read() + _js.encode()).hexdigest()[:8]
 
-# Tema ve dil, ilk boyamadan önce ayarlanır (yanıp sönme olmasın diye).
+# Theme and language are set before first paint to avoid a flash.
 HEAD_JS = ('(function(d){var t="original",l="";try{var q=/[?&]lang=(tr|en)/.exec(location.search);'
            'if(q)localStorage.setItem("gs-lang",q[1]);t=localStorage.getItem("gs-theme")||t;l=localStorage.getItem("gs-lang")||""}catch(e){}'
            'if(!l)l=/^tr/i.test(navigator.language||"tr")?"tr":"en";d.dataset.theme=t;d.dataset.lang=l;d.lang=l})(document.documentElement)')
@@ -41,7 +43,7 @@ ICON = {
 }
 
 def shell(path, page, title, desc, body, slug=None, image='/assets/map-optimization.jpg'):
-    """title ve desc: (tr, en) çiftleri."""
+    """title and desc are (tr, en) pairs."""
     html = f'''<!doctype html>
 <!-- © GoldSrc Studio · by Devil. Tasarım ve içerik izinsiz kopyalanamaz / Design and content may not be copied without permission. -->
 <html lang="tr" data-theme="original" data-lang="tr">
@@ -88,7 +90,7 @@ def head(crumb, h1, lead, right=''):
 
 CTA_CONTACT = T('İletişime geç', 'Get in touch')
 
-# Ana sayfa
+# Home
 shell('index.html', 'home',
   ('GoldSrc Studio — CS 1.6 araçları, haritaları, skyboxları ve eklentileri', 'GoldSrc Studio — CS 1.6 tools, maps, skyboxes and plugins'),
   ('Counter-Strike 1.6 ve GoldSrc için modlama araçları, haritalar, skyboxlar ve AMXX eklentileri tek çatı altında.',
@@ -130,7 +132,7 @@ shell('index.html', 'home',
         <div class="actions"><a class="btn primary" href="/contact/">{CTA_CONTACT}</a><a class="btn" href="https://github.com/by-devil/GoldSrcStudio/issues" target="_blank" rel="noopener">{T('Hata bildir ↗', 'Report a bug ↗')}</a></div></div>
     </div></section>''')
 
-# Araçlar
+# Tools
 shell('tools/index.html', 'tools', ('Araçlar — GoldSrc Studio', 'Tools — GoldSrc Studio'),
   ('GoldSrc ve CS 1.6 için ücretsiz Windows araçları.', 'Free Windows tools for GoldSrc and CS 1.6.'),
   head(T('Araçlar', 'Tools'), T('Araçlar', 'Tools'),
@@ -211,22 +213,104 @@ shell('404.html', 'notfound', ('Sayfa bulunamadı — GoldSrc Studio', 'Page not
       <p style="color:var(--text-2)">{T('Aradığın şey taşınmış olabilir. Hızlı arama için <span class="kbd">/</span> tuşuna bas.', 'It may have moved. Press <span class="kbd">/</span> for quick search.')}</p>
       <div class="actions" style="justify-content:center;margin-top:24px"><a class="btn primary" href="/">{T('Ana sayfa', 'Home')}</a><a class="btn" href="/tools/">{T('Araçlar', 'Tools')}</a></div>
     </div></section>''')
-# Eklenti README'leri (GitHub'da klasörler araçlardaki gibi görünsün)
+# ---------- READMEs ----------
 plugins = json.load(open('plugins/plugins.json', encoding='utf-8'))
+maps = json.load(open('maps/maps.json', encoding='utf-8'))
+skies = json.load(open('skies/skies.json', encoding='utf-8'))
+LANGS = {'en': 'README.md', 'tr': 'README.tr.md'}
 
-def plugin_cell(p, base=''):
-    cover = p['shots'][p['cover']]['file']
-    return (f'<td width="33%" valign="top"><a href="{base}{p["slug"]}"><img src="{base}{p["slug"]}/{cover}" alt="{p["name"]}"></a><br>'
-            f'<b><a href="{base}{p["slug"]}">{p["name"]}</a></b> · <sub>{len(p["shots"])} ekran görüntüsü</sub><br>{p["text"]}</td>')
+def loc(item, lang):
+    """Item with its English fields applied for lang == 'en'."""
+    return {**item, **item.get('en', {})} if lang == 'en' else item
 
-def rows(cells, per=3):
+def num(n, lang):
+    return f'{n:,}'.replace(',', ',' if lang == 'en' else '.')
+
+def switch(lang):
+    return '**English** · [Türkçe](README.tr.md)' if lang == 'en' else '[English](README.md) · **Türkçe**'
+
+def readme(folder, make):
+    for lang, name in LANGS.items():
+        open(os.path.join(folder, name), 'w', encoding='utf-8').write(make(lang, lambda tr, en: en if lang == 'en' else tr))
+
+def rows(cells, per):
     return '\n'.join('<tr>' + ''.join(cells[i:i + per]) + '</tr>' for i in range(0, len(cells), per))
 
-for p in plugins:
-    shots = '\n'.join(f'### {i}. {x["label"]}\n\n![{x["label"]}]({x["file"]})\n' for i, x in enumerate(p['shots'], 1))
-    open(f'plugins/{p["slug"]}/README.md', 'w', encoding='utf-8').write(f"""# {p['name']}
+def plugin_cell(p, lang, L, base=''):
+    p = loc(p, lang)
+    cover = p['shots'][p['cover']]['file']
+    return (f'<td width="33%" valign="top"><a href="{base}{p["slug"]}"><img src="{base}{p["slug"]}/{cover}" alt="{p["name"]}"></a><br>'
+            f'<b><a href="{base}{p["slug"]}">{p["name"]}</a></b> · <sub>{len(p["shots"])} {L("ekran görüntüsü", "screenshots")}</sub><br>{p["text"]}</td>')
 
-**AMX Mod X eklentisi · Counter-Strike 1.6**
+def tool_file(t):
+    path = 'tools/' + t['download'].split('/tools/', 1)[1]
+    data = open(path, 'rb').read()
+    return os.path.basename(path), f'{len(data) / 1048576:.1f} MB', hashlib.sha256(data).hexdigest()
+
+def tool_cell(t, lang, L):
+    t = loc(t, lang)
+    file = tool_file(t)[0]
+    links = [f'<a href="tools/{t["slug"]}/{file}?raw=1"><b>⬇ {L("İndir", "Download")}</b></a>', f'<a href="{t["gamebanana"]}">GameBanana →</a>']
+    if t.get('repo'):
+        links.append(f'<a href="{t["repo"]}">GitHub →</a>')
+    return (f'<td width="50%" valign="top"><img src="{t["image"][1:]}" alt="{t["name"]}"><br>'
+            f'<b><a href="tools/{t["slug"]}">{t["name"]}</a></b> · <sub>{t["version"]} · {t["platform"]}</sub><br>'
+            f'{t["summary"]} {", ".join(t["features"][:3])}.<br>{" · ".join(links)}</td>')
+
+for t in tools:
+    def tool_readme(lang, L, t=t):
+        t = loc(t, lang)
+        file, size, sha = tool_file(t)
+        links = [f'[GameBanana]({t["gamebanana"]})'] + ([f'[GitHub]({t["repo"]})'] if t.get('repo') else [])
+        manual = (f'\n<details>\n<summary><b>{L("Kullanım kılavuzu", "User manual")}</b></summary>\n\n```\n{t["manual"]}\n```\n\n</details>\n'
+                  if t.get('manual') else '')
+        return f"""{switch(lang)}
+
+# {t['name']}
+
+**{t['summary']}**
+
+![{t['name']}](../../{t['image'][1:]})
+
+{t['description']}
+
+## {L('Öne çıkan özellikler', 'Key features')}
+
+{chr(10).join('- ' + f for f in t['features'])}
+
+## {L('Bilgiler', 'Details')}
+
+| | |
+| --- | --- |
+| {L('Kategori', 'Category')} | {t['category']} |
+| {L('Sürüm', 'Version')} | {t['version']} |
+| Platform | {t['platform']} |
+| {L('Dosya türleri', 'File types')} | `{t['fileTypes']}` |
+| {L('Son güncelleme', 'Last updated')} | {t['updated']} |
+
+## {L('İndir', 'Download')}
+
+**[⬇ {file}]({file}?raw=1)** · {size}
+
+<sub>SHA-256: `{sha}`</sub>
+
+{L('Diğer bağlantılar', 'Other links')}: {' · '.join(links)}
+{manual}
+> {L('Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.', 'The tools are in beta. We recommend backing up your files before editing them.')}
+
+[← {L('Tüm araçlar', 'All tools')}](../../{LANGS[lang]})
+"""
+    readme(f'tools/{t["slug"]}', tool_readme)
+
+for p in plugins:
+    def plugin_readme(lang, L, p=p):
+        p = loc(p, lang)
+        shots = '\n'.join(f'### {i}. {L(x["label"], x["en"])}\n\n![{L(x["label"], x["en"])}]({x["file"]})\n' for i, x in enumerate(p['shots'], 1))
+        return f"""{switch(lang)}
+
+# {p['name']}
+
+**{L('AMX Mod X eklentisi', 'AMX Mod X plugin')} · Counter-Strike 1.6**
 
 ![{p['name']}]({p['shots'][p['cover']]['file']})
 
@@ -234,39 +318,87 @@ for p in plugins:
 
 {' · '.join(f'`{t}`' for t in p['tags'])}
 
-Fiyat, kurulum ve canlı ayrıntılar: **[bydevil.com]({p['link']})** · [İletişim](https://tools.bydevil.com/contact/)
+{L('Fiyat, kurulum ve canlı ayrıntılar', 'Pricing, installation and live details')}: **[bydevil.com]({p['link']})** · [{L('İletişim', 'Contact')}](https://tools.bydevil.com/contact/)
 
-## Ekran görüntüleri
+## {L('Ekran görüntüleri', 'Screenshots')}
 
 {shots}
-[← Tüm eklentiler](../README.md)
-""")
+[← {L('Tüm eklentiler', 'All plugins')}](../{LANGS[lang]})
+"""
+    readme(f'plugins/{p["slug"]}', plugin_readme)
 
-open('plugins/README.md', 'w', encoding='utf-8').write(f"""# AMXX eklentileri
+readme('plugins', lambda lang, L: f"""{switch(lang)}
 
-Counter-Strike 1.6 sunucuları için sıralama, sezon ve ekonomi sistemleri · **{len(plugins)} eklenti**.
-Sitede: [tools.bydevil.com/plugins](https://tools.bydevil.com/plugins/) · Satış ve kurulum: [bydevil.com/plugins](https://bydevil.com/plugins/)
+# {L('AMXX eklentileri', 'AMXX plugins')}
 
-<table>
-{rows([plugin_cell(p) for p in plugins])}
-</table>
-
-[← Ana sayfa](../README.md)
-""")
-
-readme = open('README.md', encoding='utf-8').read()
-block = f"""<!-- eklentiler -->
-## AMXX eklentileri
+{L('Counter-Strike 1.6 sunucuları için sıralama, sezon ve ekonomi sistemleri', 'Ranking, season and economy systems for Counter-Strike 1.6 servers')} · **{len(plugins)} {L('eklenti', 'plugins')}**.
+{L('Sitede', 'On the site')}: [tools.bydevil.com/plugins](https://tools.bydevil.com/plugins/) · {L('Satış ve kurulum', 'Sales and installation')}: [bydevil.com/plugins](https://bydevil.com/plugins/)
 
 <table>
-{rows([plugin_cell(p, 'plugins/') for p in plugins])}
+{rows([plugin_cell(p, lang, L) for p in plugins], 3)}
 </table>
 
-[Tüm eklentiler →](plugins)
-<!-- /eklentiler -->"""
-if '<!-- eklentiler -->' in readme:
-    readme = re.sub(r'<!-- eklentiler -->.*?<!-- /eklentiler -->', lambda m: block, readme, flags=re.S)
-else:
-    readme = readme.replace('## Hata bildirimi ve öneriler', block + '\n\n## Hata bildirimi ve öneriler')
-open('README.md', 'w', encoding='utf-8').write(readme)
+[← {L('Ana sayfa', 'Home')}](../{LANGS[lang]})
+""")
+
+readme('.', lambda lang, L: f"""<p align="center">
+  <img src="assets/goldsrc-mark.png" width="88" alt="GoldSrc Studio">
+</p>
+
+<h1 align="center">GoldSrc Studio</h1>
+
+<p align="center">
+  {L('Counter-Strike 1.6 ve GoldSrc topluluğu için araçlar, haritalar, skyboxlar ve AMXX eklentileri.', 'Tools, maps, skyboxes and AMXX plugins for the Counter-Strike 1.6 and GoldSrc community.')}<br>
+  <a href="https://tools.bydevil.com"><b>tools.bydevil.com</b></a> ·
+  <a href="https://www.goldsrcstudio.com">goldsrcstudio.com</a> ·
+  <a href="https://bydevil.com">bydevil.com</a>
+</p>
+
+<p align="center">{'<b>English</b> · <a href="README.tr.md">Türkçe</a>' if lang == 'en' else '<a href="README.md">English</a> · <b>Türkçe</b>'}</p>
+
+<p align="center">
+  <img src="assets/map-optimization.jpg" width="820" alt="Map Optimization">
+</p>
+
+---
+
+## {L('Araçlar', 'Tools')}
+
+<table>
+{rows([tool_cell(t, lang, L) for t in tools], 2)}
+</table>
+
+## {L('Haritalar ve skyboxlar', 'Maps and skyboxes')}
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="maps"><img src="{maps['featured'][0]['image'].lstrip('/')}" alt=""></a><br>
+      <b><a href="maps">{maps['count']} {L('Harita', 'Maps')} →</a></b><br>
+      {L('Base Builder, Gun Game, Zombie Mod ve daha fazlası', 'Base Builder, Gun Game, Zombie Mod and more')} · {num(maps['downloads'], lang)} {L('indirme', 'downloads')}
+    </td>
+    <td width="50%" valign="top">
+      <a href="skies"><img src="{skies['featured'][0]['image'].lstrip('/')}" alt=""></a><br>
+      <b><a href="skies">{skies['count']} {L('Skybox', 'Skyboxes')} →</a></b><br>
+      {L('Counter-Strike 1.6 ve GoldSrc için gökyüzleri', 'Skies for Counter-Strike 1.6 and GoldSrc')} · {num(skies['downloads'], lang)} {L('indirme', 'downloads')}
+    </td>
+  </tr>
+</table>
+
+## {L('AMXX eklentileri', 'AMXX plugins')}
+
+<table>
+{rows([plugin_cell(p, lang, L, 'plugins/') for p in plugins], 3)}
+</table>
+
+[{L('Tüm eklentiler', 'All plugins')} →](plugins)
+
+## {L('Hata bildirimi ve öneriler', 'Bug reports and suggestions')}
+
+{L('Bir sorun bulduysan ya da yeni bir araç fikrin varsa [issue aç](../../issues).', 'Found a problem or have an idea for a new tool? [Open an issue](../../issues).')}
+
+---
+
+<sub>{L('GoldSrc Studio bağımsız bir projedir; Valve Corporation veya Steam ile bağlantılı değildir.', 'GoldSrc Studio is an independent project and is not affiliated with Valve Corporation or Steam.')}</sub>
+""")
 print('ok')

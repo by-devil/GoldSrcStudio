@@ -1,47 +1,49 @@
+**English** · [Türkçe](README.tr.md)
+
 # Pro Public TOP15
 
-**AMX Mod X eklentisi · Counter-Strike 1.6**
+**AMX Mod X plugin · Counter-Strike 1.6**
 
 ![Pro Public TOP15](img/pp-1-top15.jpg)
 
-Pro Public sunucuları için eksiksiz istatistik sistemi: Top15 ve süre sıralamaları, detaylı oyuncu profilleri, Steam bilgileri ve FunGun tarama geçmişi.
+Complete stats system for Pro Public servers: Top15 and playtime rankings, detailed player profiles, Steam info and FunGun scan history.
 
-`Top15` · `Toptime` · `Profil` · `FunGun`
+`Top15` · `Toptime` · `Profile` · `FunGun`
 
-Fiyat, kurulum ve canlı ayrıntılar: **[bydevil.com](https://bydevil.com/plugins/#propublic)** · [İletişim](https://tools.bydevil.com/contact/)
+Pricing, installation and live details: **[bydevil.com](https://bydevil.com/plugins/#propublic)** · [Contact](https://tools.bydevil.com/contact/)
 
-## Ekran görüntüleri
+## Screenshots
 
-### 1. Top15 sıralaması
+### 1. Top15 ranking
 
-![Top15 sıralaması](img/pp-1-top15.jpg)
+![Top15 ranking](img/pp-1-top15.jpg)
 
-### 2. Toptime sıralaması
+### 2. Toptime ranking
 
-![Toptime sıralaması](img/pp-2-toptime.jpg)
+![Toptime ranking](img/pp-2-toptime.jpg)
 
-### 3. Oyuncu profili ve en iyi silahlar
+### 3. Player profile and best weapons
 
-![Oyuncu profili ve en iyi silahlar](img/pp-3-profil.jpg)
+![Player profile and best weapons](img/pp-3-profil.jpg)
 
-### 4. Profil ve son oynanan oyunlar
+### 4. Profile and recently played games
 
-![Profil ve son oynanan oyunlar](img/pp-4-steam-profil.jpg)
+![Profile and recently played games](img/pp-4-steam-profil.jpg)
 
-### 5. Steam bilgileri
+### 5. Steam info
 
-![Steam bilgileri](img/pp-5-steam-bilgi.jpg)
+![Steam info](img/pp-5-steam-bilgi.jpg)
 
-### 6. FunGun taramaları
+### 6. FunGun scans
 
-![FunGun taramaları](img/pp-6-fungun.jpg)
+![FunGun scans](img/pp-6-fungun.jpg)
 
-### 7. Profil resmi seçimi
+### 7. Avatar picker
 
-![Profil resmi seçimi](img/pp-7-avatar.jpg)
+![Avatar picker](img/pp-7-avatar.jpg)
 
-### 8. Arayüzü düzenle
+### 8. Customise the interface
 
-![Arayüzü düzenle](img/pp-8-arayuz.jpg)
+![Customise the interface](img/pp-8-arayuz.jpg)
 
-[← Tüm eklentiler](../README.md)
+[← All plugins](../README.md)

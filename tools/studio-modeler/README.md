@@ -1,85 +1,88 @@
+**English** · [Türkçe](README.tr.md)
+
 # Studio Modeler
 
-**Harita fırçalarını GoldSrc modele dönüştür.**
+**Turn map brushes into GoldSrc models.**
 
 ![Studio Modeler](../../assets/studio-modeler.jpg)
 
-Hammer, J.A.C.K. veya Jackhammer haritalarındaki fırçaları seç ve GoldSrc uyumlu düşük poli .mdl modellerine dönüştür. Canlı önizleme ile entity, group veya visgroup seç; studiomdl olmadan doğrudan model üret.
+Select brushes from Hammer, J.A.C.K. or Jackhammer maps and convert them into GoldSrc-compatible low-poly .mdl models. Pick entities, groups or visgroups with a live preview and build models directly, without studiomdl.
 
-## Öne çıkan özellikler
+## Key features
 
-- .map, .rmf ve .jmf okuma
-- Entity, group ve visgroup seçimi
-- Canlı dokulu 3D önizleme
-- Gizli yüzleri temizleme ve poli birleştirme
-- Doğrudan .mdl dışa aktarma
+- Reads .map, .rmf and .jmf
+- Entity, group and visgroup selection
+- Live textured 3D preview
+- Hidden face removal and polygon merging
+- Direct .mdl export
 
-## Bilgiler
+## Details
 
 | | |
 | --- | --- |
-| Kategori | Harita → model |
-| Sürüm | Beta / Test |
+| Category | Map → model |
+| Version | Beta / Test |
 | Platform | Windows |
-| Dosya türleri | `.MAP / .RMF / .JMF / .MDL` |
-| Son güncelleme | 11 Ekim 2026 |
+| File types | `.MAP / .RMF / .JMF / .MDL` |
+| Last updated | Oct 11, 2026 |
 
-## İndir
+## Download
 
 **[⬇ GoldSrcStudioModeler_v0.1_test.zip](GoldSrcStudioModeler_v0.1_test.zip?raw=1)** · 1.3 MB
 
 <sub>SHA-256: `fb26d664cd645f8a56dd52e16ac4e9217825a5361bfa6639f8bd66562d0a1844`</sub>
 
-Diğer bağlantılar: [GameBanana](https://gamebanana.com/tools/24469)
+Other links: [GameBanana](https://gamebanana.com/tools/24469)
 
 <details>
-<summary><b>Kullanım kılavuzu (OKU-BENI.txt)</b></summary>
+<summary><b>User manual</b></summary>
 
 ```
-GoldSrc Studio Modeler  v0.1 (TEST SURUMU)
-===========================================
+GoldSrc Studio Modeler  v0.1 (TEST BUILD)
+=========================================
 
-Ne yapar?
-  .map / .rmf / .jmf dosyasindaki brush'lardan GoldSrc uyumlu, optimize
-  edilmis bir .mdl modeli uretir.
+What does it do?
+  Builds an optimised, GoldSrc-compatible .mdl model from the brushes in a
+  .map / .rmf / .jmf file.
 
-Nasil kullanilir?
-  1) GoldSrcStudioModeler.exe'yi ac.
-  2) Haritayi pencereye surukle-birak (veya "Open", O tusu).
-  3) Modele cevirmek istedigin nesneyi sec:
-       - "Objects" sekmesi : entity'ler (func_wall, func_detail ...)
-       - "Groups" sekmesi  : RMF/JMF icindeki gruplar
-       - "Visgrp" sekmesi  : Hammer'daki visgroup isimleri (DORR, LADDER ...)
-       - 3D'de brush'a tikla = sec/birak, Ctrl+tikla = nesnenin tamamini sec
-  4) "Model" gorunumunde sonucu canli gor (Live preview acik).
-  5) "Export MDL" ile .mdl olarak kaydet.
+How to use
+  1) Open GoldSrcStudioModeler.exe.
+  2) Drag and drop the map onto the window (or "Open", O key).
+  3) Select the object you want to turn into a model:
+       - "Objects" tab : entities (func_wall, func_detail ...)
+       - "Groups" tab  : groups inside the RMF/JMF
+       - "Visgrp" tab  : visgroup names from Hammer (DOOR, LADDER ...)
+       - Click a brush in 3D = select/deselect, Ctrl+click = select the whole object
+  4) See the result live in the "Model" view (Live preview on).
+  5) Save it as .mdl with "Export MDL".
 
-Texture'lar:
-  Haritadaki "wad" yolundan otomatik bulunur. Bulunamazsa "+WAD" ile bir
-  .wad sec (ayni klasordeki diger wad'lar da otomatik yuklenir). Bulunamayan
-  texture'lar kareli yer tutucu ile gosterilir ve uyari yazilir.
+Textures:
+  Found automatically from the map's "wad" path. If not found, pick a .wad
+  with "+WAD" (other wads in the same folder load automatically). Missing
+  textures are shown with a checkered placeholder and a warning.
 
-Ayarlar (sag panel, tiklayinca degisir):
-  Origin        : modelin merkezi (alt orta / orta / haritadaki yer)
-  Triangle limit: ucgen sayisini hedefe indirir (sekli bozmadan)
-  Merge flat    : ayni duzlemdeki yuzleri birlestirir
-  Smooth shading: yuvarlak gorunum icin normal yumusatma
-  Texture pages : en fazla kac doku sayfasi (max 512x512 her biri)
-  Tiling        : bake = guvenli (doku tekrarini sayfaya gomer)
-                  repeat = buyuk tekrarli yuzeyler net kalir AMA oyun
-                  motorunun UV'yi tekrarlamasina guvenir -> oyunda dene.
+Settings (right panel, click to change):
+  Origin        : model centre (bottom centre / centre / position in the map)
+  Triangle limit: reduces the triangle count to the target (keeping the shape)
+  Merge flat    : merges faces on the same plane
+  Smooth shading: normal smoothing for a rounded look
+  Texture pages : maximum number of texture pages (max 512x512 each)
+  Tiling        : bake = safe (bakes texture repeats into the page)
+                  repeat = large repeating surfaces stay sharp BUT relies on
+                  the engine repeating the UVs -> test it in game.
 
-Klavye: O ac | E kaydet | F odakla | H secilmeyeni gizle | 1/2/3 gorunum
-        sag tus dondur | orta tus kaydir | tekerlek yakinlastir | L dil
+Keys: O open | E save | F focus | H hide unselected | 1/2/3 view
+      right button rotate | middle button pan | wheel zoom | L language
 
-Bilinen eksikler (sonraki surumler):
-  - Programin icinde nesne CIZME araci henuz yok (sirada).
-  - Model henuz gercek oyun istemcisinde denenmedi; yapi, Valve'in 211
-    orijinal modeline gore dogrulandi. Oyunda bir sorun gorursen soyle.
+Known gaps (next versions):
+  - No in-app object DRAWING tool yet (coming next).
+  - The model has not been tested in a real game client yet; the structure
+    was verified against Valve's 211 original models. Tell me if you see a
+    problem in game.
 ```
 
 </details>
 
-> Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.
+> The tools are in beta. We recommend backing up your files before editing them.
 
-[← Tüm araçlar](../../README.md)
+[← All tools](../../README.md)

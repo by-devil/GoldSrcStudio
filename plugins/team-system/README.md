@@ -1,51 +1,53 @@
+**English** · [Türkçe](README.tr.md)
+
 # Team System
 
-**AMX Mod X eklentisi · Counter-Strike 1.6**
+**AMX Mod X plugin · Counter-Strike 1.6**
 
 ![Team System](img/tk-01.jpg)
 
-Takım (klan) sistemi: takım kur, üye davet et, banner ve renklerle özelleştir, sezon sıralamasında birlikte yüksel.
+Team (clan) system: create a team, invite members, customise it with banners and colours, and climb the season ranking together.
 
-`Yönetim` · `Görevler` · `FreeVIP` · `Sezon`
+`Management` · `Missions` · `FreeVIP` · `Season`
 
-Fiyat, kurulum ve canlı ayrıntılar: **[bydevil.com](https://bydevil.com/plugins/#takim)** · [İletişim](https://tools.bydevil.com/contact/)
+Pricing, installation and live details: **[bydevil.com](https://bydevil.com/plugins/#takim)** · [Contact](https://tools.bydevil.com/contact/)
 
-## Ekran görüntüleri
+## Screenshots
 
-### 1. Takım ana menüsü
+### 1. Team main menu
 
-![Takım ana menüsü](img/tk-01.jpg)
+![Team main menu](img/tk-01.jpg)
 
-### 2. Takım yönetimi
+### 2. Team management
 
-![Takım yönetimi](img/tk-02.jpg)
+![Team management](img/tk-02.jpg)
 
-### 3. Takım ayarları ve üye yönetimi
+### 3. Team settings and members
 
-![Takım ayarları ve üye yönetimi](img/tk-03.jpg)
+![Team settings and members](img/tk-03.jpg)
 
-### 4. Görünüm: banner, arka plan, isim rengi
+### 4. Look: banner, background, name colour
 
-![Görünüm: banner, arka plan, isim rengi](img/tk-04.jpg)
+![Look: banner, background, name colour](img/tk-04.jpg)
 
-### 5. Takım görevleri
+### 5. Team missions
 
-![Takım görevleri](img/tk-05.jpg)
+![Team missions](img/tk-05.jpg)
 
-### 6. Takım marketi
+### 6. Team market
 
-![Takım marketi](img/tk-06.jpg)
+![Team market](img/tk-06.jpg)
 
-### 7. FreeVIP saatleri
+### 7. FreeVIP hours
 
-![FreeVIP saatleri](img/tk-07.jpg)
+![FreeVIP hours](img/tk-07.jpg)
 
-### 8. Takım sıralaması
+### 8. Team ranking
 
-![Takım sıralaması](img/tk-08.jpg)
+![Team ranking](img/tk-08.jpg)
 
-### 9. Takım profili ve kadro
+### 9. Team profile and roster
 
-![Takım profili ve kadro](img/tk-09.jpg)
+![Team profile and roster](img/tk-09.jpg)
 
-[← Tüm eklentiler](../README.md)
+[← All plugins](../README.md)

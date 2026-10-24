@@ -1,51 +1,53 @@
+**English** · [Türkçe](README.tr.md)
+
 # Zombie Plague Battle Pass
 
-**AMX Mod X eklentisi · Counter-Strike 1.6**
+**AMX Mod X plugin · Counter-Strike 1.6**
 
 ![Zombie Plague Battle Pass](img/bpz-01.jpg)
 
-Haftalık sezon sistemi: her gün ücretsiz ve premium ödül, günlük görevler, coin çarkı ve mağaza.
+Weekly season system: free and premium rewards every day, daily missions, a coin wheel and a shop.
 
-`Ödüller` · `Görevler` · `Çark` · `Mağaza`
+`Rewards` · `Missions` · `Wheel` · `Shop`
 
-Fiyat, kurulum ve canlı ayrıntılar: **[bydevil.com](https://bydevil.com/plugins/#battlepass)** · [İletişim](https://tools.bydevil.com/contact/)
+Pricing, installation and live details: **[bydevil.com](https://bydevil.com/plugins/#battlepass)** · [Contact](https://tools.bydevil.com/contact/)
 
-## Ekran görüntüleri
+## Screenshots
 
-### 1. Haftalık ödüller
+### 1. Weekly rewards
 
-![Haftalık ödüller](img/bpz-01.jpg)
+![Weekly rewards](img/bpz-01.jpg)
 
-### 2. Günlük görevler
+### 2. Daily missions
 
-![Günlük görevler](img/bpz-02.jpg)
+![Daily missions](img/bpz-02.jpg)
 
-### 3. Günün ödülü
+### 3. Reward of the day
 
-![Günün ödülü](img/bpz-03.jpg)
+![Reward of the day](img/bpz-03.jpg)
 
-### 4. Furia çarkı
+### 4. Furia wheel
 
-![Furia çarkı](img/bpz-04.jpg)
+![Furia wheel](img/bpz-04.jpg)
 
-### 5. Haftalık sıralama
+### 5. Weekly ranking
 
-![Haftalık sıralama](img/bpz-05.jpg)
+![Weekly ranking](img/bpz-05.jpg)
 
-### 6. Sıralama (alt sayfalar)
+### 6. Ranking (sub-pages)
 
-![Sıralama (alt sayfalar)](img/bpz-06.jpg)
+![Ranking (sub-pages)](img/bpz-06.jpg)
 
-### 7. Kendi profilin
+### 7. Your own profile
 
-![Kendi profilin](img/bpz-07.jpg)
+![Your own profile](img/bpz-07.jpg)
 
-### 8. Oyuncu profili
+### 8. Player profile
 
-![Oyuncu profili](img/bpz-08.jpg)
+![Player profile](img/bpz-08.jpg)
 
-### 9. Coin mağazası
+### 9. Coin shop
 
-![Coin mağazası](img/bpz-09.jpg)
+![Coin shop](img/bpz-09.jpg)
 
-[← Tüm eklentiler](../README.md)
+[← All plugins](../README.md)

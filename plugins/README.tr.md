@@ -1,0 +1,14 @@
+[English](README.md) · **Türkçe**
+
+# AMXX eklentileri
+
+Counter-Strike 1.6 sunucuları için sıralama, sezon ve ekonomi sistemleri · **7 eklenti**.
+Sitede: [tools.bydevil.com/plugins](https://tools.bydevil.com/plugins/) · Satış ve kurulum: [bydevil.com/plugins](https://bydevil.com/plugins/)
+
+<table>
+<tr><td width="33%" valign="top"><a href="pro-public-top15"><img src="pro-public-top15/img/pp-1-top15.jpg" alt="Pro Public TOP15"></a><br><b><a href="pro-public-top15">Pro Public TOP15</a></b> · <sub>8 ekran görüntüsü</sub><br>Pro Public sunucuları için eksiksiz istatistik sistemi: Top15 ve süre sıralamaları, detaylı oyuncu profilleri, Steam bilgileri ve FunGun tarama geçmişi.</td><td width="33%" valign="top"><a href="royal-pass"><img src="royal-pass/img/rp-04.jpg" alt="Royal Pass"></a><br><b><a href="royal-pass">Royal Pass</a></b> · <sub>17 ekran görüntüsü</sub><br>Puan ekonomisi: görevlerden puan kazan, kozmetik mağazasında harca, kutu aç, oyuncu pazarında alım satım yap.</td><td width="33%" valign="top"><a href="team-system"><img src="team-system/img/tk-01.jpg" alt="Team System"></a><br><b><a href="team-system">Team System</a></b> · <sub>9 ekran görüntüsü</sub><br>Takım (klan) sistemi: takım kur, üye davet et, banner ve renklerle özelleştir, sezon sıralamasında birlikte yüksel.</td></tr>
+<tr><td width="33%" valign="top"><a href="gungame-top15"><img src="gungame-top15/img/gg-01.webp" alt="GunGame TOP15"></a><br><b><a href="gungame-top15">GunGame TOP15</a></b> · <sub>9 ekran görüntüsü</sub><br>Bireysel, takım ve FFA sıralamaları; puan, XP, K/D, bıçak ve seri istatistikleri, oyuncu profilleri ve sezon görünümleri.</td><td width="33%" valign="top"><a href="zombie-plague-top15"><img src="zombie-plague-top15/img/zp-01.jpg" alt="Zombie Plague TOP15"></a><br><b><a href="zombie-plague-top15">Zombie Plague TOP15</a></b> · <sub>12 ekran görüntüsü</sub><br>Zombie Plague için sıralama: liderle kıyaslayan profiller, rütbe yolu, özelleştirilebilir kart, sezon arşivi ve haftalık VIP ödülleri.</td><td width="33%" valign="top"><a href="public-battle-pass"><img src="public-battle-pass/img/bpp-01.jpg" alt="Public Battle Pass"></a><br><b><a href="public-battle-pass">Public Battle Pass</a></b> · <sub>10 ekran görüntüsü</sub><br>Public sunucular için sezonluk battle pass: ücretsiz ve premium seviye ödülleri, kasalar, çark ve efekt envanteri.</td></tr>
+<tr><td width="33%" valign="top"><a href="zombie-plague-battle-pass"><img src="zombie-plague-battle-pass/img/bpz-01.jpg" alt="Zombie Plague Battle Pass"></a><br><b><a href="zombie-plague-battle-pass">Zombie Plague Battle Pass</a></b> · <sub>9 ekran görüntüsü</sub><br>Haftalık sezon sistemi: her gün ücretsiz ve premium ödül, günlük görevler, coin çarkı ve mağaza.</td></tr>
+</table>
+
+[← Ana sayfa](../README.tr.md)

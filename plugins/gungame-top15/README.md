@@ -1,51 +1,53 @@
+**English** · [Türkçe](README.tr.md)
+
 # GunGame TOP15
 
-**AMX Mod X eklentisi · Counter-Strike 1.6**
+**AMX Mod X plugin · Counter-Strike 1.6**
 
 ![GunGame TOP15](img/gg-01.webp)
 
-Bireysel, takım ve FFA sıralamaları; puan, XP, K/D, bıçak ve seri istatistikleri, oyuncu profilleri ve sezon görünümleri.
+Solo, team and FFA rankings; points, XP, K/D, knife and streak stats, player profiles and season views.
 
-`Bireysel` · `Takım` · `FFA` · `Sezon`
+`Solo` · `Team` · `FFA` · `Season`
 
-Fiyat, kurulum ve canlı ayrıntılar: **[bydevil.com](https://bydevil.com/plugins/#gungame)** · [İletişim](https://tools.bydevil.com/contact/)
+Pricing, installation and live details: **[bydevil.com](https://bydevil.com/plugins/#gungame)** · [Contact](https://tools.bydevil.com/contact/)
 
-## Ekran görüntüleri
+## Screenshots
 
-### 1. Bireysel sıralama
+### 1. Solo ranking
 
-![Bireysel sıralama](img/gg-01.webp)
+![Solo ranking](img/gg-01.webp)
 
-### 2. Oyuncu profili ve en iyi silahlar
+### 2. Player profile and best weapons
 
-![Oyuncu profili ve en iyi silahlar](img/gg-02.webp)
+![Player profile and best weapons](img/gg-02.webp)
 
-### 3. Takım sıralaması
+### 3. Team ranking
 
-![Takım sıralaması](img/gg-03.webp)
+![Team ranking](img/gg-03.webp)
 
-### 4. Takım profili
+### 4. Team profile
 
-![Takım profili](img/gg-04.webp)
+![Team profile](img/gg-04.webp)
 
-### 5. FFA sıralaması
+### 5. FFA ranking
 
-![FFA sıralaması](img/gg-05.webp)
+![FFA ranking](img/gg-05.webp)
 
-### 6. FFA oyuncu profili
+### 6. FFA player profile
 
-![FFA oyuncu profili](img/gg-06.webp)
+![FFA player profile](img/gg-06.webp)
 
-### 7. Sezon ekranı
+### 7. Season screen
 
-![Sezon ekranı](img/gg-07.webp)
+![Season screen](img/gg-07.webp)
 
-### 8. El sonu ekranı (FFA)
+### 8. Round end screen (FFA)
 
-![El sonu ekranı (FFA)](img/el-sonu.webp)
+![Round end screen (FFA)](img/el-sonu.webp)
 
-### 9. Maç sonu ekranı (bireysel)
+### 9. Match end screen (solo)
 
-![Maç sonu ekranı (bireysel)](img/mac-sonu-bireysel.jpg)
+![Match end screen (solo)](img/mac-sonu-bireysel.jpg)
 
-[← Tüm eklentiler](../README.md)
+[← All plugins](../README.md)
