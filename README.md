@@ -2,7 +2,7 @@
 
 Counter-Strike 1.6 / GoldSrc motoru için modlama araçları.
 
-🌐 Web: https://by-devil.github.io/GoldSrcStudio/ · https://bydevil.com/tools/
+🌐 Web: https://tools.bydevil.com
 
 ## Araçlar
 
