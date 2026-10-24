@@ -1,21 +1,55 @@
 [
   {
-    "name": "CS 1.6 Skin Studio",
-    "description": "Counter-Strike 1.6 / GoldSrc için model, doku ve sprite düzenleme aracı. .mdl desteği, PNG/JPG içe aktarma, 3D önizleme, sprite ve glow efektleri.",
-    "tags": [
-      "GoldSrc",
-      "MDL",
-      "Sprite",
-      "3D önizleme"
-    ],
-    "badge": "Windows",
+    "name": "Map Optimization",
+    "category": "Harita optimizasyonu",
+    "version": "Beta",
+    "platform": "Windows",
+    "updated": "11 Ekim 2026",
+    "summary": "Haritanda performansın nereye gittiğini gör.",
+    "description": "Derlenmiş BSP haritalarını analiz et; yüksek wpoly bölgelerini, büyük lightmap'leri ve sorunlu yüzeyleri 3D görünümde incele. Kaynak .map dosyanla optimizasyon denemeleri yap ve sonuçları karşılaştır.",
+    "image": "assets/map-optimization.jpg",
+    "gamebanana": "https://gamebanana.com/tools/24466"
+  },
+  {
+    "name": "Studio Paint",
+    "category": "Model boyama",
+    "version": "Beta / Test",
+    "platform": "Windows",
+    "updated": "11 Ekim 2026",
+    "summary": "Modelinin sadece istediğin parçasını boya.",
+    "image": "assets/studio-paint.jpg",
+    "gamebanana": "https://gamebanana.com/tools/24470"
+  },
+  {
+    "name": "Studio Nav",
+    "category": "Navigasyon & botlar",
+    "version": "v0.30.0 Beta",
+    "platform": "Windows",
+    "updated": "14 Eylül 2026",
+    "summary": "Botların yolunu oyunu açmadan test et.",
+    "image": "assets/studio-nav.jpg",
+    "gamebanana": "https://gamebanana.com/tools/24109"
+  },
+  {
+    "name": "Skin Studio",
+    "category": "Skin & texture",
+    "version": "v1.20.1",
+    "platform": "Windows",
+    "updated": "11 Eylül 2026",
+    "summary": "Silah skinlerini ve texture'ları tek yerden yönet.",
+    "image": "assets/skin-studio.jpg",
+    "gamebanana": "https://gamebanana.com/tools/24053",
     "github": "https://github.com/sodej33-lang/CS16-Skin-Studio",
-    "download": "https://github.com/sodej33-lang/CS16-Skin-Studio/releases",
-    "links": [
-      {
-        "label": "GameBanana",
-        "url": "https://gamebanana.com/tools/24053"
-      }
-    ]
+    "download": "https://github.com/sodej33-lang/CS16-Skin-Studio/releases"
+  },
+  {
+    "name": "Studio Modeler",
+    "category": "Harita → model",
+    "version": "Beta / Test",
+    "platform": "Windows",
+    "updated": "11 Ekim 2026",
+    "summary": "Harita fırçalarını GoldSrc modele dönüştür.",
+    "image": "assets/studio-modeler.jpg",
+    "gamebanana": "https://gamebanana.com/tools/24469"
   }
 ]
