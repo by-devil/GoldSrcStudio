@@ -19,7 +19,20 @@
     "image": "/assets/map-optimization.jpg",
     "gamebanana": "https://gamebanana.com/tools/24466",
     "download": "/tools/map-optimization/GoldSrcOptimization_Setup_beta.exe",
-    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/map-optimization"
+    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/map-optimization",
+    "en": {
+      "category": "Map optimization",
+      "updated": "Oct 11, 2026",
+      "summary": "See where your map's performance is going.",
+      "description": "Analyse compiled BSP maps and inspect high-wpoly areas, large lightmaps and problem faces in a 3D view. Run optimization experiments with your source .map file and compare the results.",
+      "features": [
+        "wpoly and visleaf analysis",
+        "3D density and error layers",
+        "HINT / info_portal optimization experiments",
+        "Recompiling with SDHLT",
+        "HTML report export"
+      ]
+    }
   },
   {
     "slug": "studio-paint",
@@ -41,7 +54,20 @@
     "image": "/assets/studio-paint.jpg",
     "gamebanana": "https://gamebanana.com/tools/24470",
     "download": "/tools/studio-paint/GoldSrcStudioPaint_v0.1_test.zip",
-    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/studio-paint"
+    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/studio-paint",
+    "en": {
+      "category": "Model painting",
+      "updated": "Oct 11, 2026",
+      "summary": "Paint only the part of your model you want.",
+      "description": "Open GoldSrc .mdl models in 3D, select surfaces and paint them layer by layer with colours, gradients, patterns or your own images. Export as a new .mdl without touching your original file.",
+      "features": [
+        "3D surface and UV selection",
+        "Layered, non-destructive painting",
+        "Gradients, patterns and a 3D brush",
+        "Image import",
+        "Export as a new _skin.mdl"
+      ]
+    }
   },
   {
     "slug": "studio-nav",
@@ -63,7 +89,20 @@
     "image": "/assets/studio-nav.jpg",
     "gamebanana": "https://gamebanana.com/tools/24109",
     "download": "/tools/studio-nav/GoldSrcStudioNav_Setup_v0.24.0.exe",
-    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/studio-nav"
+    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/studio-nav",
+    "en": {
+      "category": "Navigation & bots",
+      "updated": "Sep 14, 2026",
+      "summary": "Test bot routes without launching the game.",
+      "description": "View BSP maps in 3D and work with NAV areas and PWF waypoint data. Simulate bot routes, collect map resources and build a RES file or ZIP package for sharing.",
+      "features": [
+        "Built-in 3D BSP viewer",
+        "NAV and PWF editing",
+        "Automatic navigation generation",
+        "Bot route simulation",
+        "RES and ZIP package creation"
+      ]
+    }
   },
   {
     "slug": "skin-studio",
@@ -86,7 +125,20 @@
     "gamebanana": "https://gamebanana.com/tools/24053",
     "download": "/tools/skin-studio/SkinStudio_Setup_v1.20.1.exe",
     "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/skin-studio",
-    "repo": "https://github.com/serhat-ondes/CS16-Skin-Studio"
+    "repo": "https://github.com/serhat-ondes/CS16-Skin-Studio",
+    "en": {
+      "category": "Skins & textures",
+      "updated": "Sep 11, 2026",
+      "summary": "Manage weapon skins and textures in one place.",
+      "description": "Open GoldSrc .mdl files, edit embedded textures, add PNG/JPG images and create sprite effects. Model and texture editing in a single interface for skin makers, modders and server owners.",
+      "features": [
+        "Embedded model texture editing",
+        "PNG/JPG import and positioning",
+        "3D model preview",
+        "Glow and muzzle-flash sprite creation",
+        "wts_actions.ini output"
+      ]
+    }
   },
   {
     "slug": "studio-modeler",
@@ -108,6 +160,19 @@
     "image": "/assets/studio-modeler.jpg",
     "gamebanana": "https://gamebanana.com/tools/24469",
     "download": "/tools/studio-modeler/GoldSrcStudioModeler_v0.1_test.zip",
-    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/studio-modeler"
+    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/studio-modeler",
+    "en": {
+      "category": "Map → model",
+      "updated": "Oct 11, 2026",
+      "summary": "Turn map brushes into GoldSrc models.",
+      "description": "Select brushes from Hammer, J.A.C.K. or Jackhammer maps and convert them into GoldSrc-compatible low-poly .mdl models. Pick entities, groups or visgroups with a live preview and build models directly, without studiomdl.",
+      "features": [
+        "Reads .map, .rmf and .jmf",
+        "Entity, group and visgroup selection",
+        "Live textured 3D preview",
+        "Hidden face removal and polygon merging",
+        "Direct .mdl export"
+      ]
+    }
   }
 ]
