@@ -2,7 +2,7 @@
 
 Counter-Strike 1.6 / GoldSrc motoru için modlama araçları.
 
-🌐 Web: https://sodej33-lang.github.io/GoldSrcStudio/ · https://bydevil.com/tools/
+🌐 Web: https://by-devil.github.io/GoldSrcStudio/ · https://bydevil.com/tools/
 
 ## Araçlar
 
@@ -20,7 +20,7 @@ Counter-Strike 1.6 / GoldSrc motoru için modlama araçları.
   "name": "Araç Adı",
   "description": "Kısa açıklama",
   "tags": ["GoldSrc"],
-  "github": "https://github.com/sodej33-lang/GoldSrcStudio/tree/main/tools/arac-adi",
+  "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/arac-adi",
   "demo": "tools/arac-adi/"
 }
 ```
