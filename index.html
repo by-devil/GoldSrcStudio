@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GoldSrc Studio</title>
+  <meta name="description" content="Counter-Strike 1.6 / GoldSrc modlama araçları – açık kaynak, GitHub üzerinde.">
+  <style>
+    :root {
+      --bg: #f6f5f1; --surface: #ffffff; --text: #1d1c19; --muted: #6b675e;
+      --border: #e2ded4; --accent: #b8860b; --accent-text: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #121110; --surface: #1c1a17; --text: #ece8de; --muted: #a39d90;
+              --border: #2f2c27; --accent: #e0b03c; --accent-text: #1a1406; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text);
+           font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    a { color: inherit; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+    header { border-bottom: 1px solid var(--border); background: var(--surface); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 64px; }
+    .brand { font-weight: 700; font-size: 1.15rem; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    .gh { display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+          border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; font-size: .9rem; }
+    .gh:hover { border-color: var(--accent); }
+    .gh svg { width: 18px; height: 18px; fill: currentColor; }
+    .hero { padding: 48px 0 24px; }
+    .hero h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+    .hero p { margin: 0; color: var(--muted); max-width: 640px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; padding: 24px 0 56px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+            padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+    .card h2 { margin: 0; font-size: 1.15rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; flex: 1; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: .75rem; border: 1px solid var(--border); border-radius: 999px; padding: 2px 8px; color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .btn { text-decoration: none; font-size: .9rem; border-radius: 8px; padding: 7px 12px;
+           border: 1px solid var(--border); display: inline-flex; align-items: center; gap: 6px; }
+    .btn svg { width: 16px; height: 16px; fill: currentColor; }
+    .btn.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+    .btn:hover { border-color: var(--accent); }
+    footer { border-top: 1px solid var(--border); padding: 24px 0; color: var(--muted); font-size: .85rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="./">GoldSrc <span>Studio</span></a>
+      <a class="gh" href="https://github.com/sodej33-lang/GoldSrcStudio" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path id="gh-mark" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>GoldSrc modlama araçları</h1>
+      <p>Counter-Strike 1.6 ve GoldSrc motoru için geliştirdiğim araçlar. Hepsinin kaynağı ve sürümleri GitHub'da.</p>
+    </section>
+    <section class="grid" id="tools" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© GoldSrc Studio · <a href="https://bydevil.com/tools/">bydevil.com/tools</a></span>
+      <a href="https://github.com/sodej33-lang">github.com/sodej33-lang</a>
+    </div>
+  </footer>
+
+  <script>
+    const ghIcon = '<svg viewBox="0 0 16 16" aria-hidden="true"><use href="#gh-mark"/></svg>';
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const link = (url, label, cls = 'btn') =>
+      `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener">${label}</a>`;
+
+    fetch('tools.json')
+      .then(r => r.json())
+      .then(tools => {
+        document.getElementById('tools').innerHTML = tools.map(t => `
+          <article class="card">
+            <h2>${esc(t.name)}</h2>
+            <p>${esc(t.description)}</p>
+            <div class="tags">${(t.tags || []).map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div>
+            <div class="actions">
+              ${t.download ? link(t.download, 'İndir', 'btn primary') : ''}
+              ${t.demo ? link(t.demo, 'Aç', 'btn primary') : ''}
+              ${t.github ? link(t.github, ghIcon + ' GitHub') : ''}
+              ${(t.links || []).map(l => link(l.url, esc(l.label))).join('')}
+            </div>
+          </article>`).join('');
+      })
+      .catch(() => {
+        document.getElementById('tools').innerHTML = '<p>Araç listesi yüklenemedi.</p>';
+      });
+  </script>
+</body>
+</html>

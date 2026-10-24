@@ -1,0 +1,12 @@
+[
+  {
+    "name": "CS 1.6 Skin Studio",
+    "description": "Counter-Strike 1.6 / GoldSrc için model, doku ve sprite düzenleme aracı. .mdl desteği, PNG/JPG içe aktarma, 3D önizleme, sprite ve glow efektleri.",
+    "tags": ["GoldSrc", "MDL", "Sprite", "Windows"],
+    "github": "https://github.com/sodej33-lang/CS16-Skin-Studio",
+    "download": "https://github.com/sodej33-lang/CS16-Skin-Studio/releases",
+    "links": [
+      { "label": "GameBanana", "url": "https://gamebanana.com/tools/24053" }
+    ]
+  }
+]
