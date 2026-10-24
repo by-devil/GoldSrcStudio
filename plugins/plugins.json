@@ -1,0 +1,540 @@
+[
+  {
+    "slug": "pro-public-top15",
+    "name": "Pro Public TOP15",
+    "link": "https://bydevil.com/plugins/#propublic",
+    "cover": 0,
+    "tags": [
+      "Top15",
+      "Toptime",
+      "Profil",
+      "FunGun"
+    ],
+    "text": "Pro Public sunucuları için eksiksiz istatistik sistemi: Top15 ve süre sıralamaları, detaylı oyuncu profilleri, Steam bilgileri ve FunGun tarama geçmişi.",
+    "shots": [
+      {
+        "file": "img/pp-1-top15.jpg",
+        "label": "Top15 sıralaması",
+        "en": "Top15 ranking"
+      },
+      {
+        "file": "img/pp-2-toptime.jpg",
+        "label": "Toptime sıralaması",
+        "en": "Toptime ranking"
+      },
+      {
+        "file": "img/pp-3-profil.jpg",
+        "label": "Oyuncu profili ve en iyi silahlar",
+        "en": "Player profile and best weapons"
+      },
+      {
+        "file": "img/pp-4-steam-profil.jpg",
+        "label": "Profil ve son oynanan oyunlar",
+        "en": "Profile and recently played games"
+      },
+      {
+        "file": "img/pp-5-steam-bilgi.jpg",
+        "label": "Steam bilgileri",
+        "en": "Steam info"
+      },
+      {
+        "file": "img/pp-6-fungun.jpg",
+        "label": "FunGun taramaları",
+        "en": "FunGun scans"
+      },
+      {
+        "file": "img/pp-7-avatar.jpg",
+        "label": "Profil resmi seçimi",
+        "en": "Avatar picker"
+      },
+      {
+        "file": "img/pp-8-arayuz.jpg",
+        "label": "Arayüzü düzenle",
+        "en": "Customise the interface"
+      }
+    ],
+    "en": {
+      "tags": [
+        "Top15",
+        "Toptime",
+        "Profile",
+        "FunGun"
+      ],
+      "text": "Complete stats system for Pro Public servers: Top15 and playtime rankings, detailed player profiles, Steam info and FunGun scan history."
+    }
+  },
+  {
+    "slug": "royal-pass",
+    "name": "Royal Pass",
+    "link": "https://bydevil.com/plugins/#royalpass",
+    "cover": 3,
+    "tags": [
+      "Görevler",
+      "Mağaza",
+      "Kutular",
+      "Pazar"
+    ],
+    "text": "Puan ekonomisi: görevlerden puan kazan, kozmetik mağazasında harca, kutu aç, oyuncu pazarında alım satım yap.",
+    "shots": [
+      {
+        "file": "img/rp-01.jpg",
+        "label": "Ana menü",
+        "en": "Main menu"
+      },
+      {
+        "file": "img/rp-02.jpg",
+        "label": "Görevler",
+        "en": "Missions"
+      },
+      {
+        "file": "img/rp-03.jpg",
+        "label": "Mağaza: silah skinleri",
+        "en": "Shop: weapon skins"
+      },
+      {
+        "file": "img/rp-04.jpg",
+        "label": "Mağaza: etiketler",
+        "en": "Shop: tags"
+      },
+      {
+        "file": "img/rp-05.jpg",
+        "label": "Mağaza: parlama",
+        "en": "Shop: glow"
+      },
+      {
+        "file": "img/rp-06.jpg",
+        "label": "Mağaza: takım özelliği",
+        "en": "Shop: team perk"
+      },
+      {
+        "file": "img/rp-07.jpg",
+        "label": "Mağaza: karakterler",
+        "en": "Shop: characters"
+      },
+      {
+        "file": "img/rp-08.jpg",
+        "label": "Mağaza: crosshair",
+        "en": "Shop: crosshairs"
+      },
+      {
+        "file": "img/rp-09.jpg",
+        "label": "Mağaza: sesler",
+        "en": "Shop: sounds"
+      },
+      {
+        "file": "img/rp-10.jpg",
+        "label": "Oyuncu pazarı",
+        "en": "Player market"
+      },
+      {
+        "file": "img/rp-11.jpg",
+        "label": "Satın alma geçmişi",
+        "en": "Purchase history"
+      },
+      {
+        "file": "img/rp-12.jpg",
+        "label": "Kutular",
+        "en": "Cases"
+      },
+      {
+        "file": "img/rp-13.jpg",
+        "label": "Kutu açılışı",
+        "en": "Case opening"
+      },
+      {
+        "file": "img/rp-14.jpg",
+        "label": "Kutu içeriği ve şanslar",
+        "en": "Case contents and odds"
+      },
+      {
+        "file": "img/rp-15.jpg",
+        "label": "Envanter",
+        "en": "Inventory"
+      },
+      {
+        "file": "img/rp-16.jpg",
+        "label": "Sıralama",
+        "en": "Ranking"
+      },
+      {
+        "file": "img/rp-17.jpg",
+        "label": "Oyuncu profili",
+        "en": "Player profile"
+      }
+    ],
+    "en": {
+      "tags": [
+        "Missions",
+        "Shop",
+        "Cases",
+        "Market"
+      ],
+      "text": "Points economy: earn points from missions, spend them in the cosmetics shop, open cases and trade on the player market."
+    }
+  },
+  {
+    "slug": "team-system",
+    "name": "Team System",
+    "link": "https://bydevil.com/plugins/#takim",
+    "cover": 0,
+    "tags": [
+      "Yönetim",
+      "Görevler",
+      "FreeVIP",
+      "Sezon"
+    ],
+    "text": "Takım (klan) sistemi: takım kur, üye davet et, banner ve renklerle özelleştir, sezon sıralamasında birlikte yüksel.",
+    "shots": [
+      {
+        "file": "img/tk-01.jpg",
+        "label": "Takım ana menüsü",
+        "en": "Team main menu"
+      },
+      {
+        "file": "img/tk-02.jpg",
+        "label": "Takım yönetimi",
+        "en": "Team management"
+      },
+      {
+        "file": "img/tk-03.jpg",
+        "label": "Takım ayarları ve üye yönetimi",
+        "en": "Team settings and members"
+      },
+      {
+        "file": "img/tk-04.jpg",
+        "label": "Görünüm: banner, arka plan, isim rengi",
+        "en": "Look: banner, background, name colour"
+      },
+      {
+        "file": "img/tk-05.jpg",
+        "label": "Takım görevleri",
+        "en": "Team missions"
+      },
+      {
+        "file": "img/tk-06.jpg",
+        "label": "Takım marketi",
+        "en": "Team market"
+      },
+      {
+        "file": "img/tk-07.jpg",
+        "label": "FreeVIP saatleri",
+        "en": "FreeVIP hours"
+      },
+      {
+        "file": "img/tk-08.jpg",
+        "label": "Takım sıralaması",
+        "en": "Team ranking"
+      },
+      {
+        "file": "img/tk-09.jpg",
+        "label": "Takım profili ve kadro",
+        "en": "Team profile and roster"
+      }
+    ],
+    "en": {
+      "tags": [
+        "Management",
+        "Missions",
+        "FreeVIP",
+        "Season"
+      ],
+      "text": "Team (clan) system: create a team, invite members, customise it with banners and colours, and climb the season ranking together."
+    }
+  },
+  {
+    "slug": "gungame-top15",
+    "name": "GunGame TOP15",
+    "link": "https://bydevil.com/plugins/#gungame",
+    "cover": 0,
+    "tags": [
+      "Bireysel",
+      "Takım",
+      "FFA",
+      "Sezon"
+    ],
+    "text": "Bireysel, takım ve FFA sıralamaları; puan, XP, K/D, bıçak ve seri istatistikleri, oyuncu profilleri ve sezon görünümleri.",
+    "shots": [
+      {
+        "file": "img/gg-01.webp",
+        "label": "Bireysel sıralama",
+        "en": "Solo ranking"
+      },
+      {
+        "file": "img/gg-02.webp",
+        "label": "Oyuncu profili ve en iyi silahlar",
+        "en": "Player profile and best weapons"
+      },
+      {
+        "file": "img/gg-03.webp",
+        "label": "Takım sıralaması",
+        "en": "Team ranking"
+      },
+      {
+        "file": "img/gg-04.webp",
+        "label": "Takım profili",
+        "en": "Team profile"
+      },
+      {
+        "file": "img/gg-05.webp",
+        "label": "FFA sıralaması",
+        "en": "FFA ranking"
+      },
+      {
+        "file": "img/gg-06.webp",
+        "label": "FFA oyuncu profili",
+        "en": "FFA player profile"
+      },
+      {
+        "file": "img/gg-07.webp",
+        "label": "Sezon ekranı",
+        "en": "Season screen"
+      },
+      {
+        "file": "img/el-sonu.webp",
+        "label": "El sonu ekranı (FFA)",
+        "en": "Round end screen (FFA)"
+      },
+      {
+        "file": "img/mac-sonu-bireysel.jpg",
+        "label": "Maç sonu ekranı (bireysel)",
+        "en": "Match end screen (solo)"
+      }
+    ],
+    "en": {
+      "tags": [
+        "Solo",
+        "Team",
+        "FFA",
+        "Season"
+      ],
+      "text": "Solo, team and FFA rankings; points, XP, K/D, knife and streak stats, player profiles and season views."
+    }
+  },
+  {
+    "slug": "zombie-plague-top15",
+    "name": "Zombie Plague TOP15",
+    "link": "https://bydevil.com/plugins/#zombieplague",
+    "cover": 0,
+    "tags": [
+      "Genel",
+      "Süre",
+      "Profil",
+      "Haftalık ödül"
+    ],
+    "text": "Zombie Plague için sıralama: liderle kıyaslayan profiller, rütbe yolu, özelleştirilebilir kart, sezon arşivi ve haftalık VIP ödülleri.",
+    "shots": [
+      {
+        "file": "img/zp-01.jpg",
+        "label": "Genel sıralama",
+        "en": "Overall ranking"
+      },
+      {
+        "file": "img/zp-02.jpg",
+        "label": "Oyuncu profili",
+        "en": "Player profile"
+      },
+      {
+        "file": "img/zp-03.jpg",
+        "label": "Kendi profilin",
+        "en": "Your own profile"
+      },
+      {
+        "file": "img/zp-04.jpg",
+        "label": "Özelleştir: rütbe avatarları",
+        "en": "Customise: rank avatars"
+      },
+      {
+        "file": "img/zp-05.jpg",
+        "label": "Özelleştir: kart arka planı",
+        "en": "Customise: card background"
+      },
+      {
+        "file": "img/zp-06.jpg",
+        "label": "Özelleştir: isim rengi",
+        "en": "Customise: name colour"
+      },
+      {
+        "file": "img/zp-07.jpg",
+        "label": "Özelleştir: takım rozeti",
+        "en": "Customise: team badge"
+      },
+      {
+        "file": "img/zp-08.jpg",
+        "label": "Süre sıralaması",
+        "en": "Playtime ranking"
+      },
+      {
+        "file": "img/zp-09.jpg",
+        "label": "Süre profili",
+        "en": "Playtime profile"
+      },
+      {
+        "file": "img/zp-10.jpg",
+        "label": "Sezon arşivi",
+        "en": "Season archive"
+      },
+      {
+        "file": "img/zp-11.jpg",
+        "label": "Geçmiş sezon sıralaması",
+        "en": "Past season ranking"
+      },
+      {
+        "file": "img/zp-12.jpg",
+        "label": "Haftalık ödüller",
+        "en": "Weekly rewards"
+      }
+    ],
+    "en": {
+      "tags": [
+        "Overall",
+        "Playtime",
+        "Profile",
+        "Weekly reward"
+      ],
+      "text": "Rankings for Zombie Plague: profiles compared with the leader, a rank path, a customisable card, season archive and weekly VIP rewards."
+    }
+  },
+  {
+    "slug": "public-battle-pass",
+    "name": "Public Battle Pass",
+    "link": "https://bydevil.com/plugins/#battlepass",
+    "cover": 0,
+    "tags": [
+      "Seviyeler",
+      "Kasalar",
+      "Çark",
+      "Envanter"
+    ],
+    "text": "Public sunucular için sezonluk battle pass: ücretsiz ve premium seviye ödülleri, kasalar, çark ve efekt envanteri.",
+    "shots": [
+      {
+        "file": "img/bpp-01.jpg",
+        "label": "Seviye ödülleri",
+        "en": "Tier rewards"
+      },
+      {
+        "file": "img/bpp-02.jpg",
+        "label": "Günlük ve haftalık görevler",
+        "en": "Daily and weekly missions"
+      },
+      {
+        "file": "img/bpp-03.jpg",
+        "label": "Kasalar",
+        "en": "Cases"
+      },
+      {
+        "file": "img/bpp-04.jpg",
+        "label": "Kasa açılışı",
+        "en": "Case opening"
+      },
+      {
+        "file": "img/bpp-05.jpg",
+        "label": "Çark",
+        "en": "Prize wheel"
+      },
+      {
+        "file": "img/bpp-06.jpg",
+        "label": "Envanter",
+        "en": "Inventory"
+      },
+      {
+        "file": "img/bpp-07.jpg",
+        "label": "Sezon sıralaması",
+        "en": "Season ranking"
+      },
+      {
+        "file": "img/bpp-08.jpg",
+        "label": "Oyuncu profili",
+        "en": "Player profile"
+      },
+      {
+        "file": "img/bpp-09.jpg",
+        "label": "Profil özelleştirme",
+        "en": "Profile customisation"
+      },
+      {
+        "file": "img/bpp-10.jpg",
+        "label": "Nasıl çalışır?",
+        "en": "How it works"
+      }
+    ],
+    "en": {
+      "tags": [
+        "Tiers",
+        "Cases",
+        "Wheel",
+        "Inventory"
+      ],
+      "text": "Seasonal battle pass for public servers: free and premium tier rewards, cases, a prize wheel and an effects inventory."
+    }
+  },
+  {
+    "slug": "zombie-plague-battle-pass",
+    "name": "Zombie Plague Battle Pass",
+    "link": "https://bydevil.com/plugins/#battlepass",
+    "cover": 0,
+    "tags": [
+      "Ödüller",
+      "Görevler",
+      "Çark",
+      "Mağaza"
+    ],
+    "text": "Haftalık sezon sistemi: her gün ücretsiz ve premium ödül, günlük görevler, coin çarkı ve mağaza.",
+    "shots": [
+      {
+        "file": "img/bpz-01.jpg",
+        "label": "Haftalık ödüller",
+        "en": "Weekly rewards"
+      },
+      {
+        "file": "img/bpz-02.jpg",
+        "label": "Günlük görevler",
+        "en": "Daily missions"
+      },
+      {
+        "file": "img/bpz-03.jpg",
+        "label": "Günün ödülü",
+        "en": "Reward of the day"
+      },
+      {
+        "file": "img/bpz-04.jpg",
+        "label": "Furia çarkı",
+        "en": "Furia wheel"
+      },
+      {
+        "file": "img/bpz-05.jpg",
+        "label": "Haftalık sıralama",
+        "en": "Weekly ranking"
+      },
+      {
+        "file": "img/bpz-06.jpg",
+        "label": "Sıralama (alt sayfalar)",
+        "en": "Ranking (sub-pages)"
+      },
+      {
+        "file": "img/bpz-07.jpg",
+        "label": "Kendi profilin",
+        "en": "Your own profile"
+      },
+      {
+        "file": "img/bpz-08.jpg",
+        "label": "Oyuncu profili",
+        "en": "Player profile"
+      },
+      {
+        "file": "img/bpz-09.jpg",
+        "label": "Coin mağazası",
+        "en": "Coin shop"
+      }
+    ],
+    "en": {
+      "tags": [
+        "Rewards",
+        "Missions",
+        "Wheel",
+        "Shop"
+      ],
+      "text": "Weekly season system: free and premium rewards every day, daily missions, a coin wheel and a shop."
+    }
+  }
+]

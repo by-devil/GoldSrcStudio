@@ -211,4 +211,62 @@ shell('404.html', 'notfound', ('Sayfa bulunamadı — GoldSrc Studio', 'Page not
       <p style="color:var(--text-2)">{T('Aradığın şey taşınmış olabilir. Hızlı arama için <span class="kbd">/</span> tuşuna bas.', 'It may have moved. Press <span class="kbd">/</span> for quick search.')}</p>
       <div class="actions" style="justify-content:center;margin-top:24px"><a class="btn primary" href="/">{T('Ana sayfa', 'Home')}</a><a class="btn" href="/tools/">{T('Araçlar', 'Tools')}</a></div>
     </div></section>''')
+# Eklenti README'leri (GitHub'da klasörler araçlardaki gibi görünsün)
+plugins = json.load(open('plugins/plugins.json', encoding='utf-8'))
+
+def plugin_cell(p, base=''):
+    cover = p['shots'][p['cover']]['file']
+    return (f'<td width="33%" valign="top"><a href="{base}{p["slug"]}"><img src="{base}{p["slug"]}/{cover}" alt="{p["name"]}"></a><br>'
+            f'<b><a href="{base}{p["slug"]}">{p["name"]}</a></b> · <sub>{len(p["shots"])} ekran görüntüsü</sub><br>{p["text"]}</td>')
+
+def rows(cells, per=3):
+    return '\n'.join('<tr>' + ''.join(cells[i:i + per]) + '</tr>' for i in range(0, len(cells), per))
+
+for p in plugins:
+    shots = '\n'.join(f'### {i}. {x["label"]}\n\n![{x["label"]}]({x["file"]})\n' for i, x in enumerate(p['shots'], 1))
+    open(f'plugins/{p["slug"]}/README.md', 'w', encoding='utf-8').write(f"""# {p['name']}
+
+**AMX Mod X eklentisi · Counter-Strike 1.6**
+
+![{p['name']}]({p['shots'][p['cover']]['file']})
+
+{p['text']}
+
+{' · '.join(f'`{t}`' for t in p['tags'])}
+
+Fiyat, kurulum ve canlı ayrıntılar: **[bydevil.com]({p['link']})** · [İletişim](https://tools.bydevil.com/contact/)
+
+## Ekran görüntüleri
+
+{shots}
+[← Tüm eklentiler](../README.md)
+""")
+
+open('plugins/README.md', 'w', encoding='utf-8').write(f"""# AMXX eklentileri
+
+Counter-Strike 1.6 sunucuları için sıralama, sezon ve ekonomi sistemleri · **{len(plugins)} eklenti**.
+Sitede: [tools.bydevil.com/plugins](https://tools.bydevil.com/plugins/) · Satış ve kurulum: [bydevil.com/plugins](https://bydevil.com/plugins/)
+
+<table>
+{rows([plugin_cell(p) for p in plugins])}
+</table>
+
+[← Ana sayfa](../README.md)
+""")
+
+readme = open('README.md', encoding='utf-8').read()
+block = f"""<!-- eklentiler -->
+## AMXX eklentileri
+
+<table>
+{rows([plugin_cell(p, 'plugins/') for p in plugins])}
+</table>
+
+[Tüm eklentiler →](plugins)
+<!-- /eklentiler -->"""
+if '<!-- eklentiler -->' in readme:
+    readme = re.sub(r'<!-- eklentiler -->.*?<!-- /eklentiler -->', lambda m: block, readme, flags=re.S)
+else:
+    readme = readme.replace('## Hata bildirimi ve öneriler', block + '\n\n## Hata bildirimi ve öneriler')
+open('README.md', 'w', encoding='utf-8').write(readme)
 print('ok')
