@@ -26,7 +26,11 @@ Derlenmiş BSP haritalarını analiz et; yüksek wpoly bölgelerini, büyük lig
 
 ## İndir
 
-[GameBanana](https://gamebanana.com/tools/24466)
+**[⬇ GoldSrcOptimization_Setup_beta.exe](GoldSrcOptimization_Setup_beta.exe?raw=1)** · 5.6 MB
+
+<sub>SHA-256: `f88f266d3e865168aabd8b985482b3e8d4146101cd445e4062c2b6b5bf518d66`</sub>
+
+Diğer bağlantılar: [GameBanana](https://gamebanana.com/tools/24466)
 
 > Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.
 

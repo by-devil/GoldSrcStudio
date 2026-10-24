@@ -26,7 +26,11 @@ GoldSrc .mdl dosyalarını aç, gömülü texture'ları düzenle, PNG/JPG görse
 
 ## İndir
 
-[GameBanana](https://gamebanana.com/tools/24053) · [GitHub](https://github.com/sodej33-lang/CS16-Skin-Studio) · [İndir](https://github.com/sodej33-lang/CS16-Skin-Studio/releases)
+**[⬇ SkinStudio_Setup_v1.20.1.exe](SkinStudio_Setup_v1.20.1.exe?raw=1)** · 6.7 MB
+
+<sub>SHA-256: `44eafbc3be85f4da2e6a72f2d6101b868932f713ec2eca02f51e09293314a25b`</sub>
+
+Diğer bağlantılar: [GameBanana](https://gamebanana.com/tools/24053) · [GitHub](https://github.com/sodej33-lang/CS16-Skin-Studio)
 
 > Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.
 
