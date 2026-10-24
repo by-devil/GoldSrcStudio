@@ -149,6 +149,31 @@
     @media (max-width: 650px) { .apps { grid-template-columns: 1fr; gap: 34px; } .app-art { height: auto; aspect-ratio: 16 / 9; }
                                 .apps-foot { flex-direction: column; align-items: flex-start; } }
 
+    /* Yakından bak */
+    .details { background: var(--bg-2); }
+    .tabs { display: flex; gap: 26px; margin-bottom: 38px; border-bottom: 1px solid #3d4445; overflow-x: auto; scrollbar-width: thin; }
+    .tabs button { position: relative; flex: none; padding: 8px 0 20px; background: none; border: 0; color: #8e9999; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; }
+    .tabs button:hover, .tabs button.on { color: #fff; }
+    .tabs button.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--orange); }
+    .detail { display: grid; grid-template-columns: 1.08fr .92fr; gap: 65px; align-items: center; animation: fadein .25s ease-out; }
+    @keyframes fadein { from { opacity: .4; transform: translateY(6px); } }
+    .detail-visual { position: relative; height: 480px; overflow: hidden; background: radial-gradient(circle, #2d3a3e, #171e20 70%); }
+    .detail-visual img { width: 100%; height: 100%; object-fit: contain; padding: 26px; filter: drop-shadow(0 18px 30px rgba(0,0,0,.6)); }
+    .detail-visual .label { position: absolute; left: 27px; bottom: 23px; color: #c0cbca; font-size: 9px; }
+    .detail-copy .eyebrow-o { color: var(--orange); font-size: 10px; }
+    .detail-copy h3 { margin: 16px 0 20px; font-size: clamp(44px, 5vw, 75px); }
+    .detail-copy .lead { margin-bottom: 14px; color: #f0f0eb; font-size: 19px; font-weight: 700; line-height: 1.5; }
+    .detail-copy .desc { color: #9fa8a8; font-size: 14px; line-height: 1.8; }
+    .rule { width: 39px; height: 2px; margin: 25px 0; background: var(--orange); }
+    .features { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 11px 15px; margin: 16px 0 30px; }
+    .features li { display: flex; gap: 9px; color: #c2caca; font-size: 13px; line-height: 1.45; }
+    .features li::before { content: "✓"; color: var(--orange); font-weight: 900; }
+    .detail-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 26px; }
+    .detail-actions .types { color: #909b9b; font-size: 10px; }
+    .details-note { margin-top: 32px; color: #808c8d; font-size: 12px; line-height: 1.6; }
+    @media (max-width: 850px) { .detail { grid-template-columns: 1fr; gap: 32px; } .detail-visual { height: 390px; } }
+    @media (max-width: 650px) { .detail-visual { height: auto; aspect-ratio: 4 / 3; } .detail-visual img { padding: 10px; } .features { grid-template-columns: 1fr; } }
+
     /* GitHub bölümü */
     .github { background: var(--panel); }
     .gh-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 70px; align-items: center; }
@@ -200,6 +225,7 @@
       </a>
       <nav class="nav caps">
         <a href="#uygulamalar">Uygulamalar</a>
+        <a href="#yakindan">Yakından bak</a>
         <a href="#github" lang="en">GitHub</a>
         <a href="https://www.goldsrcstudio.com/" lang="en">GoldSrcStudio.com</a>
         <a href="https://bydevil.com/" lang="en">Bydevil.com</a>
@@ -260,10 +286,28 @@
       </div>
     </section>
 
+    <section class="section details" id="yakindan">
+      <div class="wrap">
+        <div class="topline caps">
+          <span class="kicker"><i></i>02 / Yakından bak</span>
+          <span class="side-note">Doğrudan üretim sürecine</span>
+        </div>
+        <div class="heading-row">
+          <div>
+            <h2 class="display">Araçların <span class="accent">içinde.</span></h2>
+            <p>Ne yaptıklarını keşfet; sana uygun aracı GameBanana üzerinden incele ve indir.</p>
+          </div>
+        </div>
+        <div class="tabs caps" id="tabs" role="tablist" lang="en"></div>
+        <div id="detail"></div>
+        <p class="details-note">Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz. İndirme ve güncel sürüm bilgileri GameBanana sayfalarındadır.</p>
+      </div>
+    </section>
+
     <section class="section github" id="github">
       <div class="wrap gh-grid">
         <div>
-          <span class="kicker caps"><i></i>02 / GitHub</span>
+          <span class="kicker caps"><i></i>03 / GitHub</span>
           <h2 class="display">Kaynaklar<br><span class="accent">GitHub'da.</span></h2>
           <p>Sürümleri takip et, hata bildir ya da yeni bir araç fikrini paylaş. Yeni sürümlerden ilk sen haberdar olmak için repoya yıldız bırak.</p>
         </div>
@@ -290,6 +334,7 @@
         </div>
         <nav class="footer-links caps">
           <a href="#uygulamalar">Uygulamalar</a>
+          <a href="#yakindan">Yakından bak</a>
           <a href="#github" lang="en">GitHub</a>
           <a href="https://www.goldsrcstudio.com/" lang="en">GoldSrcStudio.com</a>
           <a href="https://bydevil.com/" lang="en">Bydevil.com</a>
@@ -311,7 +356,7 @@
     const ext = (url, label, icon, cls = '') =>
       `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener"><svg><use href="#i-${icon}"/></svg>${label}</a>`;
 
-    fetch('tools.json')
+    fetch('tools.json', { cache: 'no-cache' })
       .then(r => r.json())
       .then(tools => {
         const n = pad(tools.length);
@@ -331,12 +376,12 @@
               ${t.image ? `<img src="${esc(t.image)}" alt="${esc(t.name)} ekran görüntüsü" loading="lazy">` : ''}
             </a>
             <div class="app-info">
-              <div class="app-meta caps">${esc(t.category)}<span>—</span>${esc(t.version || '')}<span>/</span>${esc(t.platform || '')}</div>
+              <div class="app-meta caps">${esc(t.category || '')}<span>—</span>${esc(t.version || '')}<span>/</span>${esc(t.platform || '')}</div>
               <div class="app-title">
                 <h3 class="display" lang="en">${esc(t.name)}</h3>
                 <svg><use href="#i-ext"/></svg>
               </div>
-              <p>${esc(t.summary)}</p>
+              <p>${esc(t.summary || '')}</p>
               ${t.updated ? `<span class="app-release caps">Son güncelleme · ${esc(t.updated)}</span>` : ''}
               <div class="app-links caps">
                 ${t.gamebanana ? ext(t.gamebanana, '<span lang="en">GameBanana</span>', 'ext', 'hl') : ''}
@@ -346,6 +391,36 @@
             </div>
           </article>`;
         }).join('');
+
+        // Yakından bak: sekmeli ayrıntı görünümü
+        const tabs = document.getElementById('tabs'), detail = document.getElementById('detail');
+        const show = i => {
+          const t = tools[i];
+          tabs.querySelectorAll('button').forEach((b, j) => { b.classList.toggle('on', i === j); b.setAttribute('aria-selected', i === j); });
+          detail.innerHTML = `
+            <div class="detail" role="tabpanel">
+              <div class="detail-visual">
+                ${t.image ? `<img src="${esc(t.image)}" alt="${esc(t.name)} ekran görüntüsü">` : ''}
+                <span class="label caps" lang="en">GoldSrc Studio / ${esc(t.name)}</span>
+              </div>
+              <div class="detail-copy">
+                <span class="eyebrow-o caps">${esc(t.category || '')}</span>
+                <h3 class="display" lang="en">${esc(t.name)}</h3>
+                <p class="lead">${esc(t.summary || '')}</p>
+                ${t.description ? `<p class="desc">${esc(t.description)}</p>` : ''}
+                ${(t.features || []).length ? `<div class="rule"></div><span class="eyebrow-o caps">Öne çıkan özellikler</span>
+                <ul class="features">${t.features.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : ''}
+                <div class="detail-actions caps">
+                  ${t.gamebanana ? `<a class="btn" href="${esc(t.gamebanana)}" target="_blank" rel="noopener"><span>GameBanana'da incele</span> <svg><use href="#i-ext"/></svg></a>` : ''}
+                  ${t.github ? `<a class="text-link" href="${esc(t.github)}" target="_blank" rel="noopener"><span lang="en">GitHub</span> <svg><use href="#i-ext"/></svg></a>` : ''}
+                  ${t.fileTypes ? `<span class="types" lang="en">${esc(t.fileTypes)}</span>` : ''}
+                </div>
+              </div>
+            </div>`;
+        };
+        tabs.innerHTML = tools.map(t => `<button type="button" role="tab">${esc(t.name)}</button>`).join('');
+        tabs.querySelectorAll('button').forEach((b, i) => b.addEventListener('click', () => show(i)));
+        show(0);
 
         // Kendi GitHub reposu olan araçları GitHub listesinin başına ekle
         document.getElementById('gh-list').insertAdjacentHTML('afterbegin', tools.filter(t => t.github).map(t => `

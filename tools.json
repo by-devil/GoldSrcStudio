@@ -7,6 +7,14 @@
     "updated": "11 Ekim 2026",
     "summary": "Haritanda performansın nereye gittiğini gör.",
     "description": "Derlenmiş BSP haritalarını analiz et; yüksek wpoly bölgelerini, büyük lightmap'leri ve sorunlu yüzeyleri 3D görünümde incele. Kaynak .map dosyanla optimizasyon denemeleri yap ve sonuçları karşılaştır.",
+    "fileTypes": ".BSP / .MAP",
+    "features": [
+      "wpoly ve visleaf analizi",
+      "3D yoğunluk ve hata katmanları",
+      "HINT / info_portal optimizasyon denemeleri",
+      "SDHLT ile yeniden derleme",
+      "HTML rapor dışa aktarımı"
+    ],
     "image": "assets/map-optimization.jpg",
     "gamebanana": "https://gamebanana.com/tools/24466"
   },
@@ -17,6 +25,15 @@
     "platform": "Windows",
     "updated": "11 Ekim 2026",
     "summary": "Modelinin sadece istediğin parçasını boya.",
+    "description": "GoldSrc .mdl modellerini 3D olarak aç, yüzey seç ve renk, degrade, desen veya kendi görselinle katman katman boya. Orijinal dosyana dokunmadan yeni bir .mdl olarak dışa aktar.",
+    "fileTypes": ".MDL / .GSP",
+    "features": [
+      "3D yüzey ve UV seçimi",
+      "Katmanlı ve tahribatsız boyama",
+      "Degrade, desen ve 3D fırça",
+      "Görsel içe aktarma",
+      "Yeni _skin.mdl olarak dışa aktarma"
+    ],
     "image": "assets/studio-paint.jpg",
     "gamebanana": "https://gamebanana.com/tools/24470"
   },
@@ -27,6 +44,15 @@
     "platform": "Windows",
     "updated": "14 Eylül 2026",
     "summary": "Botların yolunu oyunu açmadan test et.",
+    "description": "BSP haritalarını 3D görüntüle; NAV alanları ve PWF waypoint verileriyle çalış. Bot rotalarını simüle et, harita kaynaklarını topla ve paylaşım için RES dosyası veya ZIP paketi oluştur.",
+    "fileTypes": ".BSP / .NAV / .PWF",
+    "features": [
+      "Dahili 3D BSP görüntüleyici",
+      "NAV ve PWF düzenleme",
+      "Otomatik navigasyon oluşturma",
+      "Bot rota simülasyonu",
+      "RES ve ZIP paket oluşturma"
+    ],
     "image": "assets/studio-nav.jpg",
     "gamebanana": "https://gamebanana.com/tools/24109"
   },
@@ -37,10 +63,19 @@
     "platform": "Windows",
     "updated": "11 Eylül 2026",
     "summary": "Silah skinlerini ve texture'ları tek yerden yönet.",
+    "description": "GoldSrc .mdl dosyalarını aç, gömülü texture'ları düzenle, PNG/JPG görseller ekle ve sprite efektleri oluştur. Skin üreticileri, modcular ve sunucu sahipleri için tek arayüzde model ve texture düzenleme.",
+    "fileTypes": ".MDL / .SPR",
+    "features": [
+      "Gömülü model texture düzenleme",
+      "PNG/JPG içe aktarma ve konumlama",
+      "3D model önizleme",
+      "Glow ve muzzle-flash sprite oluşturma",
+      "wts_actions.ini çıktısı"
+    ],
     "image": "assets/skin-studio.jpg",
     "gamebanana": "https://gamebanana.com/tools/24053",
-    "github": "https://github.com/sodej33-lang/CS16-Skin-Studio",
-    "download": "https://github.com/sodej33-lang/CS16-Skin-Studio/releases"
+    "download": "https://github.com/sodej33-lang/CS16-Skin-Studio/releases",
+    "github": "https://github.com/sodej33-lang/CS16-Skin-Studio"
   },
   {
     "name": "Studio Modeler",
@@ -49,6 +84,15 @@
     "platform": "Windows",
     "updated": "11 Ekim 2026",
     "summary": "Harita fırçalarını GoldSrc modele dönüştür.",
+    "description": "Hammer, J.A.C.K. veya Jackhammer haritalarındaki fırçaları seç ve GoldSrc uyumlu düşük poli .mdl modellerine dönüştür. Canlı önizleme ile entity, group veya visgroup seç; studiomdl olmadan doğrudan model üret.",
+    "fileTypes": ".MAP / .RMF / .JMF / .MDL",
+    "features": [
+      ".map, .rmf ve .jmf okuma",
+      "Entity, group ve visgroup seçimi",
+      "Canlı dokulu 3D önizleme",
+      "Gizli yüzleri temizleme ve poli birleştirme",
+      "Doğrudan .mdl dışa aktarma"
+    ],
     "image": "assets/studio-modeler.jpg",
     "gamebanana": "https://gamebanana.com/tools/24469"
   }
