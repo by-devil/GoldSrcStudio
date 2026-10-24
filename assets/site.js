@@ -491,7 +491,7 @@
     if (window.top !== window.self) { try { window.top.location = window.self.location; } catch { document.documentElement.hidden = true; } }
     const field = el => el.closest?.('input, textarea, select, [contenteditable]');
     document.addEventListener('contextmenu', e => { if (!field(e.target)) e.preventDefault(); });
-    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG' || e.target.tagName === 'CANVAS') e.preventDefault(); });
     document.addEventListener('keydown', e => {
       const k = e.key.toLowerCase(), mod = e.ctrlKey || e.metaKey;
       if (e.key === 'F12' || (mod && (k === 'u' || k === 's' || k === 'p')) || (mod && e.shiftKey && 'ijc'.includes(k))) e.preventDefault();
@@ -502,6 +502,29 @@
       e.preventDefault();
       e.clipboardData.setData('text/plain', `${sel}\n\n${L('Kaynak', 'Source')}: ${location.href} · © GoldSrc Studio`);
     });
+    // Resimler yüklenince <canvas>'a çizilir: "resim indirici" eklentileri <img> etiketlerini tarar, canvas'ı bulamaz.
+    const shield = img => {
+      if (img.dataset.ps || /\.svg(\?|$)/i.test(img.src)) return;
+      img.dataset.ps = '1';
+      const draw = () => {
+        if (!img.isConnected || !img.naturalWidth) return;
+        const r = img.getBoundingClientRect(), nw = img.naturalWidth, nh = img.naturalHeight;
+        const fit = r.width ? Math.max(r.width / nw, r.height / nh) : 160 / nw;
+        const k = nw * nh <= 65536 ? 1 : Math.min(1, fit * Math.min(window.devicePixelRatio || 1, 2));
+        const c = document.createElement('canvas');
+        c.width = Math.max(1, Math.round(nw * k)); c.height = Math.max(1, Math.round(nh * k));
+        const g = c.getContext('2d'); g.imageSmoothingQuality = 'high'; g.imageSmoothingEnabled = getComputedStyle(img).imageRendering !== 'pixelated'; g.drawImage(img, 0, 0, c.width, c.height);
+        c.className = img.className; c.classList.add('pimg');
+        if (img.style.cssText) c.style.cssText = img.style.cssText;
+        c.setAttribute('role', 'img'); c.setAttribute('aria-label', img.alt || '');
+        img.replaceWith(c);
+      };
+      img.complete ? draw() : img.addEventListener('load', draw, { once: true });
+    };
+    const scan = root => { if (root.tagName === 'IMG') shield(root); else root.querySelectorAll?.('img').forEach(shield); };
+    scan(document.body);
+    new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(scan))).observe(document.body, { childList: true, subtree: true });
+
     console.log('%cGoldSrc Studio', 'font:700 22px sans-serif;color:#5ab0ec');
     console.log(L('Bu sitenin tasarımı ve içeriği GoldSrc Studio / by Devil\'e aittir. İzinsiz kopyalanamaz.',
       'The design and content of this site belong to GoldSrc Studio / by Devil. Do not copy without permission.'));
