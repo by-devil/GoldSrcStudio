@@ -72,9 +72,9 @@ shell('index.html', 'home', 'GoldSrc Studio — CS 1.6 araçları, haritaları v
           <a class="btn primary" href="/tools/">Araçları keşfet</a>
           <a class="btn" href="/maps/">Haritalara göz at</a>
         </div>
+        <div class="hero-stats" id="stats"></div>
       </div>
     </section>
-    <section class="section"><div class="wrap"><div class="stats" id="stats"></div></div></section>
     <section class="section"><div class="wrap">
       <div class="sec-head"><div><h2>Araçlar</h2></div><a class="more" href="/tools/">Tüm araçlar →</a></div>
       <div class="grid cols-3" id="home-tools"></div>
@@ -122,12 +122,11 @@ list_page('skies/index.html', 'skies', 'Skyboxlar — GoldSrc Studio', 'GoldSrc 
   'Counter-Strike 1.6 ve GoldSrc için gökyüzü paketleri. Tümü ücretsiz ve GameBanana üzerinden indirilir.', False, 'Skybox ara…')
 
 shell('plugins/index.html', 'plugins', 'AMXX eklentileri — GoldSrc Studio', 'Counter-Strike 1.6 sunucuları için AMX Mod X eklentileri.',
-  head('Eklentiler', 'AMXX eklentileri', 'Sunucular için sıralama, sezon ve ekonomi sistemleri. Derlenmiş <b>.amxx</b> olarak satışa sunulacak; fiyatlar ve ödeme sistemi yakında.',
-       '<span class="eyebrow"><i></i>Yakında</span>') + '''
+  head('Eklentiler', 'AMXX eklentileri', 'Counter-Strike 1.6 sunucuları için sıralama, sezon ve ekonomi sistemleri. Ekran görüntüleri ve ayrıntılar için bir eklenti seç.') + '''
     <section class="section"><div class="wrap">
       <div class="grid cols-3" id="plugin-grid"></div>
-      <div class="cta-band" style="margin-top:28px"><div><h2>Çıkınca haber almak ister misin?</h2><p>Sunucun için hangisini beklediğini yaz, öncelik verelim.</p></div>
-        <a class="btn primary" href="/contact/">İletişime geç</a></div>
+      <div class="cta-band" style="margin-top:28px"><div><h2>Sunucun için eklenti mi lazım?</h2><p>Fiyat ve kurulum için yaz.</p></div>
+        <div class="actions"><a class="btn primary" href="/contact/">İletişime geç</a><a class="btn" href="https://bydevil.com/plugins/" target="_blank" rel="noopener">bydevil.com/plugins ↗</a></div></div>
     </div></section>''')
 
 shell('contact/index.html', 'contact', 'İletişim — GoldSrc Studio', 'Steam, Discord ve GameBanana üzerinden iletişim.',

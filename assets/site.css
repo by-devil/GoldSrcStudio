@@ -336,6 +336,20 @@ a.card-title:hover { color: var(--accent); }
 .site-pill img { width: 40px; height: 40px; border-radius: 8px; }
 .site-pill span { display: flex; flex-direction: column; font-size: 15px; font-weight: 700; line-height: 1.2; }
 .site-pill small { color: var(--text-2); font-size: 13px; font-weight: 500; }
+.hero-stats { display: flex; flex-wrap: wrap; gap: 18px 56px; margin-top: 46px; padding-top: 26px;
+              background: linear-gradient(90deg, rgba(var(--accent-rgb), .5), transparent 70%) top left / 100% 1px no-repeat; }
+.hstat b { display: block; font: 700 44px/1 var(--display); letter-spacing: .01em; font-variant-numeric: tabular-nums; }
+.hstat span { display: inline-flex; align-items: center; gap: 7px; margin-top: 8px; color: var(--text-2); font-size: 14px; }
+.hstat .ico { width: 16px; height: 16px; color: var(--accent); }
+@media (max-width: 560px) { .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; } .hstat b { font-size: 36px; } }
+
+.plugin-card .card-media { aspect-ratio: 16 / 9; }
+.plugin-ph { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 12px; color: var(--accent);
+             background: radial-gradient(circle at 50% 35%, rgba(var(--accent-rgb), .22), transparent 62%), linear-gradient(160deg, var(--surface-3), var(--surface)); }
+.plugin-ph .ico { width: 42px; height: 42px; stroke-width: 1.4; }
+.plugin-ph b { color: var(--text); font: 700 24px/1 var(--display); letter-spacing: .03em; text-transform: uppercase; }
+.plugin-go { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 10px; color: var(--accent); font-size: 13.5px; font-weight: 650; }
+.plugin-go .ico { width: 15px; height: 15px; }
 .ftr-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 24px; padding: 18px 0 28px; color: var(--text-3); font-size: 12.5px;
               background: linear-gradient(var(--surface-2), var(--surface-2)) top / 100% 1px no-repeat; }
 @media (max-width: 860px) { .ftr-top { grid-template-columns: 1fr 1fr; } .ftr-about { grid-column: 1 / -1; } }

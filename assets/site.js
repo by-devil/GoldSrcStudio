@@ -12,14 +12,22 @@
     bydevil: 'https://bydevil.com/',
     discord: 'serhatondes',
   };
+  const PLUGIN_BASE = 'https://bydevil.com/plugins/#';
   const PLUGINS = [
-    { name: 'Pro Public TOP15', text: 'Top15 ve süre sıralamaları, detaylı oyuncu profilleri, FunGun tarama geçmişi.' },
-    { name: 'Royal Pass', text: 'Görevlerden puan kazan; mağaza, kutular ve oyuncu pazarı.' },
-    { name: 'Team System', text: 'Takım kur, üye davet et, sezon sıralamasında birlikte yüksel.' },
-    { name: 'GunGame TOP15', text: 'Bireysel, takım ve FFA sıralamaları, sezon görünümleri.' },
-    { name: 'Zombie Plague TOP15', text: 'Genel ve süre sıralamaları, rütbe yolu, haftalık VIP ödülleri.' },
-    { name: 'Public Battle Pass', text: 'Ücretsiz ve premium seviye ödülleri, kasalar ve çark.' },
-    { name: 'Zombie Plague Battle Pass', text: 'Haftalık sezon, günlük ödüller, coin çarkı ve mağaza.' },
+    { id: 'propublic', name: 'Pro Public TOP15', img: '', tags: ['Top15', 'Toptime', 'Profil', 'FunGun'],
+      text: 'Pro Public sunucuları için eksiksiz istatistik sistemi: Top15 ve süre sıralamaları, detaylı oyuncu profilleri, Steam bilgileri ve FunGun tarama geçmişi.' },
+    { id: 'royalpass', name: 'Royal Pass', img: '', tags: ['Görevler', 'Mağaza', 'Kutular', 'Pazar'],
+      text: 'Puan ekonomisi: görevlerden puan kazan, kozmetik mağazasında harca, kutu aç, oyuncu pazarında alım satım yap.' },
+    { id: 'takim', name: 'Team System', img: '', tags: ['Yönetim', 'Görevler', 'FreeVIP', 'Sezon'],
+      text: 'Takım (klan) sistemi: takım kur, üye davet et, banner ve renklerle özelleştir, sezon sıralamasında birlikte yüksel.' },
+    { id: 'gungame', name: 'GunGame TOP15', img: '/assets/plugins/gungame.webp', tags: ['Bireysel', 'Takım', 'FFA', 'Sezon'],
+      text: 'Bireysel, takım ve FFA sıralamaları; puan, XP, K/D, bıçak ve seri istatistikleri, oyuncu profilleri ve sezon görünümleri.' },
+    { id: 'zombieplague', name: 'Zombie Plague TOP15', img: '', tags: ['Genel', 'Süre', 'Profil', 'Haftalık ödül'],
+      text: 'Zombie Plague için sıralama: liderle kıyaslayan profiller, rütbe yolu, özelleştirilebilir kart, sezon arşivi ve haftalık VIP ödülleri.' },
+    { id: 'battlepass', name: 'Public Battle Pass', img: '', tags: ['Seviyeler', 'Kasalar', 'Çark', 'Envanter'],
+      text: 'Public sunucular için sezonluk battle pass: ücretsiz ve premium seviye ödülleri, kasalar, çark ve efekt envanteri.' },
+    { id: 'battlepass', name: 'Zombie Plague Battle Pass', img: '', tags: ['Ödüller', 'Görevler', 'Çark', 'Mağaza'],
+      text: 'Haftalık sezon sistemi: her gün ücretsiz ve premium ödül, günlük görevler, coin çarkı ve mağaza.' },
   ];
 
   /* ---------- yardımcılar ---------- */
@@ -86,7 +94,7 @@
         <p class="mega-label">Topluluk için</p>
         <a class="mlink" href="/maps/"><span class="mlink-ic">${icon('map')}</span><span><span class="mlink-t">Haritalar</span><span class="mlink-d">Base Builder, Gun Game, Zombie ve daha fazlası</span></span></a>
         <a class="mlink" href="/skies/"><span class="mlink-ic">${icon('cloud')}</span><span><span class="mlink-t">Skyboxlar</span><span class="mlink-d">GoldSrc için gökyüzü paketleri</span></span></a>
-        <a class="mlink" href="/plugins/"><span class="mlink-ic">${icon('plug')}</span><span><span class="mlink-t">AMXX eklentileri</span><span class="mlink-d">Sunucu sistemleri · yakında</span></span></a>
+        <a class="mlink" href="/plugins/"><span class="mlink-ic">${icon('plug')}</span><span><span class="mlink-t">AMXX eklentileri</span><span class="mlink-d">Sıralama, sezon ve ekonomi sistemleri</span></span></a>
         <a class="mlink" href="${LINKS.gamebanana}" ${ext}><span class="mlink-ic"><img src="/assets/gamebanana.png" alt="" style="width:22px;height:22px;image-rendering:pixelated"></span><span><span class="mlink-t">GameBanana profili</span><span class="mlink-d">Tüm yüklemeler tek yerde</span></span></a>
       </div>`;
     return `
@@ -214,7 +222,8 @@
         { group: 'Sayfalar', name: 'Araçlar', sub: 'Tüm uygulamalar', href: '/tools/', ic: icon('tool') },
         { group: 'Sayfalar', name: 'Haritalar', sub: `${maps.count || ''} harita`, href: '/maps/', ic: icon('map') },
         { group: 'Sayfalar', name: 'Skyboxlar', sub: `${skies.count || ''} skybox`, href: '/skies/', ic: icon('cloud') },
-        { group: 'Sayfalar', name: 'AMXX eklentileri', sub: 'Yakında', href: '/plugins/', ic: icon('plug') },
+        { group: 'Sayfalar', name: 'AMXX eklentileri', sub: 'Sunucu sistemleri', href: '/plugins/', ic: icon('plug') },
+        ...PLUGINS.map(p => ({ group: 'Eklentiler', name: p.name, sub: 'AMX Mod X · bydevil.com', href: PLUGIN_BASE + p.id, ext: true, ic: icon('plug') })),
         { group: 'Sayfalar', name: 'İletişim', sub: 'Steam, Discord, GameBanana', href: '/contact/', ic: icon('chat') },
       ];
       return [
@@ -233,7 +242,7 @@
       list.innerHTML = results.length ? results.map((r, i) => {
         const head = r.group !== g ? `<div class="palette-group">${(g = r.group)}</div>` : '';
         return `${head}<a class="palette-item${i === sel ? ' on' : ''}" href="${esc(r.href)}" ${r.ext ? ext : ''} data-i="${i}">
-          <span class="pi">${r.ic}</span><span><b>${esc(r.name)}</b><small>${esc(r.sub)}</small></span>${r.ext ? '<span class="ext">GameBanana ↗</span>' : ''}</a>`;
+          <span class="pi">${r.ic}</span><span><b>${esc(r.name)}</b><small>${esc(r.sub)}</small></span>${r.ext ? `<span class="ext">${r.group === 'Eklentiler' ? 'bydevil.com' : 'GameBanana'} ↗</span>` : ''}</a>`;
       }).join('') : '<div class="palette-empty">Sonuç bulunamadı.</div>';
     }
     async function open() {
@@ -296,7 +305,7 @@
         <div class="card-meta"><span>${icon('dl')}${fmt(m.downloads)}</span><span>${icon('heart')}${fmt(m.likes)}</span>${m.date ? `<span>${icon('cal')}${day(m.date)}</span>` : ''}</div>
       </div>
     </a>`;
-  const statTile = (ic, value, label) => `<div class="stat"><span class="ic">${icon(ic)}</span><b>${value}</b><span>${label}</span></div>`;
+  const statTile = (ic, value, label) => `<div class="hstat"><b>${value}</b><span>${icon(ic)}${label}</span></div>`;
 
   /* ---------- sayfalar ---------- */
   const pages = {
@@ -380,10 +389,15 @@
 
     plugins(main) {
       $('#plugin-grid', main).innerHTML = PLUGINS.map(p => `
-        <div class="card fade"><div class="card-body">
-          <div class="tags"><span class="tag accent">Yakında</span><span class="tag">AMX Mod X</span></div>
-          <span class="card-title">${esc(p.name)}</span><p class="card-text">${esc(p.text)}</p>
-        </div></div>`).join('');
+        <a class="card plugin-card fade" href="${PLUGIN_BASE}${p.id}" ${ext}>
+          <div class="card-media">${p.img ? `<img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy">` : `<span class="plugin-ph">${icon('plug')}<b lang="en">${esc(p.name)}</b></span>`}<span class="badge">AMX Mod X</span></div>
+          <div class="card-body">
+            <span class="card-title" lang="en">${esc(p.name)}</span>
+            <p class="card-text">${esc(p.text)}</p>
+            <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+            <span class="plugin-go">Ekran görüntüleri ve ayrıntılar ${icon('out')}</span>
+          </div>
+        </a>`).join('');
     },
 
     contact(main) {
