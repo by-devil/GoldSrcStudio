@@ -65,30 +65,6 @@
 
 Bir sorun bulduysan ya da yeni bir araç fikrin varsa [issue aç](../../issues).
 
-## Yeni araç ekleme
-
-Site, araç listesini [`tools.json`](tools.json) dosyasından otomatik oluşturur. Yeni bir araç için bu dosyaya kayıt ekle ve ekran görüntüsünü `assets/` klasörüne koy:
-
-```json
-{
-  "name": "Araç Adı",
-  "category": "Kategori",
-  "version": "v1.0",
-  "platform": "Windows",
-  "updated": "1 Ocak 2027",
-  "summary": "Tek cümlelik açıklama",
-  "description": "Uzun açıklama",
-  "fileTypes": ".MDL / .BSP",
-  "features": ["Özellik 1", "Özellik 2"],
-  "image": "assets/arac-adi.jpg",
-  "gamebanana": "https://gamebanana.com/tools/00000",
-  "github": "https://github.com/by-devil/arac-adi",
-  "download": "https://github.com/by-devil/arac-adi/releases"
-}
-```
-
-`gamebanana`, `github` ve `download` isteğe bağlıdır; hangisi varsa sitede o buton görünür.
-
 ---
 
 <sub>GoldSrc Studio topluluk tarafından geliştirilen bağımsız araçlar sunar; Valve Corporation veya Steam ile bağlantılı değildir.</sub>
