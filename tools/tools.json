@@ -18,7 +18,8 @@
     ],
     "image": "/assets/map-optimization.jpg",
     "gamebanana": "https://gamebanana.com/tools/24466",
-    "download": "/tools/map-optimization/GoldSrcOptimization_Setup_beta.exe"
+    "download": "/tools/map-optimization/GoldSrcOptimization_Setup_beta.exe",
+    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/map-optimization"
   },
   {
     "slug": "studio-paint",
@@ -39,7 +40,8 @@
     ],
     "image": "/assets/studio-paint.jpg",
     "gamebanana": "https://gamebanana.com/tools/24470",
-    "download": "/tools/studio-paint/GoldSrcStudioPaint_v0.1_test.zip"
+    "download": "/tools/studio-paint/GoldSrcStudioPaint_v0.1_test.zip",
+    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/studio-paint"
   },
   {
     "slug": "studio-nav",
@@ -60,7 +62,8 @@
     ],
     "image": "/assets/studio-nav.jpg",
     "gamebanana": "https://gamebanana.com/tools/24109",
-    "download": "/tools/studio-nav/GoldSrcStudioNav_Setup_v0.24.0.exe"
+    "download": "/tools/studio-nav/GoldSrcStudioNav_Setup_v0.24.0.exe",
+    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/studio-nav"
   },
   {
     "slug": "skin-studio",
@@ -82,7 +85,8 @@
     "image": "/assets/skin-studio.jpg",
     "gamebanana": "https://gamebanana.com/tools/24053",
     "download": "/tools/skin-studio/SkinStudio_Setup_v1.20.1.exe",
-    "github": "https://github.com/serhat-ondes/CS16-Skin-Studio"
+    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/skin-studio",
+    "repo": "https://github.com/serhat-ondes/CS16-Skin-Studio"
   },
   {
     "slug": "studio-modeler",
@@ -103,6 +107,7 @@
     ],
     "image": "/assets/studio-modeler.jpg",
     "gamebanana": "https://gamebanana.com/tools/24469",
-    "download": "/tools/studio-modeler/GoldSrcStudioModeler_v0.1_test.zip"
+    "download": "/tools/studio-modeler/GoldSrcStudioModeler_v0.1_test.zip",
+    "github": "https://github.com/by-devil/GoldSrcStudio/tree/main/tools/studio-modeler"
   }
 ]
