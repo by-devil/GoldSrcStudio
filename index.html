@@ -4,100 +4,242 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GoldSrc Studio</title>
-  <meta name="description" content="Counter-Strike 1.6 / GoldSrc modlama araçları – açık kaynak, GitHub üzerinde.">
+  <meta name="description" content="Counter-Strike 1.6 / GoldSrc modlama araçları – ücretsiz, GitHub üzerinde.">
+  <meta name="theme-color" content="#0c0b09">
+  <meta property="og:title" content="GoldSrc Studio">
+  <meta property="og:description" content="Counter-Strike 1.6 / GoldSrc modlama araçları.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23e8b33c'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='900' font-size='15' text-anchor='middle' fill='%230c0b09'%3EGS%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6f5f1; --surface: #ffffff; --text: #1d1c19; --muted: #6b675e;
-      --border: #e2ded4; --accent: #b8860b; --accent-text: #ffffff;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root { --bg: #121110; --surface: #1c1a17; --text: #ece8de; --muted: #a39d90;
-              --border: #2f2c27; --accent: #e0b03c; --accent-text: #1a1406; }
+      --bg: #0c0b09; --bg-2: #13110e; --surface: #17150f; --surface-2: #1f1c15;
+      --line: #2c281e; --line-2: #3d372a;
+      --text: #f1ece0; --muted: #a59d8b; --dim: #6f6858;
+      --gold: #e8b33c; --gold-2: #ffd36e; --gold-deep: #9c6f12;
+      --radius: 14px;
+      --display: "Chakra Petch", system-ui, sans-serif;
+      --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--text);
-           font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-    a { color: inherit; }
-    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
-    header { border-bottom: 1px solid var(--border); background: var(--surface); }
-    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 64px; }
-    .brand { font-weight: 700; font-size: 1.15rem; text-decoration: none; }
-    .brand span { color: var(--accent); }
-    .gh { display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
-          border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; font-size: .9rem; }
-    .gh:hover { border-color: var(--accent); }
-    .gh svg { width: 18px; height: 18px; fill: currentColor; }
-    .hero { padding: 48px 0 24px; }
-    .hero h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 4vw, 2.6rem); }
-    .hero p { margin: 0; color: var(--muted); max-width: 640px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; padding: 24px 0 56px; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-            padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-    .card h2 { margin: 0; font-size: 1.15rem; }
-    .card p { margin: 0; color: var(--muted); font-size: .95rem; flex: 1; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 var(--body);
+           -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+    /* Arka plan: ızgara + altın ışık */
+    .bg { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+          background:
+            radial-gradient(900px 500px at 75% -10%, rgba(232,179,60,.16), transparent 60%),
+            radial-gradient(700px 400px at 0% 30%, rgba(232,179,60,.06), transparent 60%),
+            var(--bg); }
+    .bg::after { content: ""; position: absolute; inset: 0;
+          background-image: linear-gradient(var(--line) 1px, transparent 1px),
+                            linear-gradient(90deg, var(--line) 1px, transparent 1px);
+          background-size: 56px 56px; opacity: .35;
+          mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
+          -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%); }
+
+    /* Üst menü */
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+             background: rgba(12,11,9,.72); border-bottom: 1px solid var(--line); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 10px; font: 700 1.2rem/1 var(--display); letter-spacing: .02em; }
+    .logo { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
+            background: linear-gradient(135deg, var(--gold-2), var(--gold) 50%, var(--gold-deep));
+            color: #120e05; font: 700 .9rem/1 var(--display); box-shadow: 0 0 24px rgba(232,179,60,.35); }
+    .brand b { color: var(--gold); font-weight: 700; }
+    nav { display: flex; align-items: center; gap: 6px; }
+    nav a.link { padding: 8px 12px; border-radius: 8px; color: var(--muted); font-size: .92rem; transition: color .2s; }
+    nav a.link:hover { color: var(--text); }
+    @media (max-width: 640px) { nav a.link { display: none; } }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 42px; padding: 0 18px;
+           border-radius: 10px; font: 600 .93rem/1 var(--body); border: 1px solid var(--line-2);
+           background: var(--surface); color: var(--text); transition: transform .15s, border-color .2s, background .2s, box-shadow .2s; }
+    .btn:hover { border-color: var(--gold); transform: translateY(-1px); }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
+    .btn.gold { background: linear-gradient(180deg, var(--gold-2), var(--gold)); color: #1a1406; border-color: transparent;
+                box-shadow: 0 6px 24px -6px rgba(232,179,60,.6); }
+    .btn.gold:hover { box-shadow: 0 10px 30px -6px rgba(232,179,60,.8); }
+    .btn.sm { height: 38px; padding: 0 14px; font-size: .88rem; }
+
+    /* Giriş */
+    .hero { padding-block: 96px 72px; text-align: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px;
+               border: 1px solid var(--line-2); background: rgba(232,179,60,.06); color: var(--gold-2);
+               font: 600 .78rem/1 var(--display); letter-spacing: .14em; text-transform: uppercase; }
+    .eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+    .hero h1 { margin: 22px auto 18px; max-width: 820px; font: 700 clamp(2.4rem, 7vw, 4.6rem)/1.02 var(--display);
+               letter-spacing: -.01em; text-transform: uppercase; }
+    .hero h1 span { background: linear-gradient(180deg, var(--gold-2), var(--gold) 55%, var(--gold-deep));
+                    -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p { margin: 0 auto; max-width: 600px; color: var(--muted); font-size: 1.08rem; }
+    .cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
+    .stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 40px; margin-top: 56px; color: var(--dim);
+             font: 600 .8rem/1 var(--display); letter-spacing: .12em; text-transform: uppercase; }
+    .stats strong { display: block; margin-bottom: 8px; color: var(--text); font-size: 1.7rem; letter-spacing: 0; }
+
+    /* Araçlar */
+    section.tools { padding-block: 24px 96px; }
+    .head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 28px;
+            padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+    .head h2 { margin: 0; font: 700 1.9rem/1.1 var(--display); text-transform: uppercase; }
+    .head p { margin: 0; color: var(--dim); font-size: .92rem; }
+    @media (max-width: 520px) { .head p { display: none; } }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    @media (max-width: 400px) { .grid { grid-template-columns: 1fr; } }
+
+    .card { position: relative; display: flex; flex-direction: column; overflow: hidden; border-radius: var(--radius);
+            background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid var(--line);
+            transition: transform .25s, border-color .25s, box-shadow .25s; }
+    .card:hover { transform: translateY(-4px); border-color: rgba(232,179,60,.55);
+                  box-shadow: 0 24px 50px -24px rgba(232,179,60,.35); }
+    .thumb { position: relative; aspect-ratio: 16 / 8; display: grid; place-items: center; overflow: hidden;
+             background: radial-gradient(circle at 30% 20%, rgba(255,211,110,.22), transparent 55%),
+                         linear-gradient(135deg, #2a2114, #120f0a); border-bottom: 1px solid var(--line); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .thumb .mono { font: 700 3.4rem/1 var(--display); color: transparent; letter-spacing: .04em;
+                   background: linear-gradient(180deg, var(--gold-2), var(--gold-deep)); -webkit-background-clip: text; background-clip: text;
+                   filter: drop-shadow(0 4px 18px rgba(232,179,60,.35)); }
+    .thumb::after { content: ""; position: absolute; inset: 0;
+                    background: repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); }
+    .badge { position: absolute; top: 12px; left: 12px; z-index: 1; padding: 5px 10px; border-radius: 7px;
+             background: rgba(12,11,9,.75); border: 1px solid var(--line-2); color: var(--gold-2);
+             font: 600 .7rem/1 var(--display); letter-spacing: .12em; text-transform: uppercase; }
+    .body { display: flex; flex-direction: column; gap: 14px; flex: 1; padding: 22px; }
+    .body h3 { margin: 0; font: 700 1.35rem/1.2 var(--display); }
+    .body p { margin: 0; flex: 1; color: var(--muted); font-size: .95rem; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { font-size: .75rem; border: 1px solid var(--border); border-radius: 999px; padding: 2px 8px; color: var(--muted); }
-    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
-    .btn { text-decoration: none; font-size: .9rem; border-radius: 8px; padding: 7px 12px;
-           border: 1px solid var(--border); display: inline-flex; align-items: center; gap: 6px; }
-    .btn svg { width: 16px; height: 16px; fill: currentColor; }
-    .btn.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
-    .btn:hover { border-color: var(--accent); }
-    footer { border-top: 1px solid var(--border); padding: 24px 0; color: var(--muted); font-size: .85rem; }
+    .tag { padding: 4px 9px; border-radius: 6px; background: var(--bg-2); border: 1px solid var(--line);
+           color: var(--muted); font-size: .74rem; font-weight: 500; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px; }
+    .empty { grid-column: 1 / -1; padding: 48px; text-align: center; color: var(--dim);
+             border: 1px dashed var(--line-2); border-radius: var(--radius); }
+
+    /* Alt bölüm */
+    .about { padding-bottom: 96px; }
+    .about .box { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; padding: 40px;
+                  border-radius: var(--radius); border: 1px solid var(--line);
+                  background: radial-gradient(600px 300px at 100% 0%, rgba(232,179,60,.12), transparent 60%), var(--surface); }
+    .about h2 { margin: 0 0 10px; font: 700 1.6rem/1.15 var(--display); text-transform: uppercase; }
+    .about p { margin: 0; color: var(--muted); }
+    .about .cta { justify-content: flex-end; margin: 0; }
+    @media (max-width: 760px) { .about .box { grid-template-columns: 1fr; padding: 28px 22px; } .about .cta { justify-content: flex-start; } }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--dim); font-size: .85rem; }
     footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    footer a:hover { color: var(--gold); }
+
+    .reveal { opacity: 0; transform: translateY(14px); animation: in .6s forwards; }
+    @keyframes in { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; transform: none; } * { transition: none !important; } }
   </style>
 </head>
 <body>
+  <div class="bg" aria-hidden="true"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-gh" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol>
+    <symbol id="i-dl" viewBox="0 0 24 24"><path d="M11 3h2v9.17l3.59-3.58L18 10l-6 6-6-6 1.41-1.41L11 12.17V3zM5 19h14v2H5z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"/></symbol>
+  </svg>
+
   <header>
     <div class="wrap">
-      <a class="brand" href="./">GoldSrc <span>Studio</span></a>
-      <a class="gh" href="https://github.com/by-devil/GoldSrcStudio" target="_blank" rel="noopener">
-        <svg viewBox="0 0 16 16" aria-hidden="true"><path id="gh-mark" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-        GitHub
-      </a>
+      <a class="brand" href="./"><span class="logo">GS</span><span>GoldSrc <b>Studio</b></span></a>
+      <nav>
+        <a class="link" href="#araclar">Araçlar</a>
+        <a class="link" href="https://bydevil.com">bydevil.com</a>
+        <a class="btn sm" href="https://github.com/by-devil/GoldSrcStudio" target="_blank" rel="noopener">
+          <svg><use href="#i-gh"/></svg>GitHub
+        </a>
+      </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <h1>GoldSrc modlama araçları</h1>
-      <p>Counter-Strike 1.6 ve GoldSrc motoru için geliştirdiğim araçlar. Hepsinin kaynağı ve sürümleri GitHub'da.</p>
+  <main>
+    <section class="hero wrap">
+      <span class="eyebrow reveal" lang="en"><i></i>Counter-Strike 1.6 · GoldSrc</span>
+      <h1 class="reveal" style="animation-delay:.08s">Modlamanın <span>altın</span> araçları</h1>
+      <p class="reveal" style="animation-delay:.16s">Skin, model, sprite ve daha fazlası için geliştirdiğim ücretsiz araçlar. Tüm sürümler ve indirmeler GitHub'da.</p>
+      <div class="cta reveal" style="animation-delay:.24s">
+        <a class="btn gold" href="#araclar"><svg><use href="#i-dl"/></svg>Araçları keşfet</a>
+        <a class="btn" href="https://github.com/by-devil" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>GitHub'da takip et</a>
+      </div>
+      <div class="stats reveal" style="animation-delay:.32s">
+        <div><strong id="stat-count">–</strong>Araç</div>
+        <div><strong>CS 1.6</strong>GoldSrc</div>
+        <div><strong>Ücretsiz</strong>İndirme</div>
+      </div>
     </section>
-    <section class="grid" id="tools" aria-live="polite"></section>
+
+    <section class="tools wrap" id="araclar">
+      <div class="head">
+        <h2>Araçlar</h2>
+        <p>Yeni araçlar eklendikçe burada.</p>
+      </div>
+      <div class="grid" id="tools" aria-live="polite"></div>
+    </section>
+
+    <section class="about wrap">
+      <div class="box">
+        <div>
+          <h2>GitHub'da takipte kal</h2>
+          <p>Hata bildirmek ya da öneride bulunmak için GitHub'a gel. Yıldız bırakırsan yeni sürümlerden ilk sen haberdar olursun.</p>
+        </div>
+        <div class="cta">
+          <a class="btn gold" href="https://github.com/by-devil/GoldSrcStudio" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>Repoya git</a>
+          <a class="btn" href="https://github.com/by-devil/GoldSrcStudio/issues" target="_blank" rel="noopener">Hata bildir</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <span>© GoldSrc Studio · <a href="https://bydevil.com/tools/">bydevil.com/tools</a></span>
+      <span>© <span id="year"></span> GoldSrc Studio · <a href="https://bydevil.com">bydevil.com</a> · Valve ile bağlantılı değildir.</span>
       <a href="https://github.com/by-devil">github.com/by-devil</a>
     </div>
   </footer>
 
   <script>
-    const ghIcon = '<svg viewBox="0 0 16 16" aria-hidden="true"><use href="#gh-mark"/></svg>';
+    document.getElementById('year').textContent = new Date().getFullYear();
     const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    const link = (url, label, cls = 'btn') =>
-      `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener">${label}</a>`;
+    const icon = id => `<svg><use href="#i-${id}"/></svg>`;
+    const btn = (url, label, cls = 'btn sm', ic = '') =>
+      `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener">${ic}${label}</a>`;
+    const initials = name => name.replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/).filter(Boolean)
+      .map(w => /^\d/.test(w) ? w : w[0]).join('').slice(0, 4).toUpperCase();
 
+    const grid = document.getElementById('tools');
     fetch('tools.json')
       .then(r => r.json())
       .then(tools => {
-        document.getElementById('tools').innerHTML = tools.map(t => `
-          <article class="card">
-            <h2>${esc(t.name)}</h2>
-            <p>${esc(t.description)}</p>
-            <div class="tags">${(t.tags || []).map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div>
-            <div class="actions">
-              ${t.download ? link(t.download, 'İndir', 'btn primary') : ''}
-              ${t.demo ? link(t.demo, 'Aç', 'btn primary') : ''}
-              ${t.github ? link(t.github, ghIcon + ' GitHub') : ''}
-              ${(t.links || []).map(l => link(l.url, esc(l.label))).join('')}
+        document.getElementById('stat-count').textContent = tools.length;
+        if (!tools.length) { grid.innerHTML = '<div class="empty">Yakında yeni araçlar burada olacak.</div>'; return; }
+        grid.innerHTML = tools.map((t, i) => `
+          <article class="card reveal" style="animation-delay:${.05 * i}s">
+            <div class="thumb">
+              ${t.badge ? `<span class="badge" lang="en">${esc(t.badge)}</span>` : ''}
+              ${t.image ? `<img src="${esc(t.image)}" alt="${esc(t.name)}" loading="lazy">` : `<span class="mono">${esc(t.mono || initials(t.name))}</span>`}
+            </div>
+            <div class="body">
+              <h3>${esc(t.name)}</h3>
+              <p>${esc(t.description)}</p>
+              <div class="tags">${(t.tags || []).map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div>
+              <div class="actions">
+                ${t.download ? btn(t.download, 'İndir', 'btn sm gold', icon('dl')) : ''}
+                ${t.demo ? btn(t.demo, 'Aç', 'btn sm gold', icon('play')) : ''}
+                ${t.github ? btn(t.github, 'GitHub', 'btn sm', icon('gh')) : ''}
+                ${(t.links || []).map(l => btn(l.url, esc(l.label), 'btn sm', icon('ext'))).join('')}
+              </div>
             </div>
           </article>`).join('');
       })
-      .catch(() => {
-        document.getElementById('tools').innerHTML = '<p>Araç listesi yüklenemedi.</p>';
-      });
+      .catch(() => { grid.innerHTML = '<div class="empty">Araç listesi yüklenemedi.</div>'; });
   </script>
 </body>
 </html>
