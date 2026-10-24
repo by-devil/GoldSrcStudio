@@ -57,6 +57,7 @@
     alert: '<path d="M12 3 2 20h20L12 3zM12 10v4M12 17v.5"/>',
     copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
     file: '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5zM14 3v5h5"/>',
+    theme: '<path d="M12 3a9 9 0 1 0 0 18c1 0 1.5-.8 1.5-1.6 0-.9-.7-1.3-.7-2.1 0-.9.7-1.5 1.6-1.5H16a5 5 0 0 0 5-5c0-4.3-4-7.8-9-7.8z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10.5" cy="7" r="1.2"/><circle cx="15.5" cy="7.5" r="1.2"/>',
   };
   const icon = (n, cls = '') => `<svg class="ico ${cls}" viewBox="0 0 24 24" aria-hidden="true">${P[n]}</svg>`;
   const GH = '<svg class="ico fill" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>';
@@ -92,18 +93,19 @@
       <div class="wrap hdr-bar">
         <a class="hdr-brand" href="/" aria-label="GoldSrc Studio ana sayfa">
           <img src="/assets/goldsrc-mark.png" alt="" width="34" height="34">
-          <span class="hdr-wm"><b>GoldSrc Studio</b><small>by Devil · CS 1.6 araçları</small></span>
+          <span class="hdr-wm"><b>GoldSrc Studio</b></span>
         </a>
         <nav class="hdr-nav" aria-label="Ana menü">
-          ${item('tools', '/tools/', 'Araçlar', `<div class="mega-grid"><p class="mega-label">Uygulamalar</p>${toolLinks}<div class="mega-foot"><span>Hepsi Windows için, ücretsiz</span><a href="/tools/">Tüm araçlar →</a></div></div>`)}
+          ${item('tools', '/tools/', 'Araçlar', `<div class="mega-grid"><p class="mega-label">Uygulamalar</p>${toolLinks}<div class="mega-foot"><a href="/tools/">Tüm araçlar →</a></div></div>`)}
           ${item('maps', '/maps/', 'Çalışmalar', works)}
           ${item('plugins', '/plugins/', 'Eklentiler')}
           ${item('contact', '/contact/', 'İletişim')}
         </nav>
         <div class="hdr-right">
-          <button class="hdr-search" type="button" data-palette>${icon('search')}<span>Araç, harita ara…</span><span class="kbd">/</span></button>
+          <button class="hdr-search" type="button" data-palette><span class="hs-ic">${icon('search')}</span><span class="hs-txt">Ara<em>Araçlar, haritalar, skyboxlar</em></span><span class="hs-keys"><span class="kbd">Ctrl</span><span class="kbd">K</span></span></button>
           <a class="pill-link" href="${LINKS.goldsrc}" ${ext}><img src="/assets/goldsrc-mark.png" alt=""><span>GoldSrc Studio</span></a>
           <a class="pill-link" href="${LINKS.bydevil}" ${ext}><img src="/assets/bydevil-mark.png" alt=""><span>By Devil</span></a>
+          <div style="position:relative"><button class="icon-btn" type="button" data-theme-btn aria-label="Tema" aria-expanded="false">${icon('theme')}</button></div>
           <a class="icon-btn" href="${LINKS.github}" ${ext} aria-label="GitHub">${GH}</a>
           <button class="icon-btn hdr-burger" type="button" aria-label="Menü" aria-expanded="false">${icon('menu')}</button>
         </div>
@@ -115,14 +117,14 @@
       <div class="wrap">
         <div class="ftr-top">
           <div class="ftr-about">
-            <a class="hdr-brand" href="/"><img src="/assets/goldsrc-mark.png" alt="" width="34" height="34"><span class="hdr-wm"><b>GoldSrc Studio</b><small>by Devil</small></span></a>
+            <a class="hdr-brand" href="/"><img src="/assets/goldsrc-mark.png" alt="" width="34" height="34"><span class="hdr-wm"><b>GoldSrc Studio</b></span></a>
             <p>Counter-Strike 1.6 ve GoldSrc topluluğu için bağımsız araçlar, haritalar ve skyboxlar.</p>
             <div class="ftr-social">
               <a href="${LINKS.steam}" ${ext} aria-label="Steam">${STEAM}</a>
               <a href="/contact/" aria-label="Discord">${DISCORD}</a>
               <a href="${LINKS.gamebanana}" ${ext} aria-label="GameBanana"><img src="/assets/gamebanana.png" alt=""></a>
               <a href="${LINKS.github}" ${ext} aria-label="GitHub">${GH}</a>
-              <a class="wide" href="${LINKS.fpslist}" ${ext}><img src="/assets/fpslist.svg" alt=""><span>FPSList<small>Oyun sunucu listesi</small></span></a>
+              <a href="${LINKS.fpslist}" ${ext} aria-label="FPSList"><img class="full" src="/assets/fpslist.svg" alt=""></a>
             </div>
           </div>
           <div><h4>Araçlar</h4><ul>${tools.map(t => `<li><a href="/tools/${t.slug}/">${esc(t.name)}</a></li>`).join('')}</ul></div>
@@ -161,6 +163,42 @@
       const open = hdr.classList.toggle('menu-open');
       burger.setAttribute('aria-expanded', open);
       burger.innerHTML = icon(open ? 'close' : 'menu');
+    });
+  }
+
+  /* ---------- tema ---------- */
+  const THEMES = [
+    ['original', 'Original', 'Katmanlı maviler', '#1a2634', '#5ab0ec'],
+    ['dust', 'Dust', 'Sıcak kum', '#15130f', '#e9a23b'],
+    ['carbon', 'Carbon', 'Nötr grafit', '#0f1012', '#e9ebee'],
+    ['radar', 'Radar', 'Mini harita yeşili', '#0c1411', '#3fd99a'],
+    ['ember', 'Ember', 'T tarafı turuncusu', '#141010', '#ff7043'],
+  ];
+  function wireTheme(hdr) {
+    const btn = $('[data-theme-btn]', hdr);
+    let menu;
+    const current = () => document.documentElement.dataset.theme || 'original';
+    const set = t => {
+      document.documentElement.dataset.theme = t;
+      try { localStorage.setItem('gs-theme', t); } catch { /* gizli pencere vb. */ }
+      $$('.swatch', menu).forEach(b => b.setAttribute('aria-checked', b.dataset.t === t));
+    };
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (!menu) {
+        menu = document.createElement('div');
+        menu.className = 'theme-menu';
+        menu.setAttribute('role', 'radiogroup');
+        menu.innerHTML = '<p>Tema</p>' + THEMES.map(([id, name, desc, a, b]) =>
+          `<button class="swatch" type="button" role="radio" data-t="${id}" aria-checked="${current() === id}">
+            <span class="swatch-chip"><span style="background:${a}"></span><span style="background:${b}"></span></span>${name}<small>${desc}</small></button>`).join('');
+        menu.addEventListener('click', ev => { const b = ev.target.closest('.swatch'); if (b) set(b.dataset.t); });
+        btn.parentElement.append(menu);
+        document.addEventListener('click', ev => { if (!menu.contains(ev.target) && ev.target !== btn) { menu.hidden = true; btn.setAttribute('aria-expanded', false); } });
+        return btn.setAttribute('aria-expanded', true);
+      }
+      menu.hidden = !menu.hidden;
+      btn.setAttribute('aria-expanded', !menu.hidden);
     });
   }
 
@@ -339,7 +377,6 @@
         <div class="card fade"><div class="card-body">
           <div class="tags"><span class="tag accent">Yakında</span><span class="tag">AMX Mod X</span></div>
           <span class="card-title">${esc(p.name)}</span><p class="card-text">${esc(p.text)}</p>
-          <div class="card-meta"><span>${icon('box')}Derlenmiş .amxx olarak satışa sunulacak</span></div>
         </div></div>`).join('');
     },
 
@@ -393,7 +430,7 @@
     const hdr = $('#hdr'), ftr = $('#ftr'), main = $('main');
     let tools = [];
     try { tools = await data.tools(); } catch { /* menü araçsız da çalışır */ }
-    hdr.className = 'hdr'; hdr.innerHTML = header(tools); wireHeader(hdr);
+    hdr.className = 'hdr'; hdr.innerHTML = header(tools); wireHeader(hdr); wireTheme(hdr);
     ftr.className = 'ftr'; ftr.innerHTML = footer(tools);
     palette();
     try { await pages[page]?.(main); }
