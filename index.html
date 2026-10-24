@@ -1,53 +1,62 @@
 <!doctype html>
-<html lang="tr" data-theme="original">
+<!-- © GoldSrc Studio · by Devil. Tasarım ve içerik izinsiz kopyalanamaz / Design and content may not be copied without permission. -->
+<html lang="tr" data-theme="original" data-lang="tr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GoldSrc Studio — CS 1.6 araçları, haritaları ve skyboxları</title>
-  <meta name="description" content="Counter-Strike 1.6 ve GoldSrc için bağımsız modlama araçları, haritalar ve skyboxlar.">
+  <title>GoldSrc Studio — CS 1.6 araçları, haritaları, skyboxları ve eklentileri</title>
+  <meta name="description" content="Counter-Strike 1.6 ve GoldSrc için modlama araçları, haritalar, skyboxlar ve AMXX eklentileri tek çatı altında.">
   <meta name="theme-color" content="#0d141c">
-  <script>try{document.documentElement.dataset.theme=localStorage.getItem("gs-theme")||"original"}catch(e){document.documentElement.dataset.theme="original"}</script>
-  <meta property="og:title" content="GoldSrc Studio — CS 1.6 araçları, haritaları ve skyboxları">
-  <meta property="og:description" content="Counter-Strike 1.6 ve GoldSrc için bağımsız modlama araçları, haritalar ve skyboxlar.">
+  <meta name="author" content="GoldSrc Studio · by Devil">
+  <meta name="copyright" content="© GoldSrc Studio · by Devil. Tüm hakları saklıdır / All rights reserved.">
+  <script>(function(d){var t="original",l="";try{var q=/[?&]lang=(tr|en)/.exec(location.search);if(q)localStorage.setItem("gs-lang",q[1]);t=localStorage.getItem("gs-theme")||t;l=localStorage.getItem("gs-lang")||""}catch(e){}if(!l)l=/^tr/i.test(navigator.language||"tr")?"tr":"en";d.dataset.theme=t;d.dataset.lang=l;d.lang=l})(document.documentElement)</script>
+  <meta property="og:title" content="GoldSrc Studio — CS 1.6 araçları, haritaları, skyboxları ve eklentileri">
+  <meta property="og:description" content="Counter-Strike 1.6 ve GoldSrc için modlama araçları, haritalar, skyboxlar ve AMXX eklentileri tek çatı altında.">
   <meta property="og:image" content="https://tools.bydevil.com/assets/map-optimization.jpg">
   <link rel="icon" type="image/png" href="/assets/goldsrc-mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css?v=136f5eff">
-  <script src="/assets/site.js?v=136f5eff" defer></script>
+  <link rel="stylesheet" href="/assets/site.css?v=c5521bc7">
+  <script src="/assets/site.js?v=c5521bc7" defer></script>
 </head>
-<body data-page="home">
+<body data-page="home" data-title-en="GoldSrc Studio — CS 1.6 tools, maps, skyboxes and plugins" data-desc-en="Modding tools, maps, skyboxes and AMXX plugins for Counter-Strike 1.6 and GoldSrc, all under one roof.">
   <header id="hdr"></header>
   <main>
     <section class="hero">
       <div class="hero-media"><img src="/assets/map-optimization.jpg" alt=""></div>
       <div class="wrap hero-inner">
-        <span class="eyebrow"><i></i>GoldSrc ekosistemi için bağımsız stüdyo</span>
-        <h1><span lang="en">Counter-Strike 1.6</span> için <span class="accent">özenle yapılmış</span> araçlar.</h1>
-        <p class="lead">Haritaları analiz et, modelleri boya, skinleri düzenle, botların yolunu çiz.</p>
-        <div class="actions">
-          <a class="btn primary" href="/tools/">Araçları keşfet</a>
-          <a class="btn" href="/maps/">Haritalara göz at</a>
+        <span class="eyebrow"><i></i><span data-l="tr">Araçlar · Haritalar · Skyboxlar · AMXX eklentileri</span><span data-l="en">Tools · Maps · Skyboxes · AMXX plugins</span></span>
+        <h1><span data-l="tr"><span lang="en">Counter-Strike 1.6</span> için <span class="accent">her şey</span>, tek çatı altında.</span><span data-l="en"><span class="accent">Everything</span> for Counter-Strike 1.6, under one roof.</span></h1>
+        <p class="lead"><span data-l="tr">Modlama araçları, ücretsiz haritalar ve skyboxlar, sunucular için AMXX eklentileri. Haritanı analiz et, modelini boya, sunucunu güçlendir.</span><span data-l="en">Modding tools, free maps and skyboxes, and AMXX plugins for servers. Analyse your map, paint your model, power up your server.</span></p>
+        <div class="actions hero-actions">
+          <a class="btn primary" href="/tools/"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><span data-l="tr">Araçlar</span><span data-l="en">Tools</span></a>
+          <a class="btn" href="/maps/"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4-5 2v14l5-2 6 2 5-2V4l-5 2-6-2zM9 4v14M15 6v14"/></svg><span data-l="tr">Haritalar</span><span data-l="en">Maps</span></a>
+          <a class="btn" href="/skies/"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.6-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9H7z"/></svg><span data-l="tr">Skyboxlar</span><span data-l="en">Skyboxes</span></a>
+          <a class="btn" href="/plugins/"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0V8zM12 17v4"/></svg><span data-l="tr">Eklentiler</span><span data-l="en">Plugins</span></a>
         </div>
         <div class="hero-stats" id="stats"></div>
       </div>
     </section>
     <section class="section"><div class="wrap">
-      <div class="sec-head"><div><h2>Araçlar</h2></div><a class="more" href="/tools/">Tüm araçlar →</a></div>
+      <div class="sec-head"><div><h2><span data-l="tr">Araçlar</span><span data-l="en">Tools</span></h2></div><a class="more" href="/tools/"><span data-l="tr">Tüm araçlar →</span><span data-l="en">All tools →</span></a></div>
       <div class="grid cols-3" id="home-tools"></div>
     </div></section>
     <section class="section"><div class="wrap">
-      <div class="sec-head"><div><h2>En çok indirilen haritalar</h2></div><a class="more" href="/maps/">Tüm haritalar →</a></div>
+      <div class="sec-head"><div><h2><span data-l="tr">En çok indirilen haritalar</span><span data-l="en">Most downloaded maps</span></h2></div><a class="more" href="/maps/"><span data-l="tr">Tüm haritalar →</span><span data-l="en">All maps →</span></a></div>
       <div class="grid cols-4" id="home-maps"></div>
     </div></section>
     <section class="section"><div class="wrap">
-      <div class="sec-head"><div><h2>Popüler skyboxlar</h2></div><a class="more" href="/skies/">Tüm skyboxlar →</a></div>
+      <div class="sec-head"><div><h2><span data-l="tr">Popüler skyboxlar</span><span data-l="en">Popular skyboxes</span></h2></div><a class="more" href="/skies/"><span data-l="tr">Tüm skyboxlar →</span><span data-l="en">All skyboxes →</span></a></div>
       <div class="grid cols-4" id="home-skies"></div>
     </div></section>
     <section class="section"><div class="wrap">
-      <div class="cta-band"><div><h2>Bir fikrin ya da hata bildirimin mi var?</h2><p>Steam, Discord veya GameBanana üzerinden ulaş.</p></div>
-        <div class="actions"><a class="btn primary" href="/contact/">İletişime geç</a><a class="btn" href="https://github.com/by-devil/GoldSrcStudio/issues" target="_blank" rel="noopener">Hata bildir ↗</a></div></div>
+      <div class="sec-head"><div><h2><span data-l="tr">AMXX eklentileri</span><span data-l="en">AMXX plugins</span></h2></div><a class="more" href="/plugins/"><span data-l="tr">Tüm eklentiler →</span><span data-l="en">All plugins →</span></a></div>
+      <div class="grid cols-3" id="home-plugins"></div>
+    </div></section>
+    <section class="section"><div class="wrap">
+      <div class="cta-band"><div><h2><span data-l="tr">Bir fikrin ya da hata bildirimin mi var?</span><span data-l="en">Got an idea or a bug report?</span></h2><p><span data-l="tr">Steam, Discord veya GameBanana üzerinden ulaş.</span><span data-l="en">Reach out on Steam, Discord or GameBanana.</span></p></div>
+        <div class="actions"><a class="btn primary" href="/contact/"><span data-l="tr">İletişime geç</span><span data-l="en">Get in touch</span></a><a class="btn" href="https://github.com/by-devil/GoldSrcStudio/issues" target="_blank" rel="noopener"><span data-l="tr">Hata bildir ↗</span><span data-l="en">Report a bug ↗</span></a></div></div>
     </div></section>
   </main>
   <footer id="ftr"></footer>
