@@ -14,7 +14,7 @@ All maps are free and download from GameBanana. → [bydevil.com/maps](https://b
 
 ## Game modes
 
-[Base Builder](#base-builder-59) **59** · [Gun Game](#gun-game-41) **41** · [Zombie Mod](#zombie-mod-31) **31** · [Deathmatch](#deathmatch-14) **14** · [Bomb/Defuse](#bombdefuse-6) **6** · [Bunny Hop](#bunny-hop-6) **6** · [Fight Yard](#fight-yard-6) **6** · [Hostage Rescue](#hostage-rescue-2) **2** · [Fun Type](#fun-type-2) **2** · [35hp](#35hp-2) **2** · [AWP War](#awp-war-2) **2** · [Other/Misc](#othermisc-2) **2** · [1hp](#1hp-1) **1** · [Maps](#maps-1) **1** · [Jail Break](#jail-break-1) **1** · [Zombie Escape](#zombie-escape-1) **1**
+[Base Builder](#base-builder-59) **59** · [Gun Game](#gun-game-41) **41** · [Zombie Mod](#zombie-mod-31) **31** · [Deathmatch](#deathmatch-14) **14** · [Bomb/Defuse](#bombdefuse-6) **6** · [Fight Yard](#fight-yard-6) **6** · [Bunny Hop](#bunny-hop-6) **6** · [35hp](#35hp-2) **2** · [AWP War](#awp-war-2) **2** · [Fun Type](#fun-type-2) **2** · [Hostage Rescue](#hostage-rescue-2) **2** · [Other/Misc](#othermisc-2) **2** · [Maps](#maps-1) **1** · [Zombie Escape](#zombie-escape-1) **1** · [Jail Break](#jail-break-1) **1** · [1hp](#1hp-1) **1**
 
 ### Base Builder (59)
 
@@ -192,17 +192,6 @@ All maps are free and download from GameBanana. → [bydevil.com/maps](https://b
 | [SnowFortess \| Bomb/Defuse](https://gamebanana.com/mods/85567) | 644 | 7 | 2021-02-04 |
 | [de_anvers \| Bomb/Defuse](https://gamebanana.com/mods/83061) | 357 | 6 | 2021-02-08 |
 
-### Bunny Hop (6)
-
-| Name | Downloads | Likes | Date |
-| --- | ---: | ---: | --- |
-| [bhop_eskidostlar_solo](https://gamebanana.com/mods/97157) | 1,185 | 0 | 2018-06-12 |
-| [bhop_without_colors](https://gamebanana.com/mods/97275) | 1,038 | 1 | 2018-01-12 |
-| [bhop_extra_color](https://gamebanana.com/mods/77925) | 146 | 1 | 2021-01-30 |
-| [bhop_sky_grou](https://gamebanana.com/mods/78483) | 98 | 1 | 2021-01-31 |
-| [bhop_soj_colorx](https://gamebanana.com/mods/78493) | 69 | 1 | 2021-01-24 |
-| [bhop_soj_color_xy](https://gamebanana.com/mods/78495) | 68 | 1 | 2021-01-27 |
-
 ### Fight Yard (6)
 
 | Name | Downloads | Likes | Date |
@@ -214,19 +203,16 @@ All maps are free and download from GameBanana. → [bydevil.com/maps](https://b
 | [aim_ak47_shipment](https://gamebanana.com/mods/85662) | 225 | 3 | 2020-01-12 |
 | [aim_usp_shipment](https://gamebanana.com/mods/85695) | 147 | 2 | 2020-01-12 |
 
-### Hostage Rescue (2)
+### Bunny Hop (6)
 
 | Name | Downloads | Likes | Date |
 | --- | ---: | ---: | --- |
-| [1337 \| Assault \| City and Research Hospital Build](https://gamebanana.com/mods/91466) | 1,218 | 5 | 2019-08-18 |
-| [1337 \| CS:S Assault \| Hostage Rescue \| maps \| cs](https://gamebanana.com/mods/91467) | 822 | 8 | 2019-04-12 |
-
-### Fun Type (2)
-
-| Name | Downloads | Likes | Date |
-| --- | ---: | ---: | --- |
-| [aim_ak47_minecraftfield](https://gamebanana.com/mods/93358) | 471 | 3 | 2020-08-05 |
-| [fy_verygood](https://gamebanana.com/mods/93519) | 421 | 1 | 2019-10-21 |
+| [bhop_eskidostlar_solo](https://gamebanana.com/mods/97157) | 1,185 | 0 | 2018-06-12 |
+| [bhop_without_colors](https://gamebanana.com/mods/97275) | 1,038 | 1 | 2018-01-12 |
+| [bhop_extra_color](https://gamebanana.com/mods/77925) | 146 | 1 | 2021-01-30 |
+| [bhop_sky_grou](https://gamebanana.com/mods/78483) | 98 | 1 | 2021-01-31 |
+| [bhop_soj_colorx](https://gamebanana.com/mods/78493) | 69 | 1 | 2021-01-24 |
+| [bhop_soj_color_xy](https://gamebanana.com/mods/78495) | 68 | 1 | 2021-01-27 |
 
 ### 35hp (2)
 
@@ -242,6 +228,20 @@ All maps are free and download from GameBanana. → [bydevil.com/maps](https://b
 | [awp_astro](https://gamebanana.com/mods/87098) | 347 | 1 | 2019-10-15 |
 | [awp_medival](https://gamebanana.com/mods/87462) | 336 | 8 | 2020-08-13 |
 
+### Fun Type (2)
+
+| Name | Downloads | Likes | Date |
+| --- | ---: | ---: | --- |
+| [aim_ak47_minecraftfield](https://gamebanana.com/mods/93358) | 471 | 3 | 2020-08-05 |
+| [fy_verygood](https://gamebanana.com/mods/93519) | 421 | 1 | 2019-10-21 |
+
+### Hostage Rescue (2)
+
+| Name | Downloads | Likes | Date |
+| --- | ---: | ---: | --- |
+| [1337 \| Assault \| City and Research Hospital Build](https://gamebanana.com/mods/91466) | 1,218 | 5 | 2019-08-18 |
+| [1337 \| CS:S Assault \| Hostage Rescue \| maps \| cs](https://gamebanana.com/mods/91467) | 822 | 8 | 2019-04-12 |
+
 ### Other/Misc (2)
 
 | Name | Downloads | Likes | Date |
@@ -249,17 +249,17 @@ All maps are free and download from GameBanana. → [bydevil.com/maps](https://b
 | [bb_modern_cs16](https://gamebanana.com/mods/74961) | 144 | 0 | 2019-01-16 |
 | [bb_mekan CS 1.6 Version](https://gamebanana.com/mods/74960) | 127 | 0 | 2019-01-23 |
 
-### 1hp (1)
-
-| Name | Downloads | Likes | Date |
-| --- | ---: | ---: | --- |
-| [1hp_glyphcs](https://gamebanana.com/mods/98863) | 625 | 0 | 2017-01-09 |
-
 ### Maps (1)
 
 | Name | Downloads | Likes | Date |
 | --- | ---: | ---: | --- |
 | [csg_dust2_2x2](https://gamebanana.com/mods/636368) | 434 | 16 | 2025-11-28 |
+
+### Zombie Escape (1)
+
+| Name | Downloads | Likes | Date |
+| --- | ---: | ---: | --- |
+| [ze_magala_castle](https://gamebanana.com/mods/98223) | 257 | 5 | 2021-01-01 |
 
 ### Jail Break (1)
 
@@ -267,11 +267,11 @@ All maps are free and download from GameBanana. → [bydevil.com/maps](https://b
 | --- | ---: | ---: | --- |
 | [Jail_bars_Water](https://gamebanana.com/mods/89402) | 383 | 2 | 2019-01-13 |
 
-### Zombie Escape (1)
+### 1hp (1)
 
 | Name | Downloads | Likes | Date |
 | --- | ---: | ---: | --- |
-| [ze_magala_castle](https://gamebanana.com/mods/98223) | 257 | 5 | 2021-01-01 |
+| [1hp_glyphcs](https://gamebanana.com/mods/98863) | 625 | 0 | 2017-01-09 |
 
 ---
 
