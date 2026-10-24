@@ -1,12 +1,15 @@
 <!doctype html>
-<html lang="tr" data-theme="original">
+<!-- © GoldSrc Studio · by Devil. Tasarım ve içerik izinsiz kopyalanamaz / Design and content may not be copied without permission. -->
+<html lang="tr" data-theme="original" data-lang="tr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Haritalar — GoldSrc Studio</title>
   <meta name="description" content="Counter-Strike 1.6 için ücretsiz haritalar.">
   <meta name="theme-color" content="#0d141c">
-  <script>try{document.documentElement.dataset.theme=localStorage.getItem("gs-theme")||"original"}catch(e){document.documentElement.dataset.theme="original"}</script>
+  <meta name="author" content="GoldSrc Studio · by Devil">
+  <meta name="copyright" content="© GoldSrc Studio · by Devil. Tüm hakları saklıdır / All rights reserved.">
+  <script>(function(d){var t="original",l="";try{var q=/[?&]lang=(tr|en)/.exec(location.search);if(q)localStorage.setItem("gs-lang",q[1]);t=localStorage.getItem("gs-theme")||t;l=localStorage.getItem("gs-lang")||""}catch(e){}if(!l)l=/^tr/i.test(navigator.language||"tr")?"tr":"en";d.dataset.theme=t;d.dataset.lang=l;d.lang=l})(document.documentElement)</script>
   <meta property="og:title" content="Haritalar — GoldSrc Studio">
   <meta property="og:description" content="Counter-Strike 1.6 için ücretsiz haritalar.">
   <meta property="og:image" content="https://tools.bydevil.com/assets/map-optimization.jpg">
@@ -14,31 +17,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css?v=136f5eff">
-  <script src="/assets/site.js?v=136f5eff" defer></script>
+  <link rel="stylesheet" href="/assets/site.css?v=c5521bc7">
+  <script src="/assets/site.js?v=c5521bc7" defer></script>
 </head>
-<body data-page="maps">
+<body data-page="maps" data-title-en="Maps — GoldSrc Studio" data-desc-en="Free maps for Counter-Strike 1.6.">
   <header id="hdr"></header>
   <main>
     <div class="page-head"><div class="wrap">
-      <nav class="crumbs"><a href="/">Ana sayfa</a><span class="sep">/</span><span>Haritalar</span></nav>
+      <nav class="crumbs"><a href="/"><span data-l="tr">Ana sayfa</span><span data-l="en">Home</span></a><span class="sep">/</span><span><span data-l="tr">Haritalar</span><span data-l="en">Maps</span></span></nav>
       <div class="page-head-row">
-        <div><h1>Haritalar</h1><p class="lead">Base Builder, Gun Game, Zombie Mod ve daha fazlası. Tüm haritalar ücretsiz ve GameBanana üzerinden indirilir.</p></div>
+        <div><h1><span data-l="tr">Haritalar</span><span data-l="en">Maps</span></h1><p class="lead"><span data-l="tr">Base Builder, Gun Game, Zombie Mod ve daha fazlası. Tüm haritalar ücretsiz ve GameBanana üzerinden indirilir.</span><span data-l="en">Base Builder, Gun Game, Zombie Mod and more. All maps are free and download from GameBanana.</span></p></div>
         <div class="stats" style="grid-template-columns:repeat(2,minmax(150px,1fr));min-width:min(100%,340px)">
-          <div class="stat"><b id="list-count">—</b><span>Toplam</span></div><div class="stat"><b id="list-dl">—</b><span>İndirme</span></div></div>
+          <div class="stat"><b id="list-count">—</b><span><span data-l="tr">Toplam</span><span data-l="en">Total</span></span></div><div class="stat"><b id="list-dl">—</b><span><span data-l="tr">İndirme</span><span data-l="en">Downloads</span></span></div></div>
       </div>
     </div></div>
     <section class="section"><div class="wrap">
       <div class="chips" id="chips"></div>
       <div class="toolbar">
-        <label class="field"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Harita ara… (ör. dust2)" autocomplete="off"></label>
-        <select class="select" id="sort" aria-label="Sırala">
-          <option value="downloads">En çok indirilen</option><option value="likes">En çok beğenilen</option><option value="new">En yeni</option><option value="az">A → Z</option>
+        <label class="field"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Harita ara… (ör. dust2)" data-en-placeholder="Search maps… (e.g. dust2)" autocomplete="off"></label>
+        <select class="select" id="sort" aria-label="Sırala" data-en-aria-label="Sort">
+          <option value="downloads" data-en="Most downloaded">En çok indirilen</option><option value="likes" data-en="Most liked">En çok beğenilen</option><option value="new" data-en="Newest">En yeni</option><option value="az">A → Z</option>
         </select>
         <span class="count-note" id="result-note"></span>
       </div>
       <div class="grid cols-4" id="list-grid"></div>
-      <div class="load-more"><button class="btn" id="more" type="button">Daha fazla göster</button></div>
+      <div class="load-more"><button class="btn" id="more" type="button"><span data-l="tr">Daha fazla göster</span><span data-l="en">Show more</span></button></div>
     </div></section>
   </main>
   <footer id="ftr"></footer>
