@@ -18,27 +18,52 @@
   const LOCALE = L('tr-TR', 'en-US');
 
   const PLUGIN_BASE = 'https://bydevil.com/plugins/#';
-  const BD = 'https://bydevil.com/assets/'; // eklenti ekran görüntüleri bydevil.com'da duruyor
+  // Eklenti ekran görüntüleri: assets/plugins/ (.github/scripts/fetch_plugin_images.py ile bydevil.com'dan indirilir)
+  const seq = (dir, pre, n) => Array.from({ length: n }, (_, i) => `${dir}/${pre}-${String(i + 1).padStart(2, '0')}.jpg`);
+  const shots = (files, tr, en) => files.map((f, i) => ({ src: '/assets/plugins/' + f, label: L(tr[i], en[i]) }));
+  const SHOTS = {
+    propublic: shots(['1-top15', '2-toptime', '3-profil', '4-steam-profil', '5-steam-bilgi', '6-fungun', '7-avatar', '8-arayuz'].map(n => `propublic/pp-${n}.jpg`),
+      ['Top15 sıralaması', 'Toptime sıralaması', 'Oyuncu profili ve en iyi silahlar', 'Profil ve son oynanan oyunlar', 'Steam bilgileri', 'FunGun taramaları', 'Profil resmi seçimi', 'Arayüzü düzenle'],
+      ['Top15 ranking', 'Toptime ranking', 'Player profile and best weapons', 'Profile and recently played games', 'Steam info', 'FunGun scans', 'Avatar picker', 'Customise the interface']),
+    royalpass: shots(seq('royalpass', 'rp', 17),
+      ['Ana menü', 'Görevler', 'Mağaza: silah skinleri', 'Mağaza: etiketler', 'Mağaza: parlama', 'Mağaza: takım özelliği', 'Mağaza: karakterler', 'Mağaza: crosshair', 'Mağaza: sesler', 'Oyuncu pazarı', 'Satın alma geçmişi', 'Kutular', 'Kutu açılışı', 'Kutu içeriği ve şanslar', 'Envanter', 'Sıralama', 'Oyuncu profili'],
+      ['Main menu', 'Missions', 'Shop: weapon skins', 'Shop: tags', 'Shop: glow', 'Shop: team perk', 'Shop: characters', 'Shop: crosshairs', 'Shop: sounds', 'Player market', 'Purchase history', 'Cases', 'Case opening', 'Case contents and odds', 'Inventory', 'Ranking', 'Player profile']),
+    takim: shots(seq('takim', 'tk', 9),
+      ['Takım ana menüsü', 'Takım yönetimi', 'Takım ayarları ve üye yönetimi', 'Görünüm: banner, arka plan, isim rengi', 'Takım görevleri', 'Takım marketi', 'FreeVIP saatleri', 'Takım sıralaması', 'Takım profili ve kadro'],
+      ['Team main menu', 'Team management', 'Team settings and members', 'Look: banner, background, name colour', 'Team missions', 'Team market', 'FreeVIP hours', 'Team ranking', 'Team profile and roster']),
+    gungame: shots([...seq('gungame-top15', 'gg', 7).map(f => f.replace('.jpg', '.webp')), 'gungame-top15/el-sonu.webp', 'gungame-top15/mac-sonu-bireysel.jpg'],
+      ['Bireysel sıralama', 'Oyuncu profili ve en iyi silahlar', 'Takım sıralaması', 'Takım profili', 'FFA sıralaması', 'FFA oyuncu profili', 'Sezon ekranı', 'El sonu ekranı (FFA)', 'Maç sonu ekranı (bireysel)'],
+      ['Solo ranking', 'Player profile and best weapons', 'Team ranking', 'Team profile', 'FFA ranking', 'FFA player profile', 'Season screen', 'Round end screen (FFA)', 'Match end screen (solo)']),
+    zombieplague: shots(seq('zp-top15', 'zp', 12),
+      ['Genel sıralama', 'Oyuncu profili', 'Kendi profilin', 'Özelleştir: rütbe avatarları', 'Özelleştir: kart arka planı', 'Özelleştir: isim rengi', 'Özelleştir: takım rozeti', 'Süre sıralaması', 'Süre profili', 'Sezon arşivi', 'Geçmiş sezon sıralaması', 'Haftalık ödüller'],
+      ['Overall ranking', 'Player profile', 'Your own profile', 'Customise: rank avatars', 'Customise: card background', 'Customise: name colour', 'Customise: team badge', 'Playtime ranking', 'Playtime profile', 'Season archive', 'Past season ranking', 'Weekly rewards']),
+    bpp: shots(seq('battlepass-public', 'bpp', 10),
+      ['Seviye ödülleri', 'Günlük ve haftalık görevler', 'Kasalar', 'Kasa açılışı', 'Çark', 'Envanter', 'Sezon sıralaması', 'Oyuncu profili', 'Profil özelleştirme', 'Nasıl çalışır?'],
+      ['Tier rewards', 'Daily and weekly missions', 'Cases', 'Case opening', 'Prize wheel', 'Inventory', 'Season ranking', 'Player profile', 'Profile customisation', 'How it works']),
+    bpz: shots(seq('battlepass-zp', 'bpz', 9),
+      ['Haftalık ödüller', 'Günlük görevler', 'Günün ödülü', 'Furia çarkı', 'Haftalık sıralama', 'Sıralama (alt sayfalar)', 'Kendi profilin', 'Oyuncu profili', 'Coin mağazası'],
+      ['Weekly rewards', 'Daily missions', 'Reward of the day', 'Furia wheel', 'Weekly ranking', 'Ranking (sub-pages)', 'Your own profile', 'Player profile', 'Coin shop']),
+  };
   const PLUGINS = [
-    { id: 'propublic', name: 'Pro Public TOP15', img: BD + 'propublic/pp-1-top15.jpg', tags: L(['Top15', 'Toptime', 'Profil', 'FunGun'], ['Top15', 'Toptime', 'Profile', 'FunGun']),
+    { id: 'propublic', name: 'Pro Public TOP15', shots: SHOTS.propublic, tags: L(['Top15', 'Toptime', 'Profil', 'FunGun'], ['Top15', 'Toptime', 'Profile', 'FunGun']),
       text: L('Pro Public sunucuları için eksiksiz istatistik sistemi: Top15 ve süre sıralamaları, detaylı oyuncu profilleri, Steam bilgileri ve FunGun tarama geçmişi.',
         'Complete stats system for Pro Public servers: Top15 and playtime rankings, detailed player profiles, Steam info and FunGun scan history.') },
-    { id: 'royalpass', name: 'Royal Pass', img: BD + 'royalpass/rp-04.jpg', tags: L(['Görevler', 'Mağaza', 'Kutular', 'Pazar'], ['Missions', 'Shop', 'Cases', 'Market']),
+    { id: 'royalpass', name: 'Royal Pass', shots: SHOTS.royalpass, cover: 3, tags: L(['Görevler', 'Mağaza', 'Kutular', 'Pazar'], ['Missions', 'Shop', 'Cases', 'Market']),
       text: L('Puan ekonomisi: görevlerden puan kazan, kozmetik mağazasında harca, kutu aç, oyuncu pazarında alım satım yap.',
         'Points economy: earn points from missions, spend them in the cosmetics shop, open cases and trade on the player market.') },
-    { id: 'takim', name: 'Team System', img: BD + 'takim/tk-01.jpg', tags: L(['Yönetim', 'Görevler', 'FreeVIP', 'Sezon'], ['Management', 'Missions', 'FreeVIP', 'Season']),
+    { id: 'takim', name: 'Team System', shots: SHOTS.takim, tags: L(['Yönetim', 'Görevler', 'FreeVIP', 'Sezon'], ['Management', 'Missions', 'FreeVIP', 'Season']),
       text: L('Takım (klan) sistemi: takım kur, üye davet et, banner ve renklerle özelleştir, sezon sıralamasında birlikte yüksel.',
         'Team (clan) system: create a team, invite members, customise it with banners and colours, and climb the season ranking together.') },
-    { id: 'gungame', name: 'GunGame TOP15', img: '/assets/plugins/gungame-top15/gg-01.webp', tags: L(['Bireysel', 'Takım', 'FFA', 'Sezon'], ['Solo', 'Team', 'FFA', 'Season']),
+    { id: 'gungame', name: 'GunGame TOP15', shots: SHOTS.gungame, tags: L(['Bireysel', 'Takım', 'FFA', 'Sezon'], ['Solo', 'Team', 'FFA', 'Season']),
       text: L('Bireysel, takım ve FFA sıralamaları; puan, XP, K/D, bıçak ve seri istatistikleri, oyuncu profilleri ve sezon görünümleri.',
         'Solo, team and FFA rankings; points, XP, K/D, knife and streak stats, player profiles and season views.') },
-    { id: 'zombieplague', name: 'Zombie Plague TOP15', img: BD + 'zp-top15/zp-01.jpg', tags: L(['Genel', 'Süre', 'Profil', 'Haftalık ödül'], ['Overall', 'Playtime', 'Profile', 'Weekly reward']),
+    { id: 'zombieplague', name: 'Zombie Plague TOP15', shots: SHOTS.zombieplague, tags: L(['Genel', 'Süre', 'Profil', 'Haftalık ödül'], ['Overall', 'Playtime', 'Profile', 'Weekly reward']),
       text: L('Zombie Plague için sıralama: liderle kıyaslayan profiller, rütbe yolu, özelleştirilebilir kart, sezon arşivi ve haftalık VIP ödülleri.',
         'Rankings for Zombie Plague: profiles compared with the leader, a rank path, a customisable card, season archive and weekly VIP rewards.') },
-    { id: 'battlepass', name: 'Public Battle Pass', img: BD + 'battlepass-public/bpp-01.jpg', tags: L(['Seviyeler', 'Kasalar', 'Çark', 'Envanter'], ['Tiers', 'Cases', 'Wheel', 'Inventory']),
+    { id: 'battlepass', name: 'Public Battle Pass', shots: SHOTS.bpp, tags: L(['Seviyeler', 'Kasalar', 'Çark', 'Envanter'], ['Tiers', 'Cases', 'Wheel', 'Inventory']),
       text: L('Public sunucular için sezonluk battle pass: ücretsiz ve premium seviye ödülleri, kasalar, çark ve efekt envanteri.',
         'Seasonal battle pass for public servers: free and premium tier rewards, cases, a prize wheel and an effects inventory.') },
-    { id: 'battlepass', name: 'Zombie Plague Battle Pass', img: BD + 'battlepass-zp/bpz-01.jpg', tags: L(['Ödüller', 'Görevler', 'Çark', 'Mağaza'], ['Rewards', 'Missions', 'Wheel', 'Shop']),
+    { id: 'battlepass', name: 'Zombie Plague Battle Pass', shots: SHOTS.bpz, tags: L(['Ödüller', 'Görevler', 'Çark', 'Mağaza'], ['Rewards', 'Missions', 'Wheel', 'Shop']),
       text: L('Haftalık sezon sistemi: her gün ücretsiz ve premium ödül, günlük görevler, coin çarkı ve mağaza.',
         'Weekly season system: free and premium rewards every day, daily missions, a coin wheel and a shop.') },
   ];
@@ -321,16 +346,66 @@
         <div class="card-meta"><span>${icon('dl')}${fmt(m.downloads)}</span><span>${icon('heart')}${fmt(m.likes)}</span>${m.date ? `<span>${icon('cal')}${day(m.date)}</span>` : ''}</div>
       </div>
     </a>`;
-  const pluginCard = p => `
-    <a class="card plugin-card fade" href="${PLUGIN_BASE}${p.id}" ${ext}>
-      <div class="card-media"><span class="plugin-ph">${icon('plug')}<b lang="en">${esc(p.name)}</b></span>${p.img ? `<img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy" ${imgFallback}>` : ''}<span class="badge">AMX Mod X</span></div>
+  const pluginCard = p => {
+    const i = PLUGINS.indexOf(p), n = p.shots.length, cover = p.shots[p.cover || 0];
+    return `
+    <article class="card plugin-card hover fade">
+      <button class="card-media" type="button" data-gal="${i}" aria-label="${esc(p.name)}: ${L('ekran görüntülerini aç', 'open screenshots')}">
+        <span class="plugin-ph">${icon('plug')}<b lang="en">${esc(p.name)}</b></span><img src="${esc(cover.src)}" alt="${esc(cover.label)}" loading="lazy">
+        <span class="badge">AMX Mod X</span><span class="shot-count">${icon('box')}${n}</span></button>
       <div class="card-body">
         <span class="card-title" lang="en">${esc(p.name)}</span>
         <p class="card-text">${esc(p.text)}</p>
         <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
-        <span class="plugin-go">${L('Ekran görüntüleri ve ayrıntılar', 'Screenshots and details')} ${icon('out')}</span>
+        <div class="plugin-links">
+          <button class="plugin-go" type="button" data-gal="${i}">${L('Ekran görüntüleri', 'Screenshots')} (${n})</button>
+          <a class="plugin-go" href="${PLUGIN_BASE}${p.id}" ${ext}>bydevil.com ${icon('out')}</a>
+        </div>
       </div>
-    </a>`;
+    </article>`;
+  };
+
+  /* ---------- eklenti galerisi ---------- */
+  function gallery(p, start = 0) {
+    const n = p.shots.length;
+    let i = 0;
+    const el = document.createElement('div');
+    el.className = 'lb';
+    el.innerHTML = `<div class="lb-box" role="dialog" aria-modal="true" aria-label="${esc(p.name)}">
+      <div class="lb-head"><b lang="en">${esc(p.name)}</b><span class="lb-cap"></span><button class="icon-btn lb-x" type="button" aria-label="${L('Kapat', 'Close')}">${icon('close')}</button></div>
+      <div class="lb-stage"><div class="lb-img"></div>
+        <button class="lb-nav prev" type="button" aria-label="${L('Önceki', 'Previous')}">${icon('left')}</button><button class="lb-nav next" type="button" aria-label="${L('Sonraki', 'Next')}">${icon('right')}</button></div>
+      <div class="lb-strip">${p.shots.map((s, k) => `<button type="button" data-k="${k}" aria-label="${esc(s.label)}"><img src="${esc(s.src)}" alt=""></button>`).join('')}</div>
+    </div>`;
+    const show = k => {
+      i = (k + n) % n;
+      $('.lb-img', el).innerHTML = `<img src="${esc(p.shots[i].src)}" alt="${esc(p.shots[i].label)}">`;
+      $('.lb-cap', el).textContent = `${p.shots[i].label} · ${i + 1}/${n}`;
+      $$('.lb-strip button', el).forEach(b => b.classList.toggle('on', +b.dataset.k === i));
+      $(`.lb-strip [data-k="${i}"]`, el)?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    };
+    const close = () => { el.remove(); document.body.style.overflow = ''; document.removeEventListener('keydown', key); };
+    const key = e => {
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(i - 1);
+      else if (e.key === 'ArrowRight') show(i + 1);
+    };
+    el.addEventListener('click', e => {
+      if (e.target === el || e.target.closest('.lb-x')) return close();
+      if (e.target.closest('.prev')) return show(i - 1);
+      if (e.target.closest('.next')) return show(i + 1);
+      const t = e.target.closest('[data-k]'); if (t) show(+t.dataset.k);
+    });
+    document.addEventListener('keydown', key);
+    document.body.style.overflow = 'hidden';
+    document.body.append(el);
+    show(start);
+    $('.lb-x', el).focus();
+  }
+  document.addEventListener('click', e => {
+    const g = e.target.closest('[data-gal]');
+    if (g) { const p = PLUGINS[+g.dataset.gal]; gallery(p, p.cover || 0); }
+  });
   const statTile = (ic, value, label) => `<div class="hstat"><b>${value}</b><span>${icon(ic)}${label}</span></div>`;
 
   /* ---------- sayfalar ---------- */
