@@ -46,7 +46,7 @@
       <b><a href="tools/skin-studio">Skin Studio</a></b> · <sub>v1.20.1 · Windows</sub><br>
       Silah skinlerini ve texture'ları tek yerden yönet. Gömülü texture düzenleme, 3D önizleme, glow sprite.<br>
       <a href="tools/skin-studio/SkinStudio_Setup_v1.20.1.exe?raw=1"><b>⬇ İndir</b></a> · <a href="https://gamebanana.com/tools/24053">GameBanana →</a> ·
-      <a href="https://github.com/sodej33-lang/CS16-Skin-Studio">GitHub →</a>
+      <a href="https://github.com/serhat-ondes/CS16-Skin-Studio">GitHub →</a>
     </td>
   </tr>
   <tr>
