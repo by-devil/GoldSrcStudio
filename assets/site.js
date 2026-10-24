@@ -282,6 +282,7 @@
       <div class="card-actions">
         <a class="btn sm primary" href="${esc(t.download)}" download>${icon('dl')}İndir</a>
         <a class="btn sm" href="/tools/${t.slug}/">Ayrıntılar</a>
+        <a class="btn sm" href="${esc(t.github)}" ${ext} aria-label="GitHub">${GH}</a>
         <a class="btn sm" href="${esc(t.gamebanana)}" ${ext}>GameBanana ${icon('out')}</a>
       </div>
     </article>`;
@@ -328,8 +329,8 @@
           <nav class="crumbs"><a href="/">Ana sayfa</a><span class="sep">/</span><a href="/tools/">Araçlar</a><span class="sep">/</span><span>${esc(t.name)}</span></nav>
           <div class="page-head-row">
             <div><div class="tags" style="margin-bottom:12px"><span class="tag accent">${esc(t.category)}</span><span class="tag">${esc(t.version)}</span><span class="tag">${esc(t.platform)}</span></div>
-              <h1>${esc(t.name)}</h1><p class="lead">${esc(t.summary)}</p></div>
-            <div class="actions"><a class="btn primary" href="${esc(t.download)}" download>${icon('dl')}İndir</a><a class="btn" href="${esc(t.gamebanana)}" ${ext}>GameBanana ${icon('out')}</a></div>
+              <h1 lang="en">${esc(t.name)}</h1><p class="lead">${esc(t.summary)}</p></div>
+            <div class="actions"><a class="btn primary" href="${esc(t.download)}" download>${icon('dl')}İndir</a><a class="btn" href="${esc(t.github)}" ${ext}>${GH} GitHub</a><a class="btn" href="${esc(t.gamebanana)}" ${ext}>GameBanana ${icon('out')}</a></div>
           </div>
         </div></div>
         <div class="wrap section">
@@ -347,7 +348,10 @@
                 <a class="btn primary" href="${esc(t.download)}" download>${icon('dl')}${esc(file)}</a>
                 <div class="actions" style="margin-top:10px">
                   <a class="btn sm" style="flex:1" href="${esc(t.gamebanana)}" ${ext}>GameBanana ${icon('out')}</a>
-                  ${t.github ? `<a class="btn sm" style="flex:1" href="${esc(t.github)}" ${ext}>${GH} GitHub</a>` : ''}
+                  <a class="btn sm" style="flex:1" href="${esc(t.github)}" ${ext}>${GH} GitHub</a>
+                </div>
+                ${t.repo ? `<a class="btn sm" style="margin-top:8px" href="${esc(t.repo)}" ${ext}>${GH} Ayrı repo: ${esc(t.repo.split('/').pop())}</a>` : ''}
+                <div hidden>
                 </div>
               </div>
               <div class="panel"><h3>Bilgiler</h3>
