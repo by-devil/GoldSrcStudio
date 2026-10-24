@@ -23,13 +23,13 @@
   <tr>
     <td width="50%" valign="top">
       <img src="assets/map-optimization.jpg" alt="Map Optimization"><br>
-      <b>Map Optimization</b> · <sub>Beta · Windows</sub><br>
+      <b><a href="tools/map-optimization">Map Optimization</a></b> · <sub>Beta · Windows</sub><br>
       Haritanda performansın nereye gittiğini gör. wpoly/visleaf analizi, 3D hata katmanları, HINT denemeleri ve HTML rapor.<br>
       <a href="https://gamebanana.com/tools/24466">GameBanana →</a>
     </td>
     <td width="50%" valign="top">
       <img src="assets/studio-paint.jpg" alt="Studio Paint"><br>
-      <b>Studio Paint</b> · <sub>Beta / Test · Windows</sub><br>
+      <b><a href="tools/studio-paint">Studio Paint</a></b> · <sub>Beta / Test · Windows</sub><br>
       Modelinin sadece istediğin parçasını boya. Katmanlı, tahribatsız boyama ve yeni <code>_skin.mdl</code> çıktısı.<br>
       <a href="https://gamebanana.com/tools/24470">GameBanana →</a>
     </td>
@@ -37,13 +37,13 @@
   <tr>
     <td width="50%" valign="top">
       <img src="assets/studio-nav.jpg" alt="Studio Nav"><br>
-      <b>Studio Nav</b> · <sub>v0.30.0 Beta · Windows</sub><br>
+      <b><a href="tools/studio-nav">Studio Nav</a></b> · <sub>v0.30.0 Beta · Windows</sub><br>
       Botların yolunu oyunu açmadan test et. NAV/PWF düzenleme, otomatik navigasyon ve bot rota simülasyonu.<br>
       <a href="https://gamebanana.com/tools/24109">GameBanana →</a>
     </td>
     <td width="50%" valign="top">
       <img src="assets/skin-studio.jpg" alt="Skin Studio"><br>
-      <b>Skin Studio</b> · <sub>v1.20.1 · Windows</sub><br>
+      <b><a href="tools/skin-studio">Skin Studio</a></b> · <sub>v1.20.1 · Windows</sub><br>
       Silah skinlerini ve texture'ları tek yerden yönet. Gömülü texture düzenleme, 3D önizleme, glow sprite.<br>
       <a href="https://gamebanana.com/tools/24053">GameBanana →</a> ·
       <a href="https://github.com/sodej33-lang/CS16-Skin-Studio">GitHub →</a> ·
@@ -53,7 +53,7 @@
   <tr>
     <td width="50%" valign="top">
       <img src="assets/studio-modeler.jpg" alt="Studio Modeler"><br>
-      <b>Studio Modeler</b> · <sub>Beta / Test · Windows</sub><br>
+      <b><a href="tools/studio-modeler">Studio Modeler</a></b> · <sub>Beta / Test · Windows</sub><br>
       Harita fırçalarını GoldSrc modele dönüştür. .map/.rmf/.jmf okuma, canlı önizleme, doğrudan .mdl çıktısı.<br>
       <a href="https://gamebanana.com/tools/24469">GameBanana →</a>
     </td>
