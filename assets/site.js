@@ -12,35 +12,47 @@
     bydevil: 'https://bydevil.com/',
     discord: 'serhatondes',
   };
+  /* ---------- dil ---------- */
+  const LANG = document.documentElement.dataset.lang === 'en' ? 'en' : 'tr';
+  const L = (tr, en) => LANG === 'en' ? en : tr;
+  const LOCALE = L('tr-TR', 'en-US');
+
   const PLUGIN_BASE = 'https://bydevil.com/plugins/#';
   const PLUGINS = [
-    { id: 'propublic', name: 'Pro Public TOP15', img: '', tags: ['Top15', 'Toptime', 'Profil', 'FunGun'],
-      text: 'Pro Public sunucuları için eksiksiz istatistik sistemi: Top15 ve süre sıralamaları, detaylı oyuncu profilleri, Steam bilgileri ve FunGun tarama geçmişi.' },
-    { id: 'royalpass', name: 'Royal Pass', img: '', tags: ['Görevler', 'Mağaza', 'Kutular', 'Pazar'],
-      text: 'Puan ekonomisi: görevlerden puan kazan, kozmetik mağazasında harca, kutu aç, oyuncu pazarında alım satım yap.' },
-    { id: 'takim', name: 'Team System', img: '', tags: ['Yönetim', 'Görevler', 'FreeVIP', 'Sezon'],
-      text: 'Takım (klan) sistemi: takım kur, üye davet et, banner ve renklerle özelleştir, sezon sıralamasında birlikte yüksel.' },
-    { id: 'gungame', name: 'GunGame TOP15', img: '/assets/plugins/gungame.webp', tags: ['Bireysel', 'Takım', 'FFA', 'Sezon'],
-      text: 'Bireysel, takım ve FFA sıralamaları; puan, XP, K/D, bıçak ve seri istatistikleri, oyuncu profilleri ve sezon görünümleri.' },
-    { id: 'zombieplague', name: 'Zombie Plague TOP15', img: '', tags: ['Genel', 'Süre', 'Profil', 'Haftalık ödül'],
-      text: 'Zombie Plague için sıralama: liderle kıyaslayan profiller, rütbe yolu, özelleştirilebilir kart, sezon arşivi ve haftalık VIP ödülleri.' },
-    { id: 'battlepass', name: 'Public Battle Pass', img: '', tags: ['Seviyeler', 'Kasalar', 'Çark', 'Envanter'],
-      text: 'Public sunucular için sezonluk battle pass: ücretsiz ve premium seviye ödülleri, kasalar, çark ve efekt envanteri.' },
-    { id: 'battlepass', name: 'Zombie Plague Battle Pass', img: '', tags: ['Ödüller', 'Görevler', 'Çark', 'Mağaza'],
-      text: 'Haftalık sezon sistemi: her gün ücretsiz ve premium ödül, günlük görevler, coin çarkı ve mağaza.' },
+    { id: 'propublic', name: 'Pro Public TOP15', img: '', tags: L(['Top15', 'Toptime', 'Profil', 'FunGun'], ['Top15', 'Toptime', 'Profile', 'FunGun']),
+      text: L('Pro Public sunucuları için eksiksiz istatistik sistemi: Top15 ve süre sıralamaları, detaylı oyuncu profilleri, Steam bilgileri ve FunGun tarama geçmişi.',
+        'Complete stats system for Pro Public servers: Top15 and playtime rankings, detailed player profiles, Steam info and FunGun scan history.') },
+    { id: 'royalpass', name: 'Royal Pass', img: '', tags: L(['Görevler', 'Mağaza', 'Kutular', 'Pazar'], ['Missions', 'Shop', 'Cases', 'Market']),
+      text: L('Puan ekonomisi: görevlerden puan kazan, kozmetik mağazasında harca, kutu aç, oyuncu pazarında alım satım yap.',
+        'Points economy: earn points from missions, spend them in the cosmetics shop, open cases and trade on the player market.') },
+    { id: 'takim', name: 'Team System', img: '', tags: L(['Yönetim', 'Görevler', 'FreeVIP', 'Sezon'], ['Management', 'Missions', 'FreeVIP', 'Season']),
+      text: L('Takım (klan) sistemi: takım kur, üye davet et, banner ve renklerle özelleştir, sezon sıralamasında birlikte yüksel.',
+        'Team (clan) system: create a team, invite members, customise it with banners and colours, and climb the season ranking together.') },
+    { id: 'gungame', name: 'GunGame TOP15', img: '/assets/plugins/gungame.webp', tags: L(['Bireysel', 'Takım', 'FFA', 'Sezon'], ['Solo', 'Team', 'FFA', 'Season']),
+      text: L('Bireysel, takım ve FFA sıralamaları; puan, XP, K/D, bıçak ve seri istatistikleri, oyuncu profilleri ve sezon görünümleri.',
+        'Solo, team and FFA rankings; points, XP, K/D, knife and streak stats, player profiles and season views.') },
+    { id: 'zombieplague', name: 'Zombie Plague TOP15', img: '', tags: L(['Genel', 'Süre', 'Profil', 'Haftalık ödül'], ['Overall', 'Playtime', 'Profile', 'Weekly reward']),
+      text: L('Zombie Plague için sıralama: liderle kıyaslayan profiller, rütbe yolu, özelleştirilebilir kart, sezon arşivi ve haftalık VIP ödülleri.',
+        'Rankings for Zombie Plague: profiles compared with the leader, a rank path, a customisable card, season archive and weekly VIP rewards.') },
+    { id: 'battlepass', name: 'Public Battle Pass', img: '', tags: L(['Seviyeler', 'Kasalar', 'Çark', 'Envanter'], ['Tiers', 'Cases', 'Wheel', 'Inventory']),
+      text: L('Public sunucular için sezonluk battle pass: ücretsiz ve premium seviye ödülleri, kasalar, çark ve efekt envanteri.',
+        'Seasonal battle pass for public servers: free and premium tier rewards, cases, a prize wheel and an effects inventory.') },
+    { id: 'battlepass', name: 'Zombie Plague Battle Pass', img: '', tags: L(['Ödüller', 'Görevler', 'Çark', 'Mağaza'], ['Rewards', 'Missions', 'Wheel', 'Shop']),
+      text: L('Haftalık sezon sistemi: her gün ücretsiz ve premium ödül, günlük görevler, coin çarkı ve mağaza.',
+        'Weekly season system: free and premium rewards every day, daily missions, a coin wheel and a shop.') },
   ];
 
   /* ---------- yardımcılar ---------- */
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const fmt = n => Number(n || 0).toLocaleString('tr-TR');
-  const day = ts => ts ? new Date(ts * 1000).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+  const fmt = n => Number(n || 0).toLocaleString(LOCALE);
+  const day = ts => ts ? new Date(ts * 1000).toLocaleDateString(LOCALE, { day: 'numeric', month: 'short', year: 'numeric' }) : '';
   const ext = 'target="_blank" rel="noopener"';
   const cache = {};
   const getJSON = url => (cache[url] ||= fetch(url, { cache: 'no-cache' }).then(r => { if (!r.ok) throw new Error(url); return r.json(); }));
   const data = {
-    tools: () => getJSON('/tools/tools.json'),
+    tools: () => getJSON('/tools/tools.json').then(list => list.map(t => LANG === 'en' && t.en ? { ...t, ...t.en } : t)),
     maps: () => getJSON('/maps/maps.json'),
     skies: () => getJSON('/skies/skies.json'),
   };
@@ -91,31 +103,33 @@
       </div>`;
     const works = `
       <div class="mega-grid">
-        <p class="mega-label">Topluluk için</p>
-        <a class="mlink" href="/maps/"><span class="mlink-ic">${icon('map')}</span><span><span class="mlink-t">Haritalar</span><span class="mlink-d">Base Builder, Gun Game, Zombie ve daha fazlası</span></span></a>
-        <a class="mlink" href="/skies/"><span class="mlink-ic">${icon('cloud')}</span><span><span class="mlink-t">Skyboxlar</span><span class="mlink-d">GoldSrc için gökyüzü paketleri</span></span></a>
-        <a class="mlink" href="/plugins/"><span class="mlink-ic">${icon('plug')}</span><span><span class="mlink-t">AMXX eklentileri</span><span class="mlink-d">Sıralama, sezon ve ekonomi sistemleri</span></span></a>
-        <a class="mlink" href="${LINKS.gamebanana}" ${ext}><span class="mlink-ic"><img src="/assets/gamebanana.png" alt="" style="width:22px;height:22px;image-rendering:pixelated"></span><span><span class="mlink-t">GameBanana profili</span><span class="mlink-d">Tüm yüklemeler tek yerde</span></span></a>
+        <p class="mega-label">${L('Topluluk için', 'For the community')}</p>
+        <a class="mlink" href="/maps/"><span class="mlink-ic">${icon('map')}</span><span><span class="mlink-t">${L('Haritalar', 'Maps')}</span><span class="mlink-d">${L('Base Builder, Gun Game, Zombie ve daha fazlası', 'Base Builder, Gun Game, Zombie and more')}</span></span></a>
+        <a class="mlink" href="/skies/"><span class="mlink-ic">${icon('cloud')}</span><span><span class="mlink-t">${L('Skyboxlar', 'Skyboxes')}</span><span class="mlink-d">${L('GoldSrc için gökyüzü paketleri', 'Sky packs for GoldSrc')}</span></span></a>
+        <a class="mlink" href="/plugins/"><span class="mlink-ic">${icon('plug')}</span><span><span class="mlink-t">${L('AMXX eklentileri', 'AMXX plugins')}</span><span class="mlink-d">${L('Sıralama, sezon ve ekonomi sistemleri', 'Ranking, season and economy systems')}</span></span></a>
+        <a class="mlink" href="${LINKS.gamebanana}" ${ext}><span class="mlink-ic"><img src="/assets/gamebanana.png" alt="" style="width:22px;height:22px;image-rendering:pixelated"></span><span><span class="mlink-t">${L('GameBanana profili', 'GameBanana profile')}</span><span class="mlink-d">${L('Tüm yüklemeler tek yerde', 'All uploads in one place')}</span></span></a>
       </div>`;
     return `
       <div class="wrap hdr-bar">
-        <a class="hdr-brand" href="/" aria-label="GoldSrc Studio ana sayfa">
+        <a class="hdr-brand" href="/" aria-label="${L('GoldSrc Studio ana sayfa', 'GoldSrc Studio home')}">
           <img src="/assets/goldsrc-mark.png" alt="" width="34" height="34">
           <span class="hdr-wm"><b>GoldSrc Studio</b></span>
         </a>
-        <nav class="hdr-nav" aria-label="Ana menü">
-          ${item('tools', '/tools/', 'Araçlar', `<div class="mega-grid"><p class="mega-label">Uygulamalar</p>${toolLinks}<div class="mega-foot"><a href="/tools/">Tüm araçlar →</a></div></div>`)}
-          ${item('maps', '/maps/', 'Çalışmalar', works)}
-          ${item('plugins', '/plugins/', 'Eklentiler')}
-          ${item('contact', '/contact/', 'İletişim')}
+        <nav class="hdr-nav" aria-label="${L('Ana menü', 'Main menu')}">
+          ${item('tools', '/tools/', L('Araçlar', 'Tools'), `<div class="mega-grid"><p class="mega-label">${L('Uygulamalar', 'Apps')}</p>${toolLinks}<div class="mega-foot"><a href="/tools/">${L('Tüm araçlar →', 'All tools →')}</a></div></div>`)}
+          ${item('maps', '/maps/', L('Çalışmalar', 'Works'), works)}
+          ${item('plugins', '/plugins/', L('Eklentiler', 'Plugins'))}
+          ${item('contact', '/contact/', L('İletişim', 'Contact'))}
         </nav>
         <div class="hdr-right">
-          <button class="hdr-search" type="button" data-palette><span class="hs-ic">${icon('search')}</span><span class="hs-txt">Ara<em>Araçlar, haritalar, skyboxlar</em></span><span class="hs-keys"><span class="kbd">Ctrl</span><span class="kbd">K</span></span></button>
+          <button class="hdr-search" type="button" data-palette><span class="hs-ic">${icon('search')}</span><span class="hs-txt">${L('Ara', 'Search')}<em>${L('Araçlar, haritalar, skyboxlar', 'Tools, maps, skyboxes')}</em></span><span class="hs-keys"><span class="kbd">Ctrl</span><span class="kbd">K</span></span></button>
           <a class="pill-link" href="${LINKS.goldsrc}" ${ext}><img src="/assets/goldsrc-mark.png" alt=""><span>GoldSrc Studio</span></a>
           <a class="pill-link" href="${LINKS.bydevil}" ${ext}><img src="/assets/bydevil-mark.png" alt=""><span>By Devil</span></a>
-          <div style="position:relative"><button class="icon-btn" type="button" data-theme-btn aria-label="Tema" aria-expanded="false">${icon('theme')}</button></div>
-          <a class="icon-btn" href="${LINKS.github}" ${ext} aria-label="GitHub">${GH}</a>
-          <button class="icon-btn hdr-burger" type="button" aria-label="Menü" aria-expanded="false">${icon('menu')}</button>
+          <button class="lang-btn" type="button" data-lang-btn aria-label="${L('Dili değiştir: English', 'Switch language: Türkçe')}" title="${L('Dil / Language', 'Language / Dil')}">
+            <span${LANG === 'tr' ? ' class="on"' : ''}>TR</span><span${LANG === 'en' ? ' class="on"' : ''}>EN</span></button>
+          <div style="position:relative"><button class="icon-btn" type="button" data-theme-btn aria-label="${L('Tema', 'Theme')}" aria-expanded="false">${icon('theme')}</button></div>
+          <a class="icon-btn hdr-gh" href="${LINKS.github}" ${ext} aria-label="GitHub">${GH}</a>
+          <button class="icon-btn hdr-burger" type="button" aria-label="${L('Menü', 'Menu')}" aria-expanded="false">${icon('menu')}</button>
         </div>
       </div>`;
   }
@@ -126,29 +140,29 @@
         <div class="ftr-top">
           <div class="ftr-about">
             <a class="hdr-brand" href="/"><img src="/assets/goldsrc-mark.png" alt="" width="34" height="34"><span class="hdr-wm"><b>GoldSrc Studio</b></span></a>
-            <p>Counter-Strike 1.6 ve GoldSrc topluluğu için bağımsız araçlar, haritalar ve skyboxlar.</p>
+            <p>${L('Counter-Strike 1.6 ve GoldSrc topluluğu için bağımsız araçlar, haritalar, skyboxlar ve AMXX eklentileri.', 'Independent tools, maps, skyboxes and AMXX plugins for the Counter-Strike 1.6 and GoldSrc community.')}</p>
             <div class="ftr-social">
               <a href="${LINKS.steam}" ${ext} aria-label="Steam">${STEAM}</a>
               <a href="/contact/" aria-label="Discord">${DISCORD}</a>
               <a href="${LINKS.gamebanana}" ${ext} aria-label="GameBanana"><img src="/assets/gamebanana.png" alt=""></a>
               <a href="${LINKS.github}" ${ext} aria-label="GitHub">${GH}</a>
               </div>
-            <a class="site-pill" href="${LINKS.fpslist}" ${ext}><img src="/assets/fpslist.svg" alt=""><span>FPSList<small>Oyun sunucu listesi</small></span></a>
+            <a class="site-pill" href="${LINKS.fpslist}" ${ext}><img src="/assets/fpslist.svg" alt=""><span>FPSList<small>${L('Oyun sunucu listesi', 'Game server list')}</small></span></a>
             <div hidden>
             </div>
           </div>
-          <div><h4>Araçlar</h4><ul>${tools.map(t => `<li><a href="/tools/${t.slug}/">${esc(t.name)}</a></li>`).join('')}</ul></div>
-          <div><h4>Çalışmalar</h4><ul>
-            <li><a href="/maps/">Haritalar</a></li><li><a href="/skies/">Skyboxlar</a></li><li><a href="/plugins/">AMXX eklentileri</a></li>
+          <div><h4>${L('Araçlar', 'Tools')}</h4><ul>${tools.map(t => `<li><a href="/tools/${t.slug}/">${esc(t.name)}</a></li>`).join('')}</ul></div>
+          <div><h4>${L('Çalışmalar', 'Works')}</h4><ul>
+            <li><a href="/maps/">${L('Haritalar', 'Maps')}</a></li><li><a href="/skies/">${L('Skyboxlar', 'Skyboxes')}</a></li><li><a href="/plugins/">${L('AMXX eklentileri', 'AMXX plugins')}</a></li>
             <li><a href="${LINKS.gamebanana}" ${ext}>GameBanana</a></li></ul></div>
-          <div><h4>Bağlantılar</h4><ul>
-            <li><a href="/contact/">İletişim</a></li><li><a href="${LINKS.issues}" ${ext}>Hata bildir</a></li>
+          <div><h4>${L('Bağlantılar', 'Links')}</h4><ul>
+            <li><a href="/contact/">${L('İletişim', 'Contact')}</a></li><li><a href="${LINKS.issues}" ${ext}>${L('Hata bildir', 'Report a bug')}</a></li>
             <li><a href="${LINKS.goldsrc}" ${ext}>goldsrcstudio.com</a></li><li><a href="${LINKS.bydevil}" ${ext}>bydevil.com</a></li>
             <li><a href="${LINKS.fpslist}" ${ext}>fpslist.com</a></li></ul></div>
         </div>
         <div class="ftr-bottom">
           <span>© ${new Date().getFullYear()} GoldSrc Studio · by Devil</span>
-          <span>Valve Corporation veya Steam ile bağlantılı değildir.</span>
+          <span>${L('Valve Corporation veya Steam ile bağlantılı değildir.', 'Not affiliated with Valve Corporation or Steam.')}</span>
         </div>
       </div>`;
   }
@@ -178,11 +192,11 @@
 
   /* ---------- tema ---------- */
   const THEMES = [
-    ['original', 'Original', 'Katmanlı maviler', '#1a2634', '#5ab0ec'],
-    ['dust', 'Dust', 'Sıcak kum', '#15130f', '#e9a23b'],
-    ['carbon', 'Carbon', 'Nötr grafit', '#0f1012', '#e9ebee'],
-    ['radar', 'Radar', 'Mini harita yeşili', '#0c1411', '#3fd99a'],
-    ['ember', 'Ember', 'T tarafı turuncusu', '#141010', '#ff7043'],
+    ['original', 'Original', L('Katmanlı maviler', 'Layered blues'), '#1a2634', '#5ab0ec'],
+    ['dust', 'Dust', L('Sıcak kum', 'Warm sand'), '#15130f', '#e9a23b'],
+    ['carbon', 'Carbon', L('Nötr grafit', 'Neutral graphite'), '#0f1012', '#e9ebee'],
+    ['radar', 'Radar', L('Mini harita yeşili', 'Minimap green'), '#0c1411', '#3fd99a'],
+    ['ember', 'Ember', L('T tarafı turuncusu', 'T-side orange'), '#141010', '#ff7043'],
   ];
   function wireTheme(hdr) {
     const btn = $('[data-theme-btn]', hdr);
@@ -199,7 +213,7 @@
         menu = document.createElement('div');
         menu.className = 'theme-menu';
         menu.setAttribute('role', 'radiogroup');
-        menu.innerHTML = '<p>Tema</p>' + THEMES.map(([id, name, desc, a, b]) =>
+        menu.innerHTML = `<p>${L('Tema', 'Theme')}</p>` + THEMES.map(([id, name, desc, a, b]) =>
           `<button class="swatch" type="button" role="radio" data-t="${id}" aria-checked="${current() === id}">
             <span class="swatch-chip"><span style="background:${a}"></span><span style="background:${b}"></span></span>${name}<small>${desc}</small></button>`).join('');
         menu.addEventListener('click', ev => { const b = ev.target.closest('.swatch'); if (b) set(b.dataset.t); });
@@ -215,44 +229,45 @@
   /* ---------- hızlı arama ---------- */
   function palette() {
     let el, list, input, results = [], sel = 0;
-    const norm = s => s.toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const norm = s => s.toLocaleLowerCase(LOCALE).normalize('NFD').replace(/[̀-ͯ]/g, '');
     async function build() {
       const [tools, maps, skies] = await Promise.all([data.tools(), data.maps().catch(() => ({ items: [] })), data.skies().catch(() => ({ items: [] }))]);
+      const G = { pages: L('Sayfalar', 'Pages'), tools: L('Araçlar', 'Tools'), plugins: L('Eklentiler', 'Plugins'), maps: L('Haritalar', 'Maps'), skies: L('Skyboxlar', 'Skyboxes') };
       const pages = [
-        { group: 'Sayfalar', name: 'Araçlar', sub: 'Tüm uygulamalar', href: '/tools/', ic: icon('tool') },
-        { group: 'Sayfalar', name: 'Haritalar', sub: `${maps.count || ''} harita`, href: '/maps/', ic: icon('map') },
-        { group: 'Sayfalar', name: 'Skyboxlar', sub: `${skies.count || ''} skybox`, href: '/skies/', ic: icon('cloud') },
-        { group: 'Sayfalar', name: 'AMXX eklentileri', sub: 'Sunucu sistemleri', href: '/plugins/', ic: icon('plug') },
-        ...PLUGINS.map(p => ({ group: 'Eklentiler', name: p.name, sub: 'AMX Mod X · bydevil.com', href: PLUGIN_BASE + p.id, ext: true, ic: icon('plug') })),
-        { group: 'Sayfalar', name: 'İletişim', sub: 'Steam, Discord, GameBanana', href: '/contact/', ic: icon('chat') },
+        { group: G.pages, name: L('Araçlar', 'Tools'), sub: L('Tüm uygulamalar', 'All apps'), href: '/tools/', ic: icon('tool') },
+        { group: G.pages, name: L('Haritalar', 'Maps'), sub: `${maps.count || ''} ${L('harita', 'maps')}`, href: '/maps/', ic: icon('map') },
+        { group: G.pages, name: L('Skyboxlar', 'Skyboxes'), sub: `${skies.count || ''} ${L('skybox', 'skyboxes')}`, href: '/skies/', ic: icon('cloud') },
+        { group: G.pages, name: L('AMXX eklentileri', 'AMXX plugins'), sub: L('Sunucu sistemleri', 'Server systems'), href: '/plugins/', ic: icon('plug') },
+        ...PLUGINS.map(p => ({ group: G.plugins, name: p.name, sub: 'AMX Mod X · bydevil.com', href: PLUGIN_BASE + p.id, ext: true, site: 'bydevil.com', ic: icon('plug') })),
+        { group: G.pages, name: L('İletişim', 'Contact'), sub: 'Steam, Discord, GameBanana', href: '/contact/', ic: icon('chat') },
       ];
       return [
-        ...tools.map(t => ({ group: 'Araçlar', name: t.name, sub: t.summary, href: `/tools/${t.slug}/`, ic: `<img src="${esc(t.image)}" alt="">` })),
-        ...pages,
-        ...(maps.items || []).map(m => ({ group: 'Haritalar', name: m.name, sub: `${m.category} · ⬇ ${fmt(m.downloads)}`, href: m.url, ext: true, ic: m.image ? `<img src="${esc(m.image)}" alt="" ${imgFallback}>` : icon('map') })),
-        ...(skies.items || []).map(m => ({ group: 'Skyboxlar', name: m.name, sub: `Skybox · ⬇ ${fmt(m.downloads)}`, href: m.url, ext: true, ic: m.image ? `<img src="${esc(m.image)}" alt="" ${imgFallback}>` : icon('cloud') })),
+        ...tools.map(t => ({ group: G.tools, home: true, name: t.name, sub: t.summary, href: `/tools/${t.slug}/`, ic: `<img src="${esc(t.image)}" alt="">` })),
+        ...pages.map(r => ({ ...r, home: r.group === G.pages })),
+        ...(maps.items || []).map(m => ({ group: G.maps, name: m.name, sub: `${m.category} · ⬇ ${fmt(m.downloads)}`, href: m.url, ext: true, ic: m.image ? `<img src="${esc(m.image)}" alt="" ${imgFallback}>` : icon('map') })),
+        ...(skies.items || []).map(m => ({ group: G.skies, name: m.name, sub: `Skybox · ⬇ ${fmt(m.downloads)}`, href: m.url, ext: true, ic: m.image ? `<img src="${esc(m.image)}" alt="" ${imgFallback}>` : icon('cloud') })),
       ];
     }
     let all;
     function render() {
       const q = norm(input.value.trim());
-      results = (q ? all.filter(r => norm(r.name + ' ' + r.sub).includes(q)) : all.filter(r => r.group === 'Araçlar' || r.group === 'Sayfalar')).slice(0, 40);
+      results = (q ? all.filter(r => norm(r.name + ' ' + r.sub).includes(q)) : all.filter(r => r.home)).slice(0, 40);
       sel = Math.min(sel, Math.max(results.length - 1, 0));
       let g = '';
       list.innerHTML = results.length ? results.map((r, i) => {
         const head = r.group !== g ? `<div class="palette-group">${(g = r.group)}</div>` : '';
         return `${head}<a class="palette-item${i === sel ? ' on' : ''}" href="${esc(r.href)}" ${r.ext ? ext : ''} data-i="${i}">
-          <span class="pi">${r.ic}</span><span><b>${esc(r.name)}</b><small>${esc(r.sub)}</small></span>${r.ext ? `<span class="ext">${r.group === 'Eklentiler' ? 'bydevil.com' : 'GameBanana'} ↗</span>` : ''}</a>`;
-      }).join('') : '<div class="palette-empty">Sonuç bulunamadı.</div>';
+          <span class="pi">${r.ic}</span><span><b>${esc(r.name)}</b><small>${esc(r.sub)}</small></span>${r.ext ? `<span class="ext">${r.site || 'GameBanana'} ↗</span>` : ''}</a>`;
+      }).join('') : `<div class="palette-empty">${L('Sonuç bulunamadı.', 'No results found.')}</div>`;
     }
     async function open() {
       if (!el) {
         el = document.createElement('div');
         el.className = 'palette';
-        el.innerHTML = `<div class="palette-box" role="dialog" aria-label="Hızlı arama">
-          <label class="palette-in">${icon('search')}<input type="search" placeholder="Araç, harita veya skybox ara…" autocomplete="off"><span class="kbd">Esc</span></label>
+        el.innerHTML = `<div class="palette-box" role="dialog" aria-label="${L('Hızlı arama', 'Quick search')}">
+          <label class="palette-in">${icon('search')}<input type="search" placeholder="${L('Araç, harita veya skybox ara…', 'Search tools, maps or skyboxes…')}" autocomplete="off"><span class="kbd">Esc</span></label>
           <div class="palette-list"></div>
-          <div class="palette-foot"><span><span class="kbd">↑</span> <span class="kbd">↓</span> gez</span><span><span class="kbd">Enter</span> aç</span></div></div>`;
+          <div class="palette-foot"><span><span class="kbd">↑</span> <span class="kbd">↓</span> ${L('gez', 'navigate')}</span><span><span class="kbd">Enter</span> ${L('aç', 'open')}</span></div></div>`;
         document.body.append(el);
         list = $('.palette-list', el); input = $('input', el);
         el.addEventListener('click', e => { if (e.target === el) hide(); });
@@ -283,7 +298,7 @@
   /* ---------- parçalar ---------- */
   const toolCard = t => `
     <article class="card tool-card hover fade">
-      <a class="card-media contain" href="/tools/${t.slug}/"><span class="badge">${esc(t.version)}</span><img src="${esc(t.image)}" alt="${esc(t.name)} ekran görüntüsü" loading="lazy"></a>
+      <a class="card-media contain" href="/tools/${t.slug}/"><span class="badge">${esc(t.version)}</span><img src="${esc(t.image)}" alt="${esc(t.name)} ${L('ekran görüntüsü', 'screenshot')}" loading="lazy"></a>
       <div class="card-body">
         <div class="tags"><span class="tag accent">${esc(t.category)}</span><span class="tag">${esc(t.platform)}</span></div>
         <a class="card-title" href="/tools/${t.slug}/">${esc(t.name)}</a>
@@ -291,8 +306,8 @@
         <div class="card-meta"><span>${icon('cal')}${esc(t.updated)}</span><span>${icon('file')}${esc(t.fileTypes)}</span></div>
       </div>
       <div class="card-actions">
-        <a class="btn sm primary" href="${esc(t.download)}" download>${icon('dl')}İndir</a>
-        <a class="btn sm" href="/tools/${t.slug}/">Ayrıntılar</a>
+        <a class="btn sm primary" href="${esc(t.download)}" download>${icon('dl')}${L('İndir', 'Download')}</a>
+        <a class="btn sm" href="/tools/${t.slug}/">${L('Ayrıntılar', 'Details')}</a>
         <a class="btn sm" href="${esc(t.github)}" ${ext} aria-label="GitHub">${GH}</a>
         <a class="btn sm" href="${esc(t.gamebanana)}" ${ext}>GameBanana ${icon('out')}</a>
       </div>
@@ -305,6 +320,16 @@
         <div class="card-meta"><span>${icon('dl')}${fmt(m.downloads)}</span><span>${icon('heart')}${fmt(m.likes)}</span>${m.date ? `<span>${icon('cal')}${day(m.date)}</span>` : ''}</div>
       </div>
     </a>`;
+  const pluginCard = p => `
+    <a class="card plugin-card fade" href="${PLUGIN_BASE}${p.id}" ${ext}>
+      <div class="card-media">${p.img ? `<img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy">` : `<span class="plugin-ph">${icon('plug')}<b lang="en">${esc(p.name)}</b></span>`}<span class="badge">AMX Mod X</span></div>
+      <div class="card-body">
+        <span class="card-title" lang="en">${esc(p.name)}</span>
+        <p class="card-text">${esc(p.text)}</p>
+        <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+        <span class="plugin-go">${L('Ekran görüntüleri ve ayrıntılar', 'Screenshots and details')} ${icon('out')}</span>
+      </div>
+    </a>`;
   const statTile = (ic, value, label) => `<div class="hstat"><b>${value}</b><span>${icon(ic)}${label}</span></div>`;
 
   /* ---------- sayfalar ---------- */
@@ -312,18 +337,20 @@
     async home(main) {
       const [tools, maps, skies] = await Promise.all([data.tools(), data.maps(), data.skies()]);
       $('#stats', main).innerHTML =
-        statTile('tool', tools.length, 'GoldSrc aracı') +
-        statTile('map', fmt(maps.count), 'Harita') +
-        statTile('cloud', fmt(skies.count), 'Skybox') +
-        statTile('dl', fmt(maps.downloads + skies.downloads), 'Toplam indirme');
+        statTile('tool', tools.length, L('GoldSrc aracı', 'GoldSrc tools')) +
+        statTile('map', fmt(maps.count), L('Harita', 'Maps')) +
+        statTile('cloud', fmt(skies.count), L('Skybox', 'Skyboxes')) +
+        statTile('plug', PLUGINS.length, L('AMXX eklentisi', 'AMXX plugins')) +
+        statTile('dl', fmt(maps.downloads + skies.downloads), L('Toplam indirme', 'Total downloads'));
       $('#home-tools', main).innerHTML = tools.map(toolCard).join('');
       $('#home-maps', main).innerHTML = maps.featured.slice(0, 4).map(m => workCard(m, 'map')).join('');
       $('#home-skies', main).innerHTML = skies.featured.slice(0, 4).map(m => workCard(m, 'sky')).join('');
+      $('#home-plugins', main).innerHTML = PLUGINS.slice(0, 3).map(pluginCard).join('');
     },
 
     async tools(main) {
       const tools = await data.tools();
-      $('#tool-count', main).textContent = tools.length;
+      $$('.tool-count', main).forEach(el => { el.textContent = tools.length; });
       $('#tool-grid', main).innerHTML = tools.map(toolCard).join('');
     },
 
@@ -331,55 +358,55 @@
       const tools = await data.tools();
       const i = tools.findIndex(t => t.slug === document.body.dataset.slug);
       const t = tools[i];
-      if (!t) { main.innerHTML = '<div class="wrap section"><div class="empty">Araç bulunamadı.</div></div>'; return; }
+      if (!t) { main.innerHTML = `<div class="wrap section"><div class="empty">${L('Araç bulunamadı.', 'Tool not found.')}</div></div>`; return; }
       document.title = `${t.name} — GoldSrc Studio`;
       const prev = tools[(i - 1 + tools.length) % tools.length], next = tools[(i + 1) % tools.length];
       const file = t.download.split('/').pop();
       main.innerHTML = `
         <div class="page-head"><div class="wrap">
-          <nav class="crumbs"><a href="/">Ana sayfa</a><span class="sep">/</span><a href="/tools/">Araçlar</a><span class="sep">/</span><span>${esc(t.name)}</span></nav>
+          <nav class="crumbs"><a href="/">${L('Ana sayfa', 'Home')}</a><span class="sep">/</span><a href="/tools/">${L('Araçlar', 'Tools')}</a><span class="sep">/</span><span>${esc(t.name)}</span></nav>
           <div class="page-head-row">
             <div><div class="tags" style="margin-bottom:12px"><span class="tag accent">${esc(t.category)}</span><span class="tag">${esc(t.version)}</span><span class="tag">${esc(t.platform)}</span></div>
               <h1 lang="en">${esc(t.name)}</h1><p class="lead">${esc(t.summary)}</p></div>
-            <div class="actions"><a class="btn primary" href="${esc(t.download)}" download>${icon('dl')}İndir</a><a class="btn" href="${esc(t.github)}" ${ext}>${GH} GitHub</a><a class="btn" href="${esc(t.gamebanana)}" ${ext}>GameBanana ${icon('out')}</a></div>
+            <div class="actions"><a class="btn primary" href="${esc(t.download)}" download>${icon('dl')}${L('İndir', 'Download')}</a><a class="btn" href="${esc(t.github)}" ${ext}>${GH} GitHub</a><a class="btn" href="${esc(t.gamebanana)}" ${ext}>GameBanana ${icon('out')}</a></div>
           </div>
         </div></div>
         <div class="wrap section">
           <div class="detail">
             <div>
-              <div class="shot fade"><img src="${esc(t.image)}" alt="${esc(t.name)} ekran görüntüsü"></div>
+              <div class="shot fade"><img src="${esc(t.image)}" alt="${esc(t.name)} ${L('ekran görüntüsü', 'screenshot')}"></div>
               <div class="prose" style="margin-top:26px"><p>${esc(t.description)}</p></div>
-              <h2 style="margin:30px 0 14px;font-size:19px">Öne çıkan özellikler</h2>
+              <h2 style="margin:30px 0 14px;font-size:19px">${L('Öne çıkan özellikler', 'Key features')}</h2>
               <ul class="feature-list">${(t.features || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
-              <div class="notice" style="margin-top:28px">${icon('alert')}<span>Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.</span></div>
+              <div class="notice" style="margin-top:28px">${icon('alert')}<span>${L('Araçlar beta aşamasındadır. Dosyalarını düzenlemeden önce yedeklemeni öneririz.', 'The tools are in beta. We recommend backing up your files before editing them.')}</span></div>
             </div>
             <aside class="side">
               <div class="panel download-box">
-                <h3>İndir</h3>
+                <h3>${L('İndir', 'Download')}</h3>
                 <a class="btn primary" href="${esc(t.download)}" download>${icon('dl')}${esc(file)}</a>
                 <div class="actions" style="margin-top:10px">
                   <a class="btn sm" style="flex:1" href="${esc(t.gamebanana)}" ${ext}>GameBanana ${icon('out')}</a>
                   <a class="btn sm" style="flex:1" href="${esc(t.github)}" ${ext}>${GH} GitHub</a>
                 </div>
-                ${t.repo ? `<a class="btn sm" style="margin-top:8px" href="${esc(t.repo)}" ${ext}>${GH} Ayrı repo: ${esc(t.repo.split('/').pop())}</a>` : ''}
+                ${t.repo ? `<a class="btn sm" style="margin-top:8px" href="${esc(t.repo)}" ${ext}>${GH} ${L('Ayrı repo', 'Separate repo')}: ${esc(t.repo.split('/').pop())}</a>` : ''}
                 <div hidden>
                 </div>
               </div>
-              <div class="panel"><h3>Bilgiler</h3>
+              <div class="panel"><h3>${L('Bilgiler', 'Details')}</h3>
                 <dl class="facts">
-                  <dt>Sürüm</dt><dd>${esc(t.version)}</dd><dt>Platform</dt><dd>${esc(t.platform)}</dd>
-                  <dt>Dosya türleri</dt><dd>${esc(t.fileTypes)}</dd><dt>Son güncelleme</dt><dd>${esc(t.updated)}</dd><dt>Kategori</dt><dd>${esc(t.category)}</dd>
+                  <dt>${L('Sürüm', 'Version')}</dt><dd>${esc(t.version)}</dd><dt>Platform</dt><dd>${esc(t.platform)}</dd>
+                  <dt>${L('Dosya türleri', 'File types')}</dt><dd>${esc(t.fileTypes)}</dd><dt>${L('Son güncelleme', 'Last updated')}</dt><dd>${esc(t.updated)}</dd><dt>${L('Kategori', 'Category')}</dt><dd>${esc(t.category)}</dd>
                 </dl>
               </div>
-              <div class="panel"><h3>Destek</h3>
-                <p class="card-text" style="margin-bottom:12px">Bir hata mı buldun ya da fikrin mi var?</p>
-                <div class="actions"><a class="btn sm" href="/contact/">İletişim</a><a class="btn sm" href="${LINKS.issues}" ${ext}>Hata bildir ${icon('out')}</a></div>
+              <div class="panel"><h3>${L('Destek', 'Support')}</h3>
+                <p class="card-text" style="margin-bottom:12px">${L('Bir hata mı buldun ya da fikrin mi var?', 'Found a bug or have an idea?')}</p>
+                <div class="actions"><a class="btn sm" href="/contact/">${L('İletişim', 'Contact')}</a><a class="btn sm" href="${LINKS.issues}" ${ext}>${L('Hata bildir', 'Report a bug')} ${icon('out')}</a></div>
               </div>
             </aside>
           </div>
           <div class="tool-nav" style="margin-top:44px">
-            <a href="/tools/${prev.slug}/"><small>← Önceki araç</small><b>${esc(prev.name)}</b></a>
-            <a href="/tools/${next.slug}/"><small>Sonraki araç →</small><b>${esc(next.name)}</b></a>
+            <a href="/tools/${prev.slug}/"><small>← ${L('Önceki araç', 'Previous tool')}</small><b>${esc(prev.name)}</b></a>
+            <a href="/tools/${next.slug}/"><small>${L('Sonraki araç', 'Next tool')} →</small><b>${esc(next.name)}</b></a>
           </div>
         </div>`;
     },
@@ -388,24 +415,16 @@
     skies: main => listPage(main, 'sky'),
 
     plugins(main) {
-      $('#plugin-grid', main).innerHTML = PLUGINS.map(p => `
-        <a class="card plugin-card fade" href="${PLUGIN_BASE}${p.id}" ${ext}>
-          <div class="card-media">${p.img ? `<img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy">` : `<span class="plugin-ph">${icon('plug')}<b lang="en">${esc(p.name)}</b></span>`}<span class="badge">AMX Mod X</span></div>
-          <div class="card-body">
-            <span class="card-title" lang="en">${esc(p.name)}</span>
-            <p class="card-text">${esc(p.text)}</p>
-            <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
-            <span class="plugin-go">Ekran görüntüleri ve ayrıntılar ${icon('out')}</span>
-          </div>
-        </a>`).join('');
+      $('#plugin-grid', main).innerHTML = PLUGINS.map(pluginCard).join('');
     },
 
     contact(main) {
       const b = $('#discord-copy', main), note = $('#discord-note', main);
       b?.addEventListener('click', async () => {
-        try { await navigator.clipboard.writeText(LINKS.discord); note.textContent = 'Kopyalandı: serhatondes'; note.classList.add('copied'); }
-        catch { note.textContent = 'Kullanıcı adı: serhatondes'; }
-        setTimeout(() => { note.textContent = 'serhatondes · kopyalamak için tıkla'; note.classList.remove('copied'); }, 2200);
+        const label = note.innerHTML;
+        try { await navigator.clipboard.writeText(LINKS.discord); note.textContent = L('Kopyalandı: serhatondes', 'Copied: serhatondes'); note.classList.add('copied'); }
+        catch { note.textContent = L('Kullanıcı adı: serhatondes', 'Username: serhatondes'); }
+        setTimeout(() => { note.innerHTML = label; note.classList.remove('copied'); }, 2200);
       });
     },
   };
@@ -418,7 +437,7 @@
     $('#list-dl', main).textContent = fmt(d.downloads);
     const chips = $('#chips', main);
     if (chips && d.categories) {
-      chips.innerHTML = `<button class="chip on" data-cat="">Tümü <small>${d.count}</small></button>` +
+      chips.innerHTML = `<button class="chip on" data-cat="">${L('Tümü', 'All')} <small>${d.count}</small></button>` +
         d.categories.map(c => `<button class="chip" data-cat="${esc(c.name)}">${esc(c.name)} <small>${c.count}</small></button>`).join('');
       chips.addEventListener('click', e => {
         const c = e.target.closest('[data-cat]'); if (!c) return;
@@ -426,7 +445,7 @@
         state.cat = c.dataset.cat; state.limit = 24; draw();
       });
     }
-    const norm = s => s.toLocaleLowerCase('tr-TR');
+    const norm = s => s.toLocaleLowerCase(LOCALE);
     $('#q', main).addEventListener('input', e => { state.q = norm(e.target.value.trim()); state.limit = 24; draw(); });
     $('#sort', main).addEventListener('change', e => { state.sort = e.target.value; draw(); });
     $('#more', main).addEventListener('click', () => { state.limit += 24; draw(); });
@@ -434,23 +453,44 @@
       downloads: (a, b) => b.downloads - a.downloads,
       likes: (a, b) => b.likes - a.likes || b.downloads - a.downloads,
       new: (a, b) => (b.date || 0) - (a.date || 0),
-      az: (a, b) => a.name.localeCompare(b.name, 'tr'),
+      az: (a, b) => a.name.localeCompare(b.name, LANG),
     };
     function draw() {
       const list = items.filter(m => (!state.cat || m.category === state.cat) && (!state.q || norm(m.name).includes(state.q))).sort(sorters[state.sort]);
-      $('#result-note', main).textContent = `${fmt(list.length)} sonuç`;
-      $('#list-grid', main).innerHTML = list.length ? list.slice(0, state.limit).map(m => workCard(m, kind)).join('') : '<div class="empty" style="grid-column:1/-1">Sonuç bulunamadı.</div>';
+      $('#result-note', main).textContent = `${fmt(list.length)} ${L('sonuç', list.length === 1 ? 'result' : 'results')}`;
+      $('#list-grid', main).innerHTML = list.length ? list.slice(0, state.limit).map(m => workCard(m, kind)).join('') : `<div class="empty" style="grid-column:1/-1">${L('Sonuç bulunamadı.', 'No results found.')}</div>`;
       $('#more', main).hidden = list.length <= state.limit;
     }
     draw();
   }
 
+  /* ---------- dil seçimi ---------- */
+  // Sabit metinler sayfada iki dilde durur (data-l, site.css gösterir); öznitelikler ve başlık burada çevrilir.
+  function applyLang() {
+    if (LANG !== 'en') return;
+    const b = document.body;
+    if (b.dataset.titleEn) document.title = b.dataset.titleEn;
+    if (b.dataset.descEn) $('meta[name="description"]')?.setAttribute('content', b.dataset.descEn);
+    $$('[data-en]').forEach(el => { el.textContent = el.dataset.en; });
+    $$('[data-en-placeholder]').forEach(el => { el.placeholder = el.dataset.enPlaceholder; });
+    $$('[data-en-aria-label]').forEach(el => el.setAttribute('aria-label', el.dataset.enAriaLabel));
+  }
+  function wireLang(hdr) {
+    $('[data-lang-btn]', hdr).addEventListener('click', () => {
+      try { localStorage.setItem('gs-lang', LANG === 'en' ? 'tr' : 'en'); } catch { /* gizli pencere vb. */ }
+      const u = new URL(location.href);
+      u.searchParams.set('lang', LANG === 'en' ? 'tr' : 'en');
+      location.replace(u);
+    });
+  }
+
   /* ---------- başlat ---------- */
   async function init() {
+    applyLang();
     const hdr = $('#hdr'), ftr = $('#ftr'), main = $('main');
     let tools = [];
     try { tools = await data.tools(); } catch { /* menü araçsız da çalışır */ }
-    hdr.className = 'hdr'; hdr.innerHTML = header(tools); wireHeader(hdr); wireTheme(hdr);
+    hdr.className = 'hdr'; hdr.innerHTML = header(tools); wireHeader(hdr); wireTheme(hdr); wireLang(hdr);
     ftr.className = 'ftr'; ftr.innerHTML = footer(tools);
     palette();
     try { await pages[page]?.(main); }

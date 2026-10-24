@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="tr" data-theme="original">
+<html lang="tr" data-theme="original" data-lang="tr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AMXX eklentileri — GoldSrc Studio</title>
   <meta name="description" content="Counter-Strike 1.6 sunucuları için AMX Mod X eklentileri.">
   <meta name="theme-color" content="#0d141c">
-  <script>try{document.documentElement.dataset.theme=localStorage.getItem("gs-theme")||"original"}catch(e){document.documentElement.dataset.theme="original"}</script>
+  <script>(function(d){var t="original",l="";try{var q=/[?&]lang=(tr|en)/.exec(location.search);if(q)localStorage.setItem("gs-lang",q[1]);t=localStorage.getItem("gs-theme")||t;l=localStorage.getItem("gs-lang")||""}catch(e){}if(!l)l=/^tr/i.test(navigator.language||"tr")?"tr":"en";d.dataset.theme=t;d.dataset.lang=l;d.lang=l})(document.documentElement)</script>
   <meta property="og:title" content="AMXX eklentileri — GoldSrc Studio">
   <meta property="og:description" content="Counter-Strike 1.6 sunucuları için AMX Mod X eklentileri.">
   <meta property="og:image" content="https://tools.bydevil.com/assets/map-optimization.jpg">
@@ -14,23 +14,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css?v=136f5eff">
-  <script src="/assets/site.js?v=136f5eff" defer></script>
+  <link rel="stylesheet" href="/assets/site.css?v=c4abe5fc">
+  <script src="/assets/site.js?v=c4abe5fc" defer></script>
 </head>
-<body data-page="plugins">
+<body data-page="plugins" data-title-en="AMXX plugins — GoldSrc Studio" data-desc-en="AMX Mod X plugins for Counter-Strike 1.6 servers.">
   <header id="hdr"></header>
   <main>
     <div class="page-head"><div class="wrap">
-      <nav class="crumbs"><a href="/">Ana sayfa</a><span class="sep">/</span><span>Eklentiler</span></nav>
+      <nav class="crumbs"><a href="/"><span data-l="tr">Ana sayfa</span><span data-l="en">Home</span></a><span class="sep">/</span><span><span data-l="tr">Eklentiler</span><span data-l="en">Plugins</span></span></nav>
       <div class="page-head-row">
-        <div><h1>AMXX eklentileri</h1><p class="lead">Counter-Strike 1.6 sunucuları için sıralama, sezon ve ekonomi sistemleri. Ekran görüntüleri ve ayrıntılar için bir eklenti seç.</p></div>
+        <div><h1><span data-l="tr">AMXX eklentileri</span><span data-l="en">AMXX plugins</span></h1><p class="lead"><span data-l="tr">Counter-Strike 1.6 sunucuları için sıralama, sezon ve ekonomi sistemleri. Ekran görüntüleri ve ayrıntılar için bir eklenti seç.</span><span data-l="en">Ranking, season and economy systems for Counter-Strike 1.6 servers. Pick a plugin for screenshots and details.</span></p></div>
         
       </div>
     </div></div>
     <section class="section"><div class="wrap">
       <div class="grid cols-3" id="plugin-grid"></div>
-      <div class="cta-band" style="margin-top:28px"><div><h2>Sunucun için eklenti mi lazım?</h2><p>Fiyat ve kurulum için yaz.</p></div>
-        <div class="actions"><a class="btn primary" href="/contact/">İletişime geç</a><a class="btn" href="https://bydevil.com/plugins/" target="_blank" rel="noopener">bydevil.com/plugins ↗</a></div></div>
+      <div class="cta-band" style="margin-top:28px"><div><h2><span data-l="tr">Sunucun için eklenti mi lazım?</span><span data-l="en">Need a plugin for your server?</span></h2><p><span data-l="tr">Fiyat ve kurulum için yaz.</span><span data-l="en">Write for pricing and installation.</span></p></div>
+        <div class="actions"><a class="btn primary" href="/contact/"><span data-l="tr">İletişime geç</span><span data-l="en">Get in touch</span></a><a class="btn" href="https://bydevil.com/plugins/" target="_blank" rel="noopener">bydevil.com/plugins ↗</a></div></div>
     </div></section>
   </main>
   <footer id="ftr"></footer>
