@@ -124,7 +124,9 @@
               <a href="/contact/" aria-label="Discord">${DISCORD}</a>
               <a href="${LINKS.gamebanana}" ${ext} aria-label="GameBanana"><img src="/assets/gamebanana.png" alt=""></a>
               <a href="${LINKS.github}" ${ext} aria-label="GitHub">${GH}</a>
-              <a href="${LINKS.fpslist}" ${ext} aria-label="FPSList"><img class="full" src="/assets/fpslist.svg" alt=""></a>
+              </div>
+            <a class="site-pill" href="${LINKS.fpslist}" ${ext}><img src="/assets/fpslist.svg" alt=""><span>FPSList<small>Oyun sunucu listesi</small></span></a>
+            <div hidden>
             </div>
           </div>
           <div><h4>Araçlar</h4><ul>${tools.map(t => `<li><a href="/tools/${t.slug}/">${esc(t.name)}</a></li>`).join('')}</ul></div>
