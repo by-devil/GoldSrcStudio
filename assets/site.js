@@ -29,7 +29,7 @@
     { id: 'takim', name: 'Team System', img: BD + 'takim/tk-01.jpg', tags: L(['Yönetim', 'Görevler', 'FreeVIP', 'Sezon'], ['Management', 'Missions', 'FreeVIP', 'Season']),
       text: L('Takım (klan) sistemi: takım kur, üye davet et, banner ve renklerle özelleştir, sezon sıralamasında birlikte yüksel.',
         'Team (clan) system: create a team, invite members, customise it with banners and colours, and climb the season ranking together.') },
-    { id: 'gungame', name: 'GunGame TOP15', img: '/assets/plugins/gungame.webp', tags: L(['Bireysel', 'Takım', 'FFA', 'Sezon'], ['Solo', 'Team', 'FFA', 'Season']),
+    { id: 'gungame', name: 'GunGame TOP15', img: '/assets/plugins/gungame-top15/gg-01.webp', tags: L(['Bireysel', 'Takım', 'FFA', 'Sezon'], ['Solo', 'Team', 'FFA', 'Season']),
       text: L('Bireysel, takım ve FFA sıralamaları; puan, XP, K/D, bıçak ve seri istatistikleri, oyuncu profilleri ve sezon görünümleri.',
         'Solo, team and FFA rankings; points, XP, K/D, knife and streak stats, player profiles and season views.') },
     { id: 'zombieplague', name: 'Zombie Plague TOP15', img: BD + 'zp-top15/zp-01.jpg', tags: L(['Genel', 'Süre', 'Profil', 'Haftalık ödül'], ['Overall', 'Playtime', 'Profile', 'Weekly reward']),
