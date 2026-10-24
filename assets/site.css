@@ -330,6 +330,12 @@ a.card-title:hover { color: var(--accent); }
 .ftr-social a.wide img { width: 32px; height: 32px; border-radius: 7px; image-rendering: auto; }
 .ftr-social a.wide span { display: flex; flex-direction: column; font-size: 13px; font-weight: 700; line-height: 1.2; }
 .ftr-social a.wide small { color: var(--text-3); font-size: 11px; font-weight: 500; }
+.site-pill { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; padding: 5px 16px 5px 5px; border-radius: 10px;
+             background: var(--surface-2); transition: background .15s, transform .15s; }
+.site-pill:hover { background: var(--surface-3); transform: translateY(-2px); }
+.site-pill img { width: 40px; height: 40px; border-radius: 8px; }
+.site-pill span { display: flex; flex-direction: column; font-size: 15px; font-weight: 700; line-height: 1.2; }
+.site-pill small { color: var(--text-2); font-size: 13px; font-weight: 500; }
 .ftr-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 24px; padding: 18px 0 28px; color: var(--text-3); font-size: 12.5px;
               background: linear-gradient(var(--surface-2), var(--surface-2)) top / 100% 1px no-repeat; }
 @media (max-width: 860px) { .ftr-top { grid-template-columns: 1fr 1fr; } .ftr-about { grid-column: 1 / -1; } }
