@@ -62,6 +62,7 @@
     .nav a { white-space: nowrap; }
     @media (max-width: 1280px) { .nav { gap: 24px; margin-left: 36px; } }
     @media (max-width: 1100px) { .brand-pill span { display: none; } .brand-pill { padding: 0 7px; } }
+    @media (max-width: 1000px) { .nav { gap: 16px; margin-left: 24px; } .nav a { font-size: 10px; letter-spacing: .08em; } }
     @media (max-width: 850px) { .brand-links { gap: 6px; } }
     @media (max-width: 390px) { .brand-links { display: none; } .gh-btn { margin-left: auto; } }
     @media (max-width: 850px) { .nav { display: none; } .site-header { height: 72px; } }
@@ -234,6 +235,44 @@
     .gh-list .arr { font-size: 20px; }
     @media (max-width: 850px) { .gh-grid { grid-template-columns: 1fr; gap: 40px; } }
 
+    /* İletişim */
+    .contact { background: var(--orange); color: #171a1a; }
+    .contact .kicker { color: #33211a; }
+    .contact .kicker i { background: #171a1a; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; }
+    .contact-grid h2 { margin: 36px 0 26px; font-size: clamp(54px, 6.2vw, 96px); }
+    .contact-grid h2 span { color: #f6f0e7; }
+    .contact-grid p { max-width: 42ch; color: #3c2a23; font-size: 16px; line-height: 1.8; }
+    .contact-grid p strong { color: #171a1a; }
+    .channels { list-style: none; background: #171b1d; color: var(--white); padding: 10px 30px; }
+    .channels li + li { border-top: 1px solid #2c3133; }
+    .channel { display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 16px; width: 100%; padding: 18px 0;
+               background: none; border: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: padding .3s; }
+    .channel:hover { padding-left: 8px; }
+    .channel .ic { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 10px; background: #252a2c; transition: background .2s; }
+    .channel .ic svg { width: 24px; height: 24px; fill: #c6d4df; }
+    .channel .ic img { width: 30px; height: 30px; image-rendering: pixelated; }
+    .channel .ic img.full { width: 48px; height: 48px; border-radius: 10px; image-rendering: auto; }
+    .channel:hover .ic { background: #31373a; }
+    .channel strong { display: block; font: 400 24px/1.1 var(--display); letter-spacing: .03em; text-transform: uppercase; }
+    .channel small { display: block; margin-top: 4px; color: var(--dim); font-size: 12px; }
+    .channel .arr { color: var(--orange); font-size: 20px; }
+    .channel.featured .ic { background: none; }
+    .copied { color: #3fd16b !important; }
+    @media (max-width: 850px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } .channels { padding: 6px 20px; } }
+
+    /* Altbilgi sosyal */
+    .footer-social { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 22px; }
+    .footer-social a { width: 30px; height: 30px; display: grid; place-items: center; opacity: .8; transition: opacity .15s; }
+    .footer-social a:hover { opacity: 1; }
+    .footer-social svg { width: 26px; height: 26px; fill: #c6d4df; }
+    .footer-social img { width: 26px; height: 26px; image-rendering: pixelated; }
+    .footer-social .pill { width: auto; height: auto; display: flex; gap: 9px; padding: 4px 12px 4px 4px; border-radius: 8px; background: rgba(255,255,255,.06); opacity: 1; }
+    .footer-social .pill:hover { background: rgba(255,255,255,.12); }
+    .footer-social .pill img { width: 36px; height: 36px; border-radius: 7px; image-rendering: auto; }
+    .footer-social .pill span { display: flex; flex-direction: column; color: #dcdedf; font-size: 13px; font-weight: 700; line-height: 1.25; white-space: nowrap; }
+    .footer-social .pill small { color: #8f98a0; font-size: 10px; font-weight: 400; }
+
     /* Alt bilgi */
     .site-footer { background: #0b0d0e; }
     .footer-main { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 30px; padding-block: 62px; }
@@ -271,6 +310,7 @@
         <a href="#yakindan">Yakından bak</a>
         <a href="#calismalar">Çalışmalar</a>
         <a href="#github" lang="en">GitHub</a>
+        <a href="#iletisim">İletişim</a>
       </nav>
       <div class="brand-links">
         <a class="brand-pill" href="https://www.goldsrcstudio.com/"><img src="assets/goldsrc-mark.png" alt="" width="28" height="28"><span lang="en">GoldSrc Studio</span></a>
@@ -385,6 +425,32 @@
         </ul>
       </div>
     </section>
+    <section class="section contact" id="iletisim">
+      <div class="wrap contact-grid">
+        <div>
+          <span class="kicker caps"><i></i>05 / İletişim</span>
+          <h2 class="display">Bir fikrin<br>mi var? <span>Konuşalım.</span></h2>
+          <p>Araç geri bildirimi, harita önerisi, AMXX fikirleri ya da sadece selam vermek için. Doğrudan mesaj için en iyi yer Steam. Discord'da <strong>serhatondes</strong> adıyla da bulabilirsin.</p>
+        </div>
+        <ul class="channels">
+          <li><a class="channel" href="https://steamcommunity.com/id/SODEJ/" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></svg></span>
+            <span><strong lang="en">Steam</strong><small>Doğrudan mesaj için en hızlı yol</small></span><span class="arr">↗</span></a></li>
+          <li><button class="channel" type="button" id="discord-copy" data-user="serhatondes">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg></span>
+            <span><strong lang="en">Discord</strong><small id="discord-note">serhatondes · kopyalamak için tıkla</small></span><span class="arr">⧉</span></button></li>
+          <li><a class="channel" href="https://gamebanana.com/members/1419476" target="_blank" rel="noopener">
+            <span class="ic"><img src="assets/gamebanana.png" alt=""></span>
+            <span><strong lang="en">GameBanana</strong><small>Tüm haritalar, skyboxlar ve araçlar</small></span><span class="arr">↗</span></a></li>
+          <li><a class="channel" href="https://github.com/by-devil/GoldSrcStudio/issues" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 16 16"><use href="#i-gh"/></svg></span>
+            <span><strong lang="en">GitHub</strong><small>Hata bildirimi ve öneriler</small></span><span class="arr">↗</span></a></li>
+          <li><a class="channel featured" href="https://fpslist.com/" target="_blank" rel="noopener">
+            <span class="ic"><img class="full" src="assets/fpslist.svg" alt=""></span>
+            <span><strong lang="en">FPSList</strong><small>Oyun sunucu listesi · bu site de benim</small></span><span class="arr">↗</span></a></li>
+        </ul>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -393,19 +459,26 @@
         <div>
           <a class="logo" href="#top"><img src="assets/goldsrc-mark.png" alt="" width="44" height="44"><span class="logo-type">GOLDSRC<span>STUDIO</span></span></a>
           <p>GoldSrc dünyası için geliştirildi.</p>
+          <div class="footer-social">
+            <a href="https://steamcommunity.com/id/SODEJ/" target="_blank" rel="noopener" aria-label="Steam"><svg viewBox="0 0 24 24"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></svg></a>
+            <a href="#iletisim" aria-label="Discord"><svg viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg></a>
+            <a href="https://gamebanana.com/members/1419476" target="_blank" rel="noopener" aria-label="GameBanana"><img src="assets/gamebanana.png" alt=""></a>
+            <a class="pill" href="https://fpslist.com/" target="_blank" rel="noopener" aria-label="FPSList"><img src="assets/fpslist.svg" alt=""><span lang="en">FPSList<small lang="tr">Oyun sunucu listesi</small></span></a>
+          </div>
         </div>
         <nav class="footer-links caps">
           <a href="#uygulamalar">Uygulamalar</a>
           <a href="#yakindan">Yakından bak</a>
           <a href="#calismalar">Çalışmalar</a>
           <a href="#github" lang="en">GitHub</a>
+          <a href="#iletisim">İletişim</a>
           <a href="https://www.goldsrcstudio.com/" lang="en">GoldSrcStudio.com</a>
           <a href="https://bydevil.com/" lang="en">Bydevil.com</a>
           <a href="#top">Yukarı çık ↑</a>
         </nav>
       </div>
       <div class="footer-bottom caps">
-        <span>© <span id="year"></span> GoldSrc Studio</span>
+        <span>© <span id="year"></span> <span lang="en">GoldSrc Studio</span></span>
         <span>Bu dünyanın içinden. Bu dünya için.</span>
       </div>
       <p class="footer-disclaimer">GoldSrc Studio topluluk tarafından geliştirilen bağımsız araçlar sunar; Valve Corporation veya Steam ile bağlantılı değildir. Araçlar beta aşamasındadır, dosyalarını düzenlemeden önce yedeklemeni öneririz.</p>
@@ -542,6 +615,14 @@
           </article>`;
       })
       .catch(() => { document.getElementById('calismalar').hidden = true; });
+
+    // Discord kullanıcı adını panoya kopyala
+    const dc = document.getElementById('discord-copy'), dcNote = document.getElementById('discord-note');
+    dc.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(dc.dataset.user); dcNote.textContent = 'Kopyalandı: serhatondes'; dcNote.classList.add('copied'); }
+      catch { dcNote.textContent = 'Discord: serhatondes'; }
+      setTimeout(() => { dcNote.textContent = 'serhatondes · kopyalamak için tıkla'; dcNote.classList.remove('copied'); }, 2200);
+    });
   </script>
 </body>
 </html>
