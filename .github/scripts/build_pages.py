@@ -43,6 +43,7 @@ ICON = {
 def shell(path, page, title, desc, body, slug=None, image='/assets/map-optimization.jpg'):
     """title ve desc: (tr, en) çiftleri."""
     html = f'''<!doctype html>
+<!-- © GoldSrc Studio · by Devil. Tasarım ve içerik izinsiz kopyalanamaz / Design and content may not be copied without permission. -->
 <html lang="tr" data-theme="original" data-lang="tr">
 <head>
   <meta charset="utf-8">
@@ -50,6 +51,8 @@ def shell(path, page, title, desc, body, slug=None, image='/assets/map-optimizat
   <title>{title[0]}</title>
   <meta name="description" content="{desc[0]}">
   <meta name="theme-color" content="#0d141c">
+  <meta name="author" content="GoldSrc Studio · by Devil">
+  <meta name="copyright" content="© GoldSrc Studio · by Devil. Tüm hakları saklıdır / All rights reserved.">
   <script>{HEAD_JS}</script>
   <meta property="og:title" content="{title[0]}">
   <meta property="og:description" content="{desc[0]}">

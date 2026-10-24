@@ -18,26 +18,27 @@
   const LOCALE = L('tr-TR', 'en-US');
 
   const PLUGIN_BASE = 'https://bydevil.com/plugins/#';
+  const BD = 'https://bydevil.com/assets/'; // eklenti ekran görüntüleri bydevil.com'da duruyor
   const PLUGINS = [
-    { id: 'propublic', name: 'Pro Public TOP15', img: '', tags: L(['Top15', 'Toptime', 'Profil', 'FunGun'], ['Top15', 'Toptime', 'Profile', 'FunGun']),
+    { id: 'propublic', name: 'Pro Public TOP15', img: BD + 'propublic/pp-1-top15.jpg', tags: L(['Top15', 'Toptime', 'Profil', 'FunGun'], ['Top15', 'Toptime', 'Profile', 'FunGun']),
       text: L('Pro Public sunucuları için eksiksiz istatistik sistemi: Top15 ve süre sıralamaları, detaylı oyuncu profilleri, Steam bilgileri ve FunGun tarama geçmişi.',
         'Complete stats system for Pro Public servers: Top15 and playtime rankings, detailed player profiles, Steam info and FunGun scan history.') },
-    { id: 'royalpass', name: 'Royal Pass', img: '', tags: L(['Görevler', 'Mağaza', 'Kutular', 'Pazar'], ['Missions', 'Shop', 'Cases', 'Market']),
+    { id: 'royalpass', name: 'Royal Pass', img: BD + 'royalpass/rp-04.jpg', tags: L(['Görevler', 'Mağaza', 'Kutular', 'Pazar'], ['Missions', 'Shop', 'Cases', 'Market']),
       text: L('Puan ekonomisi: görevlerden puan kazan, kozmetik mağazasında harca, kutu aç, oyuncu pazarında alım satım yap.',
         'Points economy: earn points from missions, spend them in the cosmetics shop, open cases and trade on the player market.') },
-    { id: 'takim', name: 'Team System', img: '', tags: L(['Yönetim', 'Görevler', 'FreeVIP', 'Sezon'], ['Management', 'Missions', 'FreeVIP', 'Season']),
+    { id: 'takim', name: 'Team System', img: BD + 'takim/tk-01.jpg', tags: L(['Yönetim', 'Görevler', 'FreeVIP', 'Sezon'], ['Management', 'Missions', 'FreeVIP', 'Season']),
       text: L('Takım (klan) sistemi: takım kur, üye davet et, banner ve renklerle özelleştir, sezon sıralamasında birlikte yüksel.',
         'Team (clan) system: create a team, invite members, customise it with banners and colours, and climb the season ranking together.') },
     { id: 'gungame', name: 'GunGame TOP15', img: '/assets/plugins/gungame.webp', tags: L(['Bireysel', 'Takım', 'FFA', 'Sezon'], ['Solo', 'Team', 'FFA', 'Season']),
       text: L('Bireysel, takım ve FFA sıralamaları; puan, XP, K/D, bıçak ve seri istatistikleri, oyuncu profilleri ve sezon görünümleri.',
         'Solo, team and FFA rankings; points, XP, K/D, knife and streak stats, player profiles and season views.') },
-    { id: 'zombieplague', name: 'Zombie Plague TOP15', img: '', tags: L(['Genel', 'Süre', 'Profil', 'Haftalık ödül'], ['Overall', 'Playtime', 'Profile', 'Weekly reward']),
+    { id: 'zombieplague', name: 'Zombie Plague TOP15', img: BD + 'zp-top15/zp-01.jpg', tags: L(['Genel', 'Süre', 'Profil', 'Haftalık ödül'], ['Overall', 'Playtime', 'Profile', 'Weekly reward']),
       text: L('Zombie Plague için sıralama: liderle kıyaslayan profiller, rütbe yolu, özelleştirilebilir kart, sezon arşivi ve haftalık VIP ödülleri.',
         'Rankings for Zombie Plague: profiles compared with the leader, a rank path, a customisable card, season archive and weekly VIP rewards.') },
-    { id: 'battlepass', name: 'Public Battle Pass', img: '', tags: L(['Seviyeler', 'Kasalar', 'Çark', 'Envanter'], ['Tiers', 'Cases', 'Wheel', 'Inventory']),
+    { id: 'battlepass', name: 'Public Battle Pass', img: BD + 'battlepass-public/bpp-01.jpg', tags: L(['Seviyeler', 'Kasalar', 'Çark', 'Envanter'], ['Tiers', 'Cases', 'Wheel', 'Inventory']),
       text: L('Public sunucular için sezonluk battle pass: ücretsiz ve premium seviye ödülleri, kasalar, çark ve efekt envanteri.',
         'Seasonal battle pass for public servers: free and premium tier rewards, cases, a prize wheel and an effects inventory.') },
-    { id: 'battlepass', name: 'Zombie Plague Battle Pass', img: '', tags: L(['Ödüller', 'Görevler', 'Çark', 'Mağaza'], ['Rewards', 'Missions', 'Wheel', 'Shop']),
+    { id: 'battlepass', name: 'Zombie Plague Battle Pass', img: BD + 'battlepass-zp/bpz-01.jpg', tags: L(['Ödüller', 'Görevler', 'Çark', 'Mağaza'], ['Rewards', 'Missions', 'Wheel', 'Shop']),
       text: L('Haftalık sezon sistemi: her gün ücretsiz ve premium ödül, günlük görevler, coin çarkı ve mağaza.',
         'Weekly season system: free and premium rewards every day, daily missions, a coin wheel and a shop.') },
   ];
@@ -161,7 +162,7 @@
             <li><a href="${LINKS.fpslist}" ${ext}>fpslist.com</a></li></ul></div>
         </div>
         <div class="ftr-bottom">
-          <span>© ${new Date().getFullYear()} GoldSrc Studio · by Devil</span>
+          <span>© ${new Date().getFullYear()} GoldSrc Studio · by Devil · ${L('Tüm hakları saklıdır.', 'All rights reserved.')}</span>
           <span>${L('Valve Corporation veya Steam ile bağlantılı değildir.', 'Not affiliated with Valve Corporation or Steam.')}</span>
         </div>
       </div>`;
@@ -322,7 +323,7 @@
     </a>`;
   const pluginCard = p => `
     <a class="card plugin-card fade" href="${PLUGIN_BASE}${p.id}" ${ext}>
-      <div class="card-media">${p.img ? `<img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy">` : `<span class="plugin-ph">${icon('plug')}<b lang="en">${esc(p.name)}</b></span>`}<span class="badge">AMX Mod X</span></div>
+      <div class="card-media"><span class="plugin-ph">${icon('plug')}<b lang="en">${esc(p.name)}</b></span>${p.img ? `<img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy" ${imgFallback}>` : ''}<span class="badge">AMX Mod X</span></div>
       <div class="card-body">
         <span class="card-title" lang="en">${esc(p.name)}</span>
         <p class="card-text">${esc(p.text)}</p>
@@ -484,8 +485,31 @@
     });
   }
 
+  /* ---------- kopyalamaya karşı caydırıcılar ---------- */
+  // Tarayıcıya gelen her şey görülebilir; bunlar yalnızca hızlı kopyalamayı zorlaştırır.
+  function guard() {
+    if (window.top !== window.self) { try { window.top.location = window.self.location; } catch { document.documentElement.hidden = true; } }
+    const field = el => el.closest?.('input, textarea, select, [contenteditable]');
+    document.addEventListener('contextmenu', e => { if (!field(e.target)) e.preventDefault(); });
+    document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+    document.addEventListener('keydown', e => {
+      const k = e.key.toLowerCase(), mod = e.ctrlKey || e.metaKey;
+      if (e.key === 'F12' || (mod && (k === 'u' || k === 's' || k === 'p')) || (mod && e.shiftKey && 'ijc'.includes(k))) e.preventDefault();
+    });
+    document.addEventListener('copy', e => {
+      const sel = String(window.getSelection() || '');
+      if (field(e.target) || sel.length < 40) return;
+      e.preventDefault();
+      e.clipboardData.setData('text/plain', `${sel}\n\n${L('Kaynak', 'Source')}: ${location.href} · © GoldSrc Studio`);
+    });
+    console.log('%cGoldSrc Studio', 'font:700 22px sans-serif;color:#5ab0ec');
+    console.log(L('Bu sitenin tasarımı ve içeriği GoldSrc Studio / by Devil\'e aittir. İzinsiz kopyalanamaz.',
+      'The design and content of this site belong to GoldSrc Studio / by Devil. Do not copy without permission.'));
+  }
+
   /* ---------- başlat ---------- */
   async function init() {
+    guard();
     applyLang();
     const hdr = $('#hdr'), ftr = $('#ftr'), main = $('main');
     let tools = [];
