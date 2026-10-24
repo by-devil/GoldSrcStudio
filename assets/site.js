@@ -502,24 +502,33 @@
       e.preventDefault();
       e.clipboardData.setData('text/plain', `${sel}\n\n${L('Kaynak', 'Source')}: ${location.href} · © GoldSrc Studio`);
     });
-    // Resimler yüklenince <canvas>'a çizilir: "resim indirici" eklentileri <img> etiketlerini tarar, canvas'ı bulamaz.
+    // Resimler sayfada <img> olarak kalmaz: hemen <canvas> ile değiştirilir, dosya sayfa dışında yüklenip
+    // canvas'a çizilir. "Resim indirici" eklentileri sayfadaki <img> etiketlerini tarar, canvas'ı bulamaz.
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { io.unobserve(e.target); e.target._load(); } }), { rootMargin: '400px' });
     const shield = img => {
-      if (img.dataset.ps || /\.svg(\?|$)/i.test(img.src)) return;
-      img.dataset.ps = '1';
-      const draw = () => {
-        if (!img.isConnected || !img.naturalWidth) return;
-        const r = img.getBoundingClientRect(), nw = img.naturalWidth, nh = img.naturalHeight;
-        const fit = r.width ? Math.max(r.width / nw, r.height / nh) : 160 / nw;
-        const k = nw * nh <= 65536 ? 1 : Math.min(1, fit * Math.min(window.devicePixelRatio || 1, 2));
-        const c = document.createElement('canvas');
-        c.width = Math.max(1, Math.round(nw * k)); c.height = Math.max(1, Math.round(nh * k));
-        const g = c.getContext('2d'); g.imageSmoothingQuality = 'high'; g.imageSmoothingEnabled = getComputedStyle(img).imageRendering !== 'pixelated'; g.drawImage(img, 0, 0, c.width, c.height);
-        c.className = img.className; c.classList.add('pimg');
-        if (img.style.cssText) c.style.cssText = img.style.cssText;
-        c.setAttribute('role', 'img'); c.setAttribute('aria-label', img.alt || '');
-        img.replaceWith(c);
+      const src = img.getAttribute('src');
+      if (!src || /\.svg(\?|$)/i.test(src)) return;
+      const c = document.createElement('canvas');
+      c.className = img.className; c.classList.add('pimg');
+      if (img.style.cssText) c.style.cssText = img.style.cssText;
+      c.setAttribute('role', 'img'); c.setAttribute('aria-label', img.alt || '');
+      const pix = getComputedStyle(img).imageRendering === 'pixelated';
+      img.removeAttribute('src'); img.onerror = img.onload = null;
+      img.replaceWith(c);
+      c._load = () => {
+        const im = new Image();
+        im.onerror = () => c.remove();
+        im.onload = () => {
+          const r = c.getBoundingClientRect(), nw = im.naturalWidth, nh = im.naturalHeight;
+          const fit = r.width ? Math.max(r.width / nw, r.height / nh) : 160 / nw;
+          const k = nw * nh <= 65536 ? 1 : Math.min(1, fit * Math.min(window.devicePixelRatio || 1, 2));
+          c.width = Math.max(1, Math.round(nw * k)); c.height = Math.max(1, Math.round(nh * k));
+          const g = c.getContext('2d'); g.imageSmoothingQuality = 'high'; g.imageSmoothingEnabled = !pix;
+          g.drawImage(im, 0, 0, c.width, c.height);
+        };
+        im.src = src;
       };
-      img.complete ? draw() : img.addEventListener('load', draw, { once: true });
+      io.observe(c);
     };
     const scan = root => { if (root.tagName === 'IMG') shield(root); else root.querySelectorAll?.('img').forEach(shield); };
     scan(document.body);
