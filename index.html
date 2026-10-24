@@ -54,6 +54,8 @@
               background: #252a2c; transition: background .2s, color .2s; }
     .gh-btn:hover { background: var(--orange); color: #101010; }
     .gh-btn svg { width: 17px; height: 17px; fill: currentColor; }
+    .nav a { white-space: nowrap; }
+    @media (max-width: 1280px) { .nav { gap: 26px; margin-left: 40px; } .nav .ext { display: none; } }
     @media (max-width: 850px) { .nav { display: none; } .site-header { height: 72px; } }
     @media (max-width: 390px) { .logo img { width: 36px; height: 36px; } .gh-btn span { display: none; } }
 
@@ -175,6 +177,38 @@
     @media (max-width: 850px) { .detail { grid-template-columns: 1fr; gap: 32px; } .detail-visual { height: 390px; } }
     @media (max-width: 650px) { .detail-visual { height: auto; aspect-ratio: 4 / 3; } .detail-visual img { padding: 10px; } .features { grid-template-columns: 1fr; } }
 
+    /* Diğer çalışmalar */
+    .works-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 56px 22px; }
+    .work { min-width: 0; }
+    .work-maps { grid-column: 1 / -1; }
+    .work-skies { grid-column: 1 / span 7; }
+    .work-plugins { grid-column: 8 / -1; }
+    .work-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; padding-bottom: 18px; margin-bottom: 22px; border-bottom: 1px solid var(--line-2); }
+    .work-head .big { font: 400 clamp(64px, 8vw, 120px)/.9 var(--display); color: var(--orange); }
+    .work-head h3 { font-size: clamp(30px, 3.2vw, 46px); margin-top: 6px; }
+    .work-head .stats { color: var(--muted); text-align: right; font-size: 10px; line-height: 2; }
+    .work-head .stats b { color: var(--white); }
+    .mosaic { display: grid; gap: 12px; }
+    .work-maps .mosaic { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .work-skies .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tile { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #172024; }
+    .tile img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.8); transition: transform .5s cubic-bezier(.2,.7,.2,1), filter .3s; }
+    .tile:hover img { transform: scale(1.07); filter: saturate(1); }
+    .tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(9,12,14,.92)); }
+    .tile span { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: 10px; }
+    .tile strong { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 13px; font-weight: 700; }
+    .tile small { color: var(--orange); font-size: 9px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 20px; color: #8e9999; font-size: 10px; }
+    .chips b { color: var(--white); }
+    .work-cta { margin-top: 24px; }
+    .plugin-list { list-style: none; border-top: 1px solid #3d4445; }
+    .plugin-list li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 15px 0; border-bottom: 1px solid #3d4445; }
+    .plugin-list strong { font: 400 21px/1.1 var(--display); letter-spacing: .03em; text-transform: uppercase; }
+    .soon { padding: 5px 9px; background: #252a2c; color: var(--orange); font-size: 9px; }
+    @media (max-width: 1120px) { .work-maps .mosaic { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 850px) { .work-skies, .work-plugins { grid-column: 1 / -1; } }
+    @media (max-width: 650px) { .work-maps .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); } .work-head .stats { display: none; } }
+
     /* GitHub bölümü */
     .github { background: var(--panel); }
     .gh-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 70px; align-items: center; }
@@ -227,9 +261,10 @@
       <nav class="nav caps">
         <a href="#uygulamalar">Uygulamalar</a>
         <a href="#yakindan">Yakından bak</a>
+        <a href="#calismalar">Çalışmalar</a>
         <a href="#github" lang="en">GitHub</a>
-        <a href="https://www.goldsrcstudio.com/" lang="en">GoldSrcStudio.com</a>
-        <a href="https://bydevil.com/" lang="en">Bydevil.com</a>
+        <a class="ext" href="https://www.goldsrcstudio.com/" lang="en">GoldSrcStudio.com</a>
+        <a class="ext" href="https://bydevil.com/" lang="en">Bydevil.com</a>
       </nav>
       <a class="gh-btn caps" href="https://github.com/by-devil/GoldSrcStudio" target="_blank" rel="noopener">
         <svg><use href="#i-gh"/></svg><span lang="en">GitHub</span>
@@ -305,10 +340,26 @@
       </div>
     </section>
 
+    <section class="section" id="calismalar">
+      <div class="wrap">
+        <div class="topline caps">
+          <span class="kicker"><i></i>03 / Diğer çalışmalar</span>
+          <span class="side-note">GameBanana'dan her gün güncellenir</span>
+        </div>
+        <div class="heading-row">
+          <div>
+            <h2 class="display">Haritadan <span class="accent">gökyüzüne.</span></h2>
+            <p>Araçların yanında Counter-Strike 1.6 için haritalar, skyboxlar ve sunucu eklentileri de üretiyorum. Hepsi bydevil.com'da.</p>
+          </div>
+        </div>
+        <div class="works-grid" id="works"></div>
+      </div>
+    </section>
+
     <section class="section github" id="github">
       <div class="wrap gh-grid">
         <div>
-          <span class="kicker caps"><i></i>03 / GitHub</span>
+          <span class="kicker caps"><i></i>04 / GitHub</span>
           <h2 class="display">Kaynaklar<br><span class="accent">GitHub'da.</span></h2>
           <p>Sürümleri takip et, hata bildir ya da yeni bir araç fikrini paylaş. Yeni sürümlerden ilk sen haberdar olmak için repoya yıldız bırak.</p>
         </div>
@@ -336,6 +387,7 @@
         <nav class="footer-links caps">
           <a href="#uygulamalar">Uygulamalar</a>
           <a href="#yakindan">Yakından bak</a>
+          <a href="#calismalar">Çalışmalar</a>
           <a href="#github" lang="en">GitHub</a>
           <a href="https://www.goldsrcstudio.com/" lang="en">GoldSrcStudio.com</a>
           <a href="https://bydevil.com/" lang="en">Bydevil.com</a>
@@ -439,6 +491,45 @@
         });
       })
       .catch(() => { document.getElementById('apps').innerHTML = '<p>Araç listesi yüklenemedi.</p>'; });
+
+    // Diğer çalışmalar: harita, skybox ve eklenti özetleri
+    const fmt = n => Number(n || 0).toLocaleString('tr-TR');
+    const tile = m => `
+      <a class="tile" href="${esc(m.url)}" target="_blank" rel="noopener">
+        ${m.image ? `<img src="${esc(m.image)}" alt="" loading="lazy" onerror="this.remove()">` : ''}
+        <span><strong lang="en">${esc(m.name)}</strong><small class="caps">↓ ${fmt(m.downloads)}${m.category && m.category !== 'Skybox' ? ` · <span lang="en" style="position:static">${esc(m.category)}</span>` : ''}</small></span>
+      </a>`;
+    fetch('data/works.json', { cache: 'no-cache' })
+      .then(r => r.json())
+      .then(w => {
+        document.getElementById('works').innerHTML = `
+          <article class="work work-maps">
+            <div class="work-head">
+              <div><div class="big">${w.maps.count}</div><h3 class="display">Harita</h3></div>
+              <div class="stats caps"><b>${fmt(w.maps.downloads)}</b> indirme<br><b>${w.maps.categories.length}</b> oyun modu</div>
+            </div>
+            <div class="mosaic">${w.maps.featured.map(tile).join('')}</div>
+            <div class="chips caps" lang="en">${w.maps.categories.slice(0, 8).map(c => `<span>${esc(c.name)} <b>${c.count}</b></span>`).join('')}</div>
+            <a class="text-link caps work-cta" href="https://bydevil.com/maps/">Tüm haritalar <svg><use href="#i-ext"/></svg></a>
+          </article>
+          <article class="work work-skies">
+            <div class="work-head">
+              <div><div class="big">${w.skies.count}</div><h3 class="display">Skybox</h3></div>
+              <div class="stats caps"><b>${fmt(w.skies.downloads)}</b> indirme</div>
+            </div>
+            <div class="mosaic">${w.skies.featured.map(tile).join('')}</div>
+            <a class="text-link caps work-cta" href="https://bydevil.com/skies/">Tüm skyboxlar <svg><use href="#i-ext"/></svg></a>
+          </article>
+          <article class="work work-plugins">
+            <div class="work-head">
+              <div><div class="big">${w.plugins.items.length}</div><h3 class="display" lang="en">AMXX <span lang="tr">eklenti</span></h3></div>
+              <div class="stats caps">${esc(w.plugins.status)}</div>
+            </div>
+            <ul class="plugin-list">${w.plugins.items.map(p => `<li><strong lang="en">${esc(p)}</strong><span class="soon caps">${esc(w.plugins.status)}</span></li>`).join('')}</ul>
+            <a class="text-link caps work-cta" href="https://bydevil.com/plugins/">Eklentiler <svg><use href="#i-ext"/></svg></a>
+          </article>`;
+      })
+      .catch(() => { document.getElementById('calismalar').hidden = true; });
   </script>
 </body>
 </html>

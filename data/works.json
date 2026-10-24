@@ -1,0 +1,172 @@
+{
+  "maps": {
+    "count": 177,
+    "downloads": 85673,
+    "categories": [
+      {
+        "name": "Base Builder",
+        "count": 59
+      },
+      {
+        "name": "Gun Game",
+        "count": 41
+      },
+      {
+        "name": "Zombie Mod",
+        "count": 31
+      },
+      {
+        "name": "Deathmatch",
+        "count": 14
+      },
+      {
+        "name": "Bomb/Defuse",
+        "count": 6
+      },
+      {
+        "name": "Fight Yard",
+        "count": 6
+      },
+      {
+        "name": "Bunny Hop",
+        "count": 6
+      },
+      {
+        "name": "35hp",
+        "count": 2
+      },
+      {
+        "name": "AWP War",
+        "count": 2
+      },
+      {
+        "name": "Fun Type",
+        "count": 2
+      },
+      {
+        "name": "Hostage Rescue",
+        "count": 2
+      },
+      {
+        "name": "Other/Misc",
+        "count": 2
+      },
+      {
+        "name": "Maps",
+        "count": 1
+      },
+      {
+        "name": "Zombie Escape",
+        "count": 1
+      },
+      {
+        "name": "Jail Break",
+        "count": 1
+      },
+      {
+        "name": "1hp",
+        "count": 1
+      }
+    ],
+    "featured": [
+      {
+        "name": "GO: Dust II Long | csg_dust2_long",
+        "category": "Bomb/Defuse",
+        "downloads": 7578,
+        "likes": 8,
+        "image": "https://images.gamebanana.com/img/ss/mods/530-90_67ecf8213440c.jpg",
+        "url": "https://gamebanana.com/mods/585816"
+      },
+      {
+        "name": "bb_dust2016",
+        "category": "Base Builder",
+        "downloads": 2099,
+        "likes": 1,
+        "image": "https://images.gamebanana.com/img/ss/mods/530-90_574f29f106e10.jpg",
+        "url": "https://gamebanana.com/mods/92795"
+      },
+      {
+        "name": "bb_castle_2016",
+        "category": "Base Builder",
+        "downloads": 1703,
+        "likes": 0,
+        "image": "https://images.gamebanana.com/img/ss/mods/530-90_5798e6eaa2e0f.jpg",
+        "url": "https://gamebanana.com/mods/92729"
+      },
+      {
+        "name": "bb_castle2016_final_fix",
+        "category": "Base Builder",
+        "downloads": 1602,
+        "likes": 0,
+        "image": "https://images.gamebanana.com/img/ss/mods/530-90_57c296c000274.jpg",
+        "url": "https://gamebanana.com/mods/92728"
+      },
+      {
+        "name": "csg_kabul_32",
+        "category": "Bomb/Defuse",
+        "downloads": 1583,
+        "likes": 19,
+        "image": "https://images.gamebanana.com/img/ss/mods/530-90_698d7e81b3b99.jpg",
+        "url": "https://gamebanana.com/mods/652613"
+      },
+      {
+        "name": "bb_castle_2016_final",
+        "category": "Base Builder",
+        "downloads": 1277,
+        "likes": 1,
+        "image": "https://images.gamebanana.com/img/ss/mods/530-90_57a6d48b1851a.jpg",
+        "url": "https://gamebanana.com/mods/92730"
+      }
+    ]
+  },
+  "skies": {
+    "count": 108,
+    "downloads": 70369,
+    "featured": [
+      {
+        "name": "sky161",
+        "category": "Skybox",
+        "downloads": 4544,
+        "likes": 5,
+        "image": "https://images.gamebanana.com/img/ss/mods/530-90_5e1b18bd87907.jpg",
+        "url": "https://gamebanana.com/mods/8327"
+      },
+      {
+        "name": "Stars | SKY BOX",
+        "category": "Skybox",
+        "downloads": 4268,
+        "likes": 12,
+        "image": "https://images.gamebanana.com/img/ss/mods/530-90_5efba4da5c9f2.jpg",
+        "url": "https://gamebanana.com/mods/8318"
+      },
+      {
+        "name": "sky_lake",
+        "category": "Skybox",
+        "downloads": 2203,
+        "likes": 11,
+        "image": "https://images.gamebanana.com/img/ss/mods/530-90_5952007d92b54.webp",
+        "url": "https://gamebanana.com/mods/8192"
+      },
+      {
+        "name": "Harvest | SKY BOX",
+        "category": "Skybox",
+        "downloads": 1746,
+        "likes": 3,
+        "image": "https://images.gamebanana.com/img/ss/mods/530-90_5e9c03645aeab.jpg",
+        "url": "https://gamebanana.com/mods/8289"
+      }
+    ]
+  },
+  "plugins": {
+    "status": "Yakında",
+    "items": [
+      "Pro Public TOP15",
+      "Royal Pass",
+      "Team System",
+      "GunGame TOP15",
+      "Zombie Plague TOP15",
+      "Public Battle Pass",
+      "Zombie Plague Battle Pass"
+    ]
+  }
+}
