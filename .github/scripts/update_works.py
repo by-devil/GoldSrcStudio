@@ -45,6 +45,11 @@ def card(item):
     return {k: item.get(k) for k in ("name", "category", "downloads", "likes", "image", "url")}
 
 
+def entry(item):
+    """Liste sayfaları için kısa kayıt."""
+    return card(item) | {"date": item.get("date"), "updated": item.get("updated")}
+
+
 def fmt(n):
     return f"{n:,}".replace(",", ".")
 
@@ -92,6 +97,7 @@ def maps_files(maps):
         "downloads": total,
         "categories": [{"name": n, "count": c} for n, c in cats.most_common()],
         "featured": [card(m) for m in by_downloads(maps)[:6]],
+        "items": [entry(m) for m in by_downloads(maps)],
     }
     groups = defaultdict(list)
     for m in maps:
@@ -129,6 +135,7 @@ def skies_files(skies):
         "count": len(skies),
         "downloads": total,
         "featured": [card(s) | {"category": None} for s in by_downloads(skies)[:4]],
+        "items": [entry(s) | {"category": None} for s in by_downloads(skies)],
     }
     readme = f"""# Skyboxlar
 
