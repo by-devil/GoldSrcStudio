@@ -1,18 +1,19 @@
 <!doctype html>
-<html lang="tr">
+<html lang="tr" data-theme="original">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GoldSrc Studio — CS 1.6 araçları, haritaları ve skyboxları</title>
   <meta name="description" content="Counter-Strike 1.6 ve GoldSrc için bağımsız modlama araçları, haritalar ve skyboxlar.">
-  <meta name="theme-color" content="#0b0d0f">
+  <meta name="theme-color" content="#0d141c">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("gs-theme")||"original"}catch(e){document.documentElement.dataset.theme="original"}</script>
   <meta property="og:title" content="GoldSrc Studio — CS 1.6 araçları, haritaları ve skyboxları">
   <meta property="og:description" content="Counter-Strike 1.6 ve GoldSrc için bağımsız modlama araçları, haritalar ve skyboxlar.">
   <meta property="og:image" content="https://tools.bydevil.com/assets/map-optimization.jpg">
   <link rel="icon" type="image/png" href="/assets/goldsrc-mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
   <script src="/assets/site.js" defer></script>
 </head>
@@ -23,9 +24,8 @@
       <div class="hero-media"><img src="/assets/map-optimization.jpg" alt=""></div>
       <div class="wrap hero-inner">
         <span class="eyebrow"><i></i>GoldSrc ekosistemi için bağımsız stüdyo</span>
-        <h1>Counter-Strike 1.6 için <span class="accent">özenle yapılmış</span> araçlar.</h1>
+        <h1><span lang="en">Counter-Strike 1.6</span> için <span class="accent">özenle yapılmış</span> araçlar.</h1>
         <p class="lead">Haritaları analiz et, modelleri boya, skinleri düzenle, botların yolunu çiz.</p>
-        <p class="intro">GoldSrc Studio; harita optimizasyonu, model boyama, navigasyon, skin düzenleme ve harita→model dönüşümü için ücretsiz Windows araçları geliştirir. Yanında yüzlerce harita ve skybox.</p>
         <div class="actions">
           <a class="btn primary" href="/tools/">Araçları keşfet</a>
           <a class="btn" href="/maps/">Haritalara göz at</a>
@@ -34,15 +34,15 @@
     </section>
     <section class="section"><div class="wrap"><div class="stats" id="stats"></div></div></section>
     <section class="section"><div class="wrap">
-      <div class="sec-head"><div><h2>Araçlar</h2><p>GoldSrc modlama sürecini hızlandıran uygulamalar.</p></div><a class="more" href="/tools/">Tüm araçlar →</a></div>
+      <div class="sec-head"><div><h2>Araçlar</h2></div><a class="more" href="/tools/">Tüm araçlar →</a></div>
       <div class="grid cols-3" id="home-tools"></div>
     </div></section>
     <section class="section"><div class="wrap">
-      <div class="sec-head"><div><h2>En çok indirilen haritalar</h2><p>Topluluğun favorileri.</p></div><a class="more" href="/maps/">Tüm haritalar →</a></div>
+      <div class="sec-head"><div><h2>En çok indirilen haritalar</h2></div><a class="more" href="/maps/">Tüm haritalar →</a></div>
       <div class="grid cols-4" id="home-maps"></div>
     </div></section>
     <section class="section"><div class="wrap">
-      <div class="sec-head"><div><h2>Popüler skyboxlar</h2><p>GoldSrc için gökyüzü paketleri.</p></div><a class="more" href="/skies/">Tüm skyboxlar →</a></div>
+      <div class="sec-head"><div><h2>Popüler skyboxlar</h2></div><a class="more" href="/skies/">Tüm skyboxlar →</a></div>
       <div class="grid cols-4" id="home-skies"></div>
     </div></section>
     <section class="section"><div class="wrap">
