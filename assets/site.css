@@ -353,6 +353,7 @@ a.card-title:hover { color: var(--accent); }
 @media (max-width: 560px) { .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; } .hstat b { font-size: 36px; } .hstat:last-child:nth-child(odd) { grid-column: 1 / -1; } }
 
 .plugin-card .card-media { aspect-ratio: 16 / 9; }
+.plugin-card .card-media img { position: absolute; inset: 0; }
 .plugin-ph { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 12px; color: var(--accent);
              background: radial-gradient(circle at 50% 35%, rgba(var(--accent-rgb), .22), transparent 62%), linear-gradient(160deg, var(--surface-3), var(--surface)); }
 .plugin-ph .ico { width: 42px; height: 42px; stroke-width: 1.4; }
@@ -385,3 +386,6 @@ a.card-title:hover { color: var(--accent); }
 .fade { animation: fade-up .5s cubic-bezier(.2,.7,.2,1) both; }
 @keyframes fade-up { from { opacity: 0; transform: translateY(10px); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* Kopyalama caydırıcı: resimler sürüklenemez, uzun basışta menü açılmaz */
+img { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
