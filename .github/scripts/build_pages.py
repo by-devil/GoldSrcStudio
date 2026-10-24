@@ -144,7 +144,7 @@ shell('index.html', 'home',
     <section class="section"><div class="wrap">
       <div class="cta-band"><div><h2>{T('Bir fikrin ya da hata bildirimin mi var?', 'Got an idea or a bug report?')}</h2><p>{T('Steam, Discord veya GameBanana üzerinden ulaş.', 'Reach out on Steam, Discord or GameBanana.')}</p></div>
         <div class="actions"><a class="btn primary" href="/contact/">{CTA_CONTACT}</a><a class="btn" href="https://github.com/by-devil/GoldSrcStudio/issues" target="_blank" rel="noopener">{T('Hata bildir ↗', 'Report a bug ↗')}</a></div></div>
-    </div></section>''')
+    </div></section>''', image='/assets/social-preview.png')
 
 # Tools
 shell('tools/index.html', 'tools', ('Araçlar — GoldSrc Studio', 'Tools — GoldSrc Studio'),
