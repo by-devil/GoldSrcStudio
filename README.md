@@ -60,6 +60,23 @@
   </tr>
 </table>
 
+## Haritalar ve skyboxlar
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="maps"><img src="https://images.gamebanana.com/img/ss/mods/530-90_67ecf8213440c.jpg" alt=""></a><br>
+      <b><a href="maps">177 Harita →</a></b><br>
+      Base Builder, Gun Game, Zombie Mod ve daha fazlası · 85.673 indirme
+    </td>
+    <td width="50%" valign="top">
+      <a href="skies"><img src="https://images.gamebanana.com/img/ss/mods/530-90_5e1b18bd87907.jpg" alt=""></a><br>
+      <b><a href="skies">108 Skybox →</a></b><br>
+      Counter-Strike 1.6 ve GoldSrc için gökyüzleri · 70.369 indirme
+    </td>
+  </tr>
+</table>
+
 ## Hata bildirimi ve öneriler
 
 Bir sorun bulduysan ya da yeni bir araç fikrin varsa [issue aç](../../issues).
