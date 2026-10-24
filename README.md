@@ -25,7 +25,7 @@ Counter-Strike 1.6 / GoldSrc motoru için modlama araçları.
 }
 ```
 
-`download` (indirme sayfası), `demo` (tarayıcıda açılan araç), `links` (ek bağlantılar), `image` (kapak görseli), `badge` (kart etiketi) ve `mono` (görsel yoksa kapakta yazan kısa ad) alanları isteğe bağlıdır. Ana sayfa (`index.html`) listeyi bu dosyadan otomatik oluşturur.
+`download` (indirme sayfası), `demo` (tarayıcıda açılan araç), `links` (ek bağlantılar), `image` (üzerine gelince açılan önizleme görseli) ve `badge` (platform etiketi) alanları isteğe bağlıdır. Ana sayfa (`index.html`) listeyi bu dosyadan otomatik oluşturur.
 
 ## Yasal uyarı
 
