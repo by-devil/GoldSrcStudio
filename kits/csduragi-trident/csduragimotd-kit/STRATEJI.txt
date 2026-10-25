@@ -1,0 +1,129 @@
+TRIDENT-FIX - GERCEK VAKA OZETI
+==================================
+
+Bu kit, gercek bir CS 1.6 Zombie Plague sunucusunun haftalik top15
+tablosunda (PHP + MySQL, `show_motd()` ile acilan bir web sayfasi) yasanan
+gercek sorunlardan cikti. Sayfa Steam MOTD'de ve gercek tarayicida
+sorunsuzdu, ama csduragi client'inda "dandik" (bozuk) gorunuyordu. Asagidaki
+sirayla bulunup duzeltildi - ayni sirayla kendi projende de arayabilirsin.
+
+
+1. TESPIT: hangi motor, ne kadar eksik?
+------------------------------------------
+Kullanicidan gelen bir "MOTD uyum kiti" (bu paketin de temelini olusturan
+motd-uyum.php/OKUBENI.txt), nginx access log'undaki gercek User-Agent'lari
+gostererek kesin teshis sagladi: csduragi = "MSIE 7.0 ... Trident/7.0".
+Bu, IE11'in motoru ama IE7 uyumluluk modu - yani rgba()/gradient/flex/
+shadow YOK, ama position/z-index/table gibi TEMEL ozellikler calisiyor.
+
+DERS: teshis olmadan tahminle CSS degistirmeye baslama - once User-Agent'i
+gor, hangi motor oldugunu KESIN bil.
+
+
+2. ILK REFLEKS YANLISTI: paylasilan dosyaya fallback eklemek
+----------------------------------------------------------------
+Ilk denemede, ana style.css icine dogrudan "background:#hex; background:
+rgba(...)" seklinde fallback satirlari eklendi. Bu TEKNIK olarak zararsiz
+(modern tarayicilar ikinci satiri kullanir, degisen bir sey olmaz) ama
+MIMARI olarak yanlis: kullanici acikca "sadece o client'a ozel yap" dedi.
+Butun Trident-spesifik degisiklikler, is_trident_client() ile SADECE o
+istemciye yuklenen AYRI bir dosyaya tasindi. Ana stylesheet hic
+degistirilmedi.
+
+DERS: bir istemciye ozel bir fix, teknik olarak zararsiz olsa bile ana/
+paylasilan dosyaya degil, izole bir dosyaya yazilmali - ileride o istemci
+destegini kaldirmak, tek dosyayi silmek kadar kolay olsun.
+
+
+3. Renkler kayboldu -> rgba() fallback'leri
+-----------------------------------------------
+Panel/kart arka planlari transparan gorunuyordu. Sebep: ana CSS'te
+background: rgba(...) kullanan onlarca kural. Hepsine duz hex fallback
+yazildi - AMA cok dusuk alfali (0.015, 0.08 gibi) ince tonlamalar BILEREK
+opak yapilmadi, cunku onlari opak yapmak parlak/cirkin bir blok
+uretiyordu (yoklugu, yanlisligindan iyi).
+
+
+4. "3 garip kirmizi cizgi" -> box-shadow/text-shadow
+---------------------------------------------------------
+Ilk 3 satirda beklenmedik kirmizi cizgiler cikti. Kaynak: box-shadow:
+inset ile cizilen ince bir "vurgu cizgisi" ve birkac text-shadow parlama
+efekti. Trident bunlari duzgun render etmiyordu. Tamamen kapatmak
+(box-shadow:none; text-shadow:none) hicbir islevsel kayip yaratmadan
+sorunu cozdu.
+
+
+5. Isimler kaymis -> cakisan display kurallari + flexbox
+--------------------------------------------------------------
+Bir eleman icin ana CSS'te IKI FARKLI "display" kurali vardi (biri block,
+biri daha SONRA gelen inline-flex, ikisi de !important). Modern
+tarayicida sonraki (flex) kazaniyor ve dogru calisiyordu; Trident flex'i
+hic anlamadigi icin tutarsiz bir duruma dusuyordu. Trident'a KESIN, tek
+bir non-flex deger zorlanarak duzeltildi.
+
+Ayrica sekme/tab cubugu da flexbox kullaniyordu - o da duz inline-block'a
+cevrildi (bir tab'in "saga yaslanma" trick'i Trident'ta kayboldu, kabul
+edilebilir bir taviz).
+
+
+6. Isim-rank arasinda beklenmedik bosluk -> @media guvenilmez
+-------------------------------------------------------------------
+Sutun genislikleri ~8 farkli @media (max-height/max-width) breakpoint'ine
+dagilmisti. Trident bunlari guvenilir uygulamadigi icin hangi genislik
+kuralinin "gectigi" belirsizdi. table-layout:auto + dar sutuna "width:1%"
+(icerige gore kucul) ipucu vererek TUM @media hesaplamasindan bagimsiz,
+icerige dayali dogal boyutlandirmaya gecildi.
+
+
+7. Kendi hatasi: arka plan gorseli kayboldu (opak renk logoyu ortu)
+------------------------------------------------------------------------
+Panel arka planina opak bir renk verilince, arkada ayri bir div ile
+(position:absolute; z-index:-1; opacity:0.6) gosterilen logo TAMAMEN
+kayboldu - opak renk onu ortuyordu, Trident'ta yari-saydam siyah
+(rgba(0,0,0,.78) gibi) mumkun olmadigi icin "kismen ortsun" da
+yapilamiyordu.
+
+Cozum CSS'te degil, GORSELDE: ImageMagick ile PNG'nin kendi alfa
+kanalina %40 opaklik gomulup (convert logo.png -alpha set -channel A
+-evaluate multiply 0.4 +channel logo-trident.png), ayri div/z-index
+trigi tamamen terk edilip logo dogrudan panelin background-image'i
+yapildi. PNG alfa saydamligi CSS rgba()'dan tamamen farkli, cok daha
+eski/evrensel bir mekanizma - Trident'ta sorunsuz calisti.
+
+
+8. Kendi hatasi: satirlara "duzeltme" olarak opak renk vermek
+-------------------------------------------------------------------
+Tablo satirlarina okunabilirlik icin opak arka plan (#111822 vb.)
+verilince, kullanici bunun ISTENMEDIGINI belirtti - orijinal cok-dusuk-
+alfali degerler KASITLIYDI (arka plandaki logo gorunsun diye). Satirlar
+"transparent"a cevrildi, metin okunabilirligi zaten panelin kendi koyu
+zemininden geliyordu.
+
+DERS: dusuk-alfali bir CSS degeri genelde kasitli bir incelik, gozden
+kacan bir seffaflik degil - fallback engine'e tasirken "opak yap"i
+varsayilan cozum sanma, once "hic arka plan verme" secenegini dusun ve
+mumkunse kullaniciya sor.
+
+
+9. Kendi hatasi: genel !important, "aktif" durumu da ezdi
+---------------------------------------------------------------
+Bir sekmenin varsayilan arka planina genel bir !important fix verilince,
+o sekmenin KENDI .active durumu (farkli renk, ama !important DEGILDI)
+sessizce ezildi - aktif sekme "koyu-uzerine-koyu" gorunup okunmaz oldu.
+O elemanin .active/.hover gibi TUM durum-varyantlari ayrica, daha
+spesifik kurallarla geri verildi.
+
+DERS: bir base-class'a genel !important fix eklerken, o class'in
+.active/.hover/.disabled gibi TUM durum-modifier'larini da ayni pass'te
+kontrol et - birini kacirirsan kullanici bir sonraki testte mutlaka
+bulur.
+
+
+GENEL SONUC
+-----------
+Butun bu dongu ~4-5 tur "kullanici gercek client'ta test etti, ekran
+goruntusu atti, belirli bir seyi tarif etti, duzeltildi" seklinde ilerledi.
+Bu ortamda (sandbox/gelistirme makinesi) gercek bir Trident-modlu tarayici
+YOK - hicbir degisiklik bu tarafta gorsel olarak dogrulanamiyor, HER
+degisiklikten sonra gercek client'ta test gerekiyor. Bunu bastan kabul
+edip iteratif calismayi planla.

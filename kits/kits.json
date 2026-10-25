@@ -1,0 +1,248 @@
+[
+  {
+    "slug": "sigdir",
+    "name": "SIĞDIR + CSDurağı eksen modülü",
+    "short": "SIĞDIR",
+    "topic": "https://www.webailesi.com/konu-kit-cs-1-6-motd-ekranina-sigdirma-kiti-csduragi-icin-yatay-dikey-ince-ayar-37529",
+    "video": "https://www.youtube.com/watch?v=XHRfSpk554c",
+    "file": {
+      "name": "sigdir-paket.zip",
+      "size": 12992,
+      "sha256": "447bb7b43b7d0f0f230ee6c73322d804acfb2b12c73c49c5c8d95fe5a638e877",
+      "contents": [
+        "KREDI.txt",
+        "README.md",
+        "demo.php",
+        "sigdir-compact-ornek.css",
+        "sigdir-eksen.php",
+        "sigdir.php"
+      ]
+    },
+    "tags": [
+      "PHP 5.4+",
+      "Steam MOTD",
+      "CSDurağı",
+      "Çerez"
+    ],
+    "intro": "Web MOTD sayfalarına SIĞDIR butonu ve ayar paneli ekler; bizim ek modülümüz CSDurağı istemcisine de yatay ve dikey ince ayar getirir.",
+    "features": [
+      [
+        "Steam MOTD ve tarayıcılar",
+        "Otomatik sığdır, ayrı yatay/dikey ölçek ve zoom, sürükleyerek boyutlandırma; ayarlar çerezde hatırlanır."
+      ],
+      [
+        "CSDurağı (Trident/IE7)",
+        "sigdir-eksen.php boyutları sunucuda gerçek CSS olarak üretir: transform/zoom yok, tıklama noktası kaymaz. JavaScript olmadan da çalışır; aralık %50–120."
+      ],
+      [
+        "Gereksinimler",
+        "PHP 5.4 veya üstü. Veritabanı, şifre ya da dış kütüphane yok; sadece çerez, dışarıya istek yok. README.md ve demo.php pakette."
+      ]
+    ],
+    "shots": [
+      {
+        "file": "img/sigdir-1.jpg",
+        "label": "Ayar paneli",
+        "en": "Settings panel"
+      },
+      {
+        "file": "img/sigdir-2.jpg",
+        "label": "CSDurağı yatay/dikey ayar",
+        "en": "CSDurağı horizontal/vertical tuning"
+      }
+    ],
+    "en": {
+      "name": "FIT + CSDurağı axis module",
+      "tags": [
+        "PHP 5.4+",
+        "Steam MOTD",
+        "CSDurağı",
+        "Cookie"
+      ],
+      "intro": "Adds a FIT button and settings panel to web MOTD pages, plus our module that brings horizontal and vertical fine-tuning to the CSDurağı client.",
+      "features": [
+        [
+          "Steam MOTD and browsers",
+          "Auto fit, separate horizontal/vertical scaling and zoom, drag to resize; settings are remembered in a cookie."
+        ],
+        [
+          "CSDurağı (Trident/IE7)",
+          "sigdir-eksen.php generates real CSS sizes on the server: no transform or zoom, so the click point never shifts. Works without JavaScript; range 50–120%."
+        ],
+        [
+          "Requirements",
+          "PHP 5.4 or newer. No database, password or external library; only a cookie, no outgoing requests. README.md and demo.php included."
+        ]
+      ],
+      "credits": "FIT kit (sigdir.php, sigdir-compact-ornek.css): OSR (Serhat Ondes). Axis module (sigdir-eksen.php) and demo: Furia Clan."
+    },
+    "folder": "sigdir-paket",
+    "credits": "SIĞDIR kiti (sigdir.php, sigdir-compact-ornek.css): OSR (Serhat Ondes). Eksen modülü (sigdir-eksen.php) ve demo: Furia Clan."
+  },
+  {
+    "slug": "motd-fit",
+    "name": "Motd-fit",
+    "short": "Motd-fit",
+    "topic": "https://www.webailesi.com/konu-kit-motd-fit-motd-sayfalarinizi-her-cozunurluge-otomatik-sigdirma-37546",
+    "video": "",
+    "file": {
+      "name": "motd-fit-kit.zip",
+      "size": 10184,
+      "sha256": "85a257aa08e2471e4a682bf3e9ae425f52fca4d9cba54607014fb46e1b536f59",
+      "contents": [
+        "README.md",
+        "demo/demo-fit.css",
+        "demo/demo.css",
+        "demo/once.html",
+        "demo/sonra.html",
+        "example.css",
+        "example.html",
+        "motd_fit.py"
+      ]
+    },
+    "tags": [
+      "Python 3",
+      "CSS",
+      "13 kademe",
+      "Tek dosya"
+    ],
+    "intro": "Mevcut CSS dosyanızı okur ve her çözünürlük için küçültme kuralları üretir. Büyük ekranda tasarım aynen kalır, küçük ekranda yazılar ve boşluklar kademeli küçülür.",
+    "features": [
+      [
+        "Nasıl çalışır?",
+        "MOTD penceresi oyun yüksekliğinin yaklaşık 0,6 katıdır (1024x768 → ~460px, 800x600 → ~360px, 640x480 → ~288px). 525px’ten 265px’e 13 kademe üretir."
+      ],
+      [
+        "Tıklama güvenli çıktı",
+        "transform/zoom kullanmaz; gerçek CSS değerlerini değiştirir, butonlar doğru yerden tıklanır. Küçük yazılar okunur kalır (en az 9px), ikon boşlukları korunur."
+      ],
+      [
+        "Kullanım",
+        "python3 motd_fit.py style.css — CSS’i değiştirince tekrar çalıştırın, eski blok yenisiyle değişir. Öncesi/sonrası sayfalarıyla demo/ klasörü pakette."
+      ]
+    ],
+    "shots": [
+      {
+        "file": "img/motdfit-1920.jpg",
+        "label": "1920x1080 öncesi / sonrası",
+        "en": "1920x1080 before / after"
+      },
+      {
+        "file": "img/motdfit-1024.jpg",
+        "label": "1024x768 öncesi / sonrası",
+        "en": "1024x768 before / after"
+      },
+      {
+        "file": "img/motdfit-800.jpg",
+        "label": "800x600 öncesi / sonrası",
+        "en": "800x600 before / after"
+      },
+      {
+        "file": "img/motdfit-640.jpg",
+        "label": "640x480 öncesi / sonrası",
+        "en": "640x480 before / after"
+      }
+    ],
+    "en": {
+      "tags": [
+        "Python 3",
+        "CSS",
+        "13 steps",
+        "Single file"
+      ],
+      "intro": "Reads your existing CSS and generates scale-down rules for every resolution. Your design stays the same on big screens; on small ones text and spacing shrink step by step.",
+      "features": [
+        [
+          "How it works",
+          "The MOTD window is about 0.6× the game height (1024x768 → ~460px, 800x600 → ~360px, 640x480 → ~288px). It generates 13 steps from 525px down to 265px."
+        ],
+        [
+          "Click-safe output",
+          "No transform or zoom; real CSS values change, so buttons are clicked where they appear. Small text stays readable (min 9px) and icons keep their space."
+        ],
+        [
+          "Usage",
+          "python3 motd_fit.py style.css — re-run after editing your CSS, the old block is replaced. A demo/ folder with before and after pages is included."
+        ]
+      ]
+    },
+    "folder": "motd-fit-kit"
+  },
+  {
+    "slug": "csduragi-trident",
+    "name": "CSDurağı (Trident/IE7) uyum kiti",
+    "short": "CSDurağı uyum",
+    "topic": "https://www.webailesi.com/konu-kit-csduragi-trident-ie7-client-inda-bozuk-motd-html-panel-sorununa-cozum-37482",
+    "video": "",
+    "file": {
+      "name": "csduragimotd-kit.zip",
+      "size": 10100,
+      "sha256": "0bc1e0c1037e0246784d6652e97a2a32f52865dca2abdb7d6dc4fdb102614dda",
+      "contents": [
+        "OKUBENI.txt",
+        "STRATEJI.txt",
+        "is_trident_client.php",
+        "trident-fix-template.css"
+      ]
+    },
+    "tags": [
+      "PHP",
+      "CSS",
+      "Trident",
+      "CSDurağı"
+    ],
+    "intro": "CSDurağı MOTD’yi eski Trident motoruyla (IE7 modu) gösterir; Steam’de güzel duran CSS paneller burada bozuk veya renksiz çıkabilir. Bu kit yalnızca o istemcide izole bir düzeltme dosyası yükler.",
+    "features": [
+      [
+        "Paket içeriği",
+        "OKUBENI.txt (hızlı kullanım), STRATEJI.txt (gerçek vaka, adım adım), is_trident_client.php ve trident-fix-template.css."
+      ],
+      [
+        "Ana CSS’e dokunmaz",
+        "PHP fonksiyonu istemciyi User-Agent ile tespit eder; ek dosya sadece orada yüklenir, Steam ve tarayıcı kullanıcıları etkilenmez."
+      ],
+      [
+        "SIĞDIR ile birlikte",
+        "Kaydırma/kompakt mod kitiyle birlikte tasarlandı: o tıklama ve kaydırmayı, bu renk, hizalama ve arka planı çözer."
+      ]
+    ],
+    "shots": [
+      {
+        "file": "img/trident-once.jpg",
+        "label": "Öncesi",
+        "en": "Before"
+      },
+      {
+        "file": "img/trident-sonra.jpg",
+        "label": "Sonrası",
+        "en": "After"
+      }
+    ],
+    "en": {
+      "name": "CSDurağı (Trident/IE7) compatibility kit",
+      "short": "CSDurağı fix",
+      "tags": [
+        "PHP",
+        "CSS",
+        "Trident",
+        "CSDurağı"
+      ],
+      "intro": "CSDurağı renders MOTD with an old Trident engine (IE7 mode), so CSS panels that look fine in Steam can appear broken or colourless. This kit loads an isolated fix file only for that client.",
+      "features": [
+        [
+          "What is inside",
+          "OKUBENI.txt (quick start), STRATEJI.txt (a real case step by step), is_trident_client.php and trident-fix-template.css."
+        ],
+        [
+          "Does not touch your CSS",
+          "The PHP function detects the client by User-Agent; the extra file loads only there, so Steam and browser users are not affected."
+        ],
+        [
+          "Works with FIT",
+          "Built to pair with the scroll/compact-mode kit: that one fixes clicking and scrolling, this one fixes colours, alignment and backgrounds."
+        ]
+      ]
+    },
+    "folder": "csduragimotd-kit"
+  }
+]

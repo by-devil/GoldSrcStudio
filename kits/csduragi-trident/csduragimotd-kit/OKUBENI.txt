@@ -1,0 +1,99 @@
+CS 1.6 MOTD CSS UYUM KITI - Trident (csduragi/oyunyoneticisi) icin
+=====================================================================
+
+Bu kit, OSR'in (motd-uyum.php - tekerlek/tus scroll + kompakt mod JS kiti)
+DOGAL TAMAMLAYICISI. O kit tiklama/scroll davranisini cozuyor, BU kit
+GORUNUM (renk, arka plan, hizalama) bozukluklarini cozuyor. Ikisini
+birlikte kullanman onerilir.
+
+Gercek bir sunucuda (Furia Clan Top15 board) haftalarca canli test/duzeltme
+sonucu ortaya cikti - varsayimla degil, gercek kullanici geri bildirimiyle
+dogrulandi. Ayrintilar STRATEJI.txt'de.
+
+
+SORUN NE?
+---------
+csduragi.com, oyunyoneticisi.com gibi 3. parti CS 1.6 client'lari, MOTD panelini GERCEKTE IE11'in Trident motoruyla aciyor ama sayfayi IE7 UYUMLULUK MODUNDA render ediyor (User-Agent: "MSIE 7.0 ... Trident/7.0"). Bu mod, modern CSS'in cogunu GORMEZDEN GELIYOR:
+
+  - rgba() / hsla()          -> tanimiyor, satiri yok sayiyor
+  - linear-gradient() vb.    -> tanimiyor
+  - display:flex / grid      -> tanimiyor, cocuklar normal akisa doner
+  - box-shadow / text-shadow -> bazen sessizce yok sayiyor, bazen
+                                 "garip cizgi/blok" gibi bozuk render ediyor
+  - CSS custom properties     -> (var(--x)) tamamen sessizce dusuyor
+  - @media sorgulari          -> guvenilir degil, hangi breakpoint'in
+                                 gectigi tutarsiz olabiliyor
+
+Steam'in KENDI MOTD tarayicisi FARKLI bir motor (2012 donemi WebKit, Chrome/18 imzali) - o da bazi seyleri desteklemiyor (var(), grid) ama digerlerini (rgba, flex, box-shadow) sorunsuz gosteriyor. Yani AYNI CSS'i her ikisi de FARKLI sekilde render ediyor - tek bir "hepsine uyan" CSS yazmak mumkun degil.
+
+
+COZUM STRATEJISI (ONEMLI)
+--------------------------
+1) Sunucu tarafinda (PHP) User-Agent'a bakip Trident'i ayir.
+2) Ana stylesheet'ine (butun client'larin ortak kullandigi dosya) DOKUNMA. Onun yerine SADECE Trident tespit edildiginde ekstra bir "duzeltme" stylesheet'i yukle (ayni selector'lere duz renk / duz layout kurallari yazarak, !important ile ana dosyayi override ederek).
+3) Boylece Steam MOTD ve gercek tarayicilar hicbir sekilde etkilenmez, sadece Trident istemcisi ekstra dosyayi indirir.
+
+Bu, "ana CSS'e her yerde rgba() fallback'i ekle" gibi teknik olarak zararsız ama mimari olarak daha kirli bir yaklasimdan BILEREK farkli - değişiklikler tek bir yerde izole kaliyor, ana tasarim dosyan tertemiz kaliyor, ileride Trident destegini tamamen kaldirmak da tek dosyayi silmek kadar kolay oluyor.
+
+
+NASIL KULLANILIR
+------------------
+1) is_trident_client.php'yi projene kopyala (veya fonksiyonu kendi config/helpers dosyana ekle).
+
+2) MOTD sayfanin <head>'ine, ana stylesheet'inden HEMEN SONRA ekle:
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css?v=...">
+    <?php require 'is_trident_client.php'; ?>
+    <?php if (is_trident_client()): ?>
+    <link rel="stylesheet" href="trident-fix.css?v=<?= filemtime(__DIR__.'/trident-fix.css') ?>">
+    <?php endif; ?>
+
+   X-UA-Compatible satiri TUM istemcilerde zararsiz (baskalari yok sayar) - Trident'i en azindan kendi "en iyi" moduna zorluyor, bircok kucuk sorunu  çözebilir.
+
+3) trident-fix-template.css'i trident-fix.css olarak kopyala, kendi rojenin GERCEK selector isimlerine gore duzenle. Sablon, her kural grubunun NE ICIN oldugunu ve NEDEN gerektigini yorumlarla aciklar - kendi CSS'inde hangi ozelligi (rgba/gradient/flex/shadow/media) nerede kullandigini bulup ayni deseni uygula.
+
+4) Degisiklik yaptikca GERCEK csduragi/oyunyoneticisi client'inda test et - bu sandbox'ta / normal tarayicida DOGRULAMA YAPILAMAZ, motor tamamen farkli. Ekran goruntusu al, karsilastir.
+
+
+SIK KARSILASILAN 5 SORUN VE COZUMU (STRATEJI.txt'de detayli)
+---------------------------------------------------------------
+1. Panel/kart arka plani KAYBOLUYOR (transparan gorunuyor)
+   -> rgba() kullanan background/background-color'a duz hex fallback yaz.
+      DUSUK alfali (0.05-0.15 gibi) ince tonlamalari OPAK yapma - bariz
+      renkli blok olur, bos birakmak/transparent yapmak daha iyi gorunur.
+
+2. Buton/sekme "aktif" durumdayken bozuk/okunmuyor
+   -> Genel bir "!important" duzeltmesi, o elemanin kendi .active/.hover
+      durumunu da ezebilir (senin duzeltmen kazanir, orijinal aktif renk
+      kaybolur). Her !important fix'ten sonra o elemanin TUM durumlarini
+      (varsayilan + aktif + hover) ayri ayri kontrol et.
+
+3. Icerik/isim beklenenden uzakta/kaymis basliyor
+   -> Muhtemelen flexbox (display:flex/inline-flex) veya @media'ya bagli
+      genislik kurallari. table-layout:auto + shrink-to-fit ("width:1%")
+      ipucuyla icerige gore dogal boyutlandirmaya gec - @media hesabina
+      bagli kalma.
+
+4. Garip cizgi/blok/parlama artefakti
+   -> box-shadow / text-shadow genelde suclu. Tamamen kapatmak (* {
+      box-shadow:none!important; text-shadow:none!important; }) sadece
+      kozmetik kayip, guvenli.
+
+5. Arka plan gorseli (logo vb.) hic gorunmuyor
+   -> Opak bir arka plan rengi, position:absolute+z-index ile arkaya
+      gizlenmis bir gorseli tamamen kapatabilir (Trident yari-saydam
+      rgba() yapamadigi icin). Cozum: opakligi CSS'te degil, GORSELIN
+      KENDISINDE (PNG alfa kanali) ayarla - ImageMagick ile:
+        convert logo.png -alpha set -channel A -evaluate multiply 0.4 \
+          +channel logo-dim.png
+      Bu dosyayi elemanin duz background-image'i yap, ayri div/z-index
+      trigine hic gerek kalmaz.
+
+
+NOT
+----
+Garanti degil - her client paketi/versiyonu farkli davranabilir. Ama
+gercek bir sunucuda defalarca dogrulanmis, saglam bir baslangic noktasi.
+Kendi client dagilimini gormek icin nginx/apache access log'unda MOTD
+isteklerinin User-Agent'larina bak.

@@ -1,0 +1,62 @@
+
+/* ============================================================
+   KOMPAKT MOD ("SIĞDIR" butonu) - paneli EKRANA SIGDIRMAK icin
+   gercek CSS ile kucultur. transform/zoom KULLANMAZ - reflow oldugu
+   icin cizim ve tiklama noktasi her MOTD motorunda ayni kalir.
+   ck1 = orta (~%18 dikey tasarruf) | ck2 = agresif (tek sutun, ~%35)
+   ============================================================ */
+html.ck1 body{font-size:12px;line-height:1.3}
+html.ck1 .header{padding:12px 22px 9px}
+html.ck1 .title{font-size:26px}
+html.ck1 .title.sm{font-size:20px}
+html.ck1 .season{margin-top:7px}
+html.ck1 .subtitle,html.ck1 .team-line{margin-top:6px}
+html.ck1 .nav{padding:6px 16px}
+html.ck1 .nav .freevip{position:static;left:auto;top:auto;-webkit-transform:none;transform:none;display:block;margin:0 0 3px}
+html.ck1 .nav .lang-sw,html.ck1 .nav .zoom{float:none;display:inline-block;vertical-align:middle;margin:0 0 0 4px}
+html.ck1 .nav a{padding:5px 9px}
+html.ck1 .content{padding:8px 16px 12px}
+html.ck1 .msg{padding:8px 16px}
+html.ck1 .tile,html.ck1 .guide,html.ck1 .team-tile{padding:9px 13px;margin-bottom:3px}
+html.ck1 .card,html.ck1 .mission{padding:8px 12px 7px}
+html.ck1 .val{font-size:20px}
+html.ck1 .section-title{margin:5px 0 3px}
+html.ck1 .guide li{margin-bottom:5px}
+html.ck1 .row{padding:7px 13px;margin-bottom:3px}
+html.ck1 .rkrow{padding:7px 11px}
+html.ck1 .footer{padding:10px 22px}
+html.ck1 .team-tile .id .tn{font-size:20px}
+html.ck1 .team-tile .pts .stat b{font-size:16px}
+
+html.ck2 body{font-size:11px;line-height:1.25}
+html.ck2 .header{padding:8px 16px 6px}
+html.ck2 .title{font-size:19px}
+html.ck2 .title.sm{font-size:15px}
+html.ck2 .season,html.ck2 .subtitle{display:none}
+html.ck2 .team-line{margin-top:5px;font-size:11px}
+html.ck2 .nav{padding:4px 12px}
+html.ck2 .nav .freevip{position:static;left:auto;top:auto;-webkit-transform:none;transform:none;display:block;margin:0 0 3px;font-size:10px}
+html.ck2 .nav .lang-sw,html.ck2 .nav .zoom{float:none;display:inline-block;vertical-align:middle;margin:0 0 0 4px}
+html.ck2 .nav a{padding:4px 6px;font-size:11px;margin:0 2px}
+html.ck2 .nav .zoom a{padding:3px 4px;font-size:11px;margin-left:1px}
+html.ck2 .nav .zoom .zv{font-size:8px}
+html.ck2 .content{padding:6px 12px 10px}
+html.ck2 .msg{padding:7px 12px;font-size:12px}
+html.ck2 .tile,html.ck2 .guide,html.ck2 .team-tile{padding:7px 11px;margin-bottom:3px}
+html.ck2 .card,html.ck2 .card.c2,html.ck2 .card.solo{width:100%;margin-right:0;padding:6px 11px 5px}
+html.ck2 .card h2{font-size:14px}
+html.ck2 .mission{width:100%;margin-right:0;padding:6px 10px}
+html.ck2 .val{font-size:17px}
+html.ck2 .lbl{font-size:9px}
+html.ck2 .hint{font-size:11px}
+html.ck2 .section-title{margin:4px 0 2px}
+html.ck2 .guide li{margin-bottom:4px;padding-left:22px}
+html.ck2 .row{padding:6px 11px;margin-bottom:3px}
+html.ck2 .rkrow{padding:6px 10px}
+html.ck2 .rk-name{font-size:13px}
+html.ck2 .footer{padding:8px 16px;font-size:10px}
+html.ck2 .team-tile .id .tn{font-size:18px}
+html.ck2 .team-tile .pts .stat b{font-size:15px}
+html.ck2 .team-tile .id,html.ck2 .team-tile .pts{float:none;max-width:none;text-align:left}
+html.ck2 .team-tile .pts{margin-top:8px}
+html.ck2 .team-tile .pts .stat{margin-left:0;margin-right:20px}

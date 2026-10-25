@@ -1,0 +1,21 @@
+*{box-sizing:border-box}
+html{background:#101318}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;font-size:13px;color:#e6e9ee;line-height:1.35}
+.header{position:relative;padding:18px 24px 14px;background:#161b22;border-bottom:2px solid #d9a441;text-align:center}
+.title{margin:0;font-size:28px;letter-spacing:1px;color:#fff}
+.sub{margin-top:4px;font-size:12px;color:#8b95a3}
+.badge{position:absolute;left:14px;top:14px;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:1px}
+.badge.b0{background:#7a2b2b;color:#ffd9d9}.badge.b1{background:#24613e;color:#d9ffe8}
+.hgt{position:absolute;right:14px;top:14px;padding:4px 10px;border-radius:4px;background:#0d1015;color:#d9a441;font-size:11px;font-family:Consolas,monospace}
+.nav{padding:8px 24px;background:#12161c;text-align:center}
+.nav a{display:inline-block;margin:0 3px;padding:6px 14px;font-size:12px;color:#8b95a3;text-decoration:none;border-radius:4px}
+.nav a.on{background:#d9a441;color:#1a1305}
+.content{padding:14px 24px 12px}
+.cards:after{content:"";display:block;clear:both}
+.card{float:left;width:32.3%;margin:0 1.5% 10px 0;padding:12px 14px;background:#1a2029;border-radius:6px}
+.card:nth-child(3n){margin-right:0}
+.card h2{margin:0 0 4px;font-size:16px;color:#d9a441}
+.card p{margin:0;font-size:12px;color:#9aa4b2}
+.row{padding:9px 14px;margin-bottom:6px;background:#161b22;border-radius:6px}
+.row b{font-size:14px}.row span{float:right;font-size:12px;color:#d9a441}
+.footer{padding:10px 24px;text-align:center;font-size:11px;color:#6b7584}

@@ -18,6 +18,7 @@ import hashlib
 import json
 import os
 import re
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -198,6 +199,39 @@ shell('plugins/index.html', 'plugins', ('AMXX eklentileri — GoldSrc Studio', '
         <div class="actions"><a class="btn primary" href="/contact/">{CTA_CONTACT}</a><a class="btn" href="https://bydevil.com/plugins/" target="_blank" rel="noopener">bydevil.com/plugins ↗</a></div></div>
     </div></section>''')
 
+# MOTD kits: each kit's files live in kits/<slug>/<folder>/; a zip with fixed timestamps is
+# built from them (same bytes every run) and its name, size, hash and contents go to kits.json.
+kits = json.load(open('kits/kits.json', encoding='utf-8'))
+for k in kits:
+    base = f'kits/{k["slug"]}'
+    files = sorted(os.path.relpath(os.path.join(d, f), base).replace(os.sep, '/')
+                   for d, _, fs in os.walk(f'{base}/{k["folder"]}') for f in fs)
+    zpath = f'{base}/{k["file"]["name"]}'
+    with zipfile.ZipFile(zpath, 'w', zipfile.ZIP_DEFLATED) as z:
+        for f in files:
+            info = zipfile.ZipInfo(f, date_time=(2026, 1, 1, 0, 0, 0))
+            info.external_attr = 0o644 << 16
+            info.compress_type = zipfile.ZIP_DEFLATED
+            z.writestr(info, open(f'{base}/{f}', 'rb').read())
+    data = open(zpath, 'rb').read()
+    k['file'] = {'name': k['file']['name'], 'size': len(data), 'sha256': hashlib.sha256(data).hexdigest(),
+                 'contents': [f.split('/', 1)[1] for f in files]}
+with open('kits/kits.json', 'w', encoding='utf-8') as fp:
+    json.dump(kits, fp, ensure_ascii=False, indent=2)
+    fp.write('\n')
+
+shell('kits/index.html', 'kits', ('MOTD kitleri — GoldSrc Studio', 'MOTD kits — GoldSrc Studio'),
+  ('CS 1.6 web MOTD panellerini her çözünürlükte ve CSDurağı istemcisinde düzgün gösteren ücretsiz kitler.',
+   'Free kits that make CS 1.6 web MOTD panels work at every resolution and in the CSDurağı client.'),
+  head(T('Kitler', 'Kits'), T('MOTD kitleri', 'MOTD kits'),
+       T('Web MOTD panellerini her çözünürlükte ve CSDurağı istemcisinde düzgün gösteren küçük, ücretsiz kitler. Dosyalar şifresiz; GitHub\'da da açık.',
+         'Small, free kits that make web MOTD panels work at every resolution and in the CSDurağı client. No passwords; the files are also open on GitHub.')) + f'''
+    <section class="section"><div class="wrap">
+      <div class="kit-list" id="kit-list"></div>
+      <div class="cta-band" style="margin-top:28px"><div><h2>{T('MOTD paneliniz mi bozuk?', 'Is your MOTD panel broken?')}</h2><p>{T('Sunucuna özel düzenleme için yaz.', 'Write for a custom fix for your server.')}</p></div>
+        <div class="actions"><a class="btn primary" href="/contact/">{CTA_CONTACT}</a></div></div>
+    </div></section>''', image=f'/kits/{kits[0]["slug"]}/{kits[0]["shots"][0]["file"]}')
+
 shell('contact/index.html', 'contact', ('İletişim — GoldSrc Studio', 'Contact — GoldSrc Studio'),
   ('Steam, Discord ve GameBanana üzerinden iletişim.', 'Get in touch on Steam, Discord and GameBanana.'),
   head(T('İletişim', 'Contact'), T('Bir fikrin mi var? <span class="accent">Konuşalım.</span>', 'Got an idea? <span class="accent">Let\'s talk.</span>'),
@@ -359,6 +393,65 @@ readme('plugins', lambda lang, L: f"""{switch(lang)}
 [← {L('Ana sayfa', 'Home')}](../{LANGS[lang]})
 """)
 
+def kit_cell(k, lang, L, base=''):
+    k = loc(k, lang)
+    return (f'<td width="33%" valign="top"><a href="{base}{k["slug"]}"><img src="{base}{k["slug"]}/{k["shots"][0]["file"]}" alt="{k["name"]}"></a><br>'
+            f'<b><a href="{base}{k["slug"]}">{k["name"]}</a></b><br>{k["intro"]}</td>')
+
+for k in kits:
+    def kit_readme(lang, L, k=k):
+        k = loc(k, lang)
+        shots = '\n'.join(f'### {L(x["label"], x["en"])}\n\n![{L(x["label"], x["en"])}]({x["file"]})\n' for x in k['shots'])
+        feats = '\n\n'.join(f'**{a}**  \n{b}' for a, b in k['features'])
+        extra = [f'[{L("Forum konusu", "Forum topic")} (webailesi.com)]({k["topic"]})'] + ([f'[{L("Video", "Video")} (YouTube)]({k["video"]})'] if k.get('video') else [])
+        credits = f'\n## {L("Kredi", "Credits")}\n\n{k["credits"]}\n' if k.get('credits') else ''
+        return f"""{switch(lang)}
+
+# {k['name']}
+
+**{L('CS 1.6 MOTD kiti · ücretsiz', 'CS 1.6 MOTD kit · free')}**
+
+![{k['name']}]({k['shots'][0]['file']})
+
+{k['intro']}
+
+{' · '.join(f'`{t}`' for t in k['tags'])}
+
+## {L('Özellikler', 'Features')}
+
+{feats}
+
+## {L('İndir', 'Download')}
+
+**[⬇ {k['file']['name']}]({k['file']['name']}?raw=1)** · {k['file']['size'] / 1024:.0f} KB · {L('şifresiz', 'no password')}
+
+<sub>SHA-256: `{k['file']['sha256']}`</sub>
+
+{L('Dosyalara tek tek bakmak için', 'Browse the files')}: [`{k['folder']}/`]({k['folder']})
+
+{' · '.join(extra)}
+{credits}
+## {L('Ekran görüntüleri', 'Screenshots')}
+
+{shots}
+[← {L('Tüm kitler', 'All kits')}](../{LANGS[lang]})
+"""
+    readme(f'kits/{k["slug"]}', kit_readme)
+
+readme('kits', lambda lang, L: f"""{switch(lang)}
+
+# {L('MOTD kitleri', 'MOTD kits')}
+
+{L('CS 1.6 web MOTD panellerini her çözünürlükte ve CSDurağı istemcisinde düzgün gösteren küçük, ücretsiz kitler.', 'Small, free kits that make CS 1.6 web MOTD panels work at every resolution and in the CSDurağı client.')}
+{L('Sitede', 'On the site')}: [tools.bydevil.com/kits](https://tools.bydevil.com/kits/)
+
+<table>
+{rows([kit_cell(k, lang, L) for k in kits], 3)}
+</table>
+
+[← {L('Ana sayfa', 'Home')}](../{LANGS[lang]})
+""")
+
 readme('.', lambda lang, L: f"""<p align="center">
   <img src="assets/goldsrc-mark.png" width="88" alt="GoldSrc Studio">
 </p>
@@ -411,6 +504,14 @@ readme('.', lambda lang, L: f"""<p align="center">
 
 [{L('Tüm eklentiler', 'All plugins')} →](plugins)
 
+## {L('MOTD kitleri', 'MOTD kits')}
+
+<table>
+{rows([kit_cell(k, lang, L, 'kits/') for k in kits], 3)}
+</table>
+
+[{L('Tüm kitler', 'All kits')} →](kits)
+
 ## {L('Hata bildirimi ve öneriler', 'Bug reports and suggestions')}
 
 {L('Bir sorun bulduysan ya da yeni bir araç fikrin varsa [issue aç](../../issues).', 'Found a problem or have an idea for a new tool? [Open an issue](../../issues).')}
@@ -439,6 +540,7 @@ urls = [
     entry('/maps/', [m['image'] for m in maps['items']]),
     entry('/skies/', [m['image'] for m in skies['items']]),
     entry('/plugins/', plugin_imgs),
+    entry('/kits/', [f'/kits/{k["slug"]}/{x["file"]}' for k in kits for x in k['shots']]),
     entry('/contact/', []),
 ]
 open('sitemap.xml', 'w', encoding='utf-8').write(

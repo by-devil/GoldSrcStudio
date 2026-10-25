@@ -54,6 +54,14 @@
 
 [Tüm eklentiler →](plugins)
 
+## MOTD kitleri
+
+<table>
+<tr><td width="33%" valign="top"><a href="kits/sigdir"><img src="kits/sigdir/img/sigdir-1.jpg" alt="SIĞDIR + CSDurağı eksen modülü"></a><br><b><a href="kits/sigdir">SIĞDIR + CSDurağı eksen modülü</a></b><br>Web MOTD sayfalarına SIĞDIR butonu ve ayar paneli ekler; bizim ek modülümüz CSDurağı istemcisine de yatay ve dikey ince ayar getirir.</td><td width="33%" valign="top"><a href="kits/motd-fit"><img src="kits/motd-fit/img/motdfit-1920.jpg" alt="Motd-fit"></a><br><b><a href="kits/motd-fit">Motd-fit</a></b><br>Mevcut CSS dosyanızı okur ve her çözünürlük için küçültme kuralları üretir. Büyük ekranda tasarım aynen kalır, küçük ekranda yazılar ve boşluklar kademeli küçülür.</td><td width="33%" valign="top"><a href="kits/csduragi-trident"><img src="kits/csduragi-trident/img/trident-once.jpg" alt="CSDurağı (Trident/IE7) uyum kiti"></a><br><b><a href="kits/csduragi-trident">CSDurağı (Trident/IE7) uyum kiti</a></b><br>CSDurağı MOTD’yi eski Trident motoruyla (IE7 modu) gösterir; Steam’de güzel duran CSS paneller burada bozuk veya renksiz çıkabilir. Bu kit yalnızca o istemcide izole bir düzeltme dosyası yükler.</td></tr>
+</table>
+
+[Tüm kitler →](kits)
+
 ## Hata bildirimi ve öneriler
 
 Bir sorun bulduysan ya da yeni bir araç fikrin varsa [issue aç](../../issues).

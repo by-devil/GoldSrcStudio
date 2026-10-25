@@ -1,0 +1,158 @@
+/* ==================================================================
+   TRIDENT-FIX SABLONU - sadece csduragi/oyunyoneticisi gibi Trident
+   (IE7-uyumluluk-modu) tabanli MOTD istemcileri icin yuklenir.
+   is_trident_client() true donunce ana stylesheet'ten SONRA eklenir.
+
+   Bu dosyayi trident-fix.css olarak kopyala, asagidaki ".ORNEK-xxx"
+   placeholder'lari kendi projenin GERCEK CSS selector'leriyle degistir.
+   Her blok, hangi sorunu neden cozdugunu aciklayan bir yorumla basliyor -
+   kendi CSS'inde ayni deseni (rgba/gradient/flex/shadow/media) nerede
+   kullandigini bulup ayni mantikla doldur.
+   ================================================================== */
+
+
+/* -----------------------------------------------------------------
+   1) rgba()/hsla() KULLANAN ARKA PLANLAR
+   Trident bu fonksiyonlari taniyamiyor, declaration'i tumden atliyor.
+   Ana CSS'indeki HER "background: rgba(...)" veya "background-color:
+   rgba(...)" satirini bul, buraya DUZ HEX karsiligini yaz.
+
+   ONEMLI: SADECE alfa (saydamlik) degeri orta-yuksek (~0.3 ve ustu)
+   olanlari opak yap - bunlar gercek panel/kart "backdrop"laridir, opak
+   olmazsa icerik transparan/illegible kalir.
+
+   DUSUK alfali (0.05-0.15 gibi) ince tonlamalari (zebra-stripe, hover
+   highlight vb.) OPAK YAPMA - onlari tamamen atla / bos birak. Zorla
+   opak yapmak, ince bir tonlama yerine bariz/cirkin bir renkli blok
+   uretir - "yok" hali, "yanlis" halinden daha iyi gorunur. */
+
+.ORNEK-panel { background: #1a1712 !important; }   /* was: rgba(23,20,15,0.82) */
+.ORNEK-card  { background: #171110 !important; }   /* was: rgba(23,17,16,0.6)  */
+
+
+/* -----------------------------------------------------------------
+   2) AKTIF/HOVER DURUMLARI - blanket !important fix'in yan etkisi
+
+   UYARI: (1)'deki gibi genel bir kural, o elemanin .active/.hover gibi
+   durum-degistiren alt-class'larini da EZEBILIR - eger o durumun kendi
+   kurali !important DEGILSE, senin genel !important kuralin kazanir ve
+   "aktif" hali de ayni (yanlis) renge boyanir. Sonuc: "sadece o basiliyken
+   bozuk gorunuyor" seklinde bir sikayet.
+
+   Her (1) tipi kural eklediginde, o elemanin TUM durumlarini (varsayilan +
+   aktif + hover) ayri ayri buraya, DAHA SPESIFIK selector'lerle geri ver. */
+
+.ORNEK-tab.active {
+  background: #a91217 !important;
+  color: #0a0908 !important;
+}
+
+
+/* -----------------------------------------------------------------
+   3) box-shadow / text-shadow - Trident'ta bazen "garip cizgi/blok"
+
+   Bunlar tamamen kozmetik (parlama/golge) efektler. Trident cogu zaman
+   sessizce yok sayar ama bazi durumlarda (ozellikle rgba() renkli
+   box-shadow/text-shadow) bozuk/glitch bir sekilde render edebiliyor -
+   beklenmedik cizgi, blok, renk lekesi seklinde. Islevsel hicbir kaybi
+   olmadigi icin toptan kapatmak en guvenlisi: */
+
+* { box-shadow: none !important; text-shadow: none !important; }
+
+
+/* -----------------------------------------------------------------
+   4) FLEXBOX (display:flex / inline-flex) - Trident desteklemiyor
+
+   Flex kullanan her container icin, cocuklarinin duz eski-usul
+   display:inline-block + vertical-align:middle ile dizilmesini
+   ZORLA. Ozellikle ana CSS'inde AYNI selector icin biri "block" biri
+   "flex" olan IKI FARKLI display kurali varsa (siralamaya gore biri
+   digerini eziyor, tutarsiz sonuc verebiliyor) - burada KESIN, tek bir
+   deger belirle. */
+
+.ORNEK-icon-row {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+.ORNEK-icon-row > * {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  float: none !important;
+}
+
+/* Sekme/nav cubugu gibi bir flex container'i da ayni sekilde duzelt -
+   "margin-left:auto" gibi flex-only sag-yaslama trickleri Trident'ta
+   islevsiz kalir, tum ogeler sadece soldan siraya girer (kabul edilebilir
+   bir tavizdir, okunabilirlik onceliklidir). */
+.ORNEK-tab-bar { display: block !important; }
+.ORNEK-tab { display: inline-block !important; margin: 0 5px 5px 0 !important; }
+
+
+/* -----------------------------------------------------------------
+   5) @media SORGULARINA DAGILMIS SUTUN/OGE GENISLIKLERI
+
+   Trident'in @media sorgularini guvenilir sekilde uygulamasina
+   GUVENME - hangi breakpoint'in "gectigi" tutarsiz olabiliyor, bu da
+   beklenmedik bosluklara/kaymalara yol aciyor. Tablo gibi yapilar icin
+   en saglam cozum: table-layout:auto'ya gecip dar sutunlara
+   "width:1%" (icerige gore kucul) ipucu vermek - boylece hicbir
+   @media hesabina bagli kalmadan icerige gore dogal boyutlanir. */
+
+.ORNEK-table { table-layout: auto !important; }
+.ORNEK-table td.rank-col {
+  width: 1% !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+}
+.ORNEK-table td.main-col {
+  width: auto !important;
+  text-align: left !important;
+}
+
+
+/* -----------------------------------------------------------------
+   6) ARKA PLAN GORSELI (logo vb.) GORUNMUYOR / KAYBOLUYOR
+
+   Eger bir logo/watermark, ayri bir "position:absolute; z-index:-1;
+   opacity:0.6" div'i ile arkaya gizleniyorsa VE (1)'deki gibi ana
+   panelin arka planina OPAK bir renk verdiysen, o opak renk logoyu
+   tamamen ORTER (Trident yari-saydam rgba() yapamadigi icin araya
+   "kismen gorunur siyah" koyamiyorsun).
+
+   DOGRU COZUM: opakligi CSS'te degil, GORSELIN KENDI PNG ALFA
+   KANALINDA ayarla (bu, CSS rgba()/opacity'den TAMAMEN FARKLI, cok
+   daha eski ve evrensel desteklenen bir mekanizma - ham IE6 bile
+   PNG alfa saydamligini dogru gosterir):
+
+     apt-get install -y imagemagick   # bir kere
+     convert logo.png -alpha set -channel A -evaluate multiply 0.4 \
+       +channel logo-trident.png
+
+   Sonra ayri div'i devre disi birakip, gomulu-opaklikli gorseli
+   panelin KENDI background-image'i yap - z-index/position'a hic
+   ihtiyac kalmaz, garanti calisir: */
+
+.ORNEK-panel-with-logo-bg { display: none !important; }  /* eski logo div'i kapat */
+.ORNEK-panel {
+  background-color: #0a0908 !important;
+  background-image: url('assets/logo-trident.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: 380px 380px !important;
+}
+
+
+/* -----------------------------------------------------------------
+   7) TABLO SATIRLARINDA INCE TONLAMA (zebra-stripe / hover)
+
+   (1)'deki "dusuk alfayi opak yapma" kuralinin somut uygulamasi: eger
+   satir arka planlari zaten cok ince bir tonlamaysa (orn. arka planda
+   bir logo/desen gorunsun diye kasitli olarak yari-saydam birakilmissa),
+   onlara duz OPAK renk vermek yerine TAMAMEN TRANSPARENT birak - metnin
+   kendi rengi (acik gri/beyaz) zaten panelin koyu zemininde okunabilir
+   kaliyor, ekstra satir tonuna ihtiyac yok. */
+
+.ORNEK-table tbody tr { background: transparent !important; }
+.ORNEK-table tbody tr:nth-child(even) { background: transparent !important; }

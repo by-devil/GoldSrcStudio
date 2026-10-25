@@ -18,6 +18,7 @@
   const LOCALE = L('tr-TR', 'en-US');
 
   let PLUGINS = []; // plugins/plugins.json, loaded in init()
+  let KITS = []; // kits/kits.json, loaded in init()
 
   /* ---------- helpers ---------- */
   const $ = (s, r = document) => r.querySelector(s);
@@ -35,6 +36,10 @@
     plugins: () => getJSON('/plugins/plugins.json').then(list => list.map(p => ({
       ...p, ...(LANG === 'en' && p.en),
       shots: p.shots.map(x => ({ src: `/plugins/${p.slug}/${x.file}`, label: L(x.label, x.en) })),
+    }))),
+    kits: () => getJSON('/kits/kits.json').then(list => list.map(k => ({
+      ...k, ...(LANG === 'en' && k.en),
+      shots: k.shots.map(x => ({ src: `/kits/${k.slug}/${x.file}`, label: L(x.label, x.en) })),
     }))),
   };
 
@@ -89,6 +94,7 @@
         <a class="mlink" href="/maps/"><span class="mlink-ic">${icon('map')}</span><span><span class="mlink-t">${L('Haritalar', 'Maps')}</span><span class="mlink-d">${L('Base Builder, Gun Game, Zombie ve daha fazlası', 'Base Builder, Gun Game, Zombie and more')}</span></span></a>
         <a class="mlink" href="/skies/"><span class="mlink-ic">${icon('cloud')}</span><span><span class="mlink-t">${L('Skyboxlar', 'Skyboxes')}</span><span class="mlink-d">${L('GoldSrc için gökyüzü paketleri', 'Sky packs for GoldSrc')}</span></span></a>
         <a class="mlink" href="/plugins/"><span class="mlink-ic">${icon('plug')}</span><span><span class="mlink-t">${L('AMXX eklentileri', 'AMXX plugins')}</span><span class="mlink-d">${L('Sıralama, sezon ve ekonomi sistemleri', 'Ranking, season and economy systems')}</span></span></a>
+        <a class="mlink" href="/kits/"><span class="mlink-ic">${icon('box')}</span><span><span class="mlink-t">${L('MOTD kitleri', 'MOTD kits')}</span><span class="mlink-d">${L('Her çözünürlüğe uyan MOTD panelleri', 'MOTD panels that fit every resolution')}</span></span></a>
         <a class="mlink" href="${LINKS.gamebanana}" ${ext}><span class="mlink-ic"><img src="/assets/gamebanana.png" alt="" style="width:22px;height:22px;image-rendering:pixelated"></span><span><span class="mlink-t">${L('GameBanana profili', 'GameBanana profile')}</span><span class="mlink-d">${L('Tüm yüklemeler tek yerde', 'All uploads in one place')}</span></span></a>
       </div>`;
     return `
@@ -101,6 +107,7 @@
           ${item('tools', '/tools/', L('Araçlar', 'Tools'), `<div class="mega-grid"><p class="mega-label">${L('Uygulamalar', 'Apps')}</p>${toolLinks}<div class="mega-foot"><a href="/tools/">${L('Tüm araçlar →', 'All tools →')}</a></div></div>`)}
           ${item('maps', '/maps/', L('Çalışmalar', 'Works'), works)}
           ${item('plugins', '/plugins/', L('Eklentiler', 'Plugins'))}
+          ${item('kits', '/kits/', L('Kitler', 'Kits'))}
           ${item('contact', '/contact/', L('İletişim', 'Contact'))}
         </nav>
         <div class="hdr-right">
@@ -135,7 +142,7 @@
           </div>
           <div><h4>${L('Araçlar', 'Tools')}</h4><ul>${tools.map(t => `<li><a href="/tools/${t.slug}/">${esc(t.name)}</a></li>`).join('')}</ul></div>
           <div><h4>${L('Çalışmalar', 'Works')}</h4><ul>
-            <li><a href="/maps/">${L('Haritalar', 'Maps')}</a></li><li><a href="/skies/">${L('Skyboxlar', 'Skyboxes')}</a></li><li><a href="/plugins/">${L('AMXX eklentileri', 'AMXX plugins')}</a></li>
+            <li><a href="/maps/">${L('Haritalar', 'Maps')}</a></li><li><a href="/skies/">${L('Skyboxlar', 'Skyboxes')}</a></li><li><a href="/plugins/">${L('AMXX eklentileri', 'AMXX plugins')}</a></li><li><a href="/kits/">${L('MOTD kitleri', 'MOTD kits')}</a></li>
             <li><a href="${LINKS.gamebanana}" ${ext}>GameBanana</a></li></ul></div>
           <div><h4>${L('Bağlantılar', 'Links')}</h4><ul>
             <li><a href="/contact/">${L('İletişim', 'Contact')}</a></li><li><a href="${LINKS.issues}" ${ext}>${L('Hata bildir', 'Report a bug')}</a></li>
@@ -214,13 +221,15 @@
     const norm = s => s.toLocaleLowerCase(LOCALE).normalize('NFD').replace(/[̀-ͯ]/g, '');
     async function build() {
       const [tools, maps, skies] = await Promise.all([data.tools(), data.maps().catch(() => ({ items: [] })), data.skies().catch(() => ({ items: [] }))]);
-      const G = { pages: L('Sayfalar', 'Pages'), tools: L('Araçlar', 'Tools'), plugins: L('Eklentiler', 'Plugins'), maps: L('Haritalar', 'Maps'), skies: L('Skyboxlar', 'Skyboxes') };
+      const G = { pages: L('Sayfalar', 'Pages'), tools: L('Araçlar', 'Tools'), plugins: L('Eklentiler', 'Plugins'), kits: L('Kitler', 'Kits'), maps: L('Haritalar', 'Maps'), skies: L('Skyboxlar', 'Skyboxes') };
       const pages = [
         { group: G.pages, name: L('Araçlar', 'Tools'), sub: L('Tüm uygulamalar', 'All apps'), href: '/tools/', ic: icon('tool') },
         { group: G.pages, name: L('Haritalar', 'Maps'), sub: `${maps.count || ''} ${L('harita', 'maps')}`, href: '/maps/', ic: icon('map') },
         { group: G.pages, name: L('Skyboxlar', 'Skyboxes'), sub: `${skies.count || ''} ${L('skybox', 'skyboxes')}`, href: '/skies/', ic: icon('cloud') },
         { group: G.pages, name: L('AMXX eklentileri', 'AMXX plugins'), sub: L('Sunucu sistemleri', 'Server systems'), href: '/plugins/', ic: icon('plug') },
         ...PLUGINS.map(p => ({ group: G.plugins, name: p.name, sub: 'AMX Mod X · bydevil.com', href: p.link, ext: true, site: 'bydevil.com', ic: icon('plug') })),
+        { group: G.pages, name: L('MOTD kitleri', 'MOTD kits'), sub: L('Ücretsiz MOTD panel kitleri', 'Free MOTD panel kits'), href: '/kits/', ic: icon('box') },
+        ...KITS.map(k => ({ group: G.kits, name: k.name, sub: `${L('MOTD kiti', 'MOTD kit')} · ${k.tags.join(', ')}`, href: `/kits/#${k.slug}`, ic: icon('box') })),
         { group: G.pages, name: L('İletişim', 'Contact'), sub: 'Steam, Discord, GameBanana', href: '/contact/', ic: icon('chat') },
       ];
       return [
@@ -361,6 +370,8 @@
   document.addEventListener('click', e => {
     const g = e.target.closest('[data-gal]');
     if (g) { const p = PLUGINS[+g.dataset.gal]; gallery(p, p.cover || 0); }
+    const kg = e.target.closest('[data-kgal]');
+    if (kg) gallery(KITS[+kg.dataset.kgal], +kg.dataset.k || 0);
   });
   const statTile = (ic, value, label) => `<div class="hstat"><b>${value}</b><span>${icon(ic)}${label}</span></div>`;
 
@@ -447,6 +458,33 @@
 
     plugins(main) {
       $('#plugin-grid', main).innerHTML = PLUGINS.map(pluginCard).join('');
+    },
+
+    kits(main) {
+      $('#kit-list', main).innerHTML = KITS.map((k, i) => `
+        <article class="kit fade" id="${esc(k.slug)}">
+          <div class="kit-media">
+            <button class="kit-cover" type="button" data-kgal="${i}" aria-label="${esc(k.name)}: ${L('ekran görüntülerini aç', 'open screenshots')}">
+              <img src="${esc(k.shots[0].src)}" alt="${esc(k.shots[0].label)}"><span class="shot-count">${icon('box')}${k.shots.length}</span></button>
+            ${k.shots.length > 1 ? `<div class="kit-thumbs">${k.shots.map((s, j) => `<button type="button" data-kgal="${i}" data-k="${j}" aria-label="${esc(s.label)}"><img src="${esc(s.src)}" alt=""></button>`).join('')}</div>` : ''}
+          </div>
+          <div class="kit-body">
+            <div class="tags"><span class="tag accent">${L('Ücretsiz', 'Free')}</span>${k.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+            <h2>${esc(k.name)}</h2>
+            <p class="card-text">${esc(k.intro)}</p>
+            <dl class="kit-feats">${k.features.map(([a, b]) => `<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join('')}</dl>
+            <details class="kit-files"><summary>${L('Paket içeriği', 'Package contents')} (${k.file.contents.length})</summary>
+              <ul>${k.file.contents.map(f => `<li><code>${esc(f)}</code></li>`).join('')}</ul></details>
+            ${k.credits ? `<p class="kit-credit">${esc(k.credits)}</p>` : ''}
+            <div class="actions">
+              <a class="btn primary" href="/kits/${esc(k.slug)}/${esc(k.file.name)}" download>${icon('dl')}${L('İndir', 'Download')} · ${Math.round(k.file.size / 1024)} KB</a>
+              <a class="btn" href="${esc(k.topic)}" ${ext}>${L('Forum konusu', 'Forum topic')} ${icon('out')}</a>
+              ${k.video ? `<a class="btn" href="${esc(k.video)}" ${ext}>${L('Video', 'Video')} ${icon('out')}</a>` : ''}
+              <a class="btn" href="${LINKS.github}/tree/main/kits/${esc(k.slug)}/${esc(k.folder)}" ${ext} aria-label="GitHub">${GH}</a>
+            </div>
+          </div>
+        </article>`).join('');
+      if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
     },
 
     contact(main) {
@@ -579,6 +617,7 @@
     let tools = [];
     try { tools = await data.tools(); } catch { /* the menu works without tools */ }
     try { PLUGINS = await data.plugins(); } catch { /* plugin sections stay empty */ }
+    try { KITS = await data.kits(); } catch { /* kit sections stay empty */ }
     hdr.className = 'hdr'; hdr.innerHTML = header(tools); wireHeader(hdr); wireTheme(hdr); wireLang(hdr);
     ftr.className = 'ftr'; ftr.innerHTML = footer(tools);
     palette();

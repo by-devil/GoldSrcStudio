@@ -1,0 +1,10 @@
+SIĞDIR kiti (sigdir.php, sigdir-compact-ornek.css ve asıl demo):
+  SIĞDIR - OSR tarafından özenle yapılmıştır.
+  Serbestçe kullanılabilir, değiştirilebilir ve paylaşılabilir; kredi verilmesi rica edilir.
+
+Eksen eklentisi (sigdir-eksen.php) ile bu paketin demo.php ve README.md dosyaları:
+  Herhangi bir klan
+  Serbestçe kullanılabilir, değiştirilebilir ve paylaşılabilir; kredi verilmesi hoş olur.
+
+Bu paket asıl kitin yazarları 'OSR' tarafından hazırlanmamıştır ve onlar adına sunulmaz.
+Asıl kit dosyaları değiştirilmeden pakete konmuştur.
