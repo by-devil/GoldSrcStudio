@@ -23,7 +23,7 @@ PHP 5.4 veya üstü. Veritabanı, şifre ya da dış kütüphane yok; sadece çe
 
 ## İndir
 
-**[⬇ sigdir-paket.zip](sigdir-paket.zip?raw=1)** · 13 KB · şifresiz
+**[⬇ sigdir-paket.zip](https://tools.bydevil.com/kits/sigdir/sigdir-paket.zip)** · 13 KB · şifresiz
 
 <sub>SHA-256: `447bb7b43b7d0f0f230ee6c73322d804acfb2b12c73c49c5c8d95fe5a638e877`</sub>
 

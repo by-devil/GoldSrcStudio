@@ -23,7 +23,7 @@ Kaydırma/kompakt mod kitiyle birlikte tasarlandı: o tıklama ve kaydırmayı, 
 
 ## İndir
 
-**[⬇ csduragimotd-kit.zip](csduragimotd-kit.zip?raw=1)** · 10 KB · şifresiz
+**[⬇ csduragimotd-kit.zip](https://tools.bydevil.com/kits/csduragi-trident/csduragimotd-kit.zip)** · 10 KB · şifresiz
 
 <sub>SHA-256: `0bc1e0c1037e0246784d6652e97a2a32f52865dca2abdb7d6dc4fdb102614dda`</sub>
 

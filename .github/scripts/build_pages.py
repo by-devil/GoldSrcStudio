@@ -423,7 +423,7 @@ for k in kits:
 
 ## {L('İndir', 'Download')}
 
-**[⬇ {k['file']['name']}]({k['file']['name']}?raw=1)** · {k['file']['size'] / 1024:.0f} KB · {L('şifresiz', 'no password')}
+**[⬇ {k['file']['name']}]({SITE}/kits/{k['slug']}/{k['file']['name']})** · {k['file']['size'] / 1024:.0f} KB · {L('şifresiz', 'no password')}
 
 <sub>SHA-256: `{k['file']['sha256']}`</sub>
 

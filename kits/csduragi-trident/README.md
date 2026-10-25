@@ -23,7 +23,7 @@ Built to pair with the scroll/compact-mode kit: that one fixes clicking and scro
 
 ## Download
 
-**[⬇ csduragimotd-kit.zip](csduragimotd-kit.zip?raw=1)** · 10 KB · no password
+**[⬇ csduragimotd-kit.zip](https://tools.bydevil.com/kits/csduragi-trident/csduragimotd-kit.zip)** · 10 KB · no password
 
 <sub>SHA-256: `0bc1e0c1037e0246784d6652e97a2a32f52865dca2abdb7d6dc4fdb102614dda`</sub>
 

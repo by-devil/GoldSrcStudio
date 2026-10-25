@@ -23,7 +23,7 @@ python3 motd_fit.py style.css — re-run after editing your CSS, the old block i
 
 ## Download
 
-**[⬇ motd-fit-kit.zip](motd-fit-kit.zip?raw=1)** · 10 KB · no password
+**[⬇ motd-fit-kit.zip](https://tools.bydevil.com/kits/motd-fit/motd-fit-kit.zip)** · 10 KB · no password
 
 <sub>SHA-256: `85a257aa08e2471e4a682bf3e9ae425f52fca4d9cba54607014fb46e1b536f59`</sub>
 

@@ -23,7 +23,7 @@ PHP 5.4 or newer. No database, password or external library; only a cookie, no o
 
 ## Download
 
-**[⬇ sigdir-paket.zip](sigdir-paket.zip?raw=1)** · 13 KB · no password
+**[⬇ sigdir-paket.zip](https://tools.bydevil.com/kits/sigdir/sigdir-paket.zip)** · 13 KB · no password
 
 <sub>SHA-256: `447bb7b43b7d0f0f230ee6c73322d804acfb2b12c73c49c5c8d95fe5a638e877`</sub>
 
